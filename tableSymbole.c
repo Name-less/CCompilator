@@ -1,17 +1,18 @@
 #include <stdlib.h>
-#include <tableSymbole.h>
+#include <stdio.h>
+#include "tableSymbole.h"
 
-struct Symbole {
-	char * type;
+typedef struct Symbole {
+	char * type_symbole;
 	char * name;
 	int * adress;
-	Symbole * next;
-	Symbole * before;
+	struct Symbole * next;
+	struct Symbole * before;
 }symbole;
 
-Symbole * lastOne;
+symbole * lastOne;
 int ts_init(){
-	lastOne = (Symbole *)malloc(sizeof(struct Symbole));
+	lastOne = (symbole *)malloc(sizeof(struct Symbole));
 	if(lastOne != NULL){
 		return 1;
 	}else{
@@ -19,14 +20,14 @@ int ts_init(){
 	}
 }
 
-int ts_create(char * name,char * type){
+int ts_push(char * name,char * type_symbole){
 	if(exist(name) == 1){
-		Symbole * newSymbole = (Symbole *)malloc(sizeof(struct Symbole));
-		newSymbole.name = name;
-		newSymbole.type = type;
-		newSymbole.before = lastOne;
-		lastOne.next = newSymbole;
-		lastOne = new Symbole;
+		symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
+		newSymbole->name = name;
+		newSymbole->type_symbole = type_symbole;
+		newSymbole->before = lastOne;
+		lastOne->next = newSymbole;
+		lastOne = newSymbole;
 		return 1;
 	}else{
 		return -1;
@@ -34,25 +35,59 @@ int ts_create(char * name,char * type){
 }
 
 int exist(char * name){
-	Symbole * iterator = lastOne;
-	while(iterator.before != NULL){
-		if(*iterator.name == *name){
+	symbole * iterator = lastOne;
+	while(iterator->before != NULL){
+		if(*iterator->name == *name){
 			return -1;
 		}else{
-			iterator = lastOne.before;
+			iterator = lastOne->before;
 		}
 	}
 	return 1;
 }
 
-int ts_delete(char * name){
-        Symbole * iterator = lastOne;
-        while(iterator.before != NULL){
-                if(*iterator.name == *name){
-                        iterator.before.next = iterator.next;
+int ts_pop(char * name){
+        symbole * iterator = lastOne;
+        while(iterator->before != NULL){
+                if(*iterator->name == *name){
+                        iterator->before->next = iterator->next;
                 }else{
-                        iterator = lastOne.before;
+                        iterator = iterator->before;
                 }
         }
         return 1;
 }
+
+void ts_display(){
+	symbole * iterator = lastOne;
+	printf("########## Symbole Table ########## \n");
+	printf("#    Name  |    Type   |  Adress  # \n"); 
+	printf("################################### \n"); 
+	while(iterator != NULL){
+		printf("----------------------------------- \n");
+		printf("#      %s      |   %s    |   %d   # \n",iterator->name,iterator->type_symbole,*(iterator->adress));
+		printf("----------------------------------- \n");		 
+	iterator = iterator->before;
+	}
+}
+
+int main(){
+	ts_init();
+	ts_display();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
