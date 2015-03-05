@@ -29,8 +29,8 @@ int ts_push(char * name,char * type_symbole){
 		newSymbole->name = name;
 		newSymbole->type_symbole = type_symbole;
 		newSymbole->before = firstOne;
+		newSymbole->next = firstOne->next;
 		firstOne->next = newSymbole;
-		firstOne = newSymbole;
 		return 1;
 	}else{
 		return -1;
@@ -39,11 +39,11 @@ int ts_push(char * name,char * type_symbole){
 
 int exist(char * name){
 	symbole * iterator = firstOne;
-	while(iterator->before != NULL){
-		if(*iterator->name == *name){
+	while(iterator != NULL){
+		if(iterator->name == name){
 			return -1;
 		}else{
-			iterator = firstOne->before;
+			iterator = iterator->next;
 		}
 	}
 	return 1;
@@ -77,10 +77,10 @@ void ts_display(){
 int main(){
 	ts_init();
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
-	ts_push((char *)"a",(char *)"const");
-	ts_push((char *)"a",(char *)"const");
-	ts_push((char *)"b",(char *)"const");
-	ts_push((char *)"a",(char *)"const");
+	ts_push((char *)"a",(char *)"const1");
+	ts_push((char *)"a",(char *)"const2");
+	ts_push((char *)"b",(char *)"const3");
+	ts_push((char *)"c",(char *)"const4");
 	ts_display();
 }
 
