@@ -1,10 +1,18 @@
 %{
 #include <stdlib.h>
 #include <stdio.h>
-#include <tableSymbole.h>
+#include "tableSymbole.h"
+
+int yyerror(char *s);
+int yylex();
+
+// int yywrap();
+
 %}
 
-%token tINTEGER tCHAR tVOID tNULL tCONST
+%token <string> tINTEGER
+
+%token tCHAR tVOID tNULL tCONST
 
 %token tMAIN
 
@@ -18,7 +26,16 @@
 
 %token tADDR tPOINTER
 
-%token tNOMBRE tSPACE tWORD tLETTRE
+%token tSPACE tLETTRE
+
+%token <number> tNOMBRE
+%token <string> tWORD
+
+%union{
+int number;
+char * string;
+}
+
 
 %token tRETURN
 
@@ -37,7 +54,7 @@
 
 Input: 
 |Input tNEWLINE|
-Input Egalite tPOINTVIRG {printf("egal ok \n");} |
+Input Egalite tPOINTVIRG {printf("egalite ok \n");} |
 Input Declaration {printf("declaration ok \n");} |
 Input If {printf("condition ok \n");}|
 Input Main;
@@ -76,10 +93,10 @@ tNOMBRE |
 tWORD;
 
 Egalite :
-Exp tEGAL Exp;
+Exp tEGAL Exp ;
 
 Declaration :
-tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG |
+tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG {if (ts_push($2,$1)==1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); } |
 tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG |
 tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne 
 tPOINTVIRG |
@@ -103,10 +120,17 @@ DeclarationCharMemeLigne :
 tVIRG tWORD DeclarationCharMemeLigne | ;
 
 %%
+
+
 int yyerror(char *s){
 printf("%s\n",s);
+return 1;
 }
 
+//int yywrap() {
+//	return 1;
+//}
+
 int main(void){
-yyparse();
+return yyparse();
 }

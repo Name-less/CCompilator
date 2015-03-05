@@ -71,6 +71,6 @@ LETTRE [a-zA-Z]
 {NEWLINE} return tNEWLINE;
 {NOMBRE} return tNOMBRE;
 {LETTRE} return tLETTRE;
-{WORD} return tWORD;
+{WORD}  yylval.string=strdup(yytext);return tWORD;
 
 %%
