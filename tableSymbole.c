@@ -51,14 +51,17 @@ int exist(char * name){
 
 int ts_pop(char * name){
         symbole * iterator = firstOne;
-        while(iterator->before != NULL){
-                if(*iterator->name == *name){
-                        iterator->before->next = iterator->next;
+        while(iterator != NULL){
+                if(iterator->name == name){
+			printf(" before %s next %s \n",(iterator->next)->name,(iterator->before)->next->name);
+			(iterator->before)->next = iterator->next;
+			iterator->next = iterator->before;
+			return 1;
                 }else{
-                        iterator = iterator->before;
+                        iterator = iterator->next;
                 }
         }
-        return 1;
+        return -1;
 }
 
 void ts_display(){
@@ -81,6 +84,7 @@ int main(){
 	ts_push((char *)"a",(char *)"const2");
 	ts_push((char *)"b",(char *)"const3");
 	ts_push((char *)"c",(char *)"const4");
+	ts_pop((char *)"b");
 	ts_display();
 }
 
