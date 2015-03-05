@@ -30,6 +30,9 @@ int ts_push(char * name,char * type_symbole){
 		newSymbole->type_symbole = type_symbole;
 		newSymbole->before = firstOne;
 		newSymbole->next = firstOne->next;
+		if(firstOne->next != NULL){
+		(firstOne->next)->before = newSymbole;
+		}
 		firstOne->next = newSymbole;
 		return 1;
 	}else{
@@ -53,9 +56,10 @@ int ts_pop(char * name){
         symbole * iterator = firstOne;
         while(iterator != NULL){
                 if(iterator->name == name){
-			printf(" before %s next %s \n",(iterator->next)->name,(iterator->before)->next->name);
+			printf(" ite %s next %s before %s \n",iterator->name,(iterator->next)->name,iterator->before->name);
 			(iterator->before)->next = iterator->next;
 			iterator->next = iterator->before;
+			printf(" next %s before %s \n",(iterator->next)->name,(iterator->before)->next->name);
 			return 1;
                 }else{
                         iterator = iterator->next;
@@ -83,8 +87,14 @@ int main(){
 	ts_push((char *)"a",(char *)"const1");
 	ts_push((char *)"a",(char *)"const2");
 	ts_push((char *)"b",(char *)"const3");
+	ts_push((char *)"i",(char *)"const3");
+	ts_push((char *)"u",(char *)"const3");
+	ts_push((char *)"y",(char *)"const3");
+	ts_push((char *)"t",(char *)"const3");
+	ts_push((char *)"r",(char *)"const3");
+	ts_push((char *)"e",(char *)"const3");
 	ts_push((char *)"c",(char *)"const4");
-	ts_pop((char *)"b");
+	ts_pop((char *)"i");
 	ts_display();
 }
 
