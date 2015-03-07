@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include "tableSymbole.h"
 
+/*
+the struct we use to define our symbol table
+*/
+
 typedef struct Symbole {
 	char * type_symbole;
 	char * name;
@@ -9,6 +13,10 @@ typedef struct Symbole {
 	struct Symbole * next;
 	struct Symbole * before;
 }symbole;
+
+/*
+initialize the table by creating the first reference symbol
+*/
 
 symbole * firstOne;
 int ts_init(){
@@ -22,6 +30,10 @@ int ts_init(){
 		return -1;
 	}
 }
+
+/*
+add the symbol to the table if he is not already inside
+*/
 
 int ts_push(char * name,char * type_symbole){
 	if(exist(name) == 1){
@@ -40,6 +52,10 @@ int ts_push(char * name,char * type_symbole){
 	}
 }
 
+/*
+From a given name tel if the name is already on the table or not
+*/
+
 int exist(char * name){
 	symbole * iterator = firstOne;
 	while(iterator != NULL){
@@ -51,6 +67,10 @@ int exist(char * name){
 	}
 	return 1;
 }
+
+/*
+delete the first element of the table
+*/
 
 int ts_pop(char * name){
         symbole * iterator = firstOne;
@@ -67,6 +87,10 @@ int ts_pop(char * name){
         return -1;
 }
 
+/*
+Display the symbol table
+*/
+
 void ts_display(){
 	symbole * iterator = firstOne;
 	printf("########## Symbole Table ########## \n");
@@ -81,6 +105,7 @@ void ts_display(){
 }
 
 /*
+delete every symbol of the table but not the firstOne
 */
 
 void ts_flush(){
