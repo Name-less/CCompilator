@@ -56,10 +56,9 @@ int ts_pop(char * name){
         symbole * iterator = firstOne;
         while(iterator != NULL){
                 if(iterator->name == name){
-			printf(" ite %s next %s before %s \n",iterator->name,(iterator->next)->name,iterator->before->name);
 			(iterator->before)->next = iterator->next;
 			iterator->next = iterator->before;
-			printf(" next %s before %s \n",(iterator->next)->name,(iterator->before)->next->name);
+			free(iterator);
 			return 1;
                 }else{
                         iterator = iterator->next;
@@ -81,6 +80,23 @@ void ts_display(){
 	}
 }
 
+/*
+*/
+
+void ts_flush(){
+	symbole * iterator = firstOne;
+	if(firstOne->next != NULL){
+		iterator = iterator->next;	
+	}else{
+		return;
+	}
+	while(iterator != NULL){
+		symbole * aux = iterator;
+		iterator = iterator->next;
+		free(aux);
+	}
+}
+
 int main(){
 	ts_init();
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
@@ -95,6 +111,8 @@ int main(){
 	ts_push((char *)"e",(char *)"const3");
 	ts_push((char *)"c",(char *)"const4");
 	ts_pop((char *)"i");
+	ts_display();
+	ts_flush();
 	ts_display();
 }
 
