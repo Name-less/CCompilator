@@ -100,6 +100,17 @@ int ts_pop(char * name){
 
 int ts_pop_addr(int addr){
 	symbole * iterator = firstOne;
+	if(addr == 0){
+		if(iterator->next != NULL){
+			firstOne = iterator->next;
+			free(iterator);
+			return 1;
+		}else{
+			free(firstOne);
+			firstOne = NULL;
+			return 1;
+		}
+	}
 	while(iterator != NULL){
 		if(iterator->adress == addr){
 			ts_pop(iterator->name);
@@ -171,7 +182,7 @@ int main(){
 	ts_push((char *)"c",(char *)"const4");
 	ts_pop((char *)"i");
 	ts_pop_last();
-	ts_pop_addr(12);
+	ts_pop_addr(0);
 	ts_display();
 }
 
