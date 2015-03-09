@@ -129,7 +129,7 @@ void ts_flush(){
 	}
 }
 
-int main(){
+/*int main(){
 	ts_init();
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
 	ts_push((char *)"a",(char *)"const1");
@@ -146,7 +146,7 @@ int main(){
 	ts_display();
 	ts_flush();
 	ts_display();
-}
+}*/
 
 
 
