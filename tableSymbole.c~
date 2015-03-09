@@ -42,17 +42,24 @@ add a temporary variable on the table
 */
 
 int ts_add_temp(){
-        symbole * iterator = firstOne;
-        while(iterator->next != NULL){
-                iterator = iterator->next;
+if(firstOne == NULL){
+                return ts_init(name,type_symbole);
         }
-        symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
-        newSymbole->adress = get_next_addr();
-        newSymbole->type_symbole = (char *)"temp";
-        newSymbole->before = iterator;
-        newSymbole->next = NULL;
-        iterator->next = newSymbole;
-        return newSymbole->adress;
+        if(exist(name) == 1){
+                symbole * iterator = firstOne;
+                while(iterator->next != NULL){
+                        iterator = iterator->next;
+                }
+                symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
+                newSymbole->adress = get_next_addr();
+                newSymbole->type_symbole = (char *)"temp";
+                newSymbole->before = iterator;
+                newSymbole->next = NULL;
+                iterator->next = newSymbole;
+                return newSymbole->adress;
+        }else{
+                return -1;
+        }
 }
 
 /*
