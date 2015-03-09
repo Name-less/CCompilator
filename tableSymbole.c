@@ -46,16 +46,21 @@ int ts_push(char * name,char * type_symbole){
 		return ts_init(name,type_symbole);	
 	}
 	if(exist(name) == 1){
+		symbole * iterator = firstOne;
+		while(iterator->next != NULL){
+			iterator = iterator->next;
+		}
 		symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
 		newSymbole->name = name;
 		newSymbole->adress = get_next_addr();
 		newSymbole->type_symbole = type_symbole;
-		newSymbole->before = firstOne;
-		newSymbole->next = firstOne->next;
-		if(firstOne->next != NULL){
-		(firstOne->next)->before = newSymbole;
-		}
-		firstOne->next = newSymbole;
+		newSymbole->before = iterator;
+		newSymbole->next = NULL;
+		iterator->next = newSymbole;
+		//if(firstOne->next != NULL){
+		//(firstOne->next)->before = newSymbole;
+		//}
+		//firstOne->next = newSymbole;
 		return 1;
 	}else{
 		return -1;
@@ -105,12 +110,12 @@ void ts_display(){
 	symbole * iterator = firstOne;
 	printf("########## Symbole Table ########## \n");
 	printf("#    Name  |    Type   |  Adress  # \n"); 
-	printf("################################### \n"); 
+	printf("################################### \n");
 	while(iterator != NULL){
 		printf("----------------------------------- \n");
 		printf("#      %s      |   %s    |   %d   # \n",iterator->name,iterator->type_symbole,(iterator->adress));
 		printf("----------------------------------- \n");		 
-	iterator = iterator->next;
+		iterator = iterator->next;
 	}
 }
 
@@ -121,19 +126,12 @@ delete every symbol of the table but not the firstOne
 void ts_flush(){
 	symbole * iterator = firstOne;
 	addr = 0;
-	if(firstOne->next != NULL){
-		iterator = iterator->next;	
-	}else{
-		return;
-	}
 	while(iterator != NULL){
 		symbole * aux = iterator;
 		iterator = iterator->next;
 		free(aux);
 	}
-	if(firstOne != NULL){
-		//free(firstOne);
-	}
+	firstOne = NULL;
 }
 
 int main(){
