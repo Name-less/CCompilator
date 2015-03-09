@@ -38,6 +38,24 @@ int ts_init(char * name, char * type_symbole){
 }
 
 /*
+add a temporary variable on the table
+*/
+
+int ts_add_temp(){
+        symbole * iterator = firstOne;
+        while(iterator->next != NULL){
+                iterator = iterator->next;
+        }
+        symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
+        newSymbole->adress = get_next_addr();
+        newSymbole->type_symbole = (char *)"temp";
+        newSymbole->before = iterator;
+        newSymbole->next = NULL;
+        iterator->next = newSymbole;
+        return newSymbole->adress;
+}
+
+/*
 add the symbol to the table if he is not already inside
 */
 
@@ -58,7 +76,7 @@ int ts_push(char * name,char * type_symbole){
 		newSymbole->before = iterator;
 		newSymbole->next = NULL;
 		iterator->next = newSymbole;
-		return 1;
+		return newSymbole->adress;
 	}else{
 		return -1;
 	}
@@ -197,6 +215,7 @@ int main(){
 	ts_push((char *)"a",(char *)"const1");
 	ts_push((char *)"a",(char *)"const2");
 	ts_push((char *)"b",(char *)"const3");
+	ts_add_temp();
 	ts_push((char *)"i",(char *)"const3");
 	ts_push((char *)"u",(char *)"const3");
 	ts_push((char *)"y",(char *)"const3");
