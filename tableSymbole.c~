@@ -156,7 +156,7 @@ int get_addr_from(char * name){
 		}
 		iterator = iterator->next;
 	}
-	return NULL;
+	return -1;
 }
 
 /*

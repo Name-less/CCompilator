@@ -42,6 +42,7 @@ add the symbol to the table if he is not already inside
 */
 
 int ts_push(char * name,char * type_symbole){
+	printf("commence le push");
 	if(firstOne == NULL){
 		return ts_init(name,type_symbole);	
 	}
