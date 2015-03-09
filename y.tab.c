@@ -1574,13 +1574,20 @@ yyreduce:
 
 /* Line 1806 of yacc.c  */
 #line 99 "analyser_gram.yacc"
-    {printf("le type est %s \n", (yyvsp[(1) - (4)].texte));if (ts_push((yyvsp[(2) - (4)].texte),(yyvsp[(1) - (4)].texte))!=-1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); }
+    { if (ts_push((yyvsp[(2) - (4)].texte),(yyvsp[(1) - (4)].texte))!=-1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); }
+    break;
+
+  case 41:
+
+/* Line 1806 of yacc.c  */
+#line 111 "analyser_gram.yacc"
+    {if (ts_push((yyvsp[(2) - (3)].texte),"int")!=-1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); }
     break;
 
 
 
 /* Line 1806 of yacc.c  */
-#line 1584 "y.tab.c"
+#line 1591 "y.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
