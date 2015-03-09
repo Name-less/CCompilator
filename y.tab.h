@@ -73,10 +73,10 @@
      tNOTEGAL = 291,
      tADDR = 292,
      tPOINTER = 293,
-     tNOMBRE = 294,
-     tSPACE = 295,
-     tWORD = 296,
-     tLETTRE = 297,
+     tSPACE = 294,
+     tLETTRE = 295,
+     tNOMBRE = 296,
+     tWORD = 297,
      tRETURN = 298,
      tNEWLINE = 299,
      tCOMMENT = 300,
@@ -120,10 +120,10 @@
 #define tNOTEGAL 291
 #define tADDR 292
 #define tPOINTER 293
-#define tNOMBRE 294
-#define tSPACE 295
-#define tWORD 296
-#define tLETTRE 297
+#define tSPACE 294
+#define tLETTRE 295
+#define tNOMBRE 296
+#define tWORD 297
 #define tRETURN 298
 #define tNEWLINE 299
 #define tCOMMENT 300
@@ -133,7 +133,20 @@
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+typedef union YYSTYPE
+{
+
+/* Line 2068 of yacc.c  */
+#line 34 "analyser_gram.yacc"
+
+int number;
+char * texte;
+
+
+
+/* Line 2068 of yacc.c  */
+#line 149 "y.tab.h"
+} YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

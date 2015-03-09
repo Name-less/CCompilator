@@ -1016,7 +1016,7 @@ return tNEWLINE;
 case 44:
 YY_RULE_SETUP
 #line 72 "analyser_lexical.lex"
-return tNOMBRE;
+yylval.number=atoi(yytext);return tNOMBRE;
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
@@ -1026,7 +1026,7 @@ return tLETTRE;
 case 46:
 YY_RULE_SETUP
 #line 74 "analyser_lexical.lex"
-return tWORD;
+yylval.texte=strdup(yytext);return tWORD;
 	YY_BREAK
 case 47:
 YY_RULE_SETUP

@@ -10,7 +10,7 @@ int yylex();
 
 %}
 
-%token <string> tINTEGER
+%token <texte> tINTEGER
 
 %token tCHAR tVOID tNULL tCONST
 
@@ -29,11 +29,11 @@ int yylex();
 %token tSPACE tLETTRE
 
 %token <number> tNOMBRE
-%token <string> tWORD
+%token <texte> tWORD
 
 %union{
 int number;
-char * string;
+char * texte;
 }
 
 
@@ -55,12 +55,12 @@ char * string;
 Input: 
 |Input tNEWLINE|
 Input Egalite tPOINTVIRG {printf("egalite ok \n");} |
-Input Declaration {printf("declaration ok \n");} |
+Input Declaration |
 Input If {printf("condition ok \n");}|
 Input Main;
 
 Main :
-tINTEGER tMAIN tPO Arg tPF tAO Input tAF;
+tINTEGER tMAIN tPO Arg tPF tAO Input tAF {printf("mon main\n");} ;
 
 Arg :
 tINTEGER tWORD |

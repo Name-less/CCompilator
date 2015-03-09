@@ -69,8 +69,8 @@ LETTRE [a-zA-Z]
 "return" return tRETURN;
 
 {NEWLINE} return tNEWLINE;
-{NOMBRE} return tNOMBRE;
+{NOMBRE} yylval.number=atoi(yytext);return tNOMBRE;
 {LETTRE} return tLETTRE;
-{WORD}  yylval.string=strdup(yytext);return tWORD;
+{WORD}  yylval.texte=strdup(yytext);return tWORD;
 
 %%
