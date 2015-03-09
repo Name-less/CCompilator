@@ -2,43 +2,25 @@
 #include <stdlib.h>
 #include <string.h>
 
-char * get_assembler_instructions(char * operation, char * op1,char * op2){
+void print_assembler_instructions(char * operation, char * op1,char * op2,char * to_print){
 
-	if(strncmp(operation,"+",sizeof(operation)) == 0){
-		char * to_return = "";
-		strcat(to_return,"ADD ");
-		strcat(to_return,op1);
-		strcat(to_return," ");
-		strcat(to_return,op2);
-		return to_return;
-	}else if(strncmp(operation,"-",sizeof(operation)) == 0){
-                char * to_return = "";
-                strcat(to_return,"ADD ");
-                strcat(to_return,op1);
-                strcat(to_return," ");
-                strcat(to_return,op2);
-                return to_return;
-	}else if(strncmp(operation,"*",sizeof(operation)) == 0){
-                char * to_return = "";
-                strcat(to_return,"ADD ");
-                strcat(to_return,op1);
-                strcat(to_return," ");
-                strcat(to_return,op2);
-                return to_return;
-	}else if(strncmp(operation,"/",sizeof(operation)) == 0){
-                char * to_return = "";
-                strcat(to_return,"ADD ");
-                strcat(to_return,op1);
-                strcat(to_return," ");
-                strcat(to_return,op2);
-                return to_return;
+   FILE * fp;
+
+   fp = fopen (to_print, "a+");
+
+	if(strcmp(operation,"+") == 0){
+		fprintf(fp,"ADD %s %s",op1,op2);
+	}else if(strcmp(operation,"-") == 0){
+                fprintf(fp,"SUB %s %s",op1,op2);
+	}else if(strcmp(operation,"*") == 0){
+                fprintf(fp,"MUL %s %s",op1,op2);
+	}else if(strcmp(operation,"/") == 0){
+                fprintf(fp,"DIV %s %s",op1,op2);
 	}
-	return NULL;
+   
+   	fclose(fp);
 }
 
 int main(){
-	printf("%s \n",get_assembler_instructions((char *)"+",(char *)"a",(char *)"b"));
-	printf("%s \n",get_assembler_instructions((char *)"*",(char *)"a",(char *)"b"));
-	printf("%s \n",get_assembler_instructions((char *)"-",(char *)"a",(char *)"b"));
-	printf("%s \n",get_assembler_instructions((char *)"/",(char *)"a",(char *)"b"));
+	print_assembler_instructions((char *)"+",(char *)"a",(char *)"b",(char*)"toto");
 }

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "tableSymbole.h"
 
 /*
@@ -48,6 +49,7 @@ int ts_add_temp(){
         }
         symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
         newSymbole->adress = get_next_addr();
+	newSymbole->name = (char *)"tmp";
         newSymbole->type_symbole = (char *)"temp";
         newSymbole->before = iterator;
         newSymbole->next = NULL;
@@ -89,7 +91,7 @@ From a given name tel if the name is already on the table or not
 int exist(char * name){
 	symbole * iterator = firstOne;
 	while(iterator != NULL){
-		if(iterator->name == name){
+		if(strcmp(iterator->name,name) == 0){
 			return -1;
 		}else{
 			iterator = iterator->next;
@@ -215,18 +217,19 @@ int main(){
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
 	ts_push((char *)"a",(char *)"const1");
 	ts_push((char *)"a",(char *)"const2");
+	ts_push((char *)"a",(char *)"const2");
+	ts_push((char *)"a",(char *)"const2");
 	ts_push((char *)"b",(char *)"const3");
 	ts_add_temp();
 	ts_push((char *)"i",(char *)"const3");
-	ts_push((char *)"u",(char *)"const3");
-	ts_push((char *)"y",(char *)"const3");
+	ts_push((char *)"u",(char *)"const5");
+	ts_push((char *)"y",(char *)"const1");
 	ts_push((char *)"t",(char *)"const3");
-	ts_push((char *)"r",(char *)"const3");
+	ts_push((char *)"r",(char *)"const2");
 	ts_push((char *)"e",(char *)"const3");
 	ts_push((char *)"c",(char *)"const4");
 	ts_pop((char *)"i");
 	ts_pop_last();
-	ts_pop_addr(0);
 	ts_display();
 }
 */
