@@ -170,8 +170,7 @@ int main(){
 	ts_push((char *)"e",(char *)"const3");
 	ts_push((char *)"c",(char *)"const4");
 	ts_pop((char *)"i");
-	ts_display();
-	ts_flush();
+	ts_pop_addr(12);
 	ts_display();
 }
 
