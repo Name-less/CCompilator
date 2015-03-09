@@ -368,8 +368,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 47
-#define YY_END_OF_BUFFER 48
+#define YY_NUM_RULES 46
+#define YY_END_OF_BUFFER 47
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -379,15 +379,15 @@ struct yy_trans_info
 	};
 static yyconst flex_int16_t yy_accept[90] =
     {   0,
-        0,    0,    3,    3,   48,   47,   43,   47,   40,   27,
+        0,    0,    3,    3,   47,   46,   43,   46,   40,   27,
        38,   41,   20,   21,   39,   25,   32,   26,   24,   31,
        44,   22,   29,   35,   30,   45,   45,   18,   19,   28,
-       45,   45,   45,   45,   45,   45,   45,   45,   16,   47,
-       17,    2,   47,    3,   34,   37,   23,    1,    5,   44,
-       33,   46,   46,   46,   46,   46,   46,   12,   46,   46,
-       46,   46,   46,   36,    4,    3,   46,   46,   46,   46,
-       15,    7,   46,   46,   46,   46,   10,    8,   46,   13,
-       11,   46,    9,   46,    6,   46,   14,   42,    0
+       45,   45,   45,   45,   45,   45,   45,   45,   16,   46,
+       17,    2,   46,    3,   34,   37,   23,    1,    5,   44,
+       33,   45,   45,   45,   45,   45,   45,   12,   45,   45,
+       45,   45,   45,   36,    4,    3,   45,   45,   45,   45,
+       15,    7,   45,   45,   45,   45,   10,    8,   45,   13,
+       11,   45,    9,   45,    6,   45,   14,   42,    0
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -710,7 +710,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 16 "analyser_lexical.lex"
+#line 15 "analyser_lexical.lex"
 
 
 #line 717 "lex.yy.c"
@@ -798,242 +798,237 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 18 "analyser_lexical.lex"
+#line 17 "analyser_lexical.lex"
 {BEGIN COMMENT;}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 19 "analyser_lexical.lex"
+#line 18 "analyser_lexical.lex"
 {line++;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 20 "analyser_lexical.lex"
+#line 19 "analyser_lexical.lex"
 {}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 21 "analyser_lexical.lex"
+#line 20 "analyser_lexical.lex"
 {BEGIN INITIAL;printf("\n");}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 23 "analyser_lexical.lex"
+#line 22 "analyser_lexical.lex"
 return tCOMMENT;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 25 "analyser_lexical.lex"
+#line 24 "analyser_lexical.lex"
 return tCONST;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 26 "analyser_lexical.lex"
-return tINTEGER;
+#line 25 "analyser_lexical.lex"
+yylval.texte=strdup(yytext); return tINTEGER;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 27 "analyser_lexical.lex"
+#line 26 "analyser_lexical.lex"
 return tCHAR;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 28 "analyser_lexical.lex"
+#line 27 "analyser_lexical.lex"
 return tVOID;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 29 "analyser_lexical.lex"
+#line 28 "analyser_lexical.lex"
 return tNULL;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 31 "analyser_lexical.lex"
+#line 30 "analyser_lexical.lex"
 return tMAIN;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 33 "analyser_lexical.lex"
+#line 32 "analyser_lexical.lex"
 return tIF;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 34 "analyser_lexical.lex"
+#line 33 "analyser_lexical.lex"
 return tELSE;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 35 "analyser_lexical.lex"
+#line 34 "analyser_lexical.lex"
 return tWHILE;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 36 "analyser_lexical.lex"
+#line 35 "analyser_lexical.lex"
 return tFOR;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 38 "analyser_lexical.lex"
+#line 37 "analyser_lexical.lex"
 return tAO;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 39 "analyser_lexical.lex"
+#line 38 "analyser_lexical.lex"
 return tAF;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 40 "analyser_lexical.lex"
+#line 39 "analyser_lexical.lex"
 return tCO;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 41 "analyser_lexical.lex"
+#line 40 "analyser_lexical.lex"
 return tCF;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 42 "analyser_lexical.lex"
+#line 41 "analyser_lexical.lex"
 return tPO;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 43 "analyser_lexical.lex"
+#line 42 "analyser_lexical.lex"
 return tPF;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 45 "analyser_lexical.lex"
+#line 44 "analyser_lexical.lex"
 return tPOINTVIRG;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 46 "analyser_lexical.lex"
+#line 45 "analyser_lexical.lex"
 return tARROW;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 47 "analyser_lexical.lex"
+#line 46 "analyser_lexical.lex"
 return tPOINT;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 48 "analyser_lexical.lex"
+#line 47 "analyser_lexical.lex"
 return tPLUS;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 49 "analyser_lexical.lex"
+#line 48 "analyser_lexical.lex"
 return tMINUS;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 50 "analyser_lexical.lex"
+#line 49 "analyser_lexical.lex"
 return tMOD;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 51 "analyser_lexical.lex"
+#line 50 "analyser_lexical.lex"
 return tEXP;
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 52 "analyser_lexical.lex"
+#line 51 "analyser_lexical.lex"
 return tINF;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 53 "analyser_lexical.lex"
+#line 52 "analyser_lexical.lex"
 return tSUP;
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 54 "analyser_lexical.lex"
+#line 53 "analyser_lexical.lex"
 return tDIV;
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 55 "analyser_lexical.lex"
+#line 54 "analyser_lexical.lex"
 return tVIRG;
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 57 "analyser_lexical.lex"
+#line 56 "analyser_lexical.lex"
 return tEGALEGAL;
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 58 "analyser_lexical.lex"
+#line 57 "analyser_lexical.lex"
 return tNOTEGAL;
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 59 "analyser_lexical.lex"
+#line 58 "analyser_lexical.lex"
 return tEGAL;
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 60 "analyser_lexical.lex"
+#line 59 "analyser_lexical.lex"
 return tOR;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 61 "analyser_lexical.lex"
+#line 60 "analyser_lexical.lex"
 return tAND;
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 63 "analyser_lexical.lex"
+#line 62 "analyser_lexical.lex"
 return tADDR;
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 64 "analyser_lexical.lex"
+#line 63 "analyser_lexical.lex"
 return tPOINTER;
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 66 "analyser_lexical.lex"
+#line 65 "analyser_lexical.lex"
 return tDQ;
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 67 "analyser_lexical.lex"
+#line 66 "analyser_lexical.lex"
 return tSQ;
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 69 "analyser_lexical.lex"
+#line 68 "analyser_lexical.lex"
 return tRETURN;
 	YY_BREAK
 case 43:
 /* rule 43 can match eol */
 YY_RULE_SETUP
-#line 71 "analyser_lexical.lex"
+#line 70 "analyser_lexical.lex"
 return tNEWLINE;
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 72 "analyser_lexical.lex"
+#line 71 "analyser_lexical.lex"
 yylval.number=atoi(yytext);return tNOMBRE;
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 73 "analyser_lexical.lex"
-return tLETTRE;
+#line 72 "analyser_lexical.lex"
+yylval.texte=strdup(yytext);return tWORD;
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 74 "analyser_lexical.lex"
-yylval.texte=strdup(yytext);return tWORD;
-	YY_BREAK
-case 47:
-YY_RULE_SETUP
-#line 76 "analyser_lexical.lex"
+#line 73 "analyser_lexical.lex"
 ECHO;
 	YY_BREAK
-#line 1037 "lex.yy.c"
+#line 1032 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(COMMENT):
 	yyterminate();
@@ -2032,7 +2027,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 76 "analyser_lexical.lex"
+#line 73 "analyser_lexical.lex"
 
 
 

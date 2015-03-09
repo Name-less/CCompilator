@@ -60,7 +60,6 @@ add the symbol to the table if he is not already inside
 */
 
 int ts_push(char * name,char * type_symbole){
-	printf("commence le push");
 	if(firstOne == NULL){
 		return ts_init(name,type_symbole);	
 	}
@@ -76,6 +75,7 @@ int ts_push(char * name,char * type_symbole){
 		newSymbole->before = iterator;
 		newSymbole->next = NULL;
 		iterator->next = newSymbole;
+		ts_display();
 		return newSymbole->adress;
 	}else{
 		return -1;
@@ -210,6 +210,7 @@ void ts_flush(){
 	firstOne = NULL;
 }
 
+/*
 int main(){
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
 	ts_push((char *)"a",(char *)"const1");
@@ -228,6 +229,7 @@ int main(){
 	ts_pop_addr(0);
 	ts_display();
 }
+*/
 
 
 

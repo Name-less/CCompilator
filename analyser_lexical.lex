@@ -9,7 +9,6 @@ NOMBRE [0-9]+
 SPACE [ \t]
 NEWLINE [\n]
 WORD [a-zA-Z][a-zA-Z0-9]*
-LETTRE [a-zA-Z]
 
 %x COMMENT
 
@@ -23,7 +22,7 @@ LETTRE [a-zA-Z]
 "//" return tCOMMENT;
 
 "const" return tCONST;
-"int" return tINTEGER;
+"int" yylval.texte=strdup(yytext); return tINTEGER;
 "char" return tCHAR;
 "void" return tVOID;
 "NULL" return tNULL;
@@ -70,7 +69,5 @@ LETTRE [a-zA-Z]
 
 {NEWLINE} return tNEWLINE;
 {NOMBRE} yylval.number=atoi(yytext);return tNOMBRE;
-{LETTRE} return tLETTRE;
 {WORD}  yylval.texte=strdup(yytext);return tWORD;
-
 %%

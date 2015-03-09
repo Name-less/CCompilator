@@ -74,7 +74,7 @@ Grammaire
    35            | tCHAR tPOINTER tWORD tPOINTVIRG
    36            | tCHAR tWORD DeclarationCharMemeLigne tPOINTVIRG
    37            | tCHAR tWORD tEGAL tNOMBRE tPOINTVIRG
-   38            | tCHAR tWORD tEGAL tSQ tLETTRE tSQ tPOINTVIRG
+   38            | tCHAR tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG
    39            | tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG
 
    40 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne
@@ -131,45 +131,44 @@ tNOTEGAL (291) 17
 tADDR (292)
 tPOINTER (293) 10 27 35
 tSPACE (294)
-tLETTRE (295) 38
-tNOMBRE (296) 28 33 34 37 39 44
-tWORD (297) 8 9 10 29 31 32 33 34 35 36 37 38 39 40 42 44 46
-tRETURN (298)
-tNEWLINE (299) 2
-tCOMMENT (300)
-tMOINS (301)
+tNOMBRE (295) 28 33 34 37 39 44
+tWORD (296) 8 9 10 29 31 32 33 34 35 36 37 38 39 40 42 44 46
+tRETURN (297)
+tNEWLINE (298) 2
+tCOMMENT (299)
+tMOINS (300)
 
 
 Non-terminaux, suivis des règles où ils apparaissent
 
-$accept (47)
+$accept (46)
     à gauche: 0
-Input (48)
+Input (47)
     à gauche: 1 2 3 4 5 6, à droite: 0 2 3 4 5 6 7 12 13
-Main (49)
+Main (48)
     à gauche: 7, à droite: 6
-Arg (50)
+Arg (49)
     à gauche: 8 9 10 11, à droite: 7
-If (51)
+If (50)
     à gauche: 12, à droite: 5 14
-Else (52)
+Else (51)
     à gauche: 13 14 15, à droite: 12
-Condition (53)
+Condition (52)
     à gauche: 16 17 18 19 20 21 22 23, à droite: 12 22 23
-Exp (54)
+Exp (53)
     à gauche: 24 25 26 27 28 29, à droite: 16 17 18 19 20 21 24 25
     26 27 30 32 42
-Egalite (55)
+Egalite (54)
     à gauche: 30, à droite: 3
-Declaration (56)
+Declaration (55)
     à gauche: 31 32 33 34 35 36 37 38 39, à droite: 4
-DeclarationIntMemeLigne (57)
+DeclarationIntMemeLigne (56)
     à gauche: 40 41, à droite: 31 40
-DeclarationIntEgalMemeLigne (58)
+DeclarationIntEgalMemeLigne (57)
     à gauche: 42 43, à droite: 32 42
-DeclarationIntTabMemeLigne (59)
+DeclarationIntTabMemeLigne (58)
     à gauche: 44 45, à droite: 33 44
-DeclarationCharMemeLigne (60)
+DeclarationCharMemeLigne (59)
     à gauche: 46 47, à droite: 36 46
 
 
@@ -230,7 +229,7 @@ DeclarationCharMemeLigne (60)
    35            | tCHAR . tPOINTER tWORD tPOINTVIRG
    36            | tCHAR . tWORD DeclarationCharMemeLigne tPOINTVIRG
    37            | tCHAR . tWORD tEGAL tNOMBRE tPOINTVIRG
-   38            | tCHAR . tWORD tEGAL tSQ tLETTRE tSQ tPOINTVIRG
+   38            | tCHAR . tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG
    39            | tCHAR . tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG
 
     tPOINTER  décalage et aller à l'état 16
@@ -342,7 +341,7 @@ DeclarationCharMemeLigne (60)
    34 Declaration: tCHAR tWORD . tCO tNOMBRE tCF tPOINTVIRG
    36            | tCHAR tWORD . DeclarationCharMemeLigne tPOINTVIRG
    37            | tCHAR tWORD . tEGAL tNOMBRE tPOINTVIRG
-   38            | tCHAR tWORD . tEGAL tSQ tLETTRE tSQ tPOINTVIRG
+   38            | tCHAR tWORD . tEGAL tSQ tWORD tSQ tPOINTVIRG
    39            | tCHAR tWORD . tEGAL tCO tNOMBRE tCF tPOINTVIRG
 
     tCO    décalage et aller à l'état 31
@@ -488,7 +487,7 @@ DeclarationCharMemeLigne (60)
 état 33
 
    37 Declaration: tCHAR tWORD tEGAL . tNOMBRE tPOINTVIRG
-   38            | tCHAR tWORD tEGAL . tSQ tLETTRE tSQ tPOINTVIRG
+   38            | tCHAR tWORD tEGAL . tSQ tWORD tSQ tPOINTVIRG
    39            | tCHAR tWORD tEGAL . tCO tNOMBRE tCF tPOINTVIRG
 
     tCO      décalage et aller à l'état 51
@@ -713,9 +712,9 @@ DeclarationCharMemeLigne (60)
 
 état 52
 
-   38 Declaration: tCHAR tWORD tEGAL tSQ . tLETTRE tSQ tPOINTVIRG
+   38 Declaration: tCHAR tWORD tEGAL tSQ . tWORD tSQ tPOINTVIRG
 
-    tLETTRE  décalage et aller à l'état 73
+    tWORD  décalage et aller à l'état 73
 
 
 état 53
@@ -888,7 +887,7 @@ DeclarationCharMemeLigne (60)
 
 état 73
 
-   38 Declaration: tCHAR tWORD tEGAL tSQ tLETTRE . tSQ tPOINTVIRG
+   38 Declaration: tCHAR tWORD tEGAL tSQ tWORD . tSQ tPOINTVIRG
 
     tSQ  décalage et aller à l'état 93
 
@@ -1088,7 +1087,7 @@ DeclarationCharMemeLigne (60)
 
 état 93
 
-   38 Declaration: tCHAR tWORD tEGAL tSQ tLETTRE tSQ . tPOINTVIRG
+   38 Declaration: tCHAR tWORD tEGAL tSQ tWORD tSQ . tPOINTVIRG
 
     tPOINTVIRG  décalage et aller à l'état 103
 
@@ -1213,7 +1212,7 @@ DeclarationCharMemeLigne (60)
 
 état 103
 
-   38 Declaration: tCHAR tWORD tEGAL tSQ tLETTRE tSQ tPOINTVIRG .
+   38 Declaration: tCHAR tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG .
 
     $défaut  réduction par utilisation de la règle 38 (Declaration)
 

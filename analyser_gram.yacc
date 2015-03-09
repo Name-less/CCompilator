@@ -26,7 +26,7 @@ int yylex();
 
 %token tADDR tPOINTER
 
-%token tSPACE tLETTRE
+%token tSPACE
 
 %token <number> tNOMBRE
 %token <texte> tWORD
@@ -96,7 +96,7 @@ Egalite :
 Exp tEGAL Exp ;
 
 Declaration :
-tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG {if (ts_push($2,$1)==1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); } |
+tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG {printf("le type est %s \n", $1);if (ts_push($2,$1)!=-1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); } |
 tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG |
 tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne 
 tPOINTVIRG |
@@ -104,7 +104,7 @@ tCHAR tWORD tCO tNOMBRE tCF tPOINTVIRG |
 tCHAR tPOINTER tWORD tPOINTVIRG |
 tCHAR tWORD DeclarationCharMemeLigne tPOINTVIRG |
 tCHAR tWORD tEGAL tNOMBRE tPOINTVIRG |
-tCHAR tWORD tEGAL tSQ tLETTRE tSQ tPOINTVIRG |
+tCHAR tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG |
 tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG;
 
 DeclarationIntMemeLigne :

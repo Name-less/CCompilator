@@ -74,13 +74,12 @@
      tADDR = 292,
      tPOINTER = 293,
      tSPACE = 294,
-     tLETTRE = 295,
-     tNOMBRE = 296,
-     tWORD = 297,
-     tRETURN = 298,
-     tNEWLINE = 299,
-     tCOMMENT = 300,
-     tMOINS = 301
+     tNOMBRE = 295,
+     tWORD = 296,
+     tRETURN = 297,
+     tNEWLINE = 298,
+     tCOMMENT = 299,
+     tMOINS = 300
    };
 #endif
 /* Tokens.  */
@@ -121,13 +120,12 @@
 #define tADDR 292
 #define tPOINTER 293
 #define tSPACE 294
-#define tLETTRE 295
-#define tNOMBRE 296
-#define tWORD 297
-#define tRETURN 298
-#define tNEWLINE 299
-#define tCOMMENT 300
-#define tMOINS 301
+#define tNOMBRE 295
+#define tWORD 296
+#define tRETURN 297
+#define tNEWLINE 298
+#define tCOMMENT 299
+#define tMOINS 300
 
 
 
@@ -145,7 +143,7 @@ char * texte;
 
 
 /* Line 2068 of yacc.c  */
-#line 149 "y.tab.h"
+#line 147 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
