@@ -9,7 +9,7 @@ the struct we use to define our symbol table
 typedef struct Symbole {
 	char * type_symbole;
 	char * name;
-	int * adress;
+	int adress;
 	struct Symbole * next;
 	struct Symbole * before;
 }symbole;
@@ -18,12 +18,18 @@ typedef struct Symbole {
 initialize the table by creating the first reference symbol
 */
 
+int addr = 0;
+int get_next_addr(){
+	addr = addr+2;
+	return addr;
+}
+
 symbole * firstOne;
 int ts_init(){
 	firstOne = (symbole *)malloc(sizeof(struct Symbole));
 	if(firstOne != NULL){
 		firstOne->name = (char *)"base";
-		firstOne->adress = (int *)9;
+		firstOne->adress = addr;
 		firstOne->type_symbole = (char *)"no_type";
 		return 1;
 	}else{
@@ -39,6 +45,7 @@ int ts_push(char * name,char * type_symbole){
 	if(exist(name) == 1){
 		symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
 		newSymbole->name = name;
+		newSymbole->adress = get_next_addr();
 		newSymbole->type_symbole = type_symbole;
 		newSymbole->before = firstOne;
 		newSymbole->next = firstOne->next;
@@ -98,7 +105,7 @@ void ts_display(){
 	printf("################################### \n"); 
 	while(iterator != NULL){
 		printf("----------------------------------- \n");
-		printf("#      %s      |   %s    |   %d   # \n",iterator->name,iterator->type_symbole,&(iterator->adress));
+		printf("#      %s      |   %s    |   %d   # \n",iterator->name,iterator->type_symbole,(iterator->adress));
 		printf("----------------------------------- \n");		 
 	iterator = iterator->next;
 	}
