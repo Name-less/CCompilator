@@ -49,7 +49,7 @@ int ts_add_temp(){
         }
         symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
         newSymbole->adress = get_next_addr();
-	newSymbole->name = (char *)"tmp";
+	newSymbole->name = (char *)"null";
         newSymbole->type_symbole = (char *)"temp";
         newSymbole->before = iterator;
         newSymbole->next = NULL;
