@@ -148,6 +148,17 @@ char * get_symbol_at(int addr){
 	return NULL;
 }
 
+int get_addr_from(char * name){
+	symbole * iterator = firstOne;
+	while(iterator != NULL){
+		if(iterator->name == name){
+			return iterator->adress;
+		}
+		iterator = iterator->next;
+	}
+	return NULL;
+}
+
 /*
 Display the symbol table
 */
