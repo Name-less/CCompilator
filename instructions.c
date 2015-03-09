@@ -6,7 +6,7 @@ void print_assembler_instructions(char * operation, char * op1,char * op2,char *
 
    FILE * fp;
 
-   fp = fopen (to_print, "w+");
+   fp = fopen (to_print, "a+");
 
 	if(strcmp(operation,"+") == 0){
 		fprintf(fp,"ADD %s %s",op1,op2);
