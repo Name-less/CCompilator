@@ -57,10 +57,6 @@ int ts_push(char * name,char * type_symbole){
 		newSymbole->before = iterator;
 		newSymbole->next = NULL;
 		iterator->next = newSymbole;
-		//if(firstOne->next != NULL){
-		//(firstOne->next)->before = newSymbole;
-		//}
-		//firstOne->next = newSymbole;
 		return 1;
 	}else{
 		return -1;
