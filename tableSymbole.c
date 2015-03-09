@@ -25,12 +25,12 @@ int get_next_addr(){
 }
 
 symbole * firstOne;
-int ts_init(){
+int ts_init(char * name, char * type_symbole){
 	firstOne = (symbole *)malloc(sizeof(struct Symbole));
 	if(firstOne != NULL){
-		firstOne->name = (char *)"base";
+		firstOne->name = name;
 		firstOne->adress = addr;
-		firstOne->type_symbole = (char *)"no_type";
+		firstOne->type_symbole = type_symbole;
 		return 1;
 	}else{
 		return -1;
@@ -42,6 +42,9 @@ add the symbol to the table if he is not already inside
 */
 
 int ts_push(char * name,char * type_symbole){
+	if(firstOne == NULL){
+		return ts_init(name,type_symbole);	
+	}
 	if(exist(name) == 1){
 		symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
 		newSymbole->name = name;
@@ -117,6 +120,7 @@ delete every symbol of the table but not the firstOne
 
 void ts_flush(){
 	symbole * iterator = firstOne;
+	addr = 0;
 	if(firstOne->next != NULL){
 		iterator = iterator->next;	
 	}else{
@@ -127,10 +131,12 @@ void ts_flush(){
 		iterator = iterator->next;
 		free(aux);
 	}
+	if(firstOne != NULL){
+		//free(firstOne);
+	}
 }
 
-/*int main(){
-	ts_init();
+int main(){
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
 	ts_push((char *)"a",(char *)"const1");
 	ts_push((char *)"a",(char *)"const2");
@@ -146,7 +152,7 @@ void ts_flush(){
 	ts_display();
 	ts_flush();
 	ts_display();
-}*/
+}
 
 
 
