@@ -136,6 +136,18 @@ int ts_pop_last(){
 	return -1;
 }
 
+
+char * get_symbol_at(int addr){
+	symbole * iterator = firstOne;
+	while(iterator != NULL){
+		if(iterator->adress == addr){
+			return iterator->name;
+		}
+		iterator = iterator->next;
+	}
+	return NULL;
+}
+
 /*
 Display the symbol table
 */
