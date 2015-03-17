@@ -65,7 +65,7 @@ int ts_push(char * name,char * type_symbole){
 	if(firstOne == NULL){
 		return ts_init(name,type_symbole);	
 	}
-	if(exist(name) == 1){
+	if(exist(name) == 1 || strcmp(name,(char *)"*") == 0){
 		symbole * iterator = firstOne;
 		while(iterator->next != NULL){
 			iterator = iterator->next;
@@ -212,9 +212,39 @@ void ts_flush(){
 	firstOne = NULL;
 }
 
-/*
+
+//this function is necessary to be able to pop every variable declared on a
+//if for exemple when we go out of the if
+void push_symb_zone(){
+	ts_push((char *)"*",(char *)"zone");
+}
+
+
+//function to pop every symbole until the symbole zone
+void pop_symb_zone(){
+        symbole * iterator = firstOne;
+        symbole * lastIterator;
+	while(iterator != NULL){
+		lastIterator = iterator;
+        	iterator = iterator->next;
+	}
+	while(strcmp(lastIterator->name,(char *)"*") != 0){
+		symbole * aux = lastIterator;
+		lastIterator = lastIterator->before;
+		printf("\n last %s \n",lastIterator->name);
+		ts_pop(aux->name);
+	}
+	if(lastIterator->before != NULL){
+		(lastIterator->before)->next = NULL;
+		free(lastIterator);
+	}
+}
+
+
+
 int main(){
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
+	push_symb_zone();
 	ts_push((char *)"a",(char *)"const1");
 	ts_push((char *)"a",(char *)"const2");
 	ts_push((char *)"a",(char *)"const2");
@@ -225,14 +255,14 @@ int main(){
 	ts_push((char *)"u",(char *)"const5");
 	ts_push((char *)"y",(char *)"const1");
 	ts_push((char *)"t",(char *)"const3");
+	push_symb_zone();
 	ts_push((char *)"r",(char *)"const2");
 	ts_push((char *)"e",(char *)"const3");
 	ts_push((char *)"c",(char *)"const4");
-	ts_pop((char *)"i");
-	ts_pop_last();
+	pop_symb_zone();
+	pop_symb_zone();
 	ts_display();
 }
-*/
 
 
 
