@@ -85,12 +85,12 @@ Condition tOR Condition |
 Condition tAND Condition;
 
 Exp :
-Exp tPLUS Exp|
+Exp tPLUS Exp { stack_push_add(get_addr_from($1); stack_push_add(get_addr_from($2);|
 Exp tDIV Exp |
 Exp tMINUS Exp |
 Exp tPOINTER Exp |
 tNOMBRE |
-tWORD;
+tWORD {if (exist($1) == -1 ) printf("exp not declared");} ;
 
 Egalite :
 Exp tEGAL Exp ;
