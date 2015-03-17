@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "tableSymbole.c"
+#include "tableSymbole.h"
+#include "instructions.h"
 /*
 
 Ce fichier ne manipule que des adresses qui sont envoyées
@@ -10,19 +11,13 @@ On ne différencie pas les variables temporaires des variables de la table des s
 
 */
 
-struct Stack_Instruction{
-	int [3] instruct_params;
-	stack_inst * next_instruct;
-	stack_inst * before_instruct;
-}stack_inst;
-
 stack_inst * first_stack;
 void stack_init(stack_inst * inst){
 	first_stack = malloc(sizeof(stack_inst));
 	if(first_stack != NULL){
-		first_stack->instruct_params[0] = cop;
-		first_stack->instruct_params[1] = arg1;
-		first_stack->instruct_params[2] = arg2;
+		first_stack->instruct_params[0] = inst->instruct_params[0];
+		first_stack->instruct_params[1] = inst->instruct_params[1];
+		first_stack->instruct_params[2] = inst->instruct_params[2];
 		first_stack->next_instruct = NULL;
 		first_stack->before_instruct = first_stack;
 	}else{
@@ -70,17 +65,17 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
    fp = fopen (to_print, "a+");
 
 	if(INST_ADD == inst->instruct_params[0]){
-		fprintf(fp,"ADD %s %s",inst->instruct_params[1],inst->instruct_params[2]);
-	else if(INST_MUL == inst->instruct_params[0]){
-		fprintf(fp,MUL %s %s",inst->instruct_params[1],inst->instruct_params[2]);
-	else if(INST_DIV == inst->instruct_params[0]){
-		fprintf(fp,"DIV %s %s",inst->instruct_params[1],inst->instruct_params[2]);
+		fprintf(fp,"ADD %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+	}else if(INST_MUL == inst->instruct_params[0]){
+		fprintf(fp,"MUL %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+	}else if(INST_DIV == inst->instruct_params[0]){
+		fprintf(fp,"DIV %d %d",inst->instruct_params[1],inst->instruct_params[2]);
 	}else if(INST_SUB == inst->instruct_params[0]){
-                fprintf(fp,"SUB %s %s",inst->instruct_params[1],inst->instruct_params[2]);
-        }else if(INST_JUMP =        else if(INST_DIV == inst->instruct_params[0]){
-                fprintf(fp,"DIV %s %s",inst->instruct_params[1],inst->instruct_params[2]);
+                fprintf(fp,"SUB %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+        }else if(INST_JUMP == inst->instruct_params[0]){
+                fprintf(fp,"DIV %d %d",inst->instruct_params[1],inst->instruct_params[2]);
         }else if(INST_MOV == inst->instruct_params[0]){
-                fprintf(fp,"MOV %s %s",inst->instruct_params[1],inst->instruct_params[2]);
+                fprintf(fp,"MOV %d %d",inst->instruct_params[1],inst->instruct_params[2]);
         }
    
    	fclose(fp);
@@ -100,7 +95,7 @@ void stack_push_add(int arg1, int arg2){
 
 void stack_push_mov(int arg1, int arg2){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
-        new_inst->instruct_params[0]=INST_MOVE;
+        new_inst->instruct_params[0]=INST_MOV;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
         stack_push(new_inst);
@@ -143,5 +138,5 @@ End of our functions to add instructions to the stack
 */
 
 int main(){
-	print_assembler_instructions((char *)"+",(char *)"a",(char *)"b",(char*)"toto");
+	//print_assembler_instructions((char *)"+",(char *)"a",(char *)"b",(char*)"toto");
 }

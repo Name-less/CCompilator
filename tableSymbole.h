@@ -4,6 +4,11 @@ int ts_pop(char * name);
 int ts_pop_last();
 int ts_pop_addr(int addr);
 
+void push_symb_zone();
+void pop_symb_zone();
+
+int ts_add_temp();
+
 int get_addr_from(char * name);
 char * get_symbol_at(int addr);
 
