@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "tableSymbole.h"
+#include "instructions.h"
 
 int yyerror(char *s);
 int yylex();
@@ -85,19 +86,19 @@ Condition tOR Condition |
 Condition tAND Condition;
 
 Exp :
-Exp tPLUS Exp { stack_push_add($1,$3); ts_pop_addr($3);}|
-Exp tDIV Exp {stack_push_div($1,$3);ts_pop_addr($3);}|
-Exp tMINUS Exp {stack_push_sub($1,$3);ts_pop_addr($3);} |
-Exp tPOINTER Exp {stack_push_mul($1,$3);ts_pop_addr($3);} |
-tNOMBRE { int tmp = ts_add_temp();$$ = tmp;stack_push_afc(tmp);}|
-tWORD {if (exist($1) == -1 ) printf("exp not declared") else { $$ = get_addr_from($1) };} ;
+Exp tPLUS Exp|
+Exp tDIV Exp |
+Exp tMINUS Exp |
+Exp tPOINTER Exp |
+tNOMBRE |
+tWORD;
 
 Egalite :
 Exp tEGAL Exp ;
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { if (ts_push($2,$1)!=-1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); } |
-tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG |
+tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG {if (ts_push($2,$1) != -1) printf("add to table"); else printf("variable still existing");}|
 tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne 
 tPOINTVIRG |
 tCHAR tWORD tCO tNOMBRE tCF tPOINTVIRG |
@@ -111,7 +112,7 @@ DeclarationIntMemeLigne :
 tVIRG tWORD DeclarationIntMemeLigne {if (ts_push($2,"int")!=-1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); }| ;
 
 DeclarationIntEgalMemeLigne :
-tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne |;
+tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne {if (ts_push($2,"int") != -1) printf("add to table"); else printf("variable still existing");}|;
 
 DeclarationIntTabMemeLigne :
 tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne | ;

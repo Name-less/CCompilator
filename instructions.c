@@ -3,6 +3,7 @@
 #include <string.h>
 #include "tableSymbole.h"
 #include "instructions.h"
+
 /*
 
 Ce fichier ne manipule que des adresses qui sont envoyées
@@ -41,6 +42,7 @@ void stack_push(stack_inst * inst_to_add){
 	inst_to_add->before_instruct = iterator;
 	iterator->next_instruct = inst_to_add;
 }
+
 
 /*
 pop the first instruction on the stack (lifo)
@@ -84,6 +86,15 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
 /*
 Our function to store instructions in the stack
 */
+
+void_stack_push_afc(int arg1){
+	stack_inst * new_inst = malloc(sizeof(stack_inst));
+	new_inst->instruct_params[0]=INST_AFC;
+        new_inst->instruct_params[1]=arg1;
+        new_inst->instruct_params[2]=NULL;
+        stack_push(new_inst);
+
+}
 
 void stack_push_add(int arg1, int arg2){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
