@@ -1554,56 +1554,56 @@ yyreduce:
 
 /* Line 1806 of yacc.c  */
 #line 59 "analyser_gram.yacc"
-    {printf("egalite ok \n");}
+    {printf("YACC:egalite ok \n");}
     break;
 
   case 6:
 
 /* Line 1806 of yacc.c  */
 #line 61 "analyser_gram.yacc"
-    {printf("condition ok \n");}
+    {printf("YACC:condition ok \n");}
     break;
 
   case 8:
 
 /* Line 1806 of yacc.c  */
 #line 65 "analyser_gram.yacc"
-    {printf("mon main\n");}
+    {printf("YACC:mon main\n");}
     break;
 
   case 25:
 
 /* Line 1806 of yacc.c  */
 #line 90 "analyser_gram.yacc"
-    { stack_push_add((yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number)); ts_pop_addr((yyvsp[(3) - (3)].number));}
+    { stack_push_add((yyvsp[(1) - (3)].number),(yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number)); ts_pop_addr((yyvsp[(3) - (3)].number));}
     break;
 
   case 26:
 
 /* Line 1806 of yacc.c  */
 #line 91 "analyser_gram.yacc"
-    {stack_push_div((yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));ts_pop_addr((yyvsp[(3) - (3)].number));}
+    {stack_push_div((yyvsp[(1) - (3)].number),(yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));ts_pop_addr((yyvsp[(3) - (3)].number));}
     break;
 
   case 27:
 
 /* Line 1806 of yacc.c  */
 #line 92 "analyser_gram.yacc"
-    {stack_push_sub((yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));ts_pop_addr((yyvsp[(3) - (3)].number));}
+    {stack_push_sub((yyvsp[(1) - (3)].number),(yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));ts_pop_addr((yyvsp[(3) - (3)].number));}
     break;
 
   case 28:
 
 /* Line 1806 of yacc.c  */
 #line 93 "analyser_gram.yacc"
-    {stack_push_mul((yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));ts_pop_addr((yyvsp[(3) - (3)].number));}
+    {stack_push_mul((yyvsp[(1) - (3)].number),(yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));ts_pop_addr((yyvsp[(3) - (3)].number));}
     break;
 
   case 29:
 
 /* Line 1806 of yacc.c  */
 #line 94 "analyser_gram.yacc"
-    { int tmp = ts_add_temp();(yyval.number) = tmp;stack_push_afc(tmp);}
+    { int tmp = ts_add_temp();(yyval.number) = tmp;stack_push_afc(tmp,(yyvsp[(1) - (1)].number));}
     break;
 
   case 30:
@@ -1617,7 +1617,7 @@ yyreduce:
 
 /* Line 1806 of yacc.c  */
 #line 101 "analyser_gram.yacc"
-    { if (ts_push((yyvsp[(2) - (4)].texte),(yyvsp[(1) - (4)].texte))!=-1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); }
+    { if (ts_push((yyvsp[(2) - (4)].texte),(yyvsp[(1) - (4)].texte))!=-1) printf("YACC:Declaration correcte\n"); else printf("La variable existe déjà\n"); }
     break;
 
   case 41:

@@ -56,13 +56,13 @@ char * texte;
 
 Input: 
 |Input tNEWLINE|
-Input Egalite tPOINTVIRG {printf("egalite ok \n");} |
+Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
 Input Declaration |
-Input If {printf("condition ok \n");}|
+Input If {printf("YACC:condition ok \n");}|
 Input Main;
 
 Main :
-tINTEGER tMAIN tPO Arg tPF tAO Input tAF {printf("mon main\n");} ;
+tINTEGER tMAIN tPO Arg tPF tAO Input tAF {printf("YACC:mon main\n");} ;
 
 Arg :
 tINTEGER tWORD |
@@ -87,18 +87,18 @@ Condition tOR Condition |
 Condition tAND Condition;
 
 Exp :
-Exp tPLUS Exp { stack_push_add($1,$3); ts_pop_addr($3);}|
-Exp tDIV Exp {stack_push_div($1,$3);ts_pop_addr($3);}|
-Exp tMINUS Exp {stack_push_sub($1,$3);ts_pop_addr($3);} |
-Exp tPOINTER Exp {stack_push_mul($1,$3);ts_pop_addr($3);} |
-tNOMBRE { int tmp = ts_add_temp();$$ = tmp;stack_push_afc(tmp);}|
+Exp tPLUS Exp { stack_push_add($1,$1,$3); ts_pop_addr($3);}|
+Exp tDIV Exp {stack_push_div($1,$1,$3);ts_pop_addr($3);}|
+Exp tMINUS Exp {stack_push_sub($1,$1,$3);ts_pop_addr($3);} |
+Exp tPOINTER Exp {stack_push_mul($1,$1,$3);ts_pop_addr($3);} |
+tNOMBRE { int tmp = ts_add_temp();$$ = tmp;stack_push_afc(tmp,$1);}|
 tWORD {if (exist($1) == -1 ) printf("exp not declared"); else { $$ = get_addr_from($1); };};
 
 Egalite :
 Exp tEGAL Exp ;
 
 Declaration :
-tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { if (ts_push($2,$1)!=-1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); } |
+tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { if (ts_push($2,$1)!=-1) printf("YACC:Declaration correcte\n"); else printf("La variable existe déjà\n"); } |
 tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG |
 tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne 
 tPOINTVIRG |
