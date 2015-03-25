@@ -19,6 +19,7 @@ void stack_init(stack_inst * inst){
 		first_stack->instruct_params[0] = inst->instruct_params[0];
 		first_stack->instruct_params[1] = inst->instruct_params[1];
 		first_stack->instruct_params[2] = inst->instruct_params[2];
+		first_stack->instruct_params[2] = inst->instruct_params[3];
 		first_stack->next_instruct = NULL;
 		first_stack->before_instruct = first_stack;
 	}else{
@@ -67,17 +68,25 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
    fp = fopen (to_print, "a+");
 
 	if(INST_ADD == inst->instruct_params[0]){
-		fprintf(fp,"ADD %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+		fprintf(fp,"ADD %d %d %d",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
 	}else if(INST_MUL == inst->instruct_params[0]){
-		fprintf(fp,"MUL %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+		fprintf(fp,"MUL %d %d %d",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
 	}else if(INST_DIV == inst->instruct_params[0]){
-		fprintf(fp,"DIV %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+		fprintf(fp,"DIV %d %d %d",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
 	}else if(INST_SUB == inst->instruct_params[0]){
-                fprintf(fp,"SUB %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+                fprintf(fp,"SUB %d %d %d",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }else if(INST_JUMP == inst->instruct_params[0]){
                 fprintf(fp,"DIV %d %d",inst->instruct_params[1],inst->instruct_params[2]);
         }else if(INST_MOV == inst->instruct_params[0]){
                 fprintf(fp,"MOV %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+        }else if(INST_AFC == inst->instruct_params[0]){
+                fprintf(fp,"AFC %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+        }else if(INST_COP == inst->instruct_params[0]){
+                fprintf(fp,"COP %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+        }else if(INST_STORE == inst->instruct_params[0]){
+                fprintf(fp,"STORE %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+        }else if(INST_LOAD == inst->instruct_params[0]){
+                fprintf(fp,"LOAD %d %d",inst->instruct_params[1],inst->instruct_params[2]);
         }
    
    	fclose(fp);
@@ -87,20 +96,52 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
 Our function to store instructions in the stack
 */
 
-void_stack_push_afc(int arg1){
+void stack_push_afc(int arg1,int arg2){
 	stack_inst * new_inst = malloc(sizeof(stack_inst));
 	new_inst->instruct_params[0]=INST_AFC;
         new_inst->instruct_params[1]=arg1;
-        new_inst->instruct_params[2]=NULL;
+        new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=-1;
         stack_push(new_inst);
 
 }
 
-void stack_push_add(int arg1, int arg2){
+void stack_push_cop(int arg1,int arg2){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_AFC;
+        new_inst->instruct_params[1]=arg1;
+        new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=-1;
+        stack_push(new_inst);
+
+}
+
+void stack_push_load(int arg1,int arg2){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_AFC;
+        new_inst->instruct_params[1]=arg1;
+        new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=-1;
+        stack_push(new_inst);
+
+}
+
+void stack_push_store(int arg1,int arg2){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_AFC;
+        new_inst->instruct_params[1]=arg1;
+        new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=-1;
+        stack_push(new_inst);
+
+}
+
+void stack_push_add(int arg1, int arg2,int arg3){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
         new_inst->instruct_params[0]=INST_ADD;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=arg3;
         stack_push(new_inst);
 }
 
@@ -109,30 +150,34 @@ void stack_push_mov(int arg1, int arg2){
         new_inst->instruct_params[0]=INST_MOV;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=-1;
         stack_push(new_inst);
 }
 
-void stack_push_sub(int arg1, int arg2){
+void stack_push_sub(int arg1, int arg2,int arg3){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
         new_inst->instruct_params[0]=INST_SUB;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=arg3;
         stack_push(new_inst);
 }
 
-void stack_push_mul(int arg1, int arg2){
+void stack_push_mul(int arg1, int arg2,int arg3){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
         new_inst->instruct_params[0]=INST_MUL;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=arg3;
         stack_push(new_inst);
 }
 
-void stack_push_div(int arg1, int arg2){
+void stack_push_div(int arg1, int arg2,int arg3){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
         new_inst->instruct_params[0]=INST_DIV;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=arg3;
         stack_push(new_inst);
 }
 
@@ -141,6 +186,7 @@ void stack_push_jump(int arg1, int arg2){
         new_inst->instruct_params[0]=INST_JUMP;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=-1;
         stack_push(new_inst);
 }
 
