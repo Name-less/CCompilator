@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "tableSymbole.h"
+#include "instructions.h"
 
 int yyerror(char *s);
 int yylex();
@@ -30,6 +31,7 @@ int yylex();
 
 %token <number> tNOMBRE
 %token <texte> tWORD
+%type <number> Exp
 
 %union{
 int number;
@@ -90,7 +92,7 @@ Exp tDIV Exp {stack_push_div($1,$3);ts_pop_addr($3);}|
 Exp tMINUS Exp {stack_push_sub($1,$3);ts_pop_addr($3);} |
 Exp tPOINTER Exp {stack_push_mul($1,$3);ts_pop_addr($3);} |
 tNOMBRE { int tmp = ts_add_temp();$$ = tmp;stack_push_afc(tmp);}|
-tWORD {if (exist($1) == -1 ) printf("exp not declared") else { $$ = get_addr_from($1) };} ;
+tWORD {if (exist($1) == -1 ) printf("exp not declared"); else { $$ = get_addr_from($1); };};
 
 Egalite :
 Exp tEGAL Exp ;
@@ -105,7 +107,8 @@ tCHAR tPOINTER tWORD tPOINTVIRG |
 tCHAR tWORD DeclarationCharMemeLigne tPOINTVIRG |
 tCHAR tWORD tEGAL tNOMBRE tPOINTVIRG |
 tCHAR tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG |
-tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG;
+tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG|
+error tPOINTVIRG {yyerror;};
 
 DeclarationIntMemeLigne :
 tVIRG tWORD DeclarationIntMemeLigne {if (ts_push($2,"int")!=-1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); }| ;

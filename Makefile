@@ -1,5 +1,5 @@
 TARGETS=analyser
-OBJECTS=tableSymbole.o analyser_gram.o analyser_lexical.o
+OBJECTS=tableSymbole.o instructions.o analyser_gram.o analyser_lexical.o
 LDFLAGS=
 CFLAGS=-Wall
 
@@ -9,6 +9,9 @@ analyser: $(OBJECTS)
 	gcc $(LDFLAGS) -o $@ $^ -ll
 
 tableSymbole.o: tableSymbole.c
+	gcc $(CFLAGS) -Werror -c $^
+
+intructions.o: instructions.c
 	gcc $(CFLAGS) -Werror -c $^
 
 analyser_gram.o: y.tab.c

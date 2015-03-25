@@ -148,6 +148,6 @@ void stack_push_jump(int arg1, int arg2){
 End of our functions to add instructions to the stack
 */
 
-int main(){
+/*int main(){
 	//print_assembler_instructions((char *)"+",(char *)"a",(char *)"b",(char*)"toto");
-}
+}*/
