@@ -79,7 +79,8 @@
      tRETURN = 297,
      tNEWLINE = 298,
      tCOMMENT = 299,
-     tMOINS = 300
+     tMOINS = 300,
+     NEG = 301
    };
 #endif
 /* Tokens.  */
@@ -126,6 +127,7 @@
 #define tNEWLINE 298
 #define tCOMMENT 299
 #define tMOINS 300
+#define NEG 301
 
 
 
@@ -143,7 +145,7 @@ char * texte;
 
 
 /* Line 2068 of yacc.c  */
-#line 147 "y.tab.h"
+#line 149 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

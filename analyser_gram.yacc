@@ -50,6 +50,7 @@ char * texte;
 %right tEGAL
 %left tPLUS tMOINS
 %left tPOINTER tDIV
+%left NEG
 
 
 %%
@@ -91,20 +92,28 @@ Exp tPLUS Exp { stack_push_add($1,$1,$3); ts_pop_addr($3);}|
 Exp tDIV Exp {stack_push_div($1,$1,$3);ts_pop_addr($3);}|
 Exp tMINUS Exp {stack_push_sub($1,$1,$3);ts_pop_addr($3);} |
 Exp tPOINTER Exp {stack_push_mul($1,$1,$3);ts_pop_addr($3);} |
-tNOMBRE {	int tmp = ts_add_temp();
+tMINUS Exp %prec NEG {stack_push_mul($2,$2,-1);} |
+tNOMBRE {	printf("YACC: tNOMBRE reconnu dans Exp\n");
+		int tmp = ts_add_temp();
+		printf("YACC: apres add_temp\n");
 		$$ = tmp;
+		printf("YACC: avant afc\n");
 		stack_push_afc(tmp,$1);
+		printf("YACC: tNOMBRE saved\n");
 	}|
-tWORD {	if (exist($1) == -1 )
+tWORD {	printf("YACC: tWORD reconnu dans exp\n");
+	if (exist($1) == -1 )
 	printf("YACC: exp not declared");
 	else { 
+	printf("YACC: erreur debut else tWORD\n");
 	int tmp = ts_add_temp();
 	$$ = tmp;
-	stack_push_cop(tmp,get_addr_from($1) ); };
+	printf("YACC: avant push_cop\n");
+	stack_push_cop(tmp,get_addr_from($1) ); }
 };
 
 Egalite :
-Exp tEGAL Exp {stack_push_cop($1,$3);};
+Exp tEGAL Exp {printf("YACC: erreur sur Egalite\n"); stack_push_cop($1,$3);};
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { if (ts_push($2,$1)!=-1) printf("YACC:Declaration correcte\n"); else printf("YACC: La variable existe déjà\n"); } |

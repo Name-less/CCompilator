@@ -118,12 +118,14 @@ void stack_push_afc(int arg1,int arg2){
 }
 
 void stack_push_cop(int arg1,int arg2){
+	printf("erreur dans cop debut\n");
         stack_inst * new_inst = malloc(sizeof(stack_inst));
         new_inst->instruct_params[0]=INST_AFC;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
         new_inst->instruct_params[3]=-1;
         stack_push(new_inst);
+	printf("erreur dans cop fin\n");
 
 }
 

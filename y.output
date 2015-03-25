@@ -17,12 +17,13 @@ Terminaux inutilisés dans la grammaire
    tMOINS
 
 
-État 39 conflits: 1 décalage/réduction
-État 40 conflits: 1 décalage/réduction
-État 41 conflits: 4 décalage/réduction
-État 43 conflits: 1 décalage/réduction
-État 78 conflits: 2 décalage/réduction
-État 79 conflits: 2 décalage/réduction
+État 22 conflits: 1 décalage/réduction
+État 41 conflits: 1 décalage/réduction
+État 42 conflits: 1 décalage/réduction
+État 43 conflits: 4 décalage/réduction
+État 45 conflits: 1 décalage/réduction
+État 80 conflits: 2 décalage/réduction
+État 81 conflits: 2 décalage/réduction
 
 
 Grammaire
@@ -62,41 +63,42 @@ Grammaire
    25    | Exp tDIV Exp
    26    | Exp tMINUS Exp
    27    | Exp tPOINTER Exp
-   28    | tNOMBRE
-   29    | tWORD
+   28    | tMINUS Exp
+   29    | tNOMBRE
+   30    | tWORD
 
-   30 Egalite: Exp tEGAL Exp
+   31 Egalite: Exp tEGAL Exp
 
-   31 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG
-   32            | tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
-   33            | tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
-   34            | tCHAR tWORD tCO tNOMBRE tCF tPOINTVIRG
-   35            | tCHAR tPOINTER tWORD tPOINTVIRG
-   36            | tCHAR tWORD DeclarationCharMemeLigne tPOINTVIRG
-   37            | tCHAR tWORD tEGAL tNOMBRE tPOINTVIRG
-   38            | tCHAR tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG
-   39            | tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG
-   40            | error tPOINTVIRG
+   32 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG
+   33            | tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   34            | tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
+   35            | tCHAR tWORD tCO tNOMBRE tCF tPOINTVIRG
+   36            | tCHAR tPOINTER tWORD tPOINTVIRG
+   37            | tCHAR tWORD DeclarationCharMemeLigne tPOINTVIRG
+   38            | tCHAR tWORD tEGAL tNOMBRE tPOINTVIRG
+   39            | tCHAR tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG
+   40            | tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG
+   41            | error tPOINTVIRG
 
-   41 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne
-   42                        | /* vide */
+   42 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne
+   43                        | /* vide */
 
-   43 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne
-   44                            | /* vide */
+   44 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne
+   45                            | /* vide */
 
-   45 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
-   46                           | /* vide */
+   46 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
+   47                           | /* vide */
 
-   47 DeclarationCharMemeLigne: tVIRG tWORD DeclarationCharMemeLigne
-   48                         | /* vide */
+   48 DeclarationCharMemeLigne: tVIRG tWORD DeclarationCharMemeLigne
+   49                         | /* vide */
 
 
 Terminaux, suivis des règles où ils apparaissent
 
 $end (0) 0
-error (256) 40
-tINTEGER (258) 7 8 9 10 31 32 33
-tCHAR (259) 34 35 36 37 38 39
+error (256) 41
+tINTEGER (258) 7 8 9 10 32 33 34
+tCHAR (259) 35 36 37 38 39 40
 tVOID (260)
 tNULL (261)
 tCONST (262)
@@ -107,70 +109,71 @@ tWHILE (266)
 tFOR (267)
 tAO (268) 7 12 13
 tAF (269) 7 12 13
-tCO (270) 9 33 34 39 45
-tCF (271) 9 33 34 39 45
+tCO (270) 9 34 35 40 46
+tCF (271) 9 34 35 40 46
 tPO (272) 7 12
 tPF (273) 7 12
-tSQ (274) 38
+tSQ (274) 39
 tDQ (275)
 tDIV (276) 25
-tPOINTVIRG (277) 3 31 32 33 34 35 36 37 38 39 40
+tPOINTVIRG (277) 3 32 33 34 35 36 37 38 39 40 41
 tARROW (278)
 tPOINT (279)
 tPLUS (280) 24
-tMINUS (281) 26
+tMINUS (281) 26 28
 tMOD (282)
 tEXP (283)
 tSUP (284) 18 20
 tINF (285) 19 21
-tVIRG (286) 41 43 45 47
+tVIRG (286) 42 44 46 48
 tEGALEGAL (287) 16
 tOR (288) 22
 tAND (289) 23
 tNOTEGAL (290) 17
-tEGAL (291) 20 21 30 32 37 38 39 43
+tEGAL (291) 20 21 31 33 38 39 40 44
 tADDR (292)
-tPOINTER (293) 10 27 35
+tPOINTER (293) 10 27 36
 tSPACE (294)
-tNOMBRE (295) 28 33 34 37 39 45
-tWORD (296) 8 9 10 29 31 32 33 34 35 36 37 38 39 41 43 45 47
+tNOMBRE (295) 29 34 35 38 40 46
+tWORD (296) 8 9 10 30 32 33 34 35 36 37 38 39 40 42 44 46 48
 tRETURN (297)
 tNEWLINE (298) 2
 tCOMMENT (299)
 tMOINS (300)
+NEG (301)
 
 
 Non-terminaux, suivis des règles où ils apparaissent
 
-$accept (46)
+$accept (47)
     à gauche: 0
-Input (47)
+Input (48)
     à gauche: 1 2 3 4 5 6, à droite: 0 2 3 4 5 6 7 12 13
-Main (48)
+Main (49)
     à gauche: 7, à droite: 6
-Arg (49)
+Arg (50)
     à gauche: 8 9 10 11, à droite: 7
-If (50)
+If (51)
     à gauche: 12, à droite: 5 14
-Else (51)
+Else (52)
     à gauche: 13 14 15, à droite: 12
-Condition (52)
+Condition (53)
     à gauche: 16 17 18 19 20 21 22 23, à droite: 12 22 23
-Exp (53)
-    à gauche: 24 25 26 27 28 29, à droite: 16 17 18 19 20 21 24 25
-    26 27 30 32 43
-Egalite (54)
-    à gauche: 30, à droite: 3
-Declaration (55)
-    à gauche: 31 32 33 34 35 36 37 38 39 40, à droite: 4
-DeclarationIntMemeLigne (56)
-    à gauche: 41 42, à droite: 31 41
-DeclarationIntEgalMemeLigne (57)
-    à gauche: 43 44, à droite: 32 43
-DeclarationIntTabMemeLigne (58)
-    à gauche: 45 46, à droite: 33 45
-DeclarationCharMemeLigne (59)
-    à gauche: 47 48, à droite: 36 47
+Exp (54)
+    à gauche: 24 25 26 27 28 29 30, à droite: 16 17 18 19 20 21 24
+    25 26 27 28 31 33 44
+Egalite (55)
+    à gauche: 31, à droite: 3
+Declaration (56)
+    à gauche: 32 33 34 35 36 37 38 39 40 41, à droite: 4
+DeclarationIntMemeLigne (57)
+    à gauche: 42 43, à droite: 32 42
+DeclarationIntEgalMemeLigne (58)
+    à gauche: 44 45, à droite: 33 44
+DeclarationIntTabMemeLigne (59)
+    à gauche: 46 47, à droite: 34 46
+DeclarationCharMemeLigne (60)
+    à gauche: 48 49, à droite: 37 48
 
 
 état 0
@@ -196,15 +199,16 @@ DeclarationCharMemeLigne (59)
     tINTEGER  décalage et aller à l'état 4
     tCHAR     décalage et aller à l'état 5
     tIF       décalage et aller à l'état 6
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tMINUS    décalage et aller à l'état 7
+    tNOMBRE   décalage et aller à l'état 8
+    tWORD     décalage et aller à l'état 9
+    tNEWLINE  décalage et aller à l'état 10
 
-    Main         aller à l'état 10
-    If           aller à l'état 11
-    Exp          aller à l'état 12
-    Egalite      aller à l'état 13
-    Declaration  aller à l'état 14
+    Main         aller à l'état 11
+    If           aller à l'état 12
+    Exp          aller à l'état 13
+    Egalite      aller à l'état 14
+    Declaration  aller à l'état 15
 
 
 état 2
@@ -216,320 +220,352 @@ DeclarationCharMemeLigne (59)
 
 état 3
 
-   40 Declaration: error . tPOINTVIRG
+   41 Declaration: error . tPOINTVIRG
 
-    tPOINTVIRG  décalage et aller à l'état 15
+    tPOINTVIRG  décalage et aller à l'état 16
 
 
 état 4
 
     7 Main: tINTEGER . tMAIN tPO Arg tPF tAO Input tAF
-   31 Declaration: tINTEGER . tWORD DeclarationIntMemeLigne tPOINTVIRG
-   32            | tINTEGER . tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
-   33            | tINTEGER . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
+   32 Declaration: tINTEGER . tWORD DeclarationIntMemeLigne tPOINTVIRG
+   33            | tINTEGER . tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   34            | tINTEGER . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
 
-    tMAIN  décalage et aller à l'état 16
-    tWORD  décalage et aller à l'état 17
+    tMAIN  décalage et aller à l'état 17
+    tWORD  décalage et aller à l'état 18
 
 
 état 5
 
-   34 Declaration: tCHAR . tWORD tCO tNOMBRE tCF tPOINTVIRG
-   35            | tCHAR . tPOINTER tWORD tPOINTVIRG
-   36            | tCHAR . tWORD DeclarationCharMemeLigne tPOINTVIRG
-   37            | tCHAR . tWORD tEGAL tNOMBRE tPOINTVIRG
-   38            | tCHAR . tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG
-   39            | tCHAR . tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG
+   35 Declaration: tCHAR . tWORD tCO tNOMBRE tCF tPOINTVIRG
+   36            | tCHAR . tPOINTER tWORD tPOINTVIRG
+   37            | tCHAR . tWORD DeclarationCharMemeLigne tPOINTVIRG
+   38            | tCHAR . tWORD tEGAL tNOMBRE tPOINTVIRG
+   39            | tCHAR . tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG
+   40            | tCHAR . tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG
 
-    tPOINTER  décalage et aller à l'état 18
-    tWORD     décalage et aller à l'état 19
+    tPOINTER  décalage et aller à l'état 19
+    tWORD     décalage et aller à l'état 20
 
 
 état 6
 
    12 If: tIF . tPO Condition tPF tAO Input tAF Else
 
-    tPO  décalage et aller à l'état 20
+    tPO  décalage et aller à l'état 21
 
 
 état 7
 
-   28 Exp: tNOMBRE .
+   28 Exp: tMINUS . Exp
 
-    $défaut  réduction par utilisation de la règle 28 (Exp)
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
+
+    Exp  aller à l'état 22
 
 
 état 8
 
-   29 Exp: tWORD .
+   29 Exp: tNOMBRE .
 
     $défaut  réduction par utilisation de la règle 29 (Exp)
 
 
 état 9
 
+   30 Exp: tWORD .
+
+    $défaut  réduction par utilisation de la règle 30 (Exp)
+
+
+état 10
+
     2 Input: Input tNEWLINE .
 
     $défaut  réduction par utilisation de la règle 2 (Input)
 
 
-état 10
+état 11
 
     6 Input: Input Main .
 
     $défaut  réduction par utilisation de la règle 6 (Input)
 
 
-état 11
+état 12
 
     5 Input: Input If .
 
     $défaut  réduction par utilisation de la règle 5 (Input)
 
 
-état 12
+état 13
 
    24 Exp: Exp . tPLUS Exp
    25    | Exp . tDIV Exp
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
-   30 Egalite: Exp . tEGAL Exp
+   31 Egalite: Exp . tEGAL Exp
 
-    tDIV      décalage et aller à l'état 21
-    tPLUS     décalage et aller à l'état 22
-    tMINUS    décalage et aller à l'état 23
-    tEGAL     décalage et aller à l'état 24
-    tPOINTER  décalage et aller à l'état 25
-
-
-état 13
-
-    3 Input: Input Egalite . tPOINTVIRG
-
-    tPOINTVIRG  décalage et aller à l'état 26
+    tDIV      décalage et aller à l'état 23
+    tPLUS     décalage et aller à l'état 24
+    tMINUS    décalage et aller à l'état 25
+    tEGAL     décalage et aller à l'état 26
+    tPOINTER  décalage et aller à l'état 27
 
 
 état 14
+
+    3 Input: Input Egalite . tPOINTVIRG
+
+    tPOINTVIRG  décalage et aller à l'état 28
+
+
+état 15
 
     4 Input: Input Declaration .
 
     $défaut  réduction par utilisation de la règle 4 (Input)
 
 
-état 15
-
-   40 Declaration: error tPOINTVIRG .
-
-    $défaut  réduction par utilisation de la règle 40 (Declaration)
-
-
 état 16
 
-    7 Main: tINTEGER tMAIN . tPO Arg tPF tAO Input tAF
+   41 Declaration: error tPOINTVIRG .
 
-    tPO  décalage et aller à l'état 27
+    $défaut  réduction par utilisation de la règle 41 (Declaration)
 
 
 état 17
 
-   31 Declaration: tINTEGER tWORD . DeclarationIntMemeLigne tPOINTVIRG
-   32            | tINTEGER tWORD . tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
-   33            | tINTEGER tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
+    7 Main: tINTEGER tMAIN . tPO Arg tPF tAO Input tAF
 
-    tCO    décalage et aller à l'état 28
-    tVIRG  décalage et aller à l'état 29
-    tEGAL  décalage et aller à l'état 30
-
-    $défaut  réduction par utilisation de la règle 42 (DeclarationIntMemeLigne)
-
-    DeclarationIntMemeLigne  aller à l'état 31
+    tPO  décalage et aller à l'état 29
 
 
 état 18
 
-   35 Declaration: tCHAR tPOINTER . tWORD tPOINTVIRG
+   32 Declaration: tINTEGER tWORD . DeclarationIntMemeLigne tPOINTVIRG
+   33            | tINTEGER tWORD . tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   34            | tINTEGER tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
 
-    tWORD  décalage et aller à l'état 32
+    tCO    décalage et aller à l'état 30
+    tVIRG  décalage et aller à l'état 31
+    tEGAL  décalage et aller à l'état 32
+
+    $défaut  réduction par utilisation de la règle 43 (DeclarationIntMemeLigne)
+
+    DeclarationIntMemeLigne  aller à l'état 33
 
 
 état 19
 
-   34 Declaration: tCHAR tWORD . tCO tNOMBRE tCF tPOINTVIRG
-   36            | tCHAR tWORD . DeclarationCharMemeLigne tPOINTVIRG
-   37            | tCHAR tWORD . tEGAL tNOMBRE tPOINTVIRG
-   38            | tCHAR tWORD . tEGAL tSQ tWORD tSQ tPOINTVIRG
-   39            | tCHAR tWORD . tEGAL tCO tNOMBRE tCF tPOINTVIRG
+   36 Declaration: tCHAR tPOINTER . tWORD tPOINTVIRG
 
-    tCO    décalage et aller à l'état 33
-    tVIRG  décalage et aller à l'état 34
-    tEGAL  décalage et aller à l'état 35
-
-    $défaut  réduction par utilisation de la règle 48 (DeclarationCharMemeLigne)
-
-    DeclarationCharMemeLigne  aller à l'état 36
+    tWORD  décalage et aller à l'état 34
 
 
 état 20
 
-   12 If: tIF tPO . Condition tPF tAO Input tAF Else
+   35 Declaration: tCHAR tWORD . tCO tNOMBRE tCF tPOINTVIRG
+   37            | tCHAR tWORD . DeclarationCharMemeLigne tPOINTVIRG
+   38            | tCHAR tWORD . tEGAL tNOMBRE tPOINTVIRG
+   39            | tCHAR tWORD . tEGAL tSQ tWORD tSQ tPOINTVIRG
+   40            | tCHAR tWORD . tEGAL tCO tNOMBRE tCF tPOINTVIRG
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tCO    décalage et aller à l'état 35
+    tVIRG  décalage et aller à l'état 36
+    tEGAL  décalage et aller à l'état 37
 
-    Condition  aller à l'état 37
-    Exp        aller à l'état 38
+    $défaut  réduction par utilisation de la règle 49 (DeclarationCharMemeLigne)
+
+    DeclarationCharMemeLigne  aller à l'état 38
 
 
 état 21
 
-   25 Exp: Exp tDIV . Exp
+   12 If: tIF tPO . Condition tPF tAO Input tAF Else
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
 
-    Exp  aller à l'état 39
+    Condition  aller à l'état 39
+    Exp        aller à l'état 40
 
 
 état 22
 
-   24 Exp: Exp tPLUS . Exp
+   24 Exp: Exp . tPLUS Exp
+   25    | Exp . tDIV Exp
+   26    | Exp . tMINUS Exp
+   27    | Exp . tPOINTER Exp
+   28    | tMINUS Exp .
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tMINUS  décalage et aller à l'état 25
 
-    Exp  aller à l'état 40
+    tMINUS    [réduction par utilisation de la règle 28 (Exp)]
+    $défaut  réduction par utilisation de la règle 28 (Exp)
 
 
 état 23
 
-   26 Exp: Exp tMINUS . Exp
+   25 Exp: Exp tDIV . Exp
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
 
     Exp  aller à l'état 41
 
 
 état 24
 
-   30 Egalite: Exp tEGAL . Exp
+   24 Exp: Exp tPLUS . Exp
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
 
     Exp  aller à l'état 42
 
 
 état 25
 
-   27 Exp: Exp tPOINTER . Exp
+   26 Exp: Exp tMINUS . Exp
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
 
     Exp  aller à l'état 43
 
 
 état 26
 
+   31 Egalite: Exp tEGAL . Exp
+
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
+
+    Exp  aller à l'état 44
+
+
+état 27
+
+   27 Exp: Exp tPOINTER . Exp
+
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
+
+    Exp  aller à l'état 45
+
+
+état 28
+
     3 Input: Input Egalite tPOINTVIRG .
 
     $défaut  réduction par utilisation de la règle 3 (Input)
 
 
-état 27
+état 29
 
     7 Main: tINTEGER tMAIN tPO . Arg tPF tAO Input tAF
 
-    tINTEGER  décalage et aller à l'état 44
+    tINTEGER  décalage et aller à l'état 46
 
     $défaut  réduction par utilisation de la règle 11 (Arg)
 
-    Arg  aller à l'état 45
-
-
-état 28
-
-   33 Declaration: tINTEGER tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
-
-    tNOMBRE  décalage et aller à l'état 46
-
-
-état 29
-
-   41 DeclarationIntMemeLigne: tVIRG . tWORD DeclarationIntMemeLigne
-
-    tWORD  décalage et aller à l'état 47
+    Arg  aller à l'état 47
 
 
 état 30
 
-   32 Declaration: tINTEGER tWORD tEGAL . Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   34 Declaration: tINTEGER tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
-
-    Exp  aller à l'état 48
+    tNOMBRE  décalage et aller à l'état 48
 
 
 état 31
 
-   31 Declaration: tINTEGER tWORD DeclarationIntMemeLigne . tPOINTVIRG
+   42 DeclarationIntMemeLigne: tVIRG . tWORD DeclarationIntMemeLigne
 
-    tPOINTVIRG  décalage et aller à l'état 49
+    tWORD  décalage et aller à l'état 49
 
 
 état 32
 
-   35 Declaration: tCHAR tPOINTER tWORD . tPOINTVIRG
+   33 Declaration: tINTEGER tWORD tEGAL . Exp DeclarationIntEgalMemeLigne tPOINTVIRG
 
-    tPOINTVIRG  décalage et aller à l'état 50
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
+
+    Exp  aller à l'état 50
 
 
 état 33
 
-   34 Declaration: tCHAR tWORD tCO . tNOMBRE tCF tPOINTVIRG
+   32 Declaration: tINTEGER tWORD DeclarationIntMemeLigne . tPOINTVIRG
 
-    tNOMBRE  décalage et aller à l'état 51
+    tPOINTVIRG  décalage et aller à l'état 51
 
 
 état 34
 
-   47 DeclarationCharMemeLigne: tVIRG . tWORD DeclarationCharMemeLigne
+   36 Declaration: tCHAR tPOINTER tWORD . tPOINTVIRG
 
-    tWORD  décalage et aller à l'état 52
+    tPOINTVIRG  décalage et aller à l'état 52
 
 
 état 35
 
-   37 Declaration: tCHAR tWORD tEGAL . tNOMBRE tPOINTVIRG
-   38            | tCHAR tWORD tEGAL . tSQ tWORD tSQ tPOINTVIRG
-   39            | tCHAR tWORD tEGAL . tCO tNOMBRE tCF tPOINTVIRG
+   35 Declaration: tCHAR tWORD tCO . tNOMBRE tCF tPOINTVIRG
 
-    tCO      décalage et aller à l'état 53
-    tSQ      décalage et aller à l'état 54
-    tNOMBRE  décalage et aller à l'état 55
+    tNOMBRE  décalage et aller à l'état 53
 
 
 état 36
 
-   36 Declaration: tCHAR tWORD DeclarationCharMemeLigne . tPOINTVIRG
+   48 DeclarationCharMemeLigne: tVIRG . tWORD DeclarationCharMemeLigne
 
-    tPOINTVIRG  décalage et aller à l'état 56
+    tWORD  décalage et aller à l'état 54
 
 
 état 37
+
+   38 Declaration: tCHAR tWORD tEGAL . tNOMBRE tPOINTVIRG
+   39            | tCHAR tWORD tEGAL . tSQ tWORD tSQ tPOINTVIRG
+   40            | tCHAR tWORD tEGAL . tCO tNOMBRE tCF tPOINTVIRG
+
+    tCO      décalage et aller à l'état 55
+    tSQ      décalage et aller à l'état 56
+    tNOMBRE  décalage et aller à l'état 57
+
+
+état 38
+
+   37 Declaration: tCHAR tWORD DeclarationCharMemeLigne . tPOINTVIRG
+
+    tPOINTVIRG  décalage et aller à l'état 58
+
+
+état 39
 
    12 If: tIF tPO Condition . tPF tAO Input tAF Else
    22 Condition: Condition . tOR Condition
    23          | Condition . tAND Condition
 
-    tPF   décalage et aller à l'état 57
-    tOR   décalage et aller à l'état 58
-    tAND  décalage et aller à l'état 59
+    tPF   décalage et aller à l'état 59
+    tOR   décalage et aller à l'état 60
+    tAND  décalage et aller à l'état 61
 
 
-état 38
+état 40
 
    16 Condition: Exp . tEGALEGAL Exp
    17          | Exp . tNOTEGAL Exp
@@ -542,17 +578,17 @@ DeclarationCharMemeLigne (59)
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
 
-    tDIV       décalage et aller à l'état 21
-    tPLUS      décalage et aller à l'état 22
-    tMINUS     décalage et aller à l'état 23
-    tSUP       décalage et aller à l'état 60
-    tINF       décalage et aller à l'état 61
-    tEGALEGAL  décalage et aller à l'état 62
-    tNOTEGAL   décalage et aller à l'état 63
-    tPOINTER   décalage et aller à l'état 25
+    tDIV       décalage et aller à l'état 23
+    tPLUS      décalage et aller à l'état 24
+    tMINUS     décalage et aller à l'état 25
+    tSUP       décalage et aller à l'état 62
+    tINF       décalage et aller à l'état 63
+    tEGALEGAL  décalage et aller à l'état 64
+    tNOTEGAL   décalage et aller à l'état 65
+    tPOINTER   décalage et aller à l'état 27
 
 
-état 39
+état 41
 
    24 Exp: Exp . tPLUS Exp
    25    | Exp . tDIV Exp
@@ -560,13 +596,13 @@ DeclarationCharMemeLigne (59)
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
 
-    tMINUS  décalage et aller à l'état 23
+    tMINUS  décalage et aller à l'état 25
 
     tMINUS    [réduction par utilisation de la règle 25 (Exp)]
     $défaut  réduction par utilisation de la règle 25 (Exp)
 
 
-état 40
+état 42
 
    24 Exp: Exp . tPLUS Exp
    24    | Exp tPLUS Exp .
@@ -574,15 +610,15 @@ DeclarationCharMemeLigne (59)
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 21
-    tMINUS    décalage et aller à l'état 23
-    tPOINTER  décalage et aller à l'état 25
+    tDIV      décalage et aller à l'état 23
+    tMINUS    décalage et aller à l'état 25
+    tPOINTER  décalage et aller à l'état 27
 
     tMINUS    [réduction par utilisation de la règle 24 (Exp)]
     $défaut  réduction par utilisation de la règle 24 (Exp)
 
 
-état 41
+état 43
 
    24 Exp: Exp . tPLUS Exp
    25    | Exp . tDIV Exp
@@ -590,10 +626,10 @@ DeclarationCharMemeLigne (59)
    26    | Exp tMINUS Exp .
    27    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 21
-    tPLUS     décalage et aller à l'état 22
-    tMINUS    décalage et aller à l'état 23
-    tPOINTER  décalage et aller à l'état 25
+    tDIV      décalage et aller à l'état 23
+    tPLUS     décalage et aller à l'état 24
+    tMINUS    décalage et aller à l'état 25
+    tPOINTER  décalage et aller à l'état 27
 
     tDIV      [réduction par utilisation de la règle 26 (Exp)]
     tPLUS     [réduction par utilisation de la règle 26 (Exp)]
@@ -602,23 +638,23 @@ DeclarationCharMemeLigne (59)
     $défaut  réduction par utilisation de la règle 26 (Exp)
 
 
-état 42
+état 44
 
    24 Exp: Exp . tPLUS Exp
    25    | Exp . tDIV Exp
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
-   30 Egalite: Exp tEGAL Exp .
+   31 Egalite: Exp tEGAL Exp .
 
-    tDIV      décalage et aller à l'état 21
-    tPLUS     décalage et aller à l'état 22
-    tMINUS    décalage et aller à l'état 23
-    tPOINTER  décalage et aller à l'état 25
+    tDIV      décalage et aller à l'état 23
+    tPLUS     décalage et aller à l'état 24
+    tMINUS    décalage et aller à l'état 25
+    tPOINTER  décalage et aller à l'état 27
 
-    $défaut  réduction par utilisation de la règle 30 (Egalite)
+    $défaut  réduction par utilisation de la règle 31 (Egalite)
 
 
-état 43
+état 45
 
    24 Exp: Exp . tPLUS Exp
    25    | Exp . tDIV Exp
@@ -626,343 +662,350 @@ DeclarationCharMemeLigne (59)
    27    | Exp . tPOINTER Exp
    27    | Exp tPOINTER Exp .
 
-    tMINUS  décalage et aller à l'état 23
+    tMINUS  décalage et aller à l'état 25
 
     tMINUS    [réduction par utilisation de la règle 27 (Exp)]
     $défaut  réduction par utilisation de la règle 27 (Exp)
 
 
-état 44
+état 46
 
     8 Arg: tINTEGER . tWORD
     9    | tINTEGER . tCO tCF tWORD
    10    | tINTEGER . tPOINTER tWORD
 
-    tCO       décalage et aller à l'état 64
-    tPOINTER  décalage et aller à l'état 65
-    tWORD     décalage et aller à l'état 66
-
-
-état 45
-
-    7 Main: tINTEGER tMAIN tPO Arg . tPF tAO Input tAF
-
-    tPF  décalage et aller à l'état 67
-
-
-état 46
-
-   33 Declaration: tINTEGER tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne tPOINTVIRG
-
-    tCF  décalage et aller à l'état 68
+    tCO       décalage et aller à l'état 66
+    tPOINTER  décalage et aller à l'état 67
+    tWORD     décalage et aller à l'état 68
 
 
 état 47
 
-   41 DeclarationIntMemeLigne: tVIRG tWORD . DeclarationIntMemeLigne
+    7 Main: tINTEGER tMAIN tPO Arg . tPF tAO Input tAF
 
-    tVIRG  décalage et aller à l'état 29
-
-    $défaut  réduction par utilisation de la règle 42 (DeclarationIntMemeLigne)
-
-    DeclarationIntMemeLigne  aller à l'état 69
+    tPF  décalage et aller à l'état 69
 
 
 état 48
+
+   34 Declaration: tINTEGER tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne tPOINTVIRG
+
+    tCF  décalage et aller à l'état 70
+
+
+état 49
+
+   42 DeclarationIntMemeLigne: tVIRG tWORD . DeclarationIntMemeLigne
+
+    tVIRG  décalage et aller à l'état 31
+
+    $défaut  réduction par utilisation de la règle 43 (DeclarationIntMemeLigne)
+
+    DeclarationIntMemeLigne  aller à l'état 71
+
+
+état 50
 
    24 Exp: Exp . tPLUS Exp
    25    | Exp . tDIV Exp
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
-   32 Declaration: tINTEGER tWORD tEGAL Exp . DeclarationIntEgalMemeLigne tPOINTVIRG
+   33 Declaration: tINTEGER tWORD tEGAL Exp . DeclarationIntEgalMemeLigne tPOINTVIRG
 
-    tDIV      décalage et aller à l'état 21
-    tPLUS     décalage et aller à l'état 22
-    tMINUS    décalage et aller à l'état 23
-    tVIRG     décalage et aller à l'état 70
-    tPOINTER  décalage et aller à l'état 25
+    tDIV      décalage et aller à l'état 23
+    tPLUS     décalage et aller à l'état 24
+    tMINUS    décalage et aller à l'état 25
+    tVIRG     décalage et aller à l'état 72
+    tPOINTER  décalage et aller à l'état 27
 
-    $défaut  réduction par utilisation de la règle 44 (DeclarationIntEgalMemeLigne)
+    $défaut  réduction par utilisation de la règle 45 (DeclarationIntEgalMemeLigne)
 
-    DeclarationIntEgalMemeLigne  aller à l'état 71
-
-
-état 49
-
-   31 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG .
-
-    $défaut  réduction par utilisation de la règle 31 (Declaration)
-
-
-état 50
-
-   35 Declaration: tCHAR tPOINTER tWORD tPOINTVIRG .
-
-    $défaut  réduction par utilisation de la règle 35 (Declaration)
+    DeclarationIntEgalMemeLigne  aller à l'état 73
 
 
 état 51
 
-   34 Declaration: tCHAR tWORD tCO tNOMBRE . tCF tPOINTVIRG
+   32 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG .
 
-    tCF  décalage et aller à l'état 72
+    $défaut  réduction par utilisation de la règle 32 (Declaration)
 
 
 état 52
 
-   47 DeclarationCharMemeLigne: tVIRG tWORD . DeclarationCharMemeLigne
-
-    tVIRG  décalage et aller à l'état 34
-
-    $défaut  réduction par utilisation de la règle 48 (DeclarationCharMemeLigne)
-
-    DeclarationCharMemeLigne  aller à l'état 73
-
-
-état 53
-
-   39 Declaration: tCHAR tWORD tEGAL tCO . tNOMBRE tCF tPOINTVIRG
-
-    tNOMBRE  décalage et aller à l'état 74
-
-
-état 54
-
-   38 Declaration: tCHAR tWORD tEGAL tSQ . tWORD tSQ tPOINTVIRG
-
-    tWORD  décalage et aller à l'état 75
-
-
-état 55
-
-   37 Declaration: tCHAR tWORD tEGAL tNOMBRE . tPOINTVIRG
-
-    tPOINTVIRG  décalage et aller à l'état 76
-
-
-état 56
-
-   36 Declaration: tCHAR tWORD DeclarationCharMemeLigne tPOINTVIRG .
+   36 Declaration: tCHAR tPOINTER tWORD tPOINTVIRG .
 
     $défaut  réduction par utilisation de la règle 36 (Declaration)
 
 
+état 53
+
+   35 Declaration: tCHAR tWORD tCO tNOMBRE . tCF tPOINTVIRG
+
+    tCF  décalage et aller à l'état 74
+
+
+état 54
+
+   48 DeclarationCharMemeLigne: tVIRG tWORD . DeclarationCharMemeLigne
+
+    tVIRG  décalage et aller à l'état 36
+
+    $défaut  réduction par utilisation de la règle 49 (DeclarationCharMemeLigne)
+
+    DeclarationCharMemeLigne  aller à l'état 75
+
+
+état 55
+
+   40 Declaration: tCHAR tWORD tEGAL tCO . tNOMBRE tCF tPOINTVIRG
+
+    tNOMBRE  décalage et aller à l'état 76
+
+
+état 56
+
+   39 Declaration: tCHAR tWORD tEGAL tSQ . tWORD tSQ tPOINTVIRG
+
+    tWORD  décalage et aller à l'état 77
+
+
 état 57
 
-   12 If: tIF tPO Condition tPF . tAO Input tAF Else
+   38 Declaration: tCHAR tWORD tEGAL tNOMBRE . tPOINTVIRG
 
-    tAO  décalage et aller à l'état 77
+    tPOINTVIRG  décalage et aller à l'état 78
 
 
 état 58
 
-   22 Condition: Condition tOR . Condition
+   37 Declaration: tCHAR tWORD DeclarationCharMemeLigne tPOINTVIRG .
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
-
-    Condition  aller à l'état 78
-    Exp        aller à l'état 38
+    $défaut  réduction par utilisation de la règle 37 (Declaration)
 
 
 état 59
 
-   23 Condition: Condition tAND . Condition
+   12 If: tIF tPO Condition tPF . tAO Input tAF Else
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
-
-    Condition  aller à l'état 79
-    Exp        aller à l'état 38
+    tAO  décalage et aller à l'état 79
 
 
 état 60
 
-   18 Condition: Exp tSUP . Exp
-   20          | Exp tSUP . tEGAL Exp
+   22 Condition: Condition tOR . Condition
 
-    tEGAL    décalage et aller à l'état 80
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
 
-    Exp  aller à l'état 81
+    Condition  aller à l'état 80
+    Exp        aller à l'état 40
 
 
 état 61
 
-   19 Condition: Exp tINF . Exp
-   21          | Exp tINF . tEGAL Exp
+   23 Condition: Condition tAND . Condition
 
-    tEGAL    décalage et aller à l'état 82
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
 
-    Exp  aller à l'état 83
+    Condition  aller à l'état 81
+    Exp        aller à l'état 40
 
 
 état 62
 
-   16 Condition: Exp tEGALEGAL . Exp
+   18 Condition: Exp tSUP . Exp
+   20          | Exp tSUP . tEGAL Exp
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tMINUS   décalage et aller à l'état 7
+    tEGAL    décalage et aller à l'état 82
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
 
-    Exp  aller à l'état 84
+    Exp  aller à l'état 83
 
 
 état 63
 
-   17 Condition: Exp tNOTEGAL . Exp
+   19 Condition: Exp tINF . Exp
+   21          | Exp tINF . tEGAL Exp
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tMINUS   décalage et aller à l'état 7
+    tEGAL    décalage et aller à l'état 84
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
 
     Exp  aller à l'état 85
 
 
 état 64
 
-    9 Arg: tINTEGER tCO . tCF tWORD
+   16 Condition: Exp tEGALEGAL . Exp
 
-    tCF  décalage et aller à l'état 86
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
+
+    Exp  aller à l'état 86
 
 
 état 65
 
-   10 Arg: tINTEGER tPOINTER . tWORD
+   17 Condition: Exp tNOTEGAL . Exp
 
-    tWORD  décalage et aller à l'état 87
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
+
+    Exp  aller à l'état 87
 
 
 état 66
+
+    9 Arg: tINTEGER tCO . tCF tWORD
+
+    tCF  décalage et aller à l'état 88
+
+
+état 67
+
+   10 Arg: tINTEGER tPOINTER . tWORD
+
+    tWORD  décalage et aller à l'état 89
+
+
+état 68
 
     8 Arg: tINTEGER tWORD .
 
     $défaut  réduction par utilisation de la règle 8 (Arg)
 
 
-état 67
+état 69
 
     7 Main: tINTEGER tMAIN tPO Arg tPF . tAO Input tAF
 
-    tAO  décalage et aller à l'état 88
-
-
-état 68
-
-   33 Declaration: tINTEGER tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne tPOINTVIRG
-
-    tVIRG  décalage et aller à l'état 89
-
-    $défaut  réduction par utilisation de la règle 46 (DeclarationIntTabMemeLigne)
-
-    DeclarationIntTabMemeLigne  aller à l'état 90
-
-
-état 69
-
-   41 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne .
-
-    $défaut  réduction par utilisation de la règle 41 (DeclarationIntMemeLigne)
+    tAO  décalage et aller à l'état 90
 
 
 état 70
 
-   43 DeclarationIntEgalMemeLigne: tVIRG . tWORD tEGAL Exp DeclarationIntEgalMemeLigne
+   34 Declaration: tINTEGER tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne tPOINTVIRG
 
-    tWORD  décalage et aller à l'état 91
+    tVIRG  décalage et aller à l'état 91
+
+    $défaut  réduction par utilisation de la règle 47 (DeclarationIntTabMemeLigne)
+
+    DeclarationIntTabMemeLigne  aller à l'état 92
 
 
 état 71
 
-   32 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne . tPOINTVIRG
+   42 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne .
 
-    tPOINTVIRG  décalage et aller à l'état 92
+    $défaut  réduction par utilisation de la règle 42 (DeclarationIntMemeLigne)
 
 
 état 72
 
-   34 Declaration: tCHAR tWORD tCO tNOMBRE tCF . tPOINTVIRG
+   44 DeclarationIntEgalMemeLigne: tVIRG . tWORD tEGAL Exp DeclarationIntEgalMemeLigne
 
-    tPOINTVIRG  décalage et aller à l'état 93
+    tWORD  décalage et aller à l'état 93
 
 
 état 73
 
-   47 DeclarationCharMemeLigne: tVIRG tWORD DeclarationCharMemeLigne .
+   33 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne . tPOINTVIRG
 
-    $défaut  réduction par utilisation de la règle 47 (DeclarationCharMemeLigne)
+    tPOINTVIRG  décalage et aller à l'état 94
 
 
 état 74
 
-   39 Declaration: tCHAR tWORD tEGAL tCO tNOMBRE . tCF tPOINTVIRG
+   35 Declaration: tCHAR tWORD tCO tNOMBRE tCF . tPOINTVIRG
 
-    tCF  décalage et aller à l'état 94
+    tPOINTVIRG  décalage et aller à l'état 95
 
 
 état 75
 
-   38 Declaration: tCHAR tWORD tEGAL tSQ tWORD . tSQ tPOINTVIRG
+   48 DeclarationCharMemeLigne: tVIRG tWORD DeclarationCharMemeLigne .
 
-    tSQ  décalage et aller à l'état 95
+    $défaut  réduction par utilisation de la règle 48 (DeclarationCharMemeLigne)
 
 
 état 76
 
-   37 Declaration: tCHAR tWORD tEGAL tNOMBRE tPOINTVIRG .
+   40 Declaration: tCHAR tWORD tEGAL tCO tNOMBRE . tCF tPOINTVIRG
 
-    $défaut  réduction par utilisation de la règle 37 (Declaration)
+    tCF  décalage et aller à l'état 96
 
 
 état 77
+
+   39 Declaration: tCHAR tWORD tEGAL tSQ tWORD . tSQ tPOINTVIRG
+
+    tSQ  décalage et aller à l'état 97
+
+
+état 78
+
+   38 Declaration: tCHAR tWORD tEGAL tNOMBRE tPOINTVIRG .
+
+    $défaut  réduction par utilisation de la règle 38 (Declaration)
+
+
+état 79
 
    12 If: tIF tPO Condition tPF tAO . Input tAF Else
 
     $défaut  réduction par utilisation de la règle 1 (Input)
 
-    Input  aller à l'état 96
+    Input  aller à l'état 98
 
 
-état 78
+état 80
 
    22 Condition: Condition . tOR Condition
    22          | Condition tOR Condition .
    23          | Condition . tAND Condition
 
-    tOR   décalage et aller à l'état 58
-    tAND  décalage et aller à l'état 59
+    tOR   décalage et aller à l'état 60
+    tAND  décalage et aller à l'état 61
 
     tOR       [réduction par utilisation de la règle 22 (Condition)]
     tAND      [réduction par utilisation de la règle 22 (Condition)]
     $défaut  réduction par utilisation de la règle 22 (Condition)
 
 
-état 79
+état 81
 
    22 Condition: Condition . tOR Condition
    23          | Condition . tAND Condition
    23          | Condition tAND Condition .
 
-    tOR   décalage et aller à l'état 58
-    tAND  décalage et aller à l'état 59
+    tOR   décalage et aller à l'état 60
+    tAND  décalage et aller à l'état 61
 
     tOR       [réduction par utilisation de la règle 23 (Condition)]
     tAND      [réduction par utilisation de la règle 23 (Condition)]
     $défaut  réduction par utilisation de la règle 23 (Condition)
 
 
-état 80
+état 82
 
    20 Condition: Exp tSUP tEGAL . Exp
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
 
-    Exp  aller à l'état 97
+    Exp  aller à l'état 99
 
 
-état 81
+état 83
 
    18 Condition: Exp tSUP Exp .
    24 Exp: Exp . tPLUS Exp
@@ -970,25 +1013,26 @@ DeclarationCharMemeLigne (59)
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 21
-    tPLUS     décalage et aller à l'état 22
-    tMINUS    décalage et aller à l'état 23
-    tPOINTER  décalage et aller à l'état 25
+    tDIV      décalage et aller à l'état 23
+    tPLUS     décalage et aller à l'état 24
+    tMINUS    décalage et aller à l'état 25
+    tPOINTER  décalage et aller à l'état 27
 
     $défaut  réduction par utilisation de la règle 18 (Condition)
 
 
-état 82
+état 84
 
    21 Condition: Exp tINF tEGAL . Exp
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
 
-    Exp  aller à l'état 98
+    Exp  aller à l'état 100
 
 
-état 83
+état 85
 
    19 Condition: Exp tINF Exp .
    24 Exp: Exp . tPLUS Exp
@@ -996,15 +1040,15 @@ DeclarationCharMemeLigne (59)
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 21
-    tPLUS     décalage et aller à l'état 22
-    tMINUS    décalage et aller à l'état 23
-    tPOINTER  décalage et aller à l'état 25
+    tDIV      décalage et aller à l'état 23
+    tPLUS     décalage et aller à l'état 24
+    tMINUS    décalage et aller à l'état 25
+    tPOINTER  décalage et aller à l'état 27
 
     $défaut  réduction par utilisation de la règle 19 (Condition)
 
 
-état 84
+état 86
 
    16 Condition: Exp tEGALEGAL Exp .
    24 Exp: Exp . tPLUS Exp
@@ -1012,15 +1056,15 @@ DeclarationCharMemeLigne (59)
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 21
-    tPLUS     décalage et aller à l'état 22
-    tMINUS    décalage et aller à l'état 23
-    tPOINTER  décalage et aller à l'état 25
+    tDIV      décalage et aller à l'état 23
+    tPLUS     décalage et aller à l'état 24
+    tMINUS    décalage et aller à l'état 25
+    tPOINTER  décalage et aller à l'état 27
 
     $défaut  réduction par utilisation de la règle 16 (Condition)
 
 
-état 85
+état 87
 
    17 Condition: Exp tNOTEGAL Exp .
    24 Exp: Exp . tPLUS Exp
@@ -1028,87 +1072,87 @@ DeclarationCharMemeLigne (59)
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 21
-    tPLUS     décalage et aller à l'état 22
-    tMINUS    décalage et aller à l'état 23
-    tPOINTER  décalage et aller à l'état 25
+    tDIV      décalage et aller à l'état 23
+    tPLUS     décalage et aller à l'état 24
+    tMINUS    décalage et aller à l'état 25
+    tPOINTER  décalage et aller à l'état 27
 
     $défaut  réduction par utilisation de la règle 17 (Condition)
 
 
-état 86
+état 88
 
     9 Arg: tINTEGER tCO tCF . tWORD
 
-    tWORD  décalage et aller à l'état 99
+    tWORD  décalage et aller à l'état 101
 
 
-état 87
+état 89
 
    10 Arg: tINTEGER tPOINTER tWORD .
 
     $défaut  réduction par utilisation de la règle 10 (Arg)
 
 
-état 88
+état 90
 
     7 Main: tINTEGER tMAIN tPO Arg tPF tAO . Input tAF
 
     $défaut  réduction par utilisation de la règle 1 (Input)
 
-    Input  aller à l'état 100
-
-
-état 89
-
-   45 DeclarationIntTabMemeLigne: tVIRG . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
-
-    tWORD  décalage et aller à l'état 101
-
-
-état 90
-
-   33 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne . tPOINTVIRG
-
-    tPOINTVIRG  décalage et aller à l'état 102
+    Input  aller à l'état 102
 
 
 état 91
 
-   43 DeclarationIntEgalMemeLigne: tVIRG tWORD . tEGAL Exp DeclarationIntEgalMemeLigne
+   46 DeclarationIntTabMemeLigne: tVIRG . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
 
-    tEGAL  décalage et aller à l'état 103
+    tWORD  décalage et aller à l'état 103
 
 
 état 92
 
-   32 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG .
-
-    $défaut  réduction par utilisation de la règle 32 (Declaration)
-
-
-état 93
-
-   34 Declaration: tCHAR tWORD tCO tNOMBRE tCF tPOINTVIRG .
-
-    $défaut  réduction par utilisation de la règle 34 (Declaration)
-
-
-état 94
-
-   39 Declaration: tCHAR tWORD tEGAL tCO tNOMBRE tCF . tPOINTVIRG
+   34 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne . tPOINTVIRG
 
     tPOINTVIRG  décalage et aller à l'état 104
 
 
+état 93
+
+   44 DeclarationIntEgalMemeLigne: tVIRG tWORD . tEGAL Exp DeclarationIntEgalMemeLigne
+
+    tEGAL  décalage et aller à l'état 105
+
+
+état 94
+
+   33 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG .
+
+    $défaut  réduction par utilisation de la règle 33 (Declaration)
+
+
 état 95
 
-   38 Declaration: tCHAR tWORD tEGAL tSQ tWORD tSQ . tPOINTVIRG
+   35 Declaration: tCHAR tWORD tCO tNOMBRE tCF tPOINTVIRG .
 
-    tPOINTVIRG  décalage et aller à l'état 105
+    $défaut  réduction par utilisation de la règle 35 (Declaration)
 
 
 état 96
+
+   40 Declaration: tCHAR tWORD tEGAL tCO tNOMBRE tCF . tPOINTVIRG
+
+    tPOINTVIRG  décalage et aller à l'état 106
+
+
+état 97
+
+   39 Declaration: tCHAR tWORD tEGAL tSQ tWORD tSQ . tPOINTVIRG
+
+    tPOINTVIRG  décalage et aller à l'état 107
+
+
+état 98
 
     2 Input: Input . tNEWLINE
     3      | Input . Egalite tPOINTVIRG
@@ -1121,19 +1165,20 @@ DeclarationCharMemeLigne (59)
     tINTEGER  décalage et aller à l'état 4
     tCHAR     décalage et aller à l'état 5
     tIF       décalage et aller à l'état 6
-    tAF       décalage et aller à l'état 106
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tAF       décalage et aller à l'état 108
+    tMINUS    décalage et aller à l'état 7
+    tNOMBRE   décalage et aller à l'état 8
+    tWORD     décalage et aller à l'état 9
+    tNEWLINE  décalage et aller à l'état 10
 
-    Main         aller à l'état 10
-    If           aller à l'état 11
-    Exp          aller à l'état 12
-    Egalite      aller à l'état 13
-    Declaration  aller à l'état 14
+    Main         aller à l'état 11
+    If           aller à l'état 12
+    Exp          aller à l'état 13
+    Egalite      aller à l'état 14
+    Declaration  aller à l'état 15
 
 
-état 97
+état 99
 
    20 Condition: Exp tSUP tEGAL Exp .
    24 Exp: Exp . tPLUS Exp
@@ -1141,15 +1186,15 @@ DeclarationCharMemeLigne (59)
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 21
-    tPLUS     décalage et aller à l'état 22
-    tMINUS    décalage et aller à l'état 23
-    tPOINTER  décalage et aller à l'état 25
+    tDIV      décalage et aller à l'état 23
+    tPLUS     décalage et aller à l'état 24
+    tMINUS    décalage et aller à l'état 25
+    tPOINTER  décalage et aller à l'état 27
 
     $défaut  réduction par utilisation de la règle 20 (Condition)
 
 
-état 98
+état 100
 
    21 Condition: Exp tINF tEGAL Exp .
    24 Exp: Exp . tPLUS Exp
@@ -1157,22 +1202,22 @@ DeclarationCharMemeLigne (59)
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 21
-    tPLUS     décalage et aller à l'état 22
-    tMINUS    décalage et aller à l'état 23
-    tPOINTER  décalage et aller à l'état 25
+    tDIV      décalage et aller à l'état 23
+    tPLUS     décalage et aller à l'état 24
+    tMINUS    décalage et aller à l'état 25
+    tPOINTER  décalage et aller à l'état 27
 
     $défaut  réduction par utilisation de la règle 21 (Condition)
 
 
-état 99
+état 101
 
     9 Arg: tINTEGER tCO tCF tWORD .
 
     $défaut  réduction par utilisation de la règle 9 (Arg)
 
 
-état 100
+état 102
 
     2 Input: Input . tNEWLINE
     3      | Input . Egalite tPOINTVIRG
@@ -1185,160 +1230,162 @@ DeclarationCharMemeLigne (59)
     tINTEGER  décalage et aller à l'état 4
     tCHAR     décalage et aller à l'état 5
     tIF       décalage et aller à l'état 6
-    tAF       décalage et aller à l'état 107
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tAF       décalage et aller à l'état 109
+    tMINUS    décalage et aller à l'état 7
+    tNOMBRE   décalage et aller à l'état 8
+    tWORD     décalage et aller à l'état 9
+    tNEWLINE  décalage et aller à l'état 10
 
-    Main         aller à l'état 10
-    If           aller à l'état 11
-    Exp          aller à l'état 12
-    Egalite      aller à l'état 13
-    Declaration  aller à l'état 14
-
-
-état 101
-
-   45 DeclarationIntTabMemeLigne: tVIRG tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne
-
-    tCO  décalage et aller à l'état 108
-
-
-état 102
-
-   33 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG .
-
-    $défaut  réduction par utilisation de la règle 33 (Declaration)
+    Main         aller à l'état 11
+    If           aller à l'état 12
+    Exp          aller à l'état 13
+    Egalite      aller à l'état 14
+    Declaration  aller à l'état 15
 
 
 état 103
 
-   43 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL . Exp DeclarationIntEgalMemeLigne
+   46 DeclarationIntTabMemeLigne: tVIRG tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne
 
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 8
-
-    Exp  aller à l'état 109
+    tCO  décalage et aller à l'état 110
 
 
 état 104
 
-   39 Declaration: tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG .
+   34 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG .
 
-    $défaut  réduction par utilisation de la règle 39 (Declaration)
+    $défaut  réduction par utilisation de la règle 34 (Declaration)
 
 
 état 105
 
-   38 Declaration: tCHAR tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG .
+   44 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL . Exp DeclarationIntEgalMemeLigne
 
-    $défaut  réduction par utilisation de la règle 38 (Declaration)
+    tMINUS   décalage et aller à l'état 7
+    tNOMBRE  décalage et aller à l'état 8
+    tWORD    décalage et aller à l'état 9
+
+    Exp  aller à l'état 111
 
 
 état 106
 
-   12 If: tIF tPO Condition tPF tAO Input tAF . Else
+   40 Declaration: tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG .
 
-    tELSE  décalage et aller à l'état 110
-
-    $défaut  réduction par utilisation de la règle 15 (Else)
-
-    Else  aller à l'état 111
+    $défaut  réduction par utilisation de la règle 40 (Declaration)
 
 
 état 107
+
+   39 Declaration: tCHAR tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG .
+
+    $défaut  réduction par utilisation de la règle 39 (Declaration)
+
+
+état 108
+
+   12 If: tIF tPO Condition tPF tAO Input tAF . Else
+
+    tELSE  décalage et aller à l'état 112
+
+    $défaut  réduction par utilisation de la règle 15 (Else)
+
+    Else  aller à l'état 113
+
+
+état 109
 
     7 Main: tINTEGER tMAIN tPO Arg tPF tAO Input tAF .
 
     $défaut  réduction par utilisation de la règle 7 (Main)
 
 
-état 108
+état 110
 
-   45 DeclarationIntTabMemeLigne: tVIRG tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne
+   46 DeclarationIntTabMemeLigne: tVIRG tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne
 
-    tNOMBRE  décalage et aller à l'état 112
+    tNOMBRE  décalage et aller à l'état 114
 
 
-état 109
+état 111
 
    24 Exp: Exp . tPLUS Exp
    25    | Exp . tDIV Exp
    26    | Exp . tMINUS Exp
    27    | Exp . tPOINTER Exp
-   43 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp . DeclarationIntEgalMemeLigne
+   44 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp . DeclarationIntEgalMemeLigne
 
-    tDIV      décalage et aller à l'état 21
-    tPLUS     décalage et aller à l'état 22
-    tMINUS    décalage et aller à l'état 23
-    tVIRG     décalage et aller à l'état 70
-    tPOINTER  décalage et aller à l'état 25
+    tDIV      décalage et aller à l'état 23
+    tPLUS     décalage et aller à l'état 24
+    tMINUS    décalage et aller à l'état 25
+    tVIRG     décalage et aller à l'état 72
+    tPOINTER  décalage et aller à l'état 27
 
-    $défaut  réduction par utilisation de la règle 44 (DeclarationIntEgalMemeLigne)
+    $défaut  réduction par utilisation de la règle 45 (DeclarationIntEgalMemeLigne)
 
-    DeclarationIntEgalMemeLigne  aller à l'état 113
+    DeclarationIntEgalMemeLigne  aller à l'état 115
 
 
-état 110
+état 112
 
    13 Else: tELSE . tAO Input tAF
    14     | tELSE . If
 
     tIF  décalage et aller à l'état 6
-    tAO  décalage et aller à l'état 114
+    tAO  décalage et aller à l'état 116
 
-    If  aller à l'état 115
+    If  aller à l'état 117
 
 
-état 111
+état 113
 
    12 If: tIF tPO Condition tPF tAO Input tAF Else .
 
     $défaut  réduction par utilisation de la règle 12 (If)
 
 
-état 112
-
-   45 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne
-
-    tCF  décalage et aller à l'état 116
-
-
-état 113
-
-   43 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne .
-
-    $défaut  réduction par utilisation de la règle 43 (DeclarationIntEgalMemeLigne)
-
-
 état 114
+
+   46 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne
+
+    tCF  décalage et aller à l'état 118
+
+
+état 115
+
+   44 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne .
+
+    $défaut  réduction par utilisation de la règle 44 (DeclarationIntEgalMemeLigne)
+
+
+état 116
 
    13 Else: tELSE tAO . Input tAF
 
     $défaut  réduction par utilisation de la règle 1 (Input)
 
-    Input  aller à l'état 117
+    Input  aller à l'état 119
 
 
-état 115
+état 117
 
    14 Else: tELSE If .
 
     $défaut  réduction par utilisation de la règle 14 (Else)
 
 
-état 116
+état 118
 
-   45 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne
+   46 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne
 
-    tVIRG  décalage et aller à l'état 89
+    tVIRG  décalage et aller à l'état 91
 
-    $défaut  réduction par utilisation de la règle 46 (DeclarationIntTabMemeLigne)
+    $défaut  réduction par utilisation de la règle 47 (DeclarationIntTabMemeLigne)
 
-    DeclarationIntTabMemeLigne  aller à l'état 118
+    DeclarationIntTabMemeLigne  aller à l'état 120
 
 
-état 117
+état 119
 
     2 Input: Input . tNEWLINE
     3      | Input . Egalite tPOINTVIRG
@@ -1351,26 +1398,27 @@ DeclarationCharMemeLigne (59)
     tINTEGER  décalage et aller à l'état 4
     tCHAR     décalage et aller à l'état 5
     tIF       décalage et aller à l'état 6
-    tAF       décalage et aller à l'état 119
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tAF       décalage et aller à l'état 121
+    tMINUS    décalage et aller à l'état 7
+    tNOMBRE   décalage et aller à l'état 8
+    tWORD     décalage et aller à l'état 9
+    tNEWLINE  décalage et aller à l'état 10
 
-    Main         aller à l'état 10
-    If           aller à l'état 11
-    Exp          aller à l'état 12
-    Egalite      aller à l'état 13
-    Declaration  aller à l'état 14
-
-
-état 118
-
-   45 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne .
-
-    $défaut  réduction par utilisation de la règle 45 (DeclarationIntTabMemeLigne)
+    Main         aller à l'état 11
+    If           aller à l'état 12
+    Exp          aller à l'état 13
+    Egalite      aller à l'état 14
+    Declaration  aller à l'état 15
 
 
-état 119
+état 120
+
+   46 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne .
+
+    $défaut  réduction par utilisation de la règle 46 (DeclarationIntTabMemeLigne)
+
+
+état 121
 
    13 Else: tELSE tAO Input tAF .
 
