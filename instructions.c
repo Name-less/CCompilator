@@ -94,6 +94,15 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
    	fclose(fp);
 }
 
+void print_all_assembler_instructions(){
+	char * file_name = (char *)"toto";
+	stack_inst * iterator = first_stack;
+	while(iterator != NULL){
+		print_assembler_instructions(iterator,file_name);
+		iterator = iterator->next_instruct;
+	}
+}
+
 /*
 Our function to store instructions in the stack
 */
