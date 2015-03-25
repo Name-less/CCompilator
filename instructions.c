@@ -19,7 +19,7 @@ void stack_init(stack_inst * inst){
 		first_stack->instruct_params[0] = inst->instruct_params[0];
 		first_stack->instruct_params[1] = inst->instruct_params[1];
 		first_stack->instruct_params[2] = inst->instruct_params[2];
-		first_stack->instruct_params[2] = inst->instruct_params[3];
+		first_stack->instruct_params[3] = inst->instruct_params[3];
 		first_stack->next_instruct = NULL;
 		first_stack->before_instruct = first_stack;
 		nbre_line = 1;

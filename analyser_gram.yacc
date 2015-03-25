@@ -92,10 +92,10 @@ Exp tDIV Exp {stack_push_div($1,$1,$3);ts_pop_addr($3);}|
 Exp tMINUS Exp {stack_push_sub($1,$1,$3);ts_pop_addr($3);} |
 Exp tPOINTER Exp {stack_push_mul($1,$1,$3);ts_pop_addr($3);} |
 tNOMBRE { int tmp = ts_add_temp();$$ = tmp;stack_push_afc(tmp,$1);}|
-tWORD {if (exist($1) == -1 ) printf("exp not declared"); else { $$ = get_addr_from($1); };};
+tWORD {if (exist($1) == -1 ) printf("exp not declared"); else { int tmp = ts_add_temp();$$ = tmp;stack_push_cop(tmp,$1);};};
 
 Egalite :
-Exp tEGAL Exp ;
+Exp tEGAL Exp {stack_push_cop($1,$2);};
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { if (ts_push($2,$1)!=-1) printf("YACC:Declaration correcte\n"); else printf("La variable existe déjà\n"); } |
