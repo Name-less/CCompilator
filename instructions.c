@@ -209,5 +209,6 @@ End of our functions to add instructions to the stack
 int main(){
 	stack_push_jump(3,4);
 	stack_push_afc(3,4);
+	stack_push_add(3,4,8);
 	print_all_assembler_instructions();	
 }

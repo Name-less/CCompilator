@@ -1,10 +1,13 @@
-typedef struct jump_if_stack{
+typedef struct jump_struct_stack{
 	int from_where;
 	int from_to;
-	struct jump_if_stack * next_if;
-}Jump_if;
+	struct jump_struct_stack * next_if;
+}Jump_struct;
 
-void init_stack(int arg);
+void while_init_stack(int arg);
+void while_fill_from_where(int arg);
+void while_add_from_to(int arg);
 
-void fill_from_to(int arg);
-void add_from_where(int arg);
+void if_init_stack(int arg);
+void if_fill_from_to(int arg);
+void if_add_from_where(int arg);
