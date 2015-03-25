@@ -67,10 +67,10 @@
      tINF = 285,
      tVIRG = 286,
      tEGALEGAL = 287,
-     tEGAL = 288,
-     tOR = 289,
-     tAND = 290,
-     tNOTEGAL = 291,
+     tOR = 288,
+     tAND = 289,
+     tNOTEGAL = 290,
+     tEGAL = 291,
      tADDR = 292,
      tPOINTER = 293,
      tSPACE = 294,
@@ -113,10 +113,10 @@
 #define tINF 285
 #define tVIRG 286
 #define tEGALEGAL 287
-#define tEGAL 288
-#define tOR 289
-#define tAND 290
-#define tNOTEGAL 291
+#define tOR 288
+#define tAND 289
+#define tNOTEGAL 290
+#define tEGAL 291
 #define tADDR 292
 #define tPOINTER 293
 #define tSPACE 294
