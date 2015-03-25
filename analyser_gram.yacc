@@ -23,7 +23,7 @@ int yylex();
 
 %token tDIV tPOINTVIRG tARROW tPOINT tPLUS tMINUS tMOD tEXP tSUP tINF tVIRG
 
-%token tEGALEGAL tEGAL tOR tAND tNOTEGAL
+%token tEGALEGAL tOR tAND tNOTEGAL tEGAL
 
 %token tADDR tPOINTER
 
@@ -91,14 +91,23 @@ Exp tPLUS Exp { stack_push_add($1,$1,$3); ts_pop_addr($3);}|
 Exp tDIV Exp {stack_push_div($1,$1,$3);ts_pop_addr($3);}|
 Exp tMINUS Exp {stack_push_sub($1,$1,$3);ts_pop_addr($3);} |
 Exp tPOINTER Exp {stack_push_mul($1,$1,$3);ts_pop_addr($3);} |
-tNOMBRE { int tmp = ts_add_temp();$$ = tmp;stack_push_afc(tmp,$1);}|
-tWORD {if (exist($1) == -1 ) printf("exp not declared"); else { int tmp = ts_add_temp();$$ = tmp;stack_push_cop(tmp,$1);};};
+tNOMBRE {	int tmp = ts_add_temp();
+		$$ = tmp;
+		stack_push_afc(tmp,$1);
+	}|
+tWORD {	if (exist($1) == -1 )
+	printf("YACC: exp not declared");
+	else { 
+	int tmp = ts_add_temp();
+	$$ = tmp;
+	stack_push_cop(tmp,get_addr_from($1) ); };
+};
 
 Egalite :
-Exp tEGAL Exp {stack_push_cop($1,$2);};
+Exp tEGAL Exp {stack_push_cop($1,$3);};
 
 Declaration :
-tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { if (ts_push($2,$1)!=-1) printf("YACC:Declaration correcte\n"); else printf("La variable existe déjà\n"); } |
+tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { if (ts_push($2,$1)!=-1) printf("YACC:Declaration correcte\n"); else printf("YACC: La variable existe déjà\n"); } |
 tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG |
 tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne 
 tPOINTVIRG |
@@ -111,7 +120,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG|
 error tPOINTVIRG {yyerror;};
 
 DeclarationIntMemeLigne :
-tVIRG tWORD DeclarationIntMemeLigne {if (ts_push($2,"int")!=-1) printf("Declaration correcte\n"); else printf("La variable existe déjà\n"); }| ;
+tVIRG tWORD DeclarationIntMemeLigne {if (ts_push($2,"int")!=-1) printf("YACC: Declaration ligne correcte\n"); else printf("YACC: La variable existe déjà\n"); }| ;
 
 DeclarationIntEgalMemeLigne :
 tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne |;
