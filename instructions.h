@@ -1,10 +1,10 @@
 
 #define INST_ADD 0x01
-#define INST_MOV 2
+#define INST_MOV 20
 #define INST_SUB 0x03
 #define INST_MUL 0x02
 #define INST_DIV 0x04
-#define INST_JUMP 6
+#define INST_JUMP 19
 #define INST_AFC 0x06
 #define INST_COP 0x05
 #define INST_LOAD 0x07
