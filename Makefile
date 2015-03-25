@@ -27,7 +27,7 @@ lex.yy.c: analyser_lexical.lex
 	flex $^
 
 clean:
-	rm -f $(OBJECTS) $(TARGETS) lex.yy.c y.tab.c
+	rm -f $(OBJECTS) $(TARGETS) lex.yy.c y.tab.c toto
 
 run:
 	./analyser

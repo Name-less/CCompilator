@@ -208,7 +208,7 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 36 "analyser_gram.yacc"
+#line 37 "analyser_gram.yacc"
 
 int number;
 char * texte;
@@ -543,12 +543,12 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    58,    58,    59,    60,    61,    62,    63,    66,    69,
-      70,    71,    71,    74,    77,    78,    78,    81,    82,    83,
-      84,    85,    86,    87,    88,    91,    92,    93,    94,    95,
-      96,   104,   116,   119,   120,   121,   123,   124,   125,   126,
-     127,   128,   129,   132,   132,   135,   135,   138,   138,   141,
-     141
+       0,    59,    59,    60,    61,    62,    63,    64,    67,    70,
+      71,    72,    72,    75,    78,    79,    79,    82,    83,    84,
+      85,    86,    87,    88,    89,    92,    93,    94,    95,    96,
+      97,   103,   115,   118,   119,   120,   122,   123,   124,   125,
+     126,   127,   128,   131,   131,   134,   134,   137,   137,   140,
+     140
 };
 #endif
 
@@ -1561,80 +1561,85 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 4:
+        case 3:
 
 /* Line 1806 of yacc.c  */
 #line 60 "analyser_gram.yacc"
+    {print_all_assembler_instructions();}
+    break;
+
+  case 4:
+
+/* Line 1806 of yacc.c  */
+#line 61 "analyser_gram.yacc"
     {printf("YACC:egalite ok \n");}
     break;
 
   case 6:
 
 /* Line 1806 of yacc.c  */
-#line 62 "analyser_gram.yacc"
+#line 63 "analyser_gram.yacc"
     {printf("YACC:condition ok \n");}
     break;
 
   case 8:
 
 /* Line 1806 of yacc.c  */
-#line 66 "analyser_gram.yacc"
+#line 67 "analyser_gram.yacc"
     {printf("YACC:mon main\n");}
     break;
 
   case 25:
 
 /* Line 1806 of yacc.c  */
-#line 91 "analyser_gram.yacc"
+#line 92 "analyser_gram.yacc"
     { stack_push_add((yyvsp[(1) - (3)].number),(yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number)); ts_pop_addr((yyvsp[(3) - (3)].number));}
     break;
 
   case 26:
 
 /* Line 1806 of yacc.c  */
-#line 92 "analyser_gram.yacc"
+#line 93 "analyser_gram.yacc"
     {stack_push_div((yyvsp[(1) - (3)].number),(yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));ts_pop_addr((yyvsp[(3) - (3)].number));}
     break;
 
   case 27:
 
 /* Line 1806 of yacc.c  */
-#line 93 "analyser_gram.yacc"
+#line 94 "analyser_gram.yacc"
     {stack_push_sub((yyvsp[(1) - (3)].number),(yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));ts_pop_addr((yyvsp[(3) - (3)].number));}
     break;
 
   case 28:
 
 /* Line 1806 of yacc.c  */
-#line 94 "analyser_gram.yacc"
+#line 95 "analyser_gram.yacc"
     {stack_push_mul((yyvsp[(1) - (3)].number),(yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));ts_pop_addr((yyvsp[(3) - (3)].number));}
     break;
 
   case 29:
 
 /* Line 1806 of yacc.c  */
-#line 95 "analyser_gram.yacc"
+#line 96 "analyser_gram.yacc"
     {stack_push_mul((yyvsp[(2) - (2)].number),(yyvsp[(2) - (2)].number),-1);}
     break;
 
   case 30:
 
 /* Line 1806 of yacc.c  */
-#line 96 "analyser_gram.yacc"
+#line 97 "analyser_gram.yacc"
     {	printf("YACC: tNOMBRE reconnu dans Exp\n");
 		int tmp = ts_add_temp();
-		printf("YACC: apres add_temp\n");
 		(yyval.number) = tmp;
-		printf("YACC: avant afc\n");
 		stack_push_afc(tmp,(yyvsp[(1) - (1)].number));
-		printf("YACC: tNOMBRE saved\n");
+		printf("YACC: tNOMBRE saved\n\n");
 	}
     break;
 
   case 31:
 
 /* Line 1806 of yacc.c  */
-#line 104 "analyser_gram.yacc"
+#line 103 "analyser_gram.yacc"
     {	printf("YACC: tWORD reconnu dans exp\n");
 	if (exist((yyvsp[(1) - (1)].texte)) == -1 )
 	printf("YACC: exp not declared");
@@ -1650,35 +1655,42 @@ yyreduce:
   case 32:
 
 /* Line 1806 of yacc.c  */
-#line 116 "analyser_gram.yacc"
+#line 115 "analyser_gram.yacc"
     {printf("YACC: erreur sur Egalite\n"); stack_push_cop((yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));}
     break;
 
   case 33:
 
 /* Line 1806 of yacc.c  */
-#line 119 "analyser_gram.yacc"
+#line 118 "analyser_gram.yacc"
     { if (ts_push((yyvsp[(2) - (4)].texte),(yyvsp[(1) - (4)].texte))!=-1) printf("YACC:Declaration correcte\n"); else printf("YACC: La variable existe déjà\n"); }
+    break;
+
+  case 34:
+
+/* Line 1806 of yacc.c  */
+#line 119 "analyser_gram.yacc"
+    { if (ts_push((yyvsp[(2) - (6)].texte),(yyvsp[(1) - (6)].texte))!=-1) printf("YACC: Declaration avant instanciation correcte\n"); else printf("YACC: La variable exite déjà\n");}
     break;
 
   case 42:
 
 /* Line 1806 of yacc.c  */
-#line 129 "analyser_gram.yacc"
+#line 128 "analyser_gram.yacc"
     {yyerror;}
     break;
 
   case 43:
 
 /* Line 1806 of yacc.c  */
-#line 132 "analyser_gram.yacc"
+#line 131 "analyser_gram.yacc"
     {if (ts_push((yyvsp[(2) - (3)].texte),"int")!=-1) printf("YACC: Declaration ligne correcte\n"); else printf("YACC: La variable existe déjà\n"); }
     break;
 
 
 
 /* Line 1806 of yacc.c  */
-#line 1682 "y.tab.c"
+#line 1694 "y.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1909,7 +1921,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 143 "analyser_gram.yacc"
+#line 142 "analyser_gram.yacc"
 
 
 
