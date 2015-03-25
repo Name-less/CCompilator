@@ -22,6 +22,7 @@ void stack_init(stack_inst * inst){
 		first_stack->instruct_params[2] = inst->instruct_params[3];
 		first_stack->next_instruct = NULL;
 		first_stack->before_instruct = first_stack;
+		nbre_line = 1;
 	}else{
 		printf("Fail to init stack instruction");
 	}
@@ -42,6 +43,7 @@ void stack_push(stack_inst * inst_to_add){
 	}
 	inst_to_add->before_instruct = iterator;
 	iterator->next_instruct = inst_to_add;
+	nbre_line++;
 }
 
 

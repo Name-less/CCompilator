@@ -10,6 +10,7 @@
 #define INST_LOAD 0x07
 #define INST_STORE 0x08
 
+int nbre_line;
 
 typedef struct Stack_Instruction{
         int instruct_params[4];
