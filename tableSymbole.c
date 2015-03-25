@@ -242,7 +242,7 @@ void pop_symb_zone(){
 
 
 
-int main(){
+/*int main(){
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
 	push_symb_zone();
 	ts_push((char *)"a",(char *)"const1");
@@ -262,7 +262,7 @@ int main(){
 	pop_symb_zone();
 	pop_symb_zone();
 	ts_display();
-}
+}*/
 
 
 
