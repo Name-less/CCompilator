@@ -34,7 +34,7 @@ push any instructions to the stack
 
 void stack_push(stack_inst * inst_to_add){
 	stack_inst * iterator = first_stack;
-	if(first_stack->before_instruct == NULL){
+	if(first_stack == NULL){
 		stack_init(inst_to_add);
 		return;
 	}
@@ -70,25 +70,25 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
    fp = fopen (to_print, "a+");
 
 	if(INST_ADD == inst->instruct_params[0]){
-		fprintf(fp,"ADD %d %d %d",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+		fprintf(fp,"ADD %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
 	}else if(INST_MUL == inst->instruct_params[0]){
-		fprintf(fp,"MUL %d %d %d",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+		fprintf(fp,"MUL %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
 	}else if(INST_DIV == inst->instruct_params[0]){
-		fprintf(fp,"DIV %d %d %d",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+		fprintf(fp,"DIV %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
 	}else if(INST_SUB == inst->instruct_params[0]){
-                fprintf(fp,"SUB %d %d %d",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+                fprintf(fp,"SUB %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }else if(INST_JUMP == inst->instruct_params[0]){
-                fprintf(fp,"DIV %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+                fprintf(fp,"JUMP %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
         }else if(INST_MOV == inst->instruct_params[0]){
-                fprintf(fp,"MOV %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+                fprintf(fp,"MOV %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
         }else if(INST_AFC == inst->instruct_params[0]){
-                fprintf(fp,"AFC %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+                fprintf(fp,"AFC %d %d \n",inst->instruct_params[1],inst->instruct_params[2]);
         }else if(INST_COP == inst->instruct_params[0]){
-                fprintf(fp,"COP %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+                fprintf(fp,"COP %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
         }else if(INST_STORE == inst->instruct_params[0]){
-                fprintf(fp,"STORE %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+                fprintf(fp,"STORE %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
         }else if(INST_LOAD == inst->instruct_params[0]){
-                fprintf(fp,"LOAD %d %d",inst->instruct_params[1],inst->instruct_params[2]);
+                fprintf(fp,"LOAD %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
         }
    
    	fclose(fp);
@@ -114,7 +114,6 @@ void stack_push_afc(int arg1,int arg2){
         new_inst->instruct_params[2]=arg2;
         new_inst->instruct_params[3]=-1;
         stack_push(new_inst);
-
 }
 
 void stack_push_cop(int arg1,int arg2){
@@ -200,13 +199,15 @@ void stack_push_jump(int arg1, int arg2){
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
         new_inst->instruct_params[3]=-1;
-        stack_push(new_inst);
+	stack_push(new_inst);
 }
 
 /*
 End of our functions to add instructions to the stack
 */
 
-/*int main(){
-	//print_assembler_instructions((char *)"+",(char *)"a",(char *)"b",(char*)"toto");
-}*/
+int main(){
+	stack_push_jump(3,4);
+	stack_push_afc(3,4);
+	print_all_assembler_instructions();	
+}
