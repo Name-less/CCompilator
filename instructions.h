@@ -10,6 +10,7 @@
 #define INST_LOAD 0x07
 #define INST_STORE 0x08
 
+int nbre_line;
 
 typedef struct Stack_Instruction{
         int instruct_params[4];
@@ -34,4 +35,4 @@ void stack_push_store(int arg1,int arg2);
 void stack_push_load(int arg1,int arg2);
 
 void print_assembler_insctructions(char * operation, char * op1, char * op2, char * to_print);
-
+void print_all_assembler_instructions();
