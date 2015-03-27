@@ -93,7 +93,7 @@ Exp tPLUS Exp { stack_push_add($1,$1,$3); ts_pop_addr($3);}|
 Exp tDIV Exp {stack_push_div($1,$1,$3);ts_pop_addr($3);}|
 Exp tMINUS Exp {stack_push_sub($1,$1,$3);ts_pop_addr($3);} |
 Exp tPOINTER Exp {stack_push_mul($1,$1,$3);ts_pop_addr($3);} |
-tMINUS Exp %prec NEG {stack_push_mul($2,$2,-1);} |
+tMINUS Exp %prec NEG {stack_push_mul($2,$2,-1);} |//TODO WHAT IS THAT MAN ?
 tNOMBRE {	printf("YACC: tNOMBRE reconnu dans Exp\n");
 		int tmp = ts_add_temp();
 		$$ = tmp;
@@ -103,7 +103,7 @@ tNOMBRE {	printf("YACC: tNOMBRE reconnu dans Exp\n");
 tWORD {	printf("YACC: tWORD reconnu dans exp\n");
 	if (exist($1) == -1 )
 	printf("YACC: exp not declared");
-	else { 
+	else { //TODO Pourquoi on a mis ca ? Normalement on est pas censé faire ca si elle est pas déclarée non ?
 	printf("YACC: erreur debut else tWORD\n");
 	int tmp = ts_add_temp();
 	$$ = tmp;
@@ -112,12 +112,12 @@ tWORD {	printf("YACC: tWORD reconnu dans exp\n");
 };
 
 Egalite :
-Exp tEGAL Exp {printf("YACC: erreur sur Egalite\n"); stack_push_cop($1,$3);};
+Exp tEGAL Exp {printf("YACC: erreur sur Egalite\n"); stack_push_cop(get_addr_from($1),$3);};
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { if (ts_push($2,$1)!=-1) printf("YACC:Declaration correcte\n"); else printf("YACC: La variable existe déjà\n"); } |
 tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG { if (ts_push($2,$1)!=-1) printf("YACC: Declaration avant instanciation correcte\n"); else printf("YACC: La variable exite déjà\n");} |
-tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne 
+tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne |
 tPOINTVIRG |
 tCHAR tWORD tCO tNOMBRE tCF tPOINTVIRG |
 tCHAR tPOINTER tWORD tPOINTVIRG |
@@ -128,10 +128,10 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG|
 error tPOINTVIRG {yyerror;};
 
 DeclarationIntMemeLigne :
-tVIRG tWORD DeclarationIntMemeLigne {if (ts_push($2,"int")!=-1) printf("YACC: Declaration ligne correcte\n"); else printf("YACC: La variable existe déjà\n"); }| ;
+tVIRG tWORD DeclarationIntMemeLigne {if (ts_push($2,"int")!=-1) printf("YACC: Declaration ligne correcte\n"); else printf("YACC: La variable existe déjà\n"); }|;
 
 DeclarationIntEgalMemeLigne :
-tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne |;
+tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne {if (ts_push($2,"int")!=-1){ stack_push_cop(get_addr_from($2),$4)} ; else printf("YACC: La variable existe déjà\n"); }|;
 
 DeclarationIntTabMemeLigne :
 tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne | ;
