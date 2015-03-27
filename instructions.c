@@ -89,6 +89,8 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
                 fprintf(fp,"STORE %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
         }else if(INST_LOAD == inst->instruct_params[0]){
                 fprintf(fp,"LOAD %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
+        }else if(INST_JUMP_TRUE == inst->instruct_params[0]){
+                fprintf(fp,"JUMPT %d %d\n",inst->instruct_params[1],inst->instruct_params[$
         }
    
    	fclose(fp);
@@ -190,6 +192,15 @@ void stack_push_div(int arg1, int arg2,int arg3){
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
         new_inst->instruct_params[3]=arg3;
+        stack_push(new_inst);
+}
+
+void stack_push_jump_true(int arg1, int arg2){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_JUMP_TRUE;
+        new_inst->instruct_params[1]=arg1;
+        new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=-1;
         stack_push(new_inst);
 }
 

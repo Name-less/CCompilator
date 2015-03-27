@@ -5,6 +5,7 @@
 #define INST_MUL 0x02
 #define INST_DIV 0x04
 #define INST_JUMP 19
+#define INST_JUMP_TRUE 21
 #define INST_AFC 0x06
 #define INST_COP 0x05
 #define INST_LOAD 0x07
@@ -28,6 +29,7 @@ void stack_push_sub(int arg1,int arg2,int arg3);
 void stack_push_mul(int arg1,int arg2,int arg3);
 void stack_push_div(int arg1,int arg2,int arg3);
 void stack_push_jump(int arg1,int arg2);
+void stack_push_jump_true(int arg1,int arg2);
 void stack_push_mov(int arg1,int arg2);
 void stack_push_afc(int arg1,int arg2);
 void stack_push_cop(int arg1,int arg2);
