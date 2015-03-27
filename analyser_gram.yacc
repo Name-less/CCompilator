@@ -6,7 +6,7 @@
 
 int yyerror(char *s);
 int yylex();
-
+int line_number;
 // int yywrap();
 
 %}
@@ -57,7 +57,7 @@ char * texte;
 %%
 
 Input: 
-|Input tNEWLINE {print_all_assembler_instructions();}|
+|Input tNEWLINE {line_number++;print_all_assembler_instructions();}|
 Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
 Input Declaration |
 Input If {printf("YACC:condition ok \n");}|
@@ -72,7 +72,7 @@ tINTEGER tCO tCF tWORD |
 tINTEGER tPOINTER tWORD |;
 
 If :
-tIF tPO Condition tPF tAO Input tAF Else;
+tIF{if_add_from_where(line_number);} tPO Condition tPF tAO Input tAF{if_fill_from_to(line_number);} Else;
 
 Else :
 tELSE tAO Input tAF | 
@@ -138,6 +138,10 @@ tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne | ;
 
 DeclarationCharMemeLigne :
 tVIRG tWORD DeclarationCharMemeLigne | ;
+
+While :
+tWhile{while_add_from_to(line_number);} tPO Condition tPF tAO Input tAF {while_fill_from_where(line_number);};
+
 
 %%
 
