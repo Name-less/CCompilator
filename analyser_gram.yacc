@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "tableSymbole.h"
 #include "instructions.h"
+#include "jump_stack.h"
 
 int yyerror(char *s);
 int yylex();
