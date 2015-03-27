@@ -73,10 +73,10 @@ tINTEGER tCO tCF tWORD |
 tINTEGER tPOINTER tWORD |;
 
 If :
-tIF{if_add_from_where(line_number);} tPO Condition tPF tAO Input tAF{if_fill_from_to(line_number);} Else;
+tIF{if_add_from_where(line_number);} tPO Condition tPF tAO {push_symb_zone();} Input {pop_symb_zone();} tAF{if_fill_from_to(line_number);} Else;
 
 Else :
-tELSE tAO Input tAF | 
+tELSE tAO {push_symb_zone();} Input {pop_symb_zone(); tAF | 
 tELSE If |;
 
 Condition :
@@ -141,7 +141,7 @@ DeclarationCharMemeLigne :
 tVIRG tWORD DeclarationCharMemeLigne | ;
 
 While :
-tWhile{while_add_from_to(line_number);} tPO Condition tPF tAO Input tAF {while_fill_from_where(line_number);};
+tWhile{while_add_from_to(line_number);} tPO Condition tPF tAO {push_symb_zone();} Input {pop_symb_zone();} tAF {while_fill_from_where(line_number);};
 
 
 %%
