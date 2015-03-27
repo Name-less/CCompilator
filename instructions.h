@@ -24,6 +24,8 @@ void stack_init(stack_inst * inst);
 void stack_push(stack_inst * inst_to_add);
 stack_inst * stack_pop();
 
+int get_number_of_line();
+
 void stack_push_add(int arg1,int arg2,int arg3);
 void stack_push_sub(int arg1,int arg2,int arg3);
 void stack_push_mul(int arg1,int arg2,int arg3);

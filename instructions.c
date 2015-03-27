@@ -28,6 +28,10 @@ void stack_init(stack_inst * inst){
 	}
 }
 
+int get_number_of_line(){
+	return nbre_line;
+}
+
 /*
 push any instructions to the stack
 */
