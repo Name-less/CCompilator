@@ -30,7 +30,7 @@ void stack_push_add(int arg1,int arg2,int arg3);
 void stack_push_sub(int arg1,int arg2,int arg3);
 void stack_push_mul(int arg1,int arg2,int arg3);
 void stack_push_div(int arg1,int arg2,int arg3);
-void stack_push_jump(int arg1,int arg2);
+void stack_push_jump(int arg1);
 void stack_push_jump_true(int arg1,int arg2);
 void stack_push_mov(int arg1,int arg2);
 void stack_push_afc(int arg1,int arg2);

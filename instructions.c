@@ -82,7 +82,7 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
 	}else if(INST_SUB == inst->instruct_params[0]){
                 fprintf(fp,"SUB %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }else if(INST_JUMP == inst->instruct_params[0]){
-                fprintf(fp,"JUMP %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
+                fprintf(fp,"JUMP %d\n",inst->instruct_params[2]);
         }else if(INST_MOV == inst->instruct_params[0]){
                 fprintf(fp,"MOV %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
         }else if(INST_AFC == inst->instruct_params[0]){
@@ -199,18 +199,18 @@ void stack_push_div(int arg1, int arg2,int arg3){
         stack_push(new_inst);
 }
 
-void stack_push_jump_true(int arg1, int arg2){
+void stack_push_jump(int arg1){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
-        new_inst->instruct_params[0]=INST_JUMP_TRUE;
+        new_inst->instruct_params[0]=INST_JUMP;
         new_inst->instruct_params[1]=arg1;
-        new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[2]=-1;
         new_inst->instruct_params[3]=-1;
         stack_push(new_inst);
 }
 
-void stack_push_jump(int arg1, int arg2){
+void stack_push_jump_true(int arg1, int arg2){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
-        new_inst->instruct_params[0]=INST_JUMP;
+        new_inst->instruct_params[0]=INST_JUMP_TRUE;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
         new_inst->instruct_params[3]=-1;

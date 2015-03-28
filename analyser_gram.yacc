@@ -63,7 +63,9 @@ Input:
 Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
 Input Declaration |
 Input If {printf("YACC:condition ok \n");}|
-Input Main;
+Input Main |
+Input Function |
+Input Appel_Function;
 
 Main :
 tINTEGER tMAIN tPO Arg tPF tAO Input tAF {printf("YACC:mon main\n");} ;
@@ -145,9 +147,21 @@ While :
 tWhile{while_add_from_to(get_number_of_line());} tPO Condition tPF tAO {push_symb_zone();} Input {pop_symb_zone();} tAF {while_fill_from_where(get_number_of_line());};
 
 Function :
-tINTEGER tWORD {function_add(get_number_of_line(),$2);} tPO tARG tPF tAO Input tAF |
-tCHAR tWORD {function_add(get_number_of_line(),$2);} tPO tARG tPF tAO Input tAF |
-tVOID tWORD {function_add(get_number_of_line(),$2);} tPO tARG tPF tAO Input tAF;
+tINTEGER tWORD {function_add(get_number_of_line(),$2);} tPO Arguments_Declaration tPF tAO Input tAF |
+tCHAR tWORD {function_add(get_number_of_line(),$2);} tPO Arguments_Declaration tPF tAO Input tAF |
+tVOID tWORD {function_add(get_number_of_line(),$2);} tPO Arguments_Declaration tPF tAO Input tAF;
+
+Appel_Function :
+tWord { stack_push_jump(function_get_addr($1));}tPO Arguments tPF |
+
+Arguments_Declaration :
+tINTEGER tWORD tVIRG Arguments_Declaration |
+tVOID tWORD tVIRG Arguments_Declaration |
+tCHAR tWORD tVIRG Arguments_Declaration |;
+
+Arguments :
+tWORD tVIRG |
+tINTEGER tVIRG |;
 
 %%
 
