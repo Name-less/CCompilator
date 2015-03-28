@@ -14,19 +14,23 @@ void function_init_stack(int addr,char * name){
         }
 }
 
-void function_add(int addr,char * name){
+int function_add(int addr,char * name){
         Function_struct * to_add = malloc(sizeof(Function_struct));
 	to_add->addr = addr;
 	to_add->name = name;
 	Function_struct * iterator = first_one;
 	if(iterator == NULL){
 		function_init_stack(addr,name);
-		return;
+		return addr;
 	}
         while(iterator->next_function != NULL){
+		if(strcmp(iterator->name,name) == 0){
+			return -1;
+		}
                iterator = iterator->next_function;
         }
 	iterator->next_function = to_add;
+	return addr;
 }
 
 int function_get_addr(char * name){
