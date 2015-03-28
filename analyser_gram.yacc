@@ -58,13 +58,16 @@ char * texte;
 
 %%
 
+Input_Symbole :
+{push_symb_zone();} Input {pop_symb_zone();};
+
 Input: 
 |Input tNEWLINE {line_number++;print_all_assembler_instructions();}|
 Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
 Input Declaration |
-Input If {printf("YACC:condition ok \n");}|
-Input Main |
-Input Function |
+Input {push_symb_zone();} If {pop_symb_zone();} {printf("YACC:condition ok \n");}|
+Input {push_symb_zone();} Main {pop_symb_zone();} |
+Input {push_symb_zone();} Function {pop_symb_zone();} |
 Input Appel_Function;
 
 Main :
@@ -76,10 +79,10 @@ tINTEGER tCO tCF tWORD |
 tINTEGER tPOINTER tWORD |;
 
 If :
-tIF{if_add_from_where(get_number_of_line());} tPO Condition tPF tAO {push_symb_zone();} Input {pop_symb_zone();} tAF{if_fill_from_to(get_number_of_line());} Else;
+tIF{if_add_from_where(get_number_of_line());} tPO Condition tPF tAO Input tAF{if_fill_from_to(get_number_of_line());} Else;
 
 Else :
-tELSE tAO {push_symb_zone();} Input {pop_symb_zone(); tAF | 
+tELSE tAO Input tAF | 
 tELSE If |;
 
 Condition :
@@ -144,7 +147,7 @@ DeclarationCharMemeLigne :
 tVIRG tWORD DeclarationCharMemeLigne | ;
 
 While :
-tWhile{while_add_from_to(get_number_of_line());} tPO Condition tPF tAO {push_symb_zone();} Input {pop_symb_zone();} tAF {while_fill_from_where(get_number_of_line());};
+tWhile{while_add_from_to(get_number_of_line());} tPO Condition tPF tAO Input tAF {while_fill_from_where(get_number_of_line());};
 
 Function :
 tINTEGER tWORD {function_add(get_number_of_line(),$2);} tPO Arguments_Declaration tPF tAO Input tAF |
@@ -152,7 +155,7 @@ tCHAR tWORD {function_add(get_number_of_line(),$2);} tPO Arguments_Declaration t
 tVOID tWORD {function_add(get_number_of_line(),$2);} tPO Arguments_Declaration tPF tAO Input tAF;
 
 Appel_Function :
-tWord { stack_push_jump(function_get_addr($1));}tPO Arguments tPF |
+tWord {stack_push_jump(function_get_addr($1));} tPO Arguments tPF;
 
 Arguments_Declaration :
 tINTEGER tWORD tVIRG Arguments_Declaration |
@@ -161,7 +164,9 @@ tCHAR tWORD tVIRG Arguments_Declaration |;
 
 Arguments :
 tWORD tVIRG |
-tINTEGER tVIRG |;
+tINTEGER tVIRG |
+tWORD |
+tINTEGER |;
 
 %%
 
