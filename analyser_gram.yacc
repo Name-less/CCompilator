@@ -4,6 +4,7 @@
 #include "tableSymbole.h"
 #include "instructions.h"
 #include "jump_stack.h"
+#include "function_stack.h"
 
 int yyerror(char *s);
 int yylex();
@@ -143,6 +144,10 @@ tVIRG tWORD DeclarationCharMemeLigne | ;
 While :
 tWhile{while_add_from_to(get_number_of_line());} tPO Condition tPF tAO {push_symb_zone();} Input {pop_symb_zone();} tAF {while_fill_from_where(get_number_of_line());};
 
+Function :
+tINTEGER tWORD {function_add(get_number_of_line(),$2);} tPO tARG tPF tAO Input tAF |
+tCHAR tWORD {function_add(get_number_of_line(),$2);} tPO tARG tPF tAO Input tAF |
+tVOID tWORD {function_add(get_number_of_line(),$2);} tPO tARG tPF tAO Input tAF;
 
 %%
 
