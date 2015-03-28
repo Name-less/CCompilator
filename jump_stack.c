@@ -94,6 +94,42 @@ void while_add_from_to(int arg){
         iterator->next_if = to_add;
 }
 
+void parse_and_modify_file(char * file_name,char * new_file){
+	int current_delta_line = 0; 
+	int current_line = 0;
+	char line[256];
+
+	FILE * fp;
+	fp = fopen (new_file, "w+");
+	
+	FILE * old_file;
+	old_file = fopen(file_name,"a+");
+
+	//while stack
+	Jump_struct * iterator = first_one_while;
+	while(iterator != NULL){
+		
+		while(current_line <= iterator->from_where){
+			fgets(line, sizeof(line),old_file);
+			fprintf(fp,"%s",line);
+			current_line++;
+		}
+		current_delta_line++;
+ 		fprintf(fp,"JUMP %d\n",iterator->from_to);
+		iterator = iterator->next_if;
+	}
+
+	//if stack
+	Jump_struct * iterator = first_one;
+	while(){
+		iterator = iterator->next_if;
+	}
+	
+
+
+
+}
+
 int main(){
 	while_add_from_to(6);
 	while_add_from_to(5);
