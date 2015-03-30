@@ -12,4 +12,4 @@ void if_init_stack(int arg);
 void if_fill_from_to(int arg);
 void if_add_from_where(int arg);
 
-void parse_and_modify_file(char * file_name);
+void parse_and_modify_file(char * file_name,char * new_file);
