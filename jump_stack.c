@@ -127,12 +127,23 @@ void parse_and_modify_file(char * file_name,char * new_file){
 
 	//if stack
 	iterator = first_one;
-	while(1 == 1){
-		iterator = iterator->next_if;
-	}
-	
+        while(fgets(line,sizeof(line),old_file) != NULL){
+                iterator = first_one;
+                Jump_struct * aux = iterator;
+                while(iterator != NULL){
+                        if(current_line+1 == iterator->from_where){
+                                fprintf(fp,"JUMP %d\n",iterator->from_to);   $
+                                fprintf(fp,"%s",line);
+                                aux->next_if = iterator->next_if;
+                        }else{
+                                fprintf(fp,"%s",line);
+                        }
+                        aux=iterator;
+                        iterator = iterator->next_if;
+                        current_line++; 
+                }
 
-
+        }	
 
 }
 
