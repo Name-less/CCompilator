@@ -49,6 +49,15 @@ void if_add_from_where(int arg){
 	iterator->next_if = to_add;
 }
 
+void while_init_stack(int arg){
+        first_one_while = malloc(sizeof(Jump_struct));
+        if(first_one_while != NULL){
+                first_one_while->from_where = 0;
+                first_one_while->from_to = arg;
+                first_one_while->next_if = NULL;
+        }
+}
+
 void while_fill_from_where(int arg){
         Jump_struct * iterator = first_one_while;
 
@@ -67,15 +76,6 @@ void while_fill_from_where(int arg){
                 }
         }
 
-}
-
-void while_init_stack(int arg){
-        first_one_while = malloc(sizeof(Jump_struct));
-        if(first_one_while != NULL){
-                first_one_while->from_where = arg;
-                first_one_while->from_to = 0;
-                first_one_while->next_if = NULL;
-        }
 }
 
 void while_add_from_to(int arg){
@@ -100,56 +100,54 @@ void parse_and_modify_file(char * file_name,char * new_file){
 	char line[256];
 
 	FILE * fp;
-	fp = fopen (new_file, "w+");
+	fp = fopen (new_file, "a+");
 	
 	FILE * old_file;
-	old_file = fopen(file_name,"a+");
+	old_file = fopen(file_name,"r");
 
 	//while stack
 	Jump_struct * iterator = first_one_while;
+	Jump_struct * iterator_if = first_one;
 	while(fgets(line,sizeof(line),old_file) != NULL){
 		iterator = first_one_while;
+		iterator_if = first_one;
 		Jump_struct * aux = iterator;
-		while(iterator != NULL){
+		Jump_struct * aux_if = iterator_if;
+		int next_line = 0;
+		int next_line_if = 0;
+		while(iterator != NULL && next_line == 0){
+			//printf("while loop nbr line %d actual from where %d \n",current_line,iterator->from_where);
 			if(current_line+1 == iterator->from_where){
-		 		fprintf(fp,"JUMP %d\n",iterator->from_to);	
-				fprintf(fp,"%s",line);	
+				printf("PUT something \n");
+		 		fprintf(fp,"WHILE %d\n",iterator->from_to);	
 				aux->next_if = iterator->next_if;
-			}else{
-				fprintf(fp,"%s",line);	
+				next_line = 1;
 			}
 			aux=iterator;
 			iterator = iterator->next_if;
-			current_line++;
 		}
-
-	}
-
-	//if stack
-	iterator = first_one;
-        while(fgets(line,sizeof(line),old_file) != NULL){
-                iterator = first_one;
-                Jump_struct * aux = iterator;
-                while(iterator != NULL){
-                        if(current_line+1 == iterator->from_where){
-                                fprintf(fp,"JUMP %d\n",iterator->from_to);
-                                fprintf(fp,"%s",line);
-                                aux->next_if = iterator->next_if;
-                        }else{
-                                fprintf(fp,"%s",line);
+                while(iterator_if != NULL && next_line_if == 0){
+                        //printf("while loop nbr line %d actual from where %d \n",current_line,iterator->from_where);
+                        if(current_line+1 == iterator_if->from_where){
+                                printf("PUT something \n");
+                                fprintf(fp,"IF %d\n",iterator_if->from_to);
+                                aux_if->next_if = iterator_if->next_if;
+                                next_line_if = 1;
                         }
-                        aux=iterator;
-                        iterator = iterator->next_if;
-                        current_line++; 
+                        aux_if=iterator_if;
+                        iterator_if = iterator_if->next_if;
                 }
-
-        }	
+		fprintf(fp,"%s",line);
+		current_line++;
+	}
 
 }
 
 int main(){
 	while_add_from_to(2);
 	while_fill_from_where(4);
+	while_add_from_to(5);
+	while_fill_from_where(6);
 	if_add_from_where(8);
 	if_fill_from_to(10);
 	parse_and_modify_file((char *)"toto",(char *)"tata");
