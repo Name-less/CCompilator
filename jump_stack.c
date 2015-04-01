@@ -119,7 +119,7 @@ void parse_and_modify_file(char * file_name,char * new_file){
 			//printf("while loop nbr line %d actual from where %d \n",current_line,iterator->from_where);
 			if(current_line+1 == iterator->from_where){
 				printf("PUT something \n");
-		 		fprintf(fp,"WHILE %d\n",iterator->from_to);	
+		 		fprintf(fp,"JMP %d\n",iterator->from_to);	
 				aux->next_if = iterator->next_if;
 				next_line = 1;
 			}
@@ -130,7 +130,7 @@ void parse_and_modify_file(char * file_name,char * new_file){
                         //printf("while loop nbr line %d actual from where %d \n",current_line,iterator->from_where);
                         if(current_line+1 == iterator_if->from_where){
                                 printf("PUT something \n");
-                                fprintf(fp,"IF %d\n",iterator_if->from_to);
+                                fprintf(fp,"JMP %d\n",iterator_if->from_to);
                                 aux_if->next_if = iterator_if->next_if;
                                 next_line_if = 1;
                         }
