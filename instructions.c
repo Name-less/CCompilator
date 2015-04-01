@@ -96,7 +96,7 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
         }else if(INST_INF == inst->instruct_params[0]){
                 fprintf(fp,"INF %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }else if(INST_SUP == inst->instruct_params[0]){
-                fprintf(fp,"INF %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+                fprintf(fp,"SUP %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }
    
    	fclose(fp);
@@ -233,7 +233,13 @@ int main(){
 	stack_push_jump(3);
 	stack_push_afc(3,4);
 	stack_push_add(3,4,8);
+	stack_push_sub(5,6,4);
+	stack_push_mul(5,7,3);
+	stack_push_add(5,5,7);
 	stack_push_pri(5);
-	stack_push_cop(6,4);
+	stack_push_jump_false(9,10);
+	stack_push_inf(1,90,56);
+	stack_push_sup(14,5,34);
+	stack_push_equ(6,4,9);
 	print_all_assembler_instructions();	
 }

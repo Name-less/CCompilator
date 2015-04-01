@@ -132,7 +132,7 @@ void parse_and_modify_file(char * file_name,char * new_file){
                 Jump_struct * aux = iterator;
                 while(iterator != NULL){
                         if(current_line+1 == iterator->from_where){
-                                fprintf(fp,"JUMP %d\n",iterator->from_to);   $
+                                fprintf(fp,"JUMP %d\n",iterator->from_to);
                                 fprintf(fp,"%s",line);
                                 aux->next_if = iterator->next_if;
                         }else{
@@ -148,7 +148,9 @@ void parse_and_modify_file(char * file_name,char * new_file){
 }
 
 int main(){
-	while_add_from_to(6);
-	while_add_from_to(5);
-	while_fill_from_where(10);
+	while_add_from_to(2);
+	while_fill_from_where(4);
+	if_add_from_where(8);
+	if_fill_from_to(10);
+	parse_and_modify_file((char *)"toto",(char *)"tata");
 }
