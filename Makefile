@@ -1,5 +1,5 @@
 TARGETS=analyser
-OBJECTS=tableSymbole.o instructions.o analyser_gram.o analyser_lexical.o
+OBJECTS=tableSymbole.o instructions.o jump_stack.o function_stack.o analyser_gram.o analyser_lexical.o
 LDFLAGS=
 CFLAGS=-Wall
 
@@ -12,6 +12,12 @@ tableSymbole.o: tableSymbole.c
 	gcc $(CFLAGS) -Werror -c $^
 
 intructions.o: instructions.c
+	gcc $(CFLAGS) -Werror -c $^
+
+jump_stack.o: jump_stack.c
+	gcc $(CFLAGS) -Werror -c $^
+
+function_stack.o: function_stack.c
 	gcc $(CFLAGS) -Werror -c $^
 
 analyser_gram.o: y.tab.c
