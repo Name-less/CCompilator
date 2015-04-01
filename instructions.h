@@ -1,15 +1,16 @@
 
-#define INST_ADD 0x01
-#define INST_MOV 20
-#define INST_SUB 0x03
-#define INST_MUL 0x02
-#define INST_DIV 0x04
-#define INST_JUMP 19
-#define INST_JUMP_TRUE 21
-#define INST_AFC 0x06
-#define INST_COP 0x05
-#define INST_LOAD 0x07
-#define INST_STORE 0x08
+#define INST_ADD 1
+#define INST_MUL 2
+#define INST_SUB 3
+#define INST_DIV 4
+#define INST_COP 5
+#define INST_AFC 6
+#define INST_JUMP 7
+#define INST_JUMP_FALSE 8
+#define INST_INF 9
+#define INST_SUP 10
+#define INST_EQU 11
+#define INST_PRI 12
 
 int nbre_line;
 
@@ -31,12 +32,13 @@ void stack_push_sub(int arg1,int arg2,int arg3);
 void stack_push_mul(int arg1,int arg2,int arg3);
 void stack_push_div(int arg1,int arg2,int arg3);
 void stack_push_jump(int arg1);
-void stack_push_jump_true(int arg1,int arg2);
-void stack_push_mov(int arg1,int arg2);
+void stack_push_jump_false(int arg1,int arg2);
 void stack_push_afc(int arg1,int arg2);
 void stack_push_cop(int arg1,int arg2);
-void stack_push_store(int arg1,int arg2);
-void stack_push_load(int arg1,int arg2);
+void stack_push_inf(int arg1,int arg2,int arg3);
+void stack_push_sup(int arg1,int arg2,int arg3);
+void stack_push_pri(int arg1);
+void stack_push_equ(int arg1,int arg2,int arg3);
 
 void print_assembler_insctructions(char * operation, char * op1, char * op2, char * to_print);
 void print_all_assembler_instructions();

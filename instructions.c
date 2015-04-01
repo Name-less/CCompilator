@@ -80,21 +80,23 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
 	}else if(INST_DIV == inst->instruct_params[0]){
 		fprintf(fp,"DIV %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
 	}else if(INST_SUB == inst->instruct_params[0]){
-                fprintf(fp,"SUB %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+                fprintf(fp,"SOU %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }else if(INST_JUMP == inst->instruct_params[0]){
-                fprintf(fp,"JUMP %d\n",inst->instruct_params[2]);
-        }else if(INST_MOV == inst->instruct_params[0]){
-                fprintf(fp,"MOV %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
+                fprintf(fp,"JMP %d\n",inst->instruct_params[1]);
         }else if(INST_AFC == inst->instruct_params[0]){
                 fprintf(fp,"AFC %d %d \n",inst->instruct_params[1],inst->instruct_params[2]);
         }else if(INST_COP == inst->instruct_params[0]){
                 fprintf(fp,"COP %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
-        }else if(INST_STORE == inst->instruct_params[0]){
-                fprintf(fp,"STORE %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
-        }else if(INST_LOAD == inst->instruct_params[0]){
-                fprintf(fp,"LOAD %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
-        }else if(INST_JUMP_TRUE == inst->instruct_params[0]){
-                fprintf(fp,"JUMPT %d %d\n",inst->instruct_params[1],inst->instruct_params[$
+        }else if(INST_JUMP_FALSE == inst->instruct_params[0]){
+                fprintf(fp,"JMF %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
+        }else if(INST_EQU == inst->instruct_params[0]){
+                fprintf(fp,"EQU %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+        }else if(INST_PRI == inst->instruct_params[0]){
+                fprintf(fp,"PRI %d\n",inst->instruct_params[1]);
+        }else if(INST_INF == inst->instruct_params[0]){
+                fprintf(fp,"INF %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+        }else if(INST_SUP == inst->instruct_params[0]){
+                fprintf(fp,"INF %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }
    
    	fclose(fp);
@@ -123,33 +125,30 @@ void stack_push_afc(int arg1,int arg2){
 }
 
 void stack_push_cop(int arg1,int arg2){
-	printf("erreur dans cop debut\n");
         stack_inst * new_inst = malloc(sizeof(stack_inst));
-        new_inst->instruct_params[0]=INST_AFC;
+        new_inst->instruct_params[0]=INST_COP;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
         new_inst->instruct_params[3]=-1;
         stack_push(new_inst);
-	printf("erreur dans cop fin\n");
-
 }
 
-void stack_push_load(int arg1,int arg2){
+void stack_push_inf(int arg1,int arg2,int arg3){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
-        new_inst->instruct_params[0]=INST_AFC;
+        new_inst->instruct_params[0]=INST_INF;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
-        new_inst->instruct_params[3]=-1;
+        new_inst->instruct_params[3]=arg3;
         stack_push(new_inst);
 
 }
 
-void stack_push_store(int arg1,int arg2){
+void stack_push_sup(int arg1,int arg2,int arg3){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
-        new_inst->instruct_params[0]=INST_AFC;
+        new_inst->instruct_params[0]=INST_SUP;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
-        new_inst->instruct_params[3]=-1;
+        new_inst->instruct_params[3]=arg3;
         stack_push(new_inst);
 
 }
@@ -163,11 +162,20 @@ void stack_push_add(int arg1, int arg2,int arg3){
         stack_push(new_inst);
 }
 
-void stack_push_mov(int arg1, int arg2){
+void stack_push_equ(int arg1, int arg2,int arg3){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
-        new_inst->instruct_params[0]=INST_MOV;
+        new_inst->instruct_params[0]=INST_EQU;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=arg3;
+        stack_push(new_inst);
+}
+
+void stack_push_pri(int arg1){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_PRI;
+        new_inst->instruct_params[1]=arg1;
+        new_inst->instruct_params[2]=-1;
         new_inst->instruct_params[3]=-1;
         stack_push(new_inst);
 }
@@ -208,9 +216,9 @@ void stack_push_jump(int arg1){
         stack_push(new_inst);
 }
 
-void stack_push_jump_true(int arg1, int arg2){
+void stack_push_jump_false(int arg1, int arg2){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
-        new_inst->instruct_params[0]=INST_JUMP_TRUE;
+        new_inst->instruct_params[0]=INST_JUMP_FALSE;
         new_inst->instruct_params[1]=arg1;
         new_inst->instruct_params[2]=arg2;
         new_inst->instruct_params[3]=-1;
@@ -221,9 +229,11 @@ void stack_push_jump_true(int arg1, int arg2){
 End of our functions to add instructions to the stack
 */
 
-/*int main(){
-	stack_push_jump(3,4);
+int main(){
+	stack_push_jump(3);
 	stack_push_afc(3,4);
 	stack_push_add(3,4,8);
+	stack_push_pri(5);
+	stack_push_cop(6,4);
 	print_all_assembler_instructions();	
-}*/
+}
