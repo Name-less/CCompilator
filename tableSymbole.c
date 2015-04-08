@@ -223,11 +223,11 @@ void ts_flush(){
 	while(iterator != NULL){
 		symbole * aux = iterator;
 		iterator = iterator->next;
-		printf("free %s \n",aux->name);
+		//printf("free %s \n",aux->name);
 		if(aux != NULL){
 			free(aux);
 		}
-		printf("free ok \n");
+		//printf("free ok \n");
 	}
 	firstOne = NULL;
 }
