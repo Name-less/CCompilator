@@ -16,3 +16,5 @@ int ts_init();
 int exist(char * name);
 void ts_display();
 void ts_flush();
+void set_esp(int value);
+int get_esp();

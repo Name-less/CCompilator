@@ -19,11 +19,22 @@ typedef struct Symbole {
 initialize the table by creating the first reference symbol
 */
 
+int esp = 0;
 int addr = 0;
 int get_next_addr(){
-	addr = addr+2;
+	addr = addr+2+esp;
 	return addr;
 }
+
+void set_esp(int value){
+	esp = esp + value;
+}
+
+int get_esp(){
+	return esp;
+}
+
+
 
 symbole * firstOne;
 int ts_init(char * name, char * type_symbole){
