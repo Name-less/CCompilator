@@ -60,7 +60,9 @@ int ts_add_temp(){
         }
         symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
         newSymbole->adress = get_next_addr();
-	newSymbole->name = (char *)"null";
+	char * buf_name = (char *)malloc(32);
+	sprintf(buf_name,"tmp%d",newSymbole->adress);
+	newSymbole->name = (char *)buf_name;
         newSymbole->type_symbole = (char *)"temp";
         newSymbole->before = iterator;
         newSymbole->next = NULL;
@@ -88,7 +90,7 @@ int ts_push(char * name,char * type_symbole){
 		newSymbole->before = iterator;
 		newSymbole->next = NULL;
 		iterator->next = newSymbole;
-		ts_display();
+		//ts_display();
 		return newSymbole->adress;
 	}else{
 		return -1;
@@ -261,18 +263,20 @@ void pop_symb_zone(){
 }
 
 
-
 /*int main(){
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
 	push_symb_zone();
-	ts_push((char *)"a",(char *)"const1");
-	ts_push((char *)"a",(char *)"const2");
-	ts_push((char *)"a",(char *)"const2");
-	ts_push((char *)"a",(char *)"const2");
+//	ts_push((char *)"a",(char *)"const1");
+//	ts_push((char *)"a",(char *)"const2");
+//	ts_push((char *)"a",(char *)"const2");
+//	ts_push((char *)"a",(char *)"const2");
 	ts_push((char *)"b",(char *)"const3");
 	ts_add_temp();
-	ts_push((char *)"i",(char *)"const3");
-	ts_push((char *)"u",(char *)"const5");
+	ts_add_temp();
+	ts_display();
+        ts_pop_addr(4);
+	ts_display();
+	/*ts_push((char *)"u",(char *)"const5");
 	ts_push((char *)"y",(char *)"const1");
 	ts_push((char *)"t",(char *)"const3");
 	push_symb_zone();
@@ -280,7 +284,6 @@ void pop_symb_zone(){
 	ts_push((char *)"e",(char *)"const3");
 	ts_push((char *)"c",(char *)"const4");
 	printf("avant pop addr \n");
-  //      ts_pop_addr(4);
 	printf("avant pop \n");
         ts_pop((char *)"e");
 	printf("avant pop last \n");
@@ -289,7 +292,7 @@ void pop_symb_zone(){
 	printf("avant flush\n");
 	ts_display();
 	ts_flush();
-	printf("avant displ \n");
+	printf("avant displ \n");*/
 	//ts_display();
 }*/
 
