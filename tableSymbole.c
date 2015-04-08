@@ -88,7 +88,7 @@ int ts_push(char * name,char * type_symbole){
 		newSymbole->before = iterator;
 		newSymbole->next = NULL;
 		iterator->next = newSymbole;
-		//ts_display();
+		ts_display();
 		return newSymbole->adress;
 	}else{
 		return -1;
