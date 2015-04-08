@@ -106,22 +106,24 @@ tNOMBRE {
 				int tmp = ts_add_temp();
 				$$ = tmp;
 				stack_push_afc(tmp,$1);
-				printf("YACC: tNOMBRE saved\n\n");
+				printf("YACC: tNOMBRE saved %d\n\n", tmp);
 		} |
 tWORD {
-				if (exist($1) == -1 )
-					printf("YACC: tword saved\n\n");
+				if (exist($1) == -1 ){
+					printf("YACC: tword ALREADY saved\n\n");
+					 int tmp = ts_add_temp();
+                                        $$ = tmp;
+                                        printf("YACC: avant push_cop\n");
+                                        stack_push_cop(tmp,get_addr_from($1));
+					printf("YACC: %d\n",get_addr_from($1));
+					}
 				else {
 					printf("YACC: erreur debut else tWORD\n");
-					int tmp = ts_add_temp();
-					$$ = tmp;
-					printf("YACC: avant push_cop\n");
-					stack_push_cop(tmp,get_addr_from($1) );
-					}
+				}
 	};
 
 Egalite :
-Exp tEGAL Exp {stack_push_cop($1,$3);};
+Exp tEGAL Exp {stack_push_cop($1,$3); ts_pop_addr($3);};
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { 
