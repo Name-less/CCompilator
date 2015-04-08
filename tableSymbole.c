@@ -88,7 +88,7 @@ int ts_push(char * name,char * type_symbole){
 		newSymbole->before = iterator;
 		newSymbole->next = NULL;
 		iterator->next = newSymbole;
-		ts_display();
+		//ts_display();
 		return newSymbole->adress;
 	}else{
 		return -1;
@@ -120,8 +120,11 @@ int ts_pop(char * name){
         while(iterator != NULL){
                 if(iterator->name == name){
 			(iterator->before)->next = iterator->next;
-			iterator->next = iterator->before;
+			if(iterator->next != NULL){
+				(iterator->next)->before = iterator->before;
+			}
 			free(iterator);
+			iterator = NULL;
 			return 1;
                 }else{
                         iterator = iterator->next;
@@ -158,8 +161,10 @@ int ts_pop_last(){
 	symbole * iterator = firstOne;
 	while(iterator != NULL){
 		if(iterator->next == NULL){
+			printf("before is %s \n",(iterator->before)->name);
 			(iterator->before)->next = NULL;
 			free(iterator);
+			iterator = NULL;
 			return 1;
 		}else{
 			iterator = iterator->next;
@@ -218,7 +223,11 @@ void ts_flush(){
 	while(iterator != NULL){
 		symbole * aux = iterator;
 		iterator = iterator->next;
-		free(aux);
+		//printf("free %s \n",aux->name);
+		if(aux != NULL){
+			free(aux);
+		}
+		//printf("free ok \n");
 	}
 	firstOne = NULL;
 }
@@ -270,9 +279,18 @@ void pop_symb_zone(){
 	ts_push((char *)"r",(char *)"const2");
 	ts_push((char *)"e",(char *)"const3");
 	ts_push((char *)"c",(char *)"const4");
-	pop_symb_zone();
-	pop_symb_zone();
+	printf("avant pop addr \n");
+  //      ts_pop_addr(4);
+	printf("avant pop \n");
+        ts_pop((char *)"e");
+	printf("avant pop last \n");
+        ts_pop_last();
+        ts_pop_last();
+	printf("avant flush\n");
 	ts_display();
+	ts_flush();
+	printf("avant displ \n");
+	//ts_display();
 }*/
 
 
