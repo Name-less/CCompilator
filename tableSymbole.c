@@ -65,7 +65,7 @@ int ts_add_temp(){
         newSymbole->before = iterator;
         newSymbole->next = NULL;
         iterator->next = newSymbole;
-        return newSymbole->adress;
+        return (newSymbole->adress);
 }
 
 /*
@@ -118,7 +118,7 @@ delete the first element of the table
 int ts_pop(char * name){
         symbole * iterator = firstOne;
         while(iterator != NULL){
-                if(iterator->name == name){
+                if(strcmp(iterator->name,name) == 0){
 			(iterator->before)->next = iterator->next;
 			if(iterator->next != NULL){
 				(iterator->next)->before = iterator->before;
@@ -188,7 +188,7 @@ char * get_symbol_at(int addr){
 int get_addr_from(char * name){
 	symbole * iterator = firstOne;
 	while(iterator != NULL){
-		if(iterator->name == name){
+		if(strcmp(iterator->name,name) == 0){
 			return iterator->adress;
 		}
 		iterator = iterator->next;
