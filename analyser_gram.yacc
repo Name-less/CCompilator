@@ -126,7 +126,7 @@ Egalite :
 Exp tEGAL Exp {	stack_push_cop($1,$3); printf("YACC: push cop d'egalite\n");
 		printf("YACC: ici dollar 1 vaut %d et dollar 3 vaut %d\n\n", $1,$3);
 		ts_display();
-		ts_flush();
+		ts_pop_addr($3);
 		ts_display();};
 
 Declaration :

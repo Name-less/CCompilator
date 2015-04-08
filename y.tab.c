@@ -1768,7 +1768,7 @@ yyreduce:
     {	stack_push_cop((yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number)); printf("YACC: push cop d'egalite\n");
 		printf("YACC: ici dollar 1 vaut %d et dollar 3 vaut %d\n\n", (yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));
 		ts_display();
-		ts_flush();
+		ts_pop_addr((yyvsp[(3) - (3)].number));
 		ts_display();}
     break;
 

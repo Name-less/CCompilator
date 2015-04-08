@@ -276,7 +276,7 @@ void pop_symb_zone(){
 	ts_display();
         ts_pop_addr(4);
 	ts_display();
-	/*ts_push((char *)"u",(char *)"const5");
+	ts_push((char *)"u",(char *)"const5");
 	ts_push((char *)"y",(char *)"const1");
 	ts_push((char *)"t",(char *)"const3");
 	push_symb_zone();
@@ -292,7 +292,7 @@ void pop_symb_zone(){
 	printf("avant flush\n");
 	ts_display();
 	ts_flush();
-	printf("avant displ \n");*/
+	printf("avant displ \n");
 	//ts_display();
 }*/
 
