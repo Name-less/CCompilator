@@ -95,7 +95,8 @@ void while_add_from_to(int arg){
 }
 
 void parse_and_modify_file(char * file_name,char * new_file){
-	int current_delta_line = 0; 
+	// ANTHO: commenté car genant pour la compile
+	/** int current_delta_line = 0;*/ 
 	int current_line = 0;
 	char line[256];
 
@@ -147,10 +148,10 @@ void parse_and_modify_file(char * file_name,char * new_file){
 
 }
 
-int main(){
+/*int main(){
 	while_add_from_to(2);
 	while_fill_from_where(4);
 	if_add_from_where(8);
 	if_fill_from_to(10);
 	parse_and_modify_file((char *)"toto",(char *)"tata");
-}
+}*/

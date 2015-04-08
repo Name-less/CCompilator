@@ -6,7 +6,7 @@ CFLAGS=-Wall
 all: $(TARGETS)
 
 analyser: $(OBJECTS)
-	gcc $(LDFLAGS) -o $@ $^ -ll
+	gcc $(LDFLAGS) -g -o $@ $^ -ll
 
 tableSymbole.o: tableSymbole.c
 	gcc $(CFLAGS) -Werror -c $^

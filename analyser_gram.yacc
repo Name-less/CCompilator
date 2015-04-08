@@ -58,25 +58,26 @@ char * texte;
 
 %%
 
-Input_Symbole :
-{push_symb_zone();} Input {pop_symb_zone();};
-
 Input: 
-|Input tNEWLINE {line_number++;print_all_assembler_instructions();}|
+ |
+Input tNEWLINE {line_number++;
+		print_all_assembler_instructions();
+		} |
 Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
 Input Declaration |
-Input {push_symb_zone();} If {pop_symb_zone();} {printf("YACC:condition ok \n");}|
-Input {push_symb_zone();} Main {pop_symb_zone();} |
-Input {push_symb_zone();} Function {pop_symb_zone();} |
-Input Appel_Function;
+Input {/*push_symb_zone();*/} If {/*pop_symb_zone();*/} {printf("YACC:condition ok \n");}|
+Input {/*push_symb_zone();*/} Function {/*pop_symb_zone();*/} |
+Input Appel_Function|
+Input Main;
 
 Main :
-tINTEGER tMAIN tPO Arg tPF tAO Input tAF {printf("YACC:mon main\n");} ;
+tINTEGER tMAIN tPO Arg tPF tAO {push_symb_zone();} Input tAF {pop_symb_zone(); printf("YACC:mon main\n");} ;
 
 Arg :
 tINTEGER tWORD |
 tINTEGER tCO tCF tWORD | 
-tINTEGER tPOINTER tWORD |;
+tINTEGER tPOINTER tWORD |
+;
 
 If :
 tIF{if_add_from_where(get_number_of_line());} tPO Condition tPF tAO Input tAF{if_fill_from_to(get_number_of_line());} Else;
@@ -122,7 +123,7 @@ tWORD {
 	};
 
 Egalite :
-Exp tEGAL Exp {printf("YACC: erreur sur Egalite\n"); stack_push_cop(get_addr_from($1),$3);};
+Exp tEGAL Exp {printf("YACC: erreur sur Egalite\n"); stack_push_cop($1,$3);};
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { 
@@ -171,10 +172,10 @@ DeclarationIntTabMemeLigne :
 tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne | ;
 
 While :
-tWhile{
+tWHILE{
 		while_add_from_to(get_number_of_line());
 		} tPO Condition tPF tAO Input tAF {
-											while_fill_from_where(get_number_of_line());
+							while_fill_from_where(get_number_of_line());
 											}
 		;
 
@@ -190,7 +191,7 @@ tVOID tWORD {
 			} tPO Arguments_Declaration tPF tAO Input tAF;
 
 Appel_Function :
-tWord {
+tWORD {
 		 stack_push_jump(function_get_addr($1));
 		} tPO Arguments tPF;
 

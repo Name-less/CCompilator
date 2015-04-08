@@ -229,7 +229,7 @@ void stack_push_jump_false(int arg1, int arg2){
 End of our functions to add instructions to the stack
 */
 
-int main(){
+/*int main(){
 	stack_push_jump(3);
 	stack_push_afc(3,4);
 	stack_push_add(3,4,8);
@@ -242,4 +242,4 @@ int main(){
 	stack_push_sup(14,5,34);
 	stack_push_equ(6,4,9);
 	print_all_assembler_instructions();	
-}
+}*/
