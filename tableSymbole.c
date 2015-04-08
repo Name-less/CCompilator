@@ -55,9 +55,17 @@ add a temporary variable on the table
 
 int ts_add_temp(){
         symbole * iterator = firstOne;
-        while(iterator->next != NULL){
+        while(iterator->next != NULL){ //si on teste sur NULL on insère systématiquement à la fin de la table
+	// et on perd des cases qui on juste étées "freed" au lieu de faire un free on pourrait insérer un # 
+	//qui signalerait que la case est disponible et tester
+	// iterator->next->name!=# 
+	
+	//	if(iterator->next->name!=# ) {
                 iterator = iterator->next;
-        }
+	//	}
+        
+}
+	printf("TS_ADD_TEMP: l'adresse d'insertion est %d\n\n",iterator->adress);
         symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
         newSymbole->adress = get_next_addr();
 	char * buf_name = (char *)malloc(32);
