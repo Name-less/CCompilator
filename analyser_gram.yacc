@@ -111,11 +111,11 @@ tNOMBRE {
 tWORD {
 				if (exist($1) == -1 ){
 					printf("YACC: tword ALREADY saved\n\n");
-					 int tmp = ts_add_temp();
+					int tmp = ts_add_temp();
                                         $$ = tmp;
                                         printf("YACC: avant push_cop\n");
                                         stack_push_cop(tmp,get_addr_from($1));
-					printf("YACC: %d\n",get_addr_from($1));
+					printf("ici YACC: %d\n",get_addr_from($1));
 					}
 				else {
 					printf("YACC: erreur debut else tWORD\n");
@@ -123,7 +123,11 @@ tWORD {
 	};
 
 Egalite :
-Exp tEGAL Exp {stack_push_cop($1,$3); ts_pop_addr($3);};
+Exp tEGAL Exp {	stack_push_cop($1,$3); printf("YACC: push cop d'egalite\n");
+		printf("YACC: ici dollar 1 vaut %d et dollar 3 vaut %d\n\n", $1,$3);
+		ts_display();
+		ts_flush();
+		ts_display();};
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { 

@@ -557,10 +557,10 @@ static const yytype_uint8 yyrline[] =
       68,    68,    69,    70,    73,    73,    77,    78,    79,    79,
       83,    83,    83,    86,    86,    87,    87,    90,    91,    92,
       93,    94,    95,    96,    97,   100,   101,   102,   103,   104,
-     105,   111,   126,   129,   135,   140,   145,   154,   159,   163,
-     168,   172,   172,   175,   175,   184,   184,   187,   187,   190,
-     190,   195,   195,   200,   201,   202,   202,   205,   206,   207,
-     208,   208
+     105,   111,   126,   133,   139,   144,   149,   158,   163,   167,
+     172,   176,   176,   179,   179,   188,   188,   191,   191,   194,
+     194,   199,   199,   204,   205,   206,   206,   209,   210,   211,
+     212,   212
 };
 #endif
 
@@ -1749,11 +1749,11 @@ yyreduce:
     {
 				if (exist((yyvsp[(1) - (1)].texte)) == -1 ){
 					printf("YACC: tword ALREADY saved\n\n");
-					 int tmp = ts_add_temp();
+					int tmp = ts_add_temp();
                                         (yyval.number) = tmp;
                                         printf("YACC: avant push_cop\n");
                                         stack_push_cop(tmp,get_addr_from((yyvsp[(1) - (1)].texte)));
-					printf("YACC: %d\n",get_addr_from((yyvsp[(1) - (1)].texte)));
+					printf("ici YACC: %d\n",get_addr_from((yyvsp[(1) - (1)].texte)));
 					}
 				else {
 					printf("YACC: erreur debut else tWORD\n");
@@ -1765,13 +1765,17 @@ yyreduce:
 
 /* Line 1806 of yacc.c  */
 #line 126 "analyser_gram.yacc"
-    {stack_push_cop((yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number)); ts_pop_addr((yyvsp[(3) - (3)].number));}
+    {	stack_push_cop((yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number)); printf("YACC: push cop d'egalite\n");
+		printf("YACC: ici dollar 1 vaut %d et dollar 3 vaut %d\n\n", (yyvsp[(1) - (3)].number),(yyvsp[(3) - (3)].number));
+		ts_display();
+		ts_flush();
+		ts_display();}
     break;
 
   case 43:
 
 /* Line 1806 of yacc.c  */
-#line 129 "analyser_gram.yacc"
+#line 133 "analyser_gram.yacc"
     { 
 				if (ts_push((yyvsp[(2) - (4)].texte),(yyvsp[(1) - (4)].texte))!=-1)
 					printf("YACC:Declaration correcte\n"); 
@@ -1783,7 +1787,7 @@ yyreduce:
   case 44:
 
 /* Line 1806 of yacc.c  */
-#line 135 "analyser_gram.yacc"
+#line 139 "analyser_gram.yacc"
     { 
 				if (ts_push((yyvsp[(2) - (6)].texte),(yyvsp[(1) - (6)].texte))!=-1)
 					printf("YACC: Declaration avant instanciation correcte\n");
@@ -1794,7 +1798,7 @@ yyreduce:
   case 45:
 
 /* Line 1806 of yacc.c  */
-#line 140 "analyser_gram.yacc"
+#line 144 "analyser_gram.yacc"
     {
 				if (ts_push((yyvsp[(2) - (7)].texte),(yyvsp[(1) - (7)].texte))!=-1)
 					printf("YACC: Declaration de tableau avant instanciation correcte\n");
@@ -1805,7 +1809,7 @@ yyreduce:
   case 46:
 
 /* Line 1806 of yacc.c  */
-#line 145 "analyser_gram.yacc"
+#line 149 "analyser_gram.yacc"
     {yyerror;
 /* | tCHAR tWORD tCO tNOMBRE tCF tPOINTVIRG |
 tCHAR tPOINTER tWORD tPOINTVIRG |
@@ -1818,7 +1822,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/}
   case 47:
 
 /* Line 1806 of yacc.c  */
-#line 154 "analyser_gram.yacc"
+#line 158 "analyser_gram.yacc"
     {
 				if (ts_push((yyvsp[(2) - (3)].texte),"int")!=-1) 
 					printf("YACC: Declaration ligne correcte\n"); 
@@ -1830,7 +1834,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/}
   case 49:
 
 /* Line 1806 of yacc.c  */
-#line 163 "analyser_gram.yacc"
+#line 167 "analyser_gram.yacc"
     {
 				if (ts_push((yyvsp[(2) - (5)].texte),"int")!=-1)
 					stack_push_cop(get_addr_from((yyvsp[(2) - (5)].texte)),(yyvsp[(4) - (5)].number)) ;
@@ -1842,7 +1846,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/}
   case 53:
 
 /* Line 1806 of yacc.c  */
-#line 175 "analyser_gram.yacc"
+#line 179 "analyser_gram.yacc"
     {
 	while_add_from_to(get_number_of_line());
 	}
@@ -1851,7 +1855,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/}
   case 54:
 
 /* Line 1806 of yacc.c  */
-#line 178 "analyser_gram.yacc"
+#line 182 "analyser_gram.yacc"
     {
 	while_fill_from_where(get_number_of_line());
 	}
@@ -1860,7 +1864,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/}
   case 55:
 
 /* Line 1806 of yacc.c  */
-#line 184 "analyser_gram.yacc"
+#line 188 "analyser_gram.yacc"
     {
 				function_add(get_number_of_line(),(yyvsp[(2) - (2)].texte));
 				}
@@ -1869,7 +1873,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/}
   case 57:
 
 /* Line 1806 of yacc.c  */
-#line 187 "analyser_gram.yacc"
+#line 191 "analyser_gram.yacc"
     {
 			 function_add(get_number_of_line(),(yyvsp[(2) - (2)].texte));
 			}
@@ -1878,7 +1882,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/}
   case 59:
 
 /* Line 1806 of yacc.c  */
-#line 190 "analyser_gram.yacc"
+#line 194 "analyser_gram.yacc"
     {
 			 function_add(get_number_of_line(),(yyvsp[(2) - (2)].texte));
 			}
@@ -1887,7 +1891,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/}
   case 61:
 
 /* Line 1806 of yacc.c  */
-#line 195 "analyser_gram.yacc"
+#line 199 "analyser_gram.yacc"
     {
 		 stack_push_jump(function_get_addr((yyvsp[(1) - (1)].texte)));
 		}
@@ -1896,7 +1900,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/}
 
 
 /* Line 1806 of yacc.c  */
-#line 1900 "y.tab.c"
+#line 1904 "y.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2127,7 +2131,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 210 "analyser_gram.yacc"
+#line 214 "analyser_gram.yacc"
 
 
 
