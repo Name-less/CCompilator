@@ -17,11 +17,11 @@ Terminaux inutilisés dans la grammaire
 
 
 État 1 conflits: 1 décalage/réduction
-État 23 conflits: 1 décalage/réduction
-État 49 conflits: 1 décalage/réduction
-État 50 conflits: 1 décalage/réduction
-État 51 conflits: 4 décalage/réduction
-État 53 conflits: 1 décalage/réduction
+État 60 conflits: 1 décalage/réduction
+État 87 conflits: 1 décalage/réduction
+État 88 conflits: 1 décalage/réduction
+État 89 conflits: 4 décalage/réduction
+État 90 conflits: 1 décalage/réduction
 État 99 conflits: 2 décalage/réduction
 État 100 conflits: 2 décalage/réduction
 État 119 conflits: 1 décalage/réduction
@@ -93,78 +93,80 @@ Grammaire
    39    | tNOMBRE
    40    | tWORD
 
-   41 Egalite: Exp tEGAL Exp
+   41 LeftTerm: tWORD
 
-   42 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG
-   43            | tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
-   44            | tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
-   45            | error tPOINTVIRG
+   42 Egalite: LeftTerm tEGAL Exp
 
-   46 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne
-   47                        | /* vide */
+   43 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG
+   44            | tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   45            | tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
+   46            | error tPOINTVIRG
 
-   48 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne
-   49                            | /* vide */
+   47 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne
+   48                        | /* vide */
 
-   50 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
-   51                           | /* vide */
+   49 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne
+   50                            | /* vide */
 
-   52 $@8: /* vide */
+   51 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
+   52                           | /* vide */
 
-   53 While: tWHILE $@8 tPO Condition tPF tAO Input tAF
+   53 $@8: /* vide */
 
-   54 $@9: /* vide */
+   54 While: tWHILE $@8 tPO Condition tPF tAO Input tAF
 
-   55 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration tPF tAO Input tAF
+   55 $@9: /* vide */
 
-   56 $@10: /* vide */
+   56 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration tPF tAO Input tAF
 
-   57 Function: tCHAR tWORD $@10 tPO Arguments_Declaration tPF tAO Input tAF
+   57 $@10: /* vide */
 
-   58 $@11: /* vide */
+   58 Function: tCHAR tWORD $@10 tPO Arguments_Declaration tPF tAO Input tAF
 
-   59 Function: tVOID tWORD $@11 tPO Arguments_Declaration tPF tAO Input tAF
+   59 $@11: /* vide */
 
-   60 $@12: /* vide */
+   60 Function: tVOID tWORD $@11 tPO Arguments_Declaration tPF tAO Input tAF
 
-   61 Appel_Function: tWORD $@12 tPO Arguments tPF
+   61 $@12: /* vide */
 
-   62 Arguments_Declaration: tINTEGER tWORD tVIRG Arguments_Declaration
-   63                      | tVOID tWORD tVIRG Arguments_Declaration
-   64                      | tCHAR tWORD tVIRG Arguments_Declaration
-   65                      | /* vide */
+   62 Appel_Function: tWORD $@12 tPO Arguments tPF
 
-   66 Arguments: tWORD tVIRG
-   67          | tINTEGER tVIRG
-   68          | tWORD
-   69          | tINTEGER
-   70          | /* vide */
+   63 Arguments_Declaration: tINTEGER tWORD tVIRG Arguments_Declaration
+   64                      | tVOID tWORD tVIRG Arguments_Declaration
+   65                      | tCHAR tWORD tVIRG Arguments_Declaration
+   66                      | /* vide */
+
+   67 Arguments: tWORD tVIRG
+   68          | tINTEGER tVIRG
+   69          | tWORD
+   70          | tINTEGER
+   71          | /* vide */
 
 
 Terminaux, suivis des règles où ils apparaissent
 
 $end (0) 0
-error (256) 45
-tINTEGER (258) 14 15 16 17 42 43 44 55 62 67 69
-tCHAR (259) 57 64
-tVOID (260) 59 63
+error (256) 46
+tINTEGER (258) 14 15 16 17 43 44 45 56 63 68 70
+tCHAR (259) 58 65
+tVOID (260) 60 64
 tNULL (261)
 tCONST (262)
 tMAIN (263) 14
 tIF (264) 21
 tELSE (265) 23 24
-tWHILE (266) 53
+tWHILE (266) 54
 tFOR (267)
-tAO (268) 14 21 23 53 55 57 59
-tAF (269) 14 21 23 53 55 57 59
-tCO (270) 16 44 50
-tCF (271) 16 44 50
-tPO (272) 14 21 53 55 57 59 61
-tPF (273) 14 21 53 55 57 59 61
+tAO (268) 14 21 23 54 56 58 60
+tAF (269) 14 21 23 54 56 58 60
+tCO (270) 16 45 51
+tCF (271) 16 45 51
+tPO (272) 14 21 54 56 58 60 62
+tPF (273) 14 21 54 56 58 60 62
 tSQ (274)
 tDQ (275)
 tDIV (276) 35
-tPOINTVIRG (277) 3 42 43 44 45
+tPOINTVIRG (277) 3 43 44 45 46
 tARROW (278)
 tPOINT (279)
 tPLUS (280) 34
@@ -173,17 +175,18 @@ tMOD (282)
 tEXP (283)
 tSUP (284) 28 30
 tINF (285) 29 31
-tVIRG (286) 46 48 50 62 63 64 66 67
+tVIRG (286) 47 49 51 63 64 65 67 68
 tEGALEGAL (287) 26
 tOR (288) 32
 tAND (289) 33
 tNOTEGAL (290) 27
-tEGAL (291) 30 31 41 43 48
+tEGAL (291) 30 31 42 44 49
 tADDR (292)
 tPOINTER (293) 17 37
 tSPACE (294)
-tNOMBRE (295) 39 44 50
-tWORD (296) 15 16 17 40 42 43 44 46 48 50 55 57 59 61 62 63 64 66 68
+tNOMBRE (295) 39 45 51
+tWORD (296) 15 16 17 40 41 43 44 45 47 49 51 56 58 60 62 63 64 65 67
+    69
 tRETURN (297)
 tNEWLINE (298) 2
 tCOMMENT (299)
@@ -197,7 +200,7 @@ $accept (47)
     à gauche: 0
 Input (48)
     à gauche: 1 2 3 4 5 8 10 11 12, à droite: 0 2 3 4 5 8 10 11 12
-    14 21 23 53 55 57 59
+    14 21 23 54 56 58 60
 $@1 (49)
     à gauche: 6, à droite: 8
 $@2 (50)
@@ -221,40 +224,42 @@ Else (58)
 $@7 (59)
     à gauche: 22, à droite: 23
 Condition (60)
-    à gauche: 26 27 28 29 30 31 32 33, à droite: 21 32 33 53
+    à gauche: 26 27 28 29 30 31 32 33, à droite: 21 32 33 54
 Exp (61)
     à gauche: 34 35 36 37 38 39 40, à droite: 26 27 28 29 30 31 34
-    35 36 37 38 41 43 48
-Egalite (62)
-    à gauche: 41, à droite: 3
-Declaration (63)
-    à gauche: 42 43 44 45, à droite: 4
-DeclarationIntMemeLigne (64)
-    à gauche: 46 47, à droite: 42 46
-DeclarationIntEgalMemeLigne (65)
-    à gauche: 48 49, à droite: 43 48
-DeclarationIntTabMemeLigne (66)
-    à gauche: 50 51, à droite: 44 50
-While (67)
-    à gauche: 53, à droite: 5
-$@8 (68)
-    à gauche: 52, à droite: 53
-Function (69)
-    à gauche: 55 57 59, à droite: 10
-$@9 (70)
-    à gauche: 54, à droite: 55
-$@10 (71)
-    à gauche: 56, à droite: 57
-$@11 (72)
-    à gauche: 58, à droite: 59
-Appel_Function (73)
-    à gauche: 61, à droite: 11
-$@12 (74)
-    à gauche: 60, à droite: 61
-Arguments_Declaration (75)
-    à gauche: 62 63 64 65, à droite: 55 57 59 62 63 64
-Arguments (76)
-    à gauche: 66 67 68 69 70, à droite: 61
+    35 36 37 38 42 44 49
+LeftTerm (62)
+    à gauche: 41, à droite: 42
+Egalite (63)
+    à gauche: 42, à droite: 3
+Declaration (64)
+    à gauche: 43 44 45 46, à droite: 4
+DeclarationIntMemeLigne (65)
+    à gauche: 47 48, à droite: 43 47
+DeclarationIntEgalMemeLigne (66)
+    à gauche: 49 50, à droite: 44 49
+DeclarationIntTabMemeLigne (67)
+    à gauche: 51 52, à droite: 45 51
+While (68)
+    à gauche: 54, à droite: 5
+$@8 (69)
+    à gauche: 53, à droite: 54
+Function (70)
+    à gauche: 56 58 60, à droite: 10
+$@9 (71)
+    à gauche: 55, à droite: 56
+$@10 (72)
+    à gauche: 57, à droite: 58
+$@11 (73)
+    à gauche: 59, à droite: 60
+Appel_Function (74)
+    à gauche: 62, à droite: 11
+$@12 (75)
+    à gauche: 61, à droite: 62
+Arguments_Declaration (76)
+    à gauche: 63 64 65 66, à droite: 56 58 60 63 64 65
+Arguments (77)
+    à gauche: 67 68 69 70 71, à droite: 62
 
 
 état 0
@@ -282,24 +287,22 @@ Arguments (76)
     error     décalage et aller à l'état 3
     tINTEGER  décalage et aller à l'état 4
     tWHILE    décalage et aller à l'état 5
-    tMINUS    décalage et aller à l'état 6
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tWORD     décalage et aller à l'état 6
+    tNEWLINE  décalage et aller à l'état 7
 
     tINTEGER  [réduction par utilisation de la règle 9 ($@3)]
     tCHAR     réduction par utilisation de la règle 9 ($@3)
     tVOID     réduction par utilisation de la règle 9 ($@3)
     tIF       réduction par utilisation de la règle 6 ($@1)
 
-    $@1             aller à l'état 10
-    $@3             aller à l'état 11
-    Main            aller à l'état 12
-    Exp             aller à l'état 13
-    Egalite         aller à l'état 14
-    Declaration     aller à l'état 15
-    While           aller à l'état 16
-    Appel_Function  aller à l'état 17
+    $@1             aller à l'état 8
+    $@3             aller à l'état 9
+    Main            aller à l'état 10
+    LeftTerm        aller à l'état 11
+    Egalite         aller à l'état 12
+    Declaration     aller à l'état 13
+    While           aller à l'état 14
+    Appel_Function  aller à l'état 15
 
 
 état 2
@@ -311,571 +314,441 @@ Arguments (76)
 
 état 3
 
-   45 Declaration: error . tPOINTVIRG
+   46 Declaration: error . tPOINTVIRG
 
-    tPOINTVIRG  décalage et aller à l'état 18
+    tPOINTVIRG  décalage et aller à l'état 16
 
 
 état 4
 
    14 Main: tINTEGER . tMAIN tPO Arg tPF tAO $@4 Input tAF
-   42 Declaration: tINTEGER . tWORD DeclarationIntMemeLigne tPOINTVIRG
-   43            | tINTEGER . tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
-   44            | tINTEGER . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
+   43 Declaration: tINTEGER . tWORD DeclarationIntMemeLigne tPOINTVIRG
+   44            | tINTEGER . tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   45            | tINTEGER . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
 
-    tMAIN  décalage et aller à l'état 19
-    tWORD  décalage et aller à l'état 20
+    tMAIN  décalage et aller à l'état 17
+    tWORD  décalage et aller à l'état 18
 
 
 état 5
 
-   53 While: tWHILE . $@8 tPO Condition tPF tAO Input tAF
+   54 While: tWHILE . $@8 tPO Condition tPF tAO Input tAF
 
-    $défaut  réduction par utilisation de la règle 52 ($@8)
+    $défaut  réduction par utilisation de la règle 53 ($@8)
 
-    $@8  aller à l'état 21
+    $@8  aller à l'état 19
 
 
 état 6
 
-   38 Exp: tMINUS . Exp
+   41 LeftTerm: tWORD .
+   62 Appel_Function: tWORD . $@12 tPO Arguments tPF
 
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
+    tPO       réduction par utilisation de la règle 61 ($@12)
+    $défaut  réduction par utilisation de la règle 41 (LeftTerm)
 
-    Exp  aller à l'état 23
+    $@12  aller à l'état 20
 
 
 état 7
-
-   39 Exp: tNOMBRE .
-
-    $défaut  réduction par utilisation de la règle 39 (Exp)
-
-
-état 8
-
-   40 Exp: tWORD .
-   61 Appel_Function: tWORD . $@12 tPO Arguments tPF
-
-    tPO       réduction par utilisation de la règle 60 ($@12)
-    $défaut  réduction par utilisation de la règle 40 (Exp)
-
-    $@12  aller à l'état 24
-
-
-état 9
 
     2 Input: Input tNEWLINE .
 
     $défaut  réduction par utilisation de la règle 2 (Input)
 
 
-état 10
+état 8
 
     8 Input: Input $@1 . If $@2
 
-    tIF  décalage et aller à l'état 25
+    tIF  décalage et aller à l'état 21
 
-    If  aller à l'état 26
+    If  aller à l'état 22
 
 
-état 11
+état 9
 
    10 Input: Input $@3 . Function
 
-    tINTEGER  décalage et aller à l'état 27
-    tCHAR     décalage et aller à l'état 28
-    tVOID     décalage et aller à l'état 29
+    tINTEGER  décalage et aller à l'état 23
+    tCHAR     décalage et aller à l'état 24
+    tVOID     décalage et aller à l'état 25
 
-    Function  aller à l'état 30
+    Function  aller à l'état 26
 
 
-état 12
+état 10
 
    12 Input: Input Main .
 
     $défaut  réduction par utilisation de la règle 12 (Input)
 
 
-état 13
+état 11
 
-   34 Exp: Exp . tPLUS Exp
-   35    | Exp . tDIV Exp
-   36    | Exp . tMINUS Exp
-   37    | Exp . tPOINTER Exp
-   41 Egalite: Exp . tEGAL Exp
+   42 Egalite: LeftTerm . tEGAL Exp
 
-    tDIV      décalage et aller à l'état 31
-    tPLUS     décalage et aller à l'état 32
-    tMINUS    décalage et aller à l'état 33
-    tEGAL     décalage et aller à l'état 34
-    tPOINTER  décalage et aller à l'état 35
+    tEGAL  décalage et aller à l'état 27
 
 
-état 14
+état 12
 
     3 Input: Input Egalite . tPOINTVIRG
 
-    tPOINTVIRG  décalage et aller à l'état 36
+    tPOINTVIRG  décalage et aller à l'état 28
 
 
-état 15
+état 13
 
     4 Input: Input Declaration .
 
     $défaut  réduction par utilisation de la règle 4 (Input)
 
 
-état 16
+état 14
 
     5 Input: Input While .
 
     $défaut  réduction par utilisation de la règle 5 (Input)
 
 
-état 17
+état 15
 
    11 Input: Input Appel_Function .
 
     $défaut  réduction par utilisation de la règle 11 (Input)
 
 
+état 16
+
+   46 Declaration: error tPOINTVIRG .
+
+    $défaut  réduction par utilisation de la règle 46 (Declaration)
+
+
+état 17
+
+   14 Main: tINTEGER tMAIN . tPO Arg tPF tAO $@4 Input tAF
+
+    tPO  décalage et aller à l'état 29
+
+
 état 18
 
-   45 Declaration: error tPOINTVIRG .
+   43 Declaration: tINTEGER tWORD . DeclarationIntMemeLigne tPOINTVIRG
+   44            | tINTEGER tWORD . tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   45            | tINTEGER tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
 
-    $défaut  réduction par utilisation de la règle 45 (Declaration)
+    tCO    décalage et aller à l'état 30
+    tVIRG  décalage et aller à l'état 31
+    tEGAL  décalage et aller à l'état 32
+
+    $défaut  réduction par utilisation de la règle 48 (DeclarationIntMemeLigne)
+
+    DeclarationIntMemeLigne  aller à l'état 33
 
 
 état 19
 
-   14 Main: tINTEGER tMAIN . tPO Arg tPF tAO $@4 Input tAF
+   54 While: tWHILE $@8 . tPO Condition tPF tAO Input tAF
 
-    tPO  décalage et aller à l'état 37
+    tPO  décalage et aller à l'état 34
 
 
 état 20
 
-   42 Declaration: tINTEGER tWORD . DeclarationIntMemeLigne tPOINTVIRG
-   43            | tINTEGER tWORD . tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
-   44            | tINTEGER tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
+   62 Appel_Function: tWORD $@12 . tPO Arguments tPF
 
-    tCO    décalage et aller à l'état 38
-    tVIRG  décalage et aller à l'état 39
-    tEGAL  décalage et aller à l'état 40
-
-    $défaut  réduction par utilisation de la règle 47 (DeclarationIntMemeLigne)
-
-    DeclarationIntMemeLigne  aller à l'état 41
+    tPO  décalage et aller à l'état 35
 
 
 état 21
-
-   53 While: tWHILE $@8 . tPO Condition tPF tAO Input tAF
-
-    tPO  décalage et aller à l'état 42
-
-
-état 22
-
-   40 Exp: tWORD .
-
-    $défaut  réduction par utilisation de la règle 40 (Exp)
-
-
-état 23
-
-   34 Exp: Exp . tPLUS Exp
-   35    | Exp . tDIV Exp
-   36    | Exp . tMINUS Exp
-   37    | Exp . tPOINTER Exp
-   38    | tMINUS Exp .
-
-    tMINUS  décalage et aller à l'état 33
-
-    tMINUS    [réduction par utilisation de la règle 38 (Exp)]
-    $défaut  réduction par utilisation de la règle 38 (Exp)
-
-
-état 24
-
-   61 Appel_Function: tWORD $@12 . tPO Arguments tPF
-
-    tPO  décalage et aller à l'état 43
-
-
-état 25
 
    21 If: tIF . $@5 tPO Condition tPF tAO Input tAF $@6 Else
 
     $défaut  réduction par utilisation de la règle 19 ($@5)
 
-    $@5  aller à l'état 44
+    $@5  aller à l'état 36
 
 
-état 26
+état 22
 
     8 Input: Input $@1 If . $@2
 
     $défaut  réduction par utilisation de la règle 7 ($@2)
 
-    $@2  aller à l'état 45
+    $@2  aller à l'état 37
 
 
-état 27
+état 23
 
-   55 Function: tINTEGER . tWORD $@9 tPO Arguments_Declaration tPF tAO Input tAF
+   56 Function: tINTEGER . tWORD $@9 tPO Arguments_Declaration tPF tAO Input tAF
 
-    tWORD  décalage et aller à l'état 46
-
-
-état 28
-
-   57 Function: tCHAR . tWORD $@10 tPO Arguments_Declaration tPF tAO Input tAF
-
-    tWORD  décalage et aller à l'état 47
+    tWORD  décalage et aller à l'état 38
 
 
-état 29
+état 24
 
-   59 Function: tVOID . tWORD $@11 tPO Arguments_Declaration tPF tAO Input tAF
+   58 Function: tCHAR . tWORD $@10 tPO Arguments_Declaration tPF tAO Input tAF
 
-    tWORD  décalage et aller à l'état 48
+    tWORD  décalage et aller à l'état 39
 
 
-état 30
+état 25
+
+   60 Function: tVOID . tWORD $@11 tPO Arguments_Declaration tPF tAO Input tAF
+
+    tWORD  décalage et aller à l'état 40
+
+
+état 26
 
    10 Input: Input $@3 Function .
 
     $défaut  réduction par utilisation de la règle 10 (Input)
 
 
-état 31
+état 27
 
-   35 Exp: Exp tDIV . Exp
+   42 Egalite: LeftTerm tEGAL . Exp
 
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
-    Exp  aller à l'état 49
-
-
-état 32
-
-   34 Exp: Exp tPLUS . Exp
-
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
-
-    Exp  aller à l'état 50
+    Exp  aller à l'état 44
 
 
-état 33
-
-   36 Exp: Exp tMINUS . Exp
-
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
-
-    Exp  aller à l'état 51
-
-
-état 34
-
-   41 Egalite: Exp tEGAL . Exp
-
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
-
-    Exp  aller à l'état 52
-
-
-état 35
-
-   37 Exp: Exp tPOINTER . Exp
-
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
-
-    Exp  aller à l'état 53
-
-
-état 36
+état 28
 
     3 Input: Input Egalite tPOINTVIRG .
 
     $défaut  réduction par utilisation de la règle 3 (Input)
 
 
-état 37
+état 29
 
    14 Main: tINTEGER tMAIN tPO . Arg tPF tAO $@4 Input tAF
 
-    tINTEGER  décalage et aller à l'état 54
+    tINTEGER  décalage et aller à l'état 45
 
     $défaut  réduction par utilisation de la règle 18 (Arg)
 
-    Arg  aller à l'état 55
+    Arg  aller à l'état 46
 
 
-état 38
+état 30
 
-   44 Declaration: tINTEGER tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
+   45 Declaration: tINTEGER tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
 
-    tNOMBRE  décalage et aller à l'état 56
-
-
-état 39
-
-   46 DeclarationIntMemeLigne: tVIRG . tWORD DeclarationIntMemeLigne
-
-    tWORD  décalage et aller à l'état 57
+    tNOMBRE  décalage et aller à l'état 47
 
 
-état 40
+état 31
 
-   43 Declaration: tINTEGER tWORD tEGAL . Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   47 DeclarationIntMemeLigne: tVIRG . tWORD DeclarationIntMemeLigne
 
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
-
-    Exp  aller à l'état 58
+    tWORD  décalage et aller à l'état 48
 
 
-état 41
+état 32
 
-   42 Declaration: tINTEGER tWORD DeclarationIntMemeLigne . tPOINTVIRG
+   44 Declaration: tINTEGER tWORD tEGAL . Exp DeclarationIntEgalMemeLigne tPOINTVIRG
 
-    tPOINTVIRG  décalage et aller à l'état 59
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
-
-état 42
-
-   53 While: tWHILE $@8 tPO . Condition tPF tAO Input tAF
-
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
-
-    Condition  aller à l'état 60
-    Exp        aller à l'état 61
+    Exp  aller à l'état 49
 
 
-état 43
+état 33
 
-   61 Appel_Function: tWORD $@12 tPO . Arguments tPF
+   43 Declaration: tINTEGER tWORD DeclarationIntMemeLigne . tPOINTVIRG
 
-    tINTEGER  décalage et aller à l'état 62
-    tWORD     décalage et aller à l'état 63
-
-    $défaut  réduction par utilisation de la règle 70 (Arguments)
-
-    Arguments  aller à l'état 64
+    tPOINTVIRG  décalage et aller à l'état 50
 
 
-état 44
+état 34
+
+   54 While: tWHILE $@8 tPO . Condition tPF tAO Input tAF
+
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
+
+    Condition  aller à l'état 51
+    Exp        aller à l'état 52
+
+
+état 35
+
+   62 Appel_Function: tWORD $@12 tPO . Arguments tPF
+
+    tINTEGER  décalage et aller à l'état 53
+    tWORD     décalage et aller à l'état 54
+
+    $défaut  réduction par utilisation de la règle 71 (Arguments)
+
+    Arguments  aller à l'état 55
+
+
+état 36
 
    21 If: tIF $@5 . tPO Condition tPF tAO Input tAF $@6 Else
 
-    tPO  décalage et aller à l'état 65
+    tPO  décalage et aller à l'état 56
 
 
-état 45
+état 37
 
     8 Input: Input $@1 If $@2 .
 
     $défaut  réduction par utilisation de la règle 8 (Input)
 
 
+état 38
+
+   56 Function: tINTEGER tWORD . $@9 tPO Arguments_Declaration tPF tAO Input tAF
+
+    $défaut  réduction par utilisation de la règle 55 ($@9)
+
+    $@9  aller à l'état 57
+
+
+état 39
+
+   58 Function: tCHAR tWORD . $@10 tPO Arguments_Declaration tPF tAO Input tAF
+
+    $défaut  réduction par utilisation de la règle 57 ($@10)
+
+    $@10  aller à l'état 58
+
+
+état 40
+
+   60 Function: tVOID tWORD . $@11 tPO Arguments_Declaration tPF tAO Input tAF
+
+    $défaut  réduction par utilisation de la règle 59 ($@11)
+
+    $@11  aller à l'état 59
+
+
+état 41
+
+   38 Exp: tMINUS . Exp
+
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
+
+    Exp  aller à l'état 60
+
+
+état 42
+
+   39 Exp: tNOMBRE .
+
+    $défaut  réduction par utilisation de la règle 39 (Exp)
+
+
+état 43
+
+   40 Exp: tWORD .
+
+    $défaut  réduction par utilisation de la règle 40 (Exp)
+
+
+état 44
+
+   34 Exp: Exp . tPLUS Exp
+   35    | Exp . tDIV Exp
+   36    | Exp . tMINUS Exp
+   37    | Exp . tPOINTER Exp
+   42 Egalite: LeftTerm tEGAL Exp .
+
+    tDIV      décalage et aller à l'état 61
+    tPLUS     décalage et aller à l'état 62
+    tMINUS    décalage et aller à l'état 63
+    tPOINTER  décalage et aller à l'état 64
+
+    $défaut  réduction par utilisation de la règle 42 (Egalite)
+
+
+état 45
+
+   15 Arg: tINTEGER . tWORD
+   16    | tINTEGER . tCO tCF tWORD
+   17    | tINTEGER . tPOINTER tWORD
+
+    tCO       décalage et aller à l'état 65
+    tPOINTER  décalage et aller à l'état 66
+    tWORD     décalage et aller à l'état 67
+
+
 état 46
 
-   55 Function: tINTEGER tWORD . $@9 tPO Arguments_Declaration tPF tAO Input tAF
+   14 Main: tINTEGER tMAIN tPO Arg . tPF tAO $@4 Input tAF
 
-    $défaut  réduction par utilisation de la règle 54 ($@9)
-
-    $@9  aller à l'état 66
+    tPF  décalage et aller à l'état 68
 
 
 état 47
 
-   57 Function: tCHAR tWORD . $@10 tPO Arguments_Declaration tPF tAO Input tAF
+   45 Declaration: tINTEGER tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne tPOINTVIRG
 
-    $défaut  réduction par utilisation de la règle 56 ($@10)
-
-    $@10  aller à l'état 67
+    tCF  décalage et aller à l'état 69
 
 
 état 48
 
-   59 Function: tVOID tWORD . $@11 tPO Arguments_Declaration tPF tAO Input tAF
+   47 DeclarationIntMemeLigne: tVIRG tWORD . DeclarationIntMemeLigne
 
-    $défaut  réduction par utilisation de la règle 58 ($@11)
+    tVIRG  décalage et aller à l'état 31
 
-    $@11  aller à l'état 68
+    $défaut  réduction par utilisation de la règle 48 (DeclarationIntMemeLigne)
+
+    DeclarationIntMemeLigne  aller à l'état 70
 
 
 état 49
 
    34 Exp: Exp . tPLUS Exp
    35    | Exp . tDIV Exp
-   35    | Exp tDIV Exp .
    36    | Exp . tMINUS Exp
    37    | Exp . tPOINTER Exp
+   44 Declaration: tINTEGER tWORD tEGAL Exp . DeclarationIntEgalMemeLigne tPOINTVIRG
 
-    tMINUS  décalage et aller à l'état 33
+    tDIV      décalage et aller à l'état 61
+    tPLUS     décalage et aller à l'état 62
+    tMINUS    décalage et aller à l'état 63
+    tVIRG     décalage et aller à l'état 71
+    tPOINTER  décalage et aller à l'état 64
 
-    tMINUS    [réduction par utilisation de la règle 35 (Exp)]
-    $défaut  réduction par utilisation de la règle 35 (Exp)
+    $défaut  réduction par utilisation de la règle 50 (DeclarationIntEgalMemeLigne)
+
+    DeclarationIntEgalMemeLigne  aller à l'état 72
 
 
 état 50
 
-   34 Exp: Exp . tPLUS Exp
-   34    | Exp tPLUS Exp .
-   35    | Exp . tDIV Exp
-   36    | Exp . tMINUS Exp
-   37    | Exp . tPOINTER Exp
+   43 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG .
 
-    tDIV      décalage et aller à l'état 31
-    tMINUS    décalage et aller à l'état 33
-    tPOINTER  décalage et aller à l'état 35
-
-    tMINUS    [réduction par utilisation de la règle 34 (Exp)]
-    $défaut  réduction par utilisation de la règle 34 (Exp)
+    $défaut  réduction par utilisation de la règle 43 (Declaration)
 
 
 état 51
 
-   34 Exp: Exp . tPLUS Exp
-   35    | Exp . tDIV Exp
-   36    | Exp . tMINUS Exp
-   36    | Exp tMINUS Exp .
-   37    | Exp . tPOINTER Exp
+   32 Condition: Condition . tOR Condition
+   33          | Condition . tAND Condition
+   54 While: tWHILE $@8 tPO Condition . tPF tAO Input tAF
 
-    tDIV      décalage et aller à l'état 31
-    tPLUS     décalage et aller à l'état 32
-    tMINUS    décalage et aller à l'état 33
-    tPOINTER  décalage et aller à l'état 35
-
-    tDIV      [réduction par utilisation de la règle 36 (Exp)]
-    tPLUS     [réduction par utilisation de la règle 36 (Exp)]
-    tMINUS    [réduction par utilisation de la règle 36 (Exp)]
-    tPOINTER  [réduction par utilisation de la règle 36 (Exp)]
-    $défaut  réduction par utilisation de la règle 36 (Exp)
+    tPF   décalage et aller à l'état 73
+    tOR   décalage et aller à l'état 74
+    tAND  décalage et aller à l'état 75
 
 
 état 52
-
-   34 Exp: Exp . tPLUS Exp
-   35    | Exp . tDIV Exp
-   36    | Exp . tMINUS Exp
-   37    | Exp . tPOINTER Exp
-   41 Egalite: Exp tEGAL Exp .
-
-    tDIV      décalage et aller à l'état 31
-    tPLUS     décalage et aller à l'état 32
-    tMINUS    décalage et aller à l'état 33
-    tPOINTER  décalage et aller à l'état 35
-
-    $défaut  réduction par utilisation de la règle 41 (Egalite)
-
-
-état 53
-
-   34 Exp: Exp . tPLUS Exp
-   35    | Exp . tDIV Exp
-   36    | Exp . tMINUS Exp
-   37    | Exp . tPOINTER Exp
-   37    | Exp tPOINTER Exp .
-
-    tMINUS  décalage et aller à l'état 33
-
-    tMINUS    [réduction par utilisation de la règle 37 (Exp)]
-    $défaut  réduction par utilisation de la règle 37 (Exp)
-
-
-état 54
-
-   15 Arg: tINTEGER . tWORD
-   16    | tINTEGER . tCO tCF tWORD
-   17    | tINTEGER . tPOINTER tWORD
-
-    tCO       décalage et aller à l'état 69
-    tPOINTER  décalage et aller à l'état 70
-    tWORD     décalage et aller à l'état 71
-
-
-état 55
-
-   14 Main: tINTEGER tMAIN tPO Arg . tPF tAO $@4 Input tAF
-
-    tPF  décalage et aller à l'état 72
-
-
-état 56
-
-   44 Declaration: tINTEGER tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne tPOINTVIRG
-
-    tCF  décalage et aller à l'état 73
-
-
-état 57
-
-   46 DeclarationIntMemeLigne: tVIRG tWORD . DeclarationIntMemeLigne
-
-    tVIRG  décalage et aller à l'état 39
-
-    $défaut  réduction par utilisation de la règle 47 (DeclarationIntMemeLigne)
-
-    DeclarationIntMemeLigne  aller à l'état 74
-
-
-état 58
-
-   34 Exp: Exp . tPLUS Exp
-   35    | Exp . tDIV Exp
-   36    | Exp . tMINUS Exp
-   37    | Exp . tPOINTER Exp
-   43 Declaration: tINTEGER tWORD tEGAL Exp . DeclarationIntEgalMemeLigne tPOINTVIRG
-
-    tDIV      décalage et aller à l'état 31
-    tPLUS     décalage et aller à l'état 32
-    tMINUS    décalage et aller à l'état 33
-    tVIRG     décalage et aller à l'état 75
-    tPOINTER  décalage et aller à l'état 35
-
-    $défaut  réduction par utilisation de la règle 49 (DeclarationIntEgalMemeLigne)
-
-    DeclarationIntEgalMemeLigne  aller à l'état 76
-
-
-état 59
-
-   42 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG .
-
-    $défaut  réduction par utilisation de la règle 42 (Declaration)
-
-
-état 60
-
-   32 Condition: Condition . tOR Condition
-   33          | Condition . tAND Condition
-   53 While: tWHILE $@8 tPO Condition . tPF tAO Input tAF
-
-    tPF   décalage et aller à l'état 77
-    tOR   décalage et aller à l'état 78
-    tAND  décalage et aller à l'état 79
-
-
-état 61
 
    26 Condition: Exp . tEGALEGAL Exp
    27          | Exp . tNOTEGAL Exp
@@ -888,284 +761,406 @@ Arguments (76)
    36    | Exp . tMINUS Exp
    37    | Exp . tPOINTER Exp
 
-    tDIV       décalage et aller à l'état 31
-    tPLUS      décalage et aller à l'état 32
-    tMINUS     décalage et aller à l'état 33
-    tSUP       décalage et aller à l'état 80
-    tINF       décalage et aller à l'état 81
-    tEGALEGAL  décalage et aller à l'état 82
-    tNOTEGAL   décalage et aller à l'état 83
-    tPOINTER   décalage et aller à l'état 35
+    tDIV       décalage et aller à l'état 61
+    tPLUS      décalage et aller à l'état 62
+    tMINUS     décalage et aller à l'état 63
+    tSUP       décalage et aller à l'état 76
+    tINF       décalage et aller à l'état 77
+    tEGALEGAL  décalage et aller à l'état 78
+    tNOTEGAL   décalage et aller à l'état 79
+    tPOINTER   décalage et aller à l'état 64
 
 
-état 62
+état 53
 
-   67 Arguments: tINTEGER . tVIRG
-   69          | tINTEGER .
+   68 Arguments: tINTEGER . tVIRG
+   70          | tINTEGER .
 
-    tVIRG  décalage et aller à l'état 84
+    tVIRG  décalage et aller à l'état 80
+
+    $défaut  réduction par utilisation de la règle 70 (Arguments)
+
+
+état 54
+
+   67 Arguments: tWORD . tVIRG
+   69          | tWORD .
+
+    tVIRG  décalage et aller à l'état 81
 
     $défaut  réduction par utilisation de la règle 69 (Arguments)
 
 
+état 55
+
+   62 Appel_Function: tWORD $@12 tPO Arguments . tPF
+
+    tPF  décalage et aller à l'état 82
+
+
+état 56
+
+   21 If: tIF $@5 tPO . Condition tPF tAO Input tAF $@6 Else
+
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
+
+    Condition  aller à l'état 83
+    Exp        aller à l'état 52
+
+
+état 57
+
+   56 Function: tINTEGER tWORD $@9 . tPO Arguments_Declaration tPF tAO Input tAF
+
+    tPO  décalage et aller à l'état 84
+
+
+état 58
+
+   58 Function: tCHAR tWORD $@10 . tPO Arguments_Declaration tPF tAO Input tAF
+
+    tPO  décalage et aller à l'état 85
+
+
+état 59
+
+   60 Function: tVOID tWORD $@11 . tPO Arguments_Declaration tPF tAO Input tAF
+
+    tPO  décalage et aller à l'état 86
+
+
+état 60
+
+   34 Exp: Exp . tPLUS Exp
+   35    | Exp . tDIV Exp
+   36    | Exp . tMINUS Exp
+   37    | Exp . tPOINTER Exp
+   38    | tMINUS Exp .
+
+    tMINUS  décalage et aller à l'état 63
+
+    tMINUS    [réduction par utilisation de la règle 38 (Exp)]
+    $défaut  réduction par utilisation de la règle 38 (Exp)
+
+
+état 61
+
+   35 Exp: Exp tDIV . Exp
+
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
+
+    Exp  aller à l'état 87
+
+
+état 62
+
+   34 Exp: Exp tPLUS . Exp
+
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
+
+    Exp  aller à l'état 88
+
+
 état 63
 
-   66 Arguments: tWORD . tVIRG
-   68          | tWORD .
+   36 Exp: Exp tMINUS . Exp
 
-    tVIRG  décalage et aller à l'état 85
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
-    $défaut  réduction par utilisation de la règle 68 (Arguments)
+    Exp  aller à l'état 89
 
 
 état 64
 
-   61 Appel_Function: tWORD $@12 tPO Arguments . tPF
+   37 Exp: Exp tPOINTER . Exp
 
-    tPF  décalage et aller à l'état 86
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
+
+    Exp  aller à l'état 90
 
 
 état 65
-
-   21 If: tIF $@5 tPO . Condition tPF tAO Input tAF $@6 Else
-
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
-
-    Condition  aller à l'état 87
-    Exp        aller à l'état 61
-
-
-état 66
-
-   55 Function: tINTEGER tWORD $@9 . tPO Arguments_Declaration tPF tAO Input tAF
-
-    tPO  décalage et aller à l'état 88
-
-
-état 67
-
-   57 Function: tCHAR tWORD $@10 . tPO Arguments_Declaration tPF tAO Input tAF
-
-    tPO  décalage et aller à l'état 89
-
-
-état 68
-
-   59 Function: tVOID tWORD $@11 . tPO Arguments_Declaration tPF tAO Input tAF
-
-    tPO  décalage et aller à l'état 90
-
-
-état 69
 
    16 Arg: tINTEGER tCO . tCF tWORD
 
     tCF  décalage et aller à l'état 91
 
 
-état 70
+état 66
 
    17 Arg: tINTEGER tPOINTER . tWORD
 
     tWORD  décalage et aller à l'état 92
 
 
-état 71
+état 67
 
    15 Arg: tINTEGER tWORD .
 
     $défaut  réduction par utilisation de la règle 15 (Arg)
 
 
-état 72
+état 68
 
    14 Main: tINTEGER tMAIN tPO Arg tPF . tAO $@4 Input tAF
 
     tAO  décalage et aller à l'état 93
 
 
-état 73
+état 69
 
-   44 Declaration: tINTEGER tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne tPOINTVIRG
+   45 Declaration: tINTEGER tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne tPOINTVIRG
 
     tVIRG  décalage et aller à l'état 94
 
-    $défaut  réduction par utilisation de la règle 51 (DeclarationIntTabMemeLigne)
+    $défaut  réduction par utilisation de la règle 52 (DeclarationIntTabMemeLigne)
 
     DeclarationIntTabMemeLigne  aller à l'état 95
 
 
-état 74
+état 70
 
-   46 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne .
+   47 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne .
 
-    $défaut  réduction par utilisation de la règle 46 (DeclarationIntMemeLigne)
+    $défaut  réduction par utilisation de la règle 47 (DeclarationIntMemeLigne)
 
 
-état 75
+état 71
 
-   48 DeclarationIntEgalMemeLigne: tVIRG . tWORD tEGAL Exp DeclarationIntEgalMemeLigne
+   49 DeclarationIntEgalMemeLigne: tVIRG . tWORD tEGAL Exp DeclarationIntEgalMemeLigne
 
     tWORD  décalage et aller à l'état 96
 
 
-état 76
+état 72
 
-   43 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne . tPOINTVIRG
+   44 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne . tPOINTVIRG
 
     tPOINTVIRG  décalage et aller à l'état 97
 
 
-état 77
+état 73
 
-   53 While: tWHILE $@8 tPO Condition tPF . tAO Input tAF
+   54 While: tWHILE $@8 tPO Condition tPF . tAO Input tAF
 
     tAO  décalage et aller à l'état 98
 
 
-état 78
+état 74
 
    32 Condition: Condition tOR . Condition
 
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
     Condition  aller à l'état 99
-    Exp        aller à l'état 61
+    Exp        aller à l'état 52
 
 
-état 79
+état 75
 
    33 Condition: Condition tAND . Condition
 
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
     Condition  aller à l'état 100
-    Exp        aller à l'état 61
+    Exp        aller à l'état 52
 
 
-état 80
+état 76
 
    28 Condition: Exp tSUP . Exp
    30          | Exp tSUP . tEGAL Exp
 
-    tMINUS   décalage et aller à l'état 6
+    tMINUS   décalage et aller à l'état 41
     tEGAL    décalage et aller à l'état 101
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
     Exp  aller à l'état 102
 
 
-état 81
+état 77
 
    29 Condition: Exp tINF . Exp
    31          | Exp tINF . tEGAL Exp
 
-    tMINUS   décalage et aller à l'état 6
+    tMINUS   décalage et aller à l'état 41
     tEGAL    décalage et aller à l'état 103
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
     Exp  aller à l'état 104
 
 
-état 82
+état 78
 
    26 Condition: Exp tEGALEGAL . Exp
 
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
     Exp  aller à l'état 105
 
 
-état 83
+état 79
 
    27 Condition: Exp tNOTEGAL . Exp
 
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
     Exp  aller à l'état 106
 
 
-état 84
+état 80
 
-   67 Arguments: tINTEGER tVIRG .
+   68 Arguments: tINTEGER tVIRG .
+
+    $défaut  réduction par utilisation de la règle 68 (Arguments)
+
+
+état 81
+
+   67 Arguments: tWORD tVIRG .
 
     $défaut  réduction par utilisation de la règle 67 (Arguments)
 
 
-état 85
+état 82
 
-   66 Arguments: tWORD tVIRG .
+   62 Appel_Function: tWORD $@12 tPO Arguments tPF .
 
-    $défaut  réduction par utilisation de la règle 66 (Arguments)
-
-
-état 86
-
-   61 Appel_Function: tWORD $@12 tPO Arguments tPF .
-
-    $défaut  réduction par utilisation de la règle 61 (Appel_Function)
+    $défaut  réduction par utilisation de la règle 62 (Appel_Function)
 
 
-état 87
+état 83
 
    21 If: tIF $@5 tPO Condition . tPF tAO Input tAF $@6 Else
    32 Condition: Condition . tOR Condition
    33          | Condition . tAND Condition
 
     tPF   décalage et aller à l'état 107
-    tOR   décalage et aller à l'état 78
-    tAND  décalage et aller à l'état 79
+    tOR   décalage et aller à l'état 74
+    tAND  décalage et aller à l'état 75
 
 
-état 88
+état 84
 
-   55 Function: tINTEGER tWORD $@9 tPO . Arguments_Declaration tPF tAO Input tAF
+   56 Function: tINTEGER tWORD $@9 tPO . Arguments_Declaration tPF tAO Input tAF
 
     tINTEGER  décalage et aller à l'état 108
     tCHAR     décalage et aller à l'état 109
     tVOID     décalage et aller à l'état 110
 
-    $défaut  réduction par utilisation de la règle 65 (Arguments_Declaration)
+    $défaut  réduction par utilisation de la règle 66 (Arguments_Declaration)
 
     Arguments_Declaration  aller à l'état 111
 
 
-état 89
+état 85
 
-   57 Function: tCHAR tWORD $@10 tPO . Arguments_Declaration tPF tAO Input tAF
+   58 Function: tCHAR tWORD $@10 tPO . Arguments_Declaration tPF tAO Input tAF
 
     tINTEGER  décalage et aller à l'état 108
     tCHAR     décalage et aller à l'état 109
     tVOID     décalage et aller à l'état 110
 
-    $défaut  réduction par utilisation de la règle 65 (Arguments_Declaration)
+    $défaut  réduction par utilisation de la règle 66 (Arguments_Declaration)
 
     Arguments_Declaration  aller à l'état 112
 
 
-état 90
+état 86
 
-   59 Function: tVOID tWORD $@11 tPO . Arguments_Declaration tPF tAO Input tAF
+   60 Function: tVOID tWORD $@11 tPO . Arguments_Declaration tPF tAO Input tAF
 
     tINTEGER  décalage et aller à l'état 108
     tCHAR     décalage et aller à l'état 109
     tVOID     décalage et aller à l'état 110
 
-    $défaut  réduction par utilisation de la règle 65 (Arguments_Declaration)
+    $défaut  réduction par utilisation de la règle 66 (Arguments_Declaration)
 
     Arguments_Declaration  aller à l'état 113
+
+
+état 87
+
+   34 Exp: Exp . tPLUS Exp
+   35    | Exp . tDIV Exp
+   35    | Exp tDIV Exp .
+   36    | Exp . tMINUS Exp
+   37    | Exp . tPOINTER Exp
+
+    tMINUS  décalage et aller à l'état 63
+
+    tMINUS    [réduction par utilisation de la règle 35 (Exp)]
+    $défaut  réduction par utilisation de la règle 35 (Exp)
+
+
+état 88
+
+   34 Exp: Exp . tPLUS Exp
+   34    | Exp tPLUS Exp .
+   35    | Exp . tDIV Exp
+   36    | Exp . tMINUS Exp
+   37    | Exp . tPOINTER Exp
+
+    tDIV      décalage et aller à l'état 61
+    tMINUS    décalage et aller à l'état 63
+    tPOINTER  décalage et aller à l'état 64
+
+    tMINUS    [réduction par utilisation de la règle 34 (Exp)]
+    $défaut  réduction par utilisation de la règle 34 (Exp)
+
+
+état 89
+
+   34 Exp: Exp . tPLUS Exp
+   35    | Exp . tDIV Exp
+   36    | Exp . tMINUS Exp
+   36    | Exp tMINUS Exp .
+   37    | Exp . tPOINTER Exp
+
+    tDIV      décalage et aller à l'état 61
+    tPLUS     décalage et aller à l'état 62
+    tMINUS    décalage et aller à l'état 63
+    tPOINTER  décalage et aller à l'état 64
+
+    tDIV      [réduction par utilisation de la règle 36 (Exp)]
+    tPLUS     [réduction par utilisation de la règle 36 (Exp)]
+    tMINUS    [réduction par utilisation de la règle 36 (Exp)]
+    tPOINTER  [réduction par utilisation de la règle 36 (Exp)]
+    $défaut  réduction par utilisation de la règle 36 (Exp)
+
+
+état 90
+
+   34 Exp: Exp . tPLUS Exp
+   35    | Exp . tDIV Exp
+   36    | Exp . tMINUS Exp
+   37    | Exp . tPOINTER Exp
+   37    | Exp tPOINTER Exp .
+
+    tMINUS  décalage et aller à l'état 63
+
+    tMINUS    [réduction par utilisation de la règle 37 (Exp)]
+    $défaut  réduction par utilisation de la règle 37 (Exp)
 
 
 état 91
@@ -1193,35 +1188,35 @@ Arguments (76)
 
 état 94
 
-   50 DeclarationIntTabMemeLigne: tVIRG . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
+   51 DeclarationIntTabMemeLigne: tVIRG . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
 
     tWORD  décalage et aller à l'état 116
 
 
 état 95
 
-   44 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne . tPOINTVIRG
+   45 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne . tPOINTVIRG
 
     tPOINTVIRG  décalage et aller à l'état 117
 
 
 état 96
 
-   48 DeclarationIntEgalMemeLigne: tVIRG tWORD . tEGAL Exp DeclarationIntEgalMemeLigne
+   49 DeclarationIntEgalMemeLigne: tVIRG tWORD . tEGAL Exp DeclarationIntEgalMemeLigne
 
     tEGAL  décalage et aller à l'état 118
 
 
 état 97
 
-   43 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG .
+   44 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG .
 
-    $défaut  réduction par utilisation de la règle 43 (Declaration)
+    $défaut  réduction par utilisation de la règle 44 (Declaration)
 
 
 état 98
 
-   53 While: tWHILE $@8 tPO Condition tPF tAO . Input tAF
+   54 While: tWHILE $@8 tPO Condition tPF tAO . Input tAF
 
     $défaut  réduction par utilisation de la règle 1 (Input)
 
@@ -1234,8 +1229,8 @@ Arguments (76)
    32          | Condition tOR Condition .
    33          | Condition . tAND Condition
 
-    tOR   décalage et aller à l'état 78
-    tAND  décalage et aller à l'état 79
+    tOR   décalage et aller à l'état 74
+    tAND  décalage et aller à l'état 75
 
     tOR       [réduction par utilisation de la règle 32 (Condition)]
     tAND      [réduction par utilisation de la règle 32 (Condition)]
@@ -1248,8 +1243,8 @@ Arguments (76)
    33          | Condition . tAND Condition
    33          | Condition tAND Condition .
 
-    tOR   décalage et aller à l'état 78
-    tAND  décalage et aller à l'état 79
+    tOR   décalage et aller à l'état 74
+    tAND  décalage et aller à l'état 75
 
     tOR       [réduction par utilisation de la règle 33 (Condition)]
     tAND      [réduction par utilisation de la règle 33 (Condition)]
@@ -1260,9 +1255,9 @@ Arguments (76)
 
    30 Condition: Exp tSUP tEGAL . Exp
 
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
     Exp  aller à l'état 120
 
@@ -1275,10 +1270,10 @@ Arguments (76)
    36    | Exp . tMINUS Exp
    37    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 31
-    tPLUS     décalage et aller à l'état 32
-    tMINUS    décalage et aller à l'état 33
-    tPOINTER  décalage et aller à l'état 35
+    tDIV      décalage et aller à l'état 61
+    tPLUS     décalage et aller à l'état 62
+    tMINUS    décalage et aller à l'état 63
+    tPOINTER  décalage et aller à l'état 64
 
     $défaut  réduction par utilisation de la règle 28 (Condition)
 
@@ -1287,9 +1282,9 @@ Arguments (76)
 
    31 Condition: Exp tINF tEGAL . Exp
 
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
     Exp  aller à l'état 121
 
@@ -1302,10 +1297,10 @@ Arguments (76)
    36    | Exp . tMINUS Exp
    37    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 31
-    tPLUS     décalage et aller à l'état 32
-    tMINUS    décalage et aller à l'état 33
-    tPOINTER  décalage et aller à l'état 35
+    tDIV      décalage et aller à l'état 61
+    tPLUS     décalage et aller à l'état 62
+    tMINUS    décalage et aller à l'état 63
+    tPOINTER  décalage et aller à l'état 64
 
     $défaut  réduction par utilisation de la règle 29 (Condition)
 
@@ -1318,10 +1313,10 @@ Arguments (76)
    36    | Exp . tMINUS Exp
    37    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 31
-    tPLUS     décalage et aller à l'état 32
-    tMINUS    décalage et aller à l'état 33
-    tPOINTER  décalage et aller à l'état 35
+    tDIV      décalage et aller à l'état 61
+    tPLUS     décalage et aller à l'état 62
+    tMINUS    décalage et aller à l'état 63
+    tPOINTER  décalage et aller à l'état 64
 
     $défaut  réduction par utilisation de la règle 26 (Condition)
 
@@ -1334,10 +1329,10 @@ Arguments (76)
    36    | Exp . tMINUS Exp
    37    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 31
-    tPLUS     décalage et aller à l'état 32
-    tMINUS    décalage et aller à l'état 33
-    tPOINTER  décalage et aller à l'état 35
+    tDIV      décalage et aller à l'état 61
+    tPLUS     décalage et aller à l'état 62
+    tMINUS    décalage et aller à l'état 63
+    tPOINTER  décalage et aller à l'état 64
 
     $défaut  réduction par utilisation de la règle 27 (Condition)
 
@@ -1351,42 +1346,42 @@ Arguments (76)
 
 état 108
 
-   62 Arguments_Declaration: tINTEGER . tWORD tVIRG Arguments_Declaration
+   63 Arguments_Declaration: tINTEGER . tWORD tVIRG Arguments_Declaration
 
     tWORD  décalage et aller à l'état 123
 
 
 état 109
 
-   64 Arguments_Declaration: tCHAR . tWORD tVIRG Arguments_Declaration
+   65 Arguments_Declaration: tCHAR . tWORD tVIRG Arguments_Declaration
 
     tWORD  décalage et aller à l'état 124
 
 
 état 110
 
-   63 Arguments_Declaration: tVOID . tWORD tVIRG Arguments_Declaration
+   64 Arguments_Declaration: tVOID . tWORD tVIRG Arguments_Declaration
 
     tWORD  décalage et aller à l'état 125
 
 
 état 111
 
-   55 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration . tPF tAO Input tAF
+   56 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration . tPF tAO Input tAF
 
     tPF  décalage et aller à l'état 126
 
 
 état 112
 
-   57 Function: tCHAR tWORD $@10 tPO Arguments_Declaration . tPF tAO Input tAF
+   58 Function: tCHAR tWORD $@10 tPO Arguments_Declaration . tPF tAO Input tAF
 
     tPF  décalage et aller à l'état 127
 
 
 état 113
 
-   59 Function: tVOID tWORD $@11 tPO Arguments_Declaration . tPF tAO Input tAF
+   60 Function: tVOID tWORD $@11 tPO Arguments_Declaration . tPF tAO Input tAF
 
     tPF  décalage et aller à l'état 128
 
@@ -1409,25 +1404,25 @@ Arguments (76)
 
 état 116
 
-   50 DeclarationIntTabMemeLigne: tVIRG tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne
+   51 DeclarationIntTabMemeLigne: tVIRG tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne
 
     tCO  décalage et aller à l'état 130
 
 
 état 117
 
-   44 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG .
+   45 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG .
 
-    $défaut  réduction par utilisation de la règle 44 (Declaration)
+    $défaut  réduction par utilisation de la règle 45 (Declaration)
 
 
 état 118
 
-   48 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL . Exp DeclarationIntEgalMemeLigne
+   49 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL . Exp DeclarationIntEgalMemeLigne
 
-    tMINUS   décalage et aller à l'état 6
-    tNOMBRE  décalage et aller à l'état 7
-    tWORD    décalage et aller à l'état 22
+    tMINUS   décalage et aller à l'état 41
+    tNOMBRE  décalage et aller à l'état 42
+    tWORD    décalage et aller à l'état 43
 
     Exp  aller à l'état 131
 
@@ -1442,30 +1437,28 @@ Arguments (76)
    10      | Input . $@3 Function
    11      | Input . Appel_Function
    12      | Input . Main
-   53 While: tWHILE $@8 tPO Condition tPF tAO Input . tAF
+   54 While: tWHILE $@8 tPO Condition tPF tAO Input . tAF
 
     error     décalage et aller à l'état 3
     tINTEGER  décalage et aller à l'état 4
     tWHILE    décalage et aller à l'état 5
     tAF       décalage et aller à l'état 132
-    tMINUS    décalage et aller à l'état 6
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tWORD     décalage et aller à l'état 6
+    tNEWLINE  décalage et aller à l'état 7
 
     tINTEGER  [réduction par utilisation de la règle 9 ($@3)]
     tCHAR     réduction par utilisation de la règle 9 ($@3)
     tVOID     réduction par utilisation de la règle 9 ($@3)
     tIF       réduction par utilisation de la règle 6 ($@1)
 
-    $@1             aller à l'état 10
-    $@3             aller à l'état 11
-    Main            aller à l'état 12
-    Exp             aller à l'état 13
-    Egalite         aller à l'état 14
-    Declaration     aller à l'état 15
-    While           aller à l'état 16
-    Appel_Function  aller à l'état 17
+    $@1             aller à l'état 8
+    $@3             aller à l'état 9
+    Main            aller à l'état 10
+    LeftTerm        aller à l'état 11
+    Egalite         aller à l'état 12
+    Declaration     aller à l'état 13
+    While           aller à l'état 14
+    Appel_Function  aller à l'état 15
 
 
 état 120
@@ -1476,10 +1469,10 @@ Arguments (76)
    36    | Exp . tMINUS Exp
    37    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 31
-    tPLUS     décalage et aller à l'état 32
-    tMINUS    décalage et aller à l'état 33
-    tPOINTER  décalage et aller à l'état 35
+    tDIV      décalage et aller à l'état 61
+    tPLUS     décalage et aller à l'état 62
+    tMINUS    décalage et aller à l'état 63
+    tPOINTER  décalage et aller à l'état 64
 
     $défaut  réduction par utilisation de la règle 30 (Condition)
 
@@ -1492,10 +1485,10 @@ Arguments (76)
    36    | Exp . tMINUS Exp
    37    | Exp . tPOINTER Exp
 
-    tDIV      décalage et aller à l'état 31
-    tPLUS     décalage et aller à l'état 32
-    tMINUS    décalage et aller à l'état 33
-    tPOINTER  décalage et aller à l'état 35
+    tDIV      décalage et aller à l'état 61
+    tPLUS     décalage et aller à l'état 62
+    tMINUS    décalage et aller à l'état 63
+    tPOINTER  décalage et aller à l'état 64
 
     $défaut  réduction par utilisation de la règle 31 (Condition)
 
@@ -1511,42 +1504,42 @@ Arguments (76)
 
 état 123
 
-   62 Arguments_Declaration: tINTEGER tWORD . tVIRG Arguments_Declaration
+   63 Arguments_Declaration: tINTEGER tWORD . tVIRG Arguments_Declaration
 
     tVIRG  décalage et aller à l'état 134
 
 
 état 124
 
-   64 Arguments_Declaration: tCHAR tWORD . tVIRG Arguments_Declaration
+   65 Arguments_Declaration: tCHAR tWORD . tVIRG Arguments_Declaration
 
     tVIRG  décalage et aller à l'état 135
 
 
 état 125
 
-   63 Arguments_Declaration: tVOID tWORD . tVIRG Arguments_Declaration
+   64 Arguments_Declaration: tVOID tWORD . tVIRG Arguments_Declaration
 
     tVIRG  décalage et aller à l'état 136
 
 
 état 126
 
-   55 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration tPF . tAO Input tAF
+   56 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration tPF . tAO Input tAF
 
     tAO  décalage et aller à l'état 137
 
 
 état 127
 
-   57 Function: tCHAR tWORD $@10 tPO Arguments_Declaration tPF . tAO Input tAF
+   58 Function: tCHAR tWORD $@10 tPO Arguments_Declaration tPF . tAO Input tAF
 
     tAO  décalage et aller à l'état 138
 
 
 état 128
 
-   59 Function: tVOID tWORD $@11 tPO Arguments_Declaration tPF . tAO Input tAF
+   60 Function: tVOID tWORD $@11 tPO Arguments_Declaration tPF . tAO Input tAF
 
     tAO  décalage et aller à l'état 139
 
@@ -1567,29 +1560,27 @@ Arguments (76)
     tINTEGER  décalage et aller à l'état 4
     tWHILE    décalage et aller à l'état 5
     tAF       décalage et aller à l'état 140
-    tMINUS    décalage et aller à l'état 6
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tWORD     décalage et aller à l'état 6
+    tNEWLINE  décalage et aller à l'état 7
 
     tINTEGER  [réduction par utilisation de la règle 9 ($@3)]
     tCHAR     réduction par utilisation de la règle 9 ($@3)
     tVOID     réduction par utilisation de la règle 9 ($@3)
     tIF       réduction par utilisation de la règle 6 ($@1)
 
-    $@1             aller à l'état 10
-    $@3             aller à l'état 11
-    Main            aller à l'état 12
-    Exp             aller à l'état 13
-    Egalite         aller à l'état 14
-    Declaration     aller à l'état 15
-    While           aller à l'état 16
-    Appel_Function  aller à l'état 17
+    $@1             aller à l'état 8
+    $@3             aller à l'état 9
+    Main            aller à l'état 10
+    LeftTerm        aller à l'état 11
+    Egalite         aller à l'état 12
+    Declaration     aller à l'état 13
+    While           aller à l'état 14
+    Appel_Function  aller à l'état 15
 
 
 état 130
 
-   50 DeclarationIntTabMemeLigne: tVIRG tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne
+   51 DeclarationIntTabMemeLigne: tVIRG tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne
 
     tNOMBRE  décalage et aller à l'état 141
 
@@ -1600,24 +1591,24 @@ Arguments (76)
    35    | Exp . tDIV Exp
    36    | Exp . tMINUS Exp
    37    | Exp . tPOINTER Exp
-   48 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp . DeclarationIntEgalMemeLigne
+   49 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp . DeclarationIntEgalMemeLigne
 
-    tDIV      décalage et aller à l'état 31
-    tPLUS     décalage et aller à l'état 32
-    tMINUS    décalage et aller à l'état 33
-    tVIRG     décalage et aller à l'état 75
-    tPOINTER  décalage et aller à l'état 35
+    tDIV      décalage et aller à l'état 61
+    tPLUS     décalage et aller à l'état 62
+    tMINUS    décalage et aller à l'état 63
+    tVIRG     décalage et aller à l'état 71
+    tPOINTER  décalage et aller à l'état 64
 
-    $défaut  réduction par utilisation de la règle 49 (DeclarationIntEgalMemeLigne)
+    $défaut  réduction par utilisation de la règle 50 (DeclarationIntEgalMemeLigne)
 
     DeclarationIntEgalMemeLigne  aller à l'état 142
 
 
 état 132
 
-   53 While: tWHILE $@8 tPO Condition tPF tAO Input tAF .
+   54 While: tWHILE $@8 tPO Condition tPF tAO Input tAF .
 
-    $défaut  réduction par utilisation de la règle 53 (While)
+    $défaut  réduction par utilisation de la règle 54 (While)
 
 
 état 133
@@ -1636,68 +1627,66 @@ Arguments (76)
     tINTEGER  décalage et aller à l'état 4
     tWHILE    décalage et aller à l'état 5
     tAF       décalage et aller à l'état 143
-    tMINUS    décalage et aller à l'état 6
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tWORD     décalage et aller à l'état 6
+    tNEWLINE  décalage et aller à l'état 7
 
     tINTEGER  [réduction par utilisation de la règle 9 ($@3)]
     tCHAR     réduction par utilisation de la règle 9 ($@3)
     tVOID     réduction par utilisation de la règle 9 ($@3)
     tIF       réduction par utilisation de la règle 6 ($@1)
 
-    $@1             aller à l'état 10
-    $@3             aller à l'état 11
-    Main            aller à l'état 12
-    Exp             aller à l'état 13
-    Egalite         aller à l'état 14
-    Declaration     aller à l'état 15
-    While           aller à l'état 16
-    Appel_Function  aller à l'état 17
+    $@1             aller à l'état 8
+    $@3             aller à l'état 9
+    Main            aller à l'état 10
+    LeftTerm        aller à l'état 11
+    Egalite         aller à l'état 12
+    Declaration     aller à l'état 13
+    While           aller à l'état 14
+    Appel_Function  aller à l'état 15
 
 
 état 134
 
-   62 Arguments_Declaration: tINTEGER tWORD tVIRG . Arguments_Declaration
+   63 Arguments_Declaration: tINTEGER tWORD tVIRG . Arguments_Declaration
 
     tINTEGER  décalage et aller à l'état 108
     tCHAR     décalage et aller à l'état 109
     tVOID     décalage et aller à l'état 110
 
-    $défaut  réduction par utilisation de la règle 65 (Arguments_Declaration)
+    $défaut  réduction par utilisation de la règle 66 (Arguments_Declaration)
 
     Arguments_Declaration  aller à l'état 144
 
 
 état 135
 
-   64 Arguments_Declaration: tCHAR tWORD tVIRG . Arguments_Declaration
+   65 Arguments_Declaration: tCHAR tWORD tVIRG . Arguments_Declaration
 
     tINTEGER  décalage et aller à l'état 108
     tCHAR     décalage et aller à l'état 109
     tVOID     décalage et aller à l'état 110
 
-    $défaut  réduction par utilisation de la règle 65 (Arguments_Declaration)
+    $défaut  réduction par utilisation de la règle 66 (Arguments_Declaration)
 
     Arguments_Declaration  aller à l'état 145
 
 
 état 136
 
-   63 Arguments_Declaration: tVOID tWORD tVIRG . Arguments_Declaration
+   64 Arguments_Declaration: tVOID tWORD tVIRG . Arguments_Declaration
 
     tINTEGER  décalage et aller à l'état 108
     tCHAR     décalage et aller à l'état 109
     tVOID     décalage et aller à l'état 110
 
-    $défaut  réduction par utilisation de la règle 65 (Arguments_Declaration)
+    $défaut  réduction par utilisation de la règle 66 (Arguments_Declaration)
 
     Arguments_Declaration  aller à l'état 146
 
 
 état 137
 
-   55 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration tPF tAO . Input tAF
+   56 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration tPF tAO . Input tAF
 
     $défaut  réduction par utilisation de la règle 1 (Input)
 
@@ -1706,7 +1695,7 @@ Arguments (76)
 
 état 138
 
-   57 Function: tCHAR tWORD $@10 tPO Arguments_Declaration tPF tAO . Input tAF
+   58 Function: tCHAR tWORD $@10 tPO Arguments_Declaration tPF tAO . Input tAF
 
     $défaut  réduction par utilisation de la règle 1 (Input)
 
@@ -1715,7 +1704,7 @@ Arguments (76)
 
 état 139
 
-   59 Function: tVOID tWORD $@11 tPO Arguments_Declaration tPF tAO . Input tAF
+   60 Function: tVOID tWORD $@11 tPO Arguments_Declaration tPF tAO . Input tAF
 
     $défaut  réduction par utilisation de la règle 1 (Input)
 
@@ -1731,16 +1720,16 @@ Arguments (76)
 
 état 141
 
-   50 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne
+   51 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne
 
     tCF  décalage et aller à l'état 150
 
 
 état 142
 
-   48 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne .
+   49 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne .
 
-    $défaut  réduction par utilisation de la règle 48 (DeclarationIntEgalMemeLigne)
+    $défaut  réduction par utilisation de la règle 49 (DeclarationIntEgalMemeLigne)
 
 
 état 143
@@ -1754,23 +1743,23 @@ Arguments (76)
 
 état 144
 
-   62 Arguments_Declaration: tINTEGER tWORD tVIRG Arguments_Declaration .
+   63 Arguments_Declaration: tINTEGER tWORD tVIRG Arguments_Declaration .
 
-    $défaut  réduction par utilisation de la règle 62 (Arguments_Declaration)
+    $défaut  réduction par utilisation de la règle 63 (Arguments_Declaration)
 
 
 état 145
 
-   64 Arguments_Declaration: tCHAR tWORD tVIRG Arguments_Declaration .
+   65 Arguments_Declaration: tCHAR tWORD tVIRG Arguments_Declaration .
 
-    $défaut  réduction par utilisation de la règle 64 (Arguments_Declaration)
+    $défaut  réduction par utilisation de la règle 65 (Arguments_Declaration)
 
 
 état 146
 
-   63 Arguments_Declaration: tVOID tWORD tVIRG Arguments_Declaration .
+   64 Arguments_Declaration: tVOID tWORD tVIRG Arguments_Declaration .
 
-    $défaut  réduction par utilisation de la règle 63 (Arguments_Declaration)
+    $défaut  réduction par utilisation de la règle 64 (Arguments_Declaration)
 
 
 état 147
@@ -1783,30 +1772,28 @@ Arguments (76)
    10      | Input . $@3 Function
    11      | Input . Appel_Function
    12      | Input . Main
-   55 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration tPF tAO Input . tAF
+   56 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration tPF tAO Input . tAF
 
     error     décalage et aller à l'état 3
     tINTEGER  décalage et aller à l'état 4
     tWHILE    décalage et aller à l'état 5
     tAF       décalage et aller à l'état 152
-    tMINUS    décalage et aller à l'état 6
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tWORD     décalage et aller à l'état 6
+    tNEWLINE  décalage et aller à l'état 7
 
     tINTEGER  [réduction par utilisation de la règle 9 ($@3)]
     tCHAR     réduction par utilisation de la règle 9 ($@3)
     tVOID     réduction par utilisation de la règle 9 ($@3)
     tIF       réduction par utilisation de la règle 6 ($@1)
 
-    $@1             aller à l'état 10
-    $@3             aller à l'état 11
-    Main            aller à l'état 12
-    Exp             aller à l'état 13
-    Egalite         aller à l'état 14
-    Declaration     aller à l'état 15
-    While           aller à l'état 16
-    Appel_Function  aller à l'état 17
+    $@1             aller à l'état 8
+    $@3             aller à l'état 9
+    Main            aller à l'état 10
+    LeftTerm        aller à l'état 11
+    Egalite         aller à l'état 12
+    Declaration     aller à l'état 13
+    While           aller à l'état 14
+    Appel_Function  aller à l'état 15
 
 
 état 148
@@ -1819,30 +1806,28 @@ Arguments (76)
    10      | Input . $@3 Function
    11      | Input . Appel_Function
    12      | Input . Main
-   57 Function: tCHAR tWORD $@10 tPO Arguments_Declaration tPF tAO Input . tAF
+   58 Function: tCHAR tWORD $@10 tPO Arguments_Declaration tPF tAO Input . tAF
 
     error     décalage et aller à l'état 3
     tINTEGER  décalage et aller à l'état 4
     tWHILE    décalage et aller à l'état 5
     tAF       décalage et aller à l'état 153
-    tMINUS    décalage et aller à l'état 6
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tWORD     décalage et aller à l'état 6
+    tNEWLINE  décalage et aller à l'état 7
 
     tINTEGER  [réduction par utilisation de la règle 9 ($@3)]
     tCHAR     réduction par utilisation de la règle 9 ($@3)
     tVOID     réduction par utilisation de la règle 9 ($@3)
     tIF       réduction par utilisation de la règle 6 ($@1)
 
-    $@1             aller à l'état 10
-    $@3             aller à l'état 11
-    Main            aller à l'état 12
-    Exp             aller à l'état 13
-    Egalite         aller à l'état 14
-    Declaration     aller à l'état 15
-    While           aller à l'état 16
-    Appel_Function  aller à l'état 17
+    $@1             aller à l'état 8
+    $@3             aller à l'état 9
+    Main            aller à l'état 10
+    LeftTerm        aller à l'état 11
+    Egalite         aller à l'état 12
+    Declaration     aller à l'état 13
+    While           aller à l'état 14
+    Appel_Function  aller à l'état 15
 
 
 état 149
@@ -1855,39 +1840,37 @@ Arguments (76)
    10      | Input . $@3 Function
    11      | Input . Appel_Function
    12      | Input . Main
-   59 Function: tVOID tWORD $@11 tPO Arguments_Declaration tPF tAO Input . tAF
+   60 Function: tVOID tWORD $@11 tPO Arguments_Declaration tPF tAO Input . tAF
 
     error     décalage et aller à l'état 3
     tINTEGER  décalage et aller à l'état 4
     tWHILE    décalage et aller à l'état 5
     tAF       décalage et aller à l'état 154
-    tMINUS    décalage et aller à l'état 6
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tWORD     décalage et aller à l'état 6
+    tNEWLINE  décalage et aller à l'état 7
 
     tINTEGER  [réduction par utilisation de la règle 9 ($@3)]
     tCHAR     réduction par utilisation de la règle 9 ($@3)
     tVOID     réduction par utilisation de la règle 9 ($@3)
     tIF       réduction par utilisation de la règle 6 ($@1)
 
-    $@1             aller à l'état 10
-    $@3             aller à l'état 11
-    Main            aller à l'état 12
-    Exp             aller à l'état 13
-    Egalite         aller à l'état 14
-    Declaration     aller à l'état 15
-    While           aller à l'état 16
-    Appel_Function  aller à l'état 17
+    $@1             aller à l'état 8
+    $@3             aller à l'état 9
+    Main            aller à l'état 10
+    LeftTerm        aller à l'état 11
+    Egalite         aller à l'état 12
+    Declaration     aller à l'état 13
+    While           aller à l'état 14
+    Appel_Function  aller à l'état 15
 
 
 état 150
 
-   50 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne
+   51 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne
 
     tVIRG  décalage et aller à l'état 94
 
-    $défaut  réduction par utilisation de la règle 51 (DeclarationIntTabMemeLigne)
+    $défaut  réduction par utilisation de la règle 52 (DeclarationIntTabMemeLigne)
 
     DeclarationIntTabMemeLigne  aller à l'état 155
 
@@ -1905,30 +1888,30 @@ Arguments (76)
 
 état 152
 
-   55 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration tPF tAO Input tAF .
+   56 Function: tINTEGER tWORD $@9 tPO Arguments_Declaration tPF tAO Input tAF .
 
-    $défaut  réduction par utilisation de la règle 55 (Function)
+    $défaut  réduction par utilisation de la règle 56 (Function)
 
 
 état 153
 
-   57 Function: tCHAR tWORD $@10 tPO Arguments_Declaration tPF tAO Input tAF .
+   58 Function: tCHAR tWORD $@10 tPO Arguments_Declaration tPF tAO Input tAF .
 
-    $défaut  réduction par utilisation de la règle 57 (Function)
+    $défaut  réduction par utilisation de la règle 58 (Function)
 
 
 état 154
 
-   59 Function: tVOID tWORD $@11 tPO Arguments_Declaration tPF tAO Input tAF .
+   60 Function: tVOID tWORD $@11 tPO Arguments_Declaration tPF tAO Input tAF .
 
-    $défaut  réduction par utilisation de la règle 59 (Function)
+    $défaut  réduction par utilisation de la règle 60 (Function)
 
 
 état 155
 
-   50 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne .
+   51 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne .
 
-    $défaut  réduction par utilisation de la règle 50 (DeclarationIntTabMemeLigne)
+    $défaut  réduction par utilisation de la règle 51 (DeclarationIntTabMemeLigne)
 
 
 état 156
@@ -1936,7 +1919,7 @@ Arguments (76)
    23 Else: tELSE . $@7 tAO Input tAF
    24     | tELSE . If
 
-    tIF  décalage et aller à l'état 25
+    tIF  décalage et aller à l'état 21
 
     $défaut  réduction par utilisation de la règle 22 ($@7)
 
@@ -1990,24 +1973,22 @@ Arguments (76)
     tINTEGER  décalage et aller à l'état 4
     tWHILE    décalage et aller à l'état 5
     tAF       décalage et aller à l'état 162
-    tMINUS    décalage et aller à l'état 6
-    tNOMBRE   décalage et aller à l'état 7
-    tWORD     décalage et aller à l'état 8
-    tNEWLINE  décalage et aller à l'état 9
+    tWORD     décalage et aller à l'état 6
+    tNEWLINE  décalage et aller à l'état 7
 
     tINTEGER  [réduction par utilisation de la règle 9 ($@3)]
     tCHAR     réduction par utilisation de la règle 9 ($@3)
     tVOID     réduction par utilisation de la règle 9 ($@3)
     tIF       réduction par utilisation de la règle 6 ($@1)
 
-    $@1             aller à l'état 10
-    $@3             aller à l'état 11
-    Main            aller à l'état 12
-    Exp             aller à l'état 13
-    Egalite         aller à l'état 14
-    Declaration     aller à l'état 15
-    While           aller à l'état 16
-    Appel_Function  aller à l'état 17
+    $@1             aller à l'état 8
+    $@3             aller à l'état 9
+    Main            aller à l'état 10
+    LeftTerm        aller à l'état 11
+    Egalite         aller à l'état 12
+    Declaration     aller à l'état 13
+    While           aller à l'état 14
+    Appel_Function  aller à l'état 15
 
 
 état 162

@@ -34,7 +34,7 @@ int line_number;
 %token <number> tNOMBRE
 %token <texte> tWORD
 %type <number> Exp
-
+%type <texte> LeftTerm
 
 %union{
 int number;
@@ -122,12 +122,16 @@ tWORD {
 				}
 	};
 
+
+LeftTerm :
+tWORD {	printf("YACC: dans LeftTerm\n");};
+
 Egalite :
-Exp tEGAL Exp {	stack_push_cop($1,$3); printf("YACC: push cop d'egalite\n");
-		printf("YACC: ici dollar 1 vaut %d et dollar 3 vaut %d\n\n", $1,$3);
-		ts_display();
-		ts_pop_addr($3);
-		ts_display();};
+LeftTerm tEGAL Exp {	stack_push_cop(get_addr_from($1),$3);
+			printf("YACC: ici dollar 1 vaut %d et son addresse %d et dollar 3 vaut %d\n\n", $1,get_addr_from($1),$3);
+			ts_display();
+			ts_pop_addr($3);
+			ts_display();};
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { 
