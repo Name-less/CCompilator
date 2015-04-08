@@ -60,18 +60,18 @@ char * texte;
 
 Input: 
  |
-Input tNEWLINE {line_number++;
-		print_all_assembler_instructions();
-		} |
+Input tNEWLINE {line_number++;} |
 Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
 Input Declaration |
+Input While |
 Input {/*push_symb_zone();*/} If {/*pop_symb_zone();*/} {printf("YACC:condition ok \n");}|
 Input {/*push_symb_zone();*/} Function {/*pop_symb_zone();*/} |
 Input Appel_Function|
 Input Main;
 
 Main :
-tINTEGER tMAIN tPO Arg tPF tAO {push_symb_zone();} Input tAF {pop_symb_zone(); printf("YACC:mon main\n");} ;
+tINTEGER tMAIN tPO Arg tPF tAO {push_symb_zone();} Input tAF {pop_symb_zone(); printf("YACC:mon main\n");
+				print_all_assembler_instructions();} ;
 
 Arg :
 tINTEGER tWORD |
@@ -83,7 +83,7 @@ If :
 tIF{if_add_from_where(get_number_of_line());} tPO Condition tPF tAO Input tAF{if_fill_from_to(get_number_of_line());} Else;
 
 Else :
-tELSE tAO Input tAF | 
+tELSE {if_add_from_where(get_number_of_line());} tAO Input tAF | 
 tELSE If |;
 
 Condition :
@@ -103,16 +103,14 @@ Exp tMINUS Exp {stack_push_sub($1,$1,$3);ts_pop_addr($3);} |
 Exp tPOINTER Exp {stack_push_mul($1,$1,$3);ts_pop_addr($3);} |
 tMINUS Exp %prec NEG {stack_push_mul($2,$2,-1);} |
 tNOMBRE {
-				printf("YACC: tNOMBRE reconnu dans Exp\n");
 				int tmp = ts_add_temp();
 				$$ = tmp;
 				stack_push_afc(tmp,$1);
 				printf("YACC: tNOMBRE saved\n\n");
 		} |
 tWORD {
-				printf("YACC: tWORD reconnu dans exp\n");
 				if (exist($1) == -1 )
-					printf("YACC: exp not declared");
+					printf("YACC: tword saved\n\n");
 				else {
 					printf("YACC: erreur debut else tWORD\n");
 					int tmp = ts_add_temp();
@@ -123,7 +121,7 @@ tWORD {
 	};
 
 Egalite :
-Exp tEGAL Exp {printf("YACC: erreur sur Egalite\n"); stack_push_cop($1,$3);};
+Exp tEGAL Exp {stack_push_cop($1,$3);};
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { 
@@ -173,11 +171,12 @@ tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne | ;
 
 While :
 tWHILE{
-		while_add_from_to(get_number_of_line());
-		} tPO Condition tPF tAO Input tAF {
-							while_fill_from_where(get_number_of_line());
-											}
-		;
+	while_add_from_to(get_number_of_line());
+	}
+	tPO Condition tPF tAO Input tAF {
+	while_fill_from_where(get_number_of_line());
+	}
+	;
 
 Function :
 tINTEGER tWORD {
