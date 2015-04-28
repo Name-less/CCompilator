@@ -293,11 +293,11 @@ void pop_symb_zone(){
 int main(){
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
 	push_symb_zone();
-	ts_push((char *)"a",(char *)"const1");
-	ts_push((char *)"a",(char *)"const2");
+//	ts_push((char *)"a",(char *)"const1");
 //	ts_push((char *)"a",(char *)"const2");
 //	ts_push((char *)"a",(char *)"const2");
-	ts_push((char *)"b",(char *)"const3");
+//	ts_push((char *)"a",(char *)"const2");
+//	ts_push((char *)"b",(char *)"const3");
 	ts_add_temp();
 	ts_add_temp();
 	//ts_display();
