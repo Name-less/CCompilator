@@ -18,4 +18,3 @@ void ts_display();
 void ts_flush();
 void set_esp(int value);
 int get_esp();
-void check_modify_adress();

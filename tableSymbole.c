@@ -55,27 +55,46 @@ add a temporary variable on the table
 
 int ts_add_temp(){
         symbole * iterator = firstOne;
-        while(iterator->next != NULL){ //si on teste sur NULL on insère systématiquement à la fin de la table
-	// et on perd des cases qui on juste étées "freed" au lieu de faire un free on pourrait insérer un # 
-	//qui signalerait que la case est disponible et tester
-	// iterator->next->name!=# 
-	
-	//	if(iterator->next->name!=# ) {
-                iterator = iterator->next;
-	//	}
-        
-}
-	printf("TS_ADD_TEMP: l'adresse d'insertion est %d\n\n",iterator->adress);
-        symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
-        newSymbole->adress = get_next_addr();
-	char * buf_name = (char *)malloc(32);
-	sprintf(buf_name,"123%d",newSymbole->adress);
-	newSymbole->name = (char *)buf_name;
-        newSymbole->type_symbole = (char *)"temp";
-        newSymbole->before = iterator;
-        newSymbole->next = NULL;
-        iterator->next = newSymbole;
-        return (newSymbole->adress);
+	int insert_middle = 0;
+	int last_adress;
+	while(iterator->next != NULL && insert_middle == 0){
+		last_adress = iterator->adress;
+               	iterator = iterator->next;
+		if(iterator != NULL){
+               		if(iterator->adress-last_adress != 2){
+                        	insert_middle = 1;   
+                	}        
+		}
+	}
+
+	if(insert_middle == 1){
+                printf("TS_ADD_TEMP: l'adresse d'insertion est \n\n");
+                symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
+                newSymbole->adress = last_adress+2;
+                char * buf_name = (char *)malloc(32);
+                sprintf(buf_name,"123%d",newSymbole->adress);
+                newSymbole->name = (char *)buf_name;
+                newSymbole->type_symbole = (char *)"temp";
+
+                newSymbole->before = iterator->before;                
+		newSymbole->next = iterator;		
+                (iterator->before)->next = newSymbole;
+		iterator->before = newSymbole;
+
+		return (newSymbole->adress);
+	}else{
+		printf("TS_ADD_TEMP ELSE: l'adresse d'insertion est \n\n");
+        	symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
+        	newSymbole->adress = get_next_addr();
+		char * buf_name = (char *)malloc(32);
+		sprintf(buf_name,"123%d",newSymbole->adress);
+		newSymbole->name = (char *)buf_name;
+        	newSymbole->type_symbole = (char *)"temp";
+        	newSymbole->before = iterator;
+        	newSymbole->next = NULL;
+        	iterator->next = newSymbole;
+        	return (newSymbole->adress);
+	}
 }
 
 /*
@@ -135,7 +154,6 @@ int ts_pop(char * name){
 			}
 			free(iterator);
 			iterator = NULL;
-			check_modify_adress();
 			return 1;
                 }else{
                         iterator = iterator->next;
@@ -150,19 +168,16 @@ int ts_pop_addr(int addr){
 		if(iterator->next != NULL){
 			firstOne = iterator->next;
 			free(iterator);
-			check_modify_adress();
 			return 1;
 		}else{
 			free(firstOne);
 			firstOne = NULL;
-			check_modify_adress();
 			return 1;
 		}
 	}
 	while(iterator != NULL){
 		if(iterator->adress == addr){
 			ts_pop(iterator->name);
-			check_modify_adress();
 			return 1;
 		}else{
 			iterator = iterator->next;
@@ -179,7 +194,6 @@ int ts_pop_last(){
 			(iterator->before)->next = NULL;
 			free(iterator);
 			iterator = NULL;
-			check_modify_adress();
 			return 1;
 		}else{
 			iterator = iterator->next;
@@ -273,37 +287,14 @@ void pop_symb_zone(){
 		(lastIterator->before)->next = NULL;
 		free(lastIterator);
 	}
-	check_modify_adress();
 }
 
-void check_modify_adress(){
-
-	symbole * iterator = firstOne;
-	
-	if(iterator == NULL){
-		return;
-	}	
-
-	int last_adress = iterator->adress;
-	int minus_delta = 0;
-	while(iterator != NULL){
-		if(((iterator->adress)-last_adress-minus_delta) > 2){
-		printf("only once \n");
-			minus_delta = minus_delta + 2;
-		}
-		iterator->adress = iterator->adress-minus_delta;
-		last_adress = iterator->adress;
-		iterator = iterator->next;
-	}
-
-
-}
 
 int main(){
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
 	push_symb_zone();
-//	ts_push((char *)"a",(char *)"const1");
-//	ts_push((char *)"a",(char *)"const2");
+	ts_push((char *)"a",(char *)"const1");
+	ts_push((char *)"a",(char *)"const2");
 //	ts_push((char *)"a",(char *)"const2");
 //	ts_push((char *)"a",(char *)"const2");
 	ts_push((char *)"b",(char *)"const3");
@@ -322,15 +313,8 @@ int main(){
 	printf("avant pop addr \n");
 	printf("avant pop \n");
         ts_pop((char *)"e");
-	printf("avant pop last \n");
-        ts_pop_last();
-        ts_pop_last();
-	printf("avant flush\n");
 	ts_display();
-	//ts_flush();
-	printf("avant displ \n");
-	//ts_display();
-	check_modify_adress();
+	ts_add_temp();
 	ts_display();
 }
 
