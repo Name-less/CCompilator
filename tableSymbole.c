@@ -135,6 +135,7 @@ int ts_pop(char * name){
 			}
 			free(iterator);
 			iterator = NULL;
+			check_modify_adress();
 			return 1;
                 }else{
                         iterator = iterator->next;
@@ -149,16 +150,19 @@ int ts_pop_addr(int addr){
 		if(iterator->next != NULL){
 			firstOne = iterator->next;
 			free(iterator);
+			check_modify_adress();
 			return 1;
 		}else{
 			free(firstOne);
 			firstOne = NULL;
+			check_modify_adress();
 			return 1;
 		}
 	}
 	while(iterator != NULL){
 		if(iterator->adress == addr){
 			ts_pop(iterator->name);
+			check_modify_adress();
 			return 1;
 		}else{
 			iterator = iterator->next;
@@ -175,6 +179,7 @@ int ts_pop_last(){
 			(iterator->before)->next = NULL;
 			free(iterator);
 			iterator = NULL;
+			check_modify_adress();
 			return 1;
 		}else{
 			iterator = iterator->next;
@@ -261,17 +266,40 @@ void pop_symb_zone(){
 	while(strcmp(lastIterator->name,(char *)"*") != 0){
 		symbole * aux = lastIterator;
 		lastIterator = lastIterator->before;
-		printf("\n last %s \n",lastIterator->name);
+//		printf("\n last %s \n",lastIterator->name);
 		ts_pop(aux->name);
 	}
 	if(lastIterator->before != NULL){
 		(lastIterator->before)->next = NULL;
 		free(lastIterator);
 	}
+	check_modify_adress();
 }
 
+void check_modify_adress(){
 
-/*int main(){
+	symbole * iterator = firstOne;
+	
+	if(iterator == NULL){
+		return;
+	}	
+
+	int last_adress = iterator->adress;
+	int minus_delta = 0;
+	while(iterator != NULL){
+		if(((iterator->adress)-last_adress-minus_delta) > 2){
+		printf("only once \n");
+			minus_delta = minus_delta + 2;
+		}
+		iterator->adress = iterator->adress-minus_delta;
+		last_adress = iterator->adress;
+		iterator = iterator->next;
+	}
+
+
+}
+
+int main(){
 	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
 	push_symb_zone();
 //	ts_push((char *)"a",(char *)"const1");
@@ -281,9 +309,9 @@ void pop_symb_zone(){
 	ts_push((char *)"b",(char *)"const3");
 	ts_add_temp();
 	ts_add_temp();
-	ts_display();
+	//ts_display();
         ts_pop_addr(4);
-	ts_display();
+	//ts_display();
 	ts_push((char *)"u",(char *)"const5");
 	ts_push((char *)"y",(char *)"const1");
 	ts_push((char *)"t",(char *)"const3");
@@ -299,10 +327,12 @@ void pop_symb_zone(){
         ts_pop_last();
 	printf("avant flush\n");
 	ts_display();
-	ts_flush();
+	//ts_flush();
 	printf("avant displ \n");
 	//ts_display();
-}*/
+	check_modify_adress();
+	ts_display();
+}
 
 
 
