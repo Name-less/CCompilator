@@ -19,7 +19,9 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
+--use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -42,7 +44,8 @@ end EX_ALU;
 	
 architecture Behavioral of EX_ALU is
 
-   signal temp : std_logic_vector (8 downto 0); --9 bits 
+   --signal temp : std_logic_vector (8 downto 0); --9 bits 
+   signal temp : std_logic_vector (15 downto 0); --16 bits
 	--MAKE THE OPERATION BETWEEN A AND B
 
 begin
@@ -51,22 +54,30 @@ begin
 	begin
 	NOZC <= "0000";
 	if(Ctrl_Alu = "001") then -- 0x01 <=> SUM S=A+B, C carry/ O overflow si A+B>8bits
-		temp <= std_logic_vector((unsigned('0' & A) + unsigned(B))); 
+		temp <= ("00000000" & A) + B; 
 		S <= temp(7 downto 0); 
 		NOZC(0) <= temp(8); --attribution of the flag carry
 		NOZC(2) <= temp(8); --attribution of the flag overflow 
+		NOZC(3) <= temp(7);
 	elsif(Ctrl_Alu = "010")then-- 0x02 <=> MUL
-		temp <= A and B;
+		temp <= A * B;
 		S <= temp(7 downto 0);
-		NOZC(0) <= temp(8); --attribution of the flag carry
-		NOZC(2) <= temp(8); --attribution of the flag overflow
-	elsif(Ctrl_Alu = "011") then-- 0x03 <=> SUB S=|A-B|, N Negative si B>A
-		if (A>=B) then
-			S <= std_logic_vector(unsigned(A) - unsigned(B)); -- no flag
+		if (temp(15 downto 9)="0000000") then
+		NOZC(0) <= '1'; --attribution of the flag carry
+		NOZC(2) <= '1'; --attribution of the flag overflow
 		else
-			S <= std_logic_vector(unsigned(B) - unsigned(A));
-			NOZC(3) <= '1'; -- attribution of the flag negative
+		NOZC(0) <= temp(8);
+		NOZC(2) <= '0';
+		NOZC(3) <= temp(7);
 		end if;
+	elsif(Ctrl_Alu = "011") then-- 0x03 <=> SUB S=|A-B|, N Negative si B>A
+		if (((A>=B) and (A>=0)) or ((A>=B) and (A<=0)) or ((B>=A) and (B<=0)) or ((A>=B) and (B>=0)) or ((A>=B) and (B<=0))) then
+			S <= A - B;
+			NOZC(0) <= '1';
+		elsif(((B>=A) and (B>=0)) or ((B>=A) and (A<=0)) or ((B>=A) and (A>=0))) then
+			S <= A - B ;
+			NOZC(3) <= '1'; -- attribution of the flag negative
+		end if;		
 	--elsif(Ctrl_Alu = "100") then -- 0x04 <=> DIV
 	end if;
 	end process;

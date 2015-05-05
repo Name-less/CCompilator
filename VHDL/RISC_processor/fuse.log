@@ -1,0 +1,25 @@
+Running: /usr/local/Xilinx134/13.4/ISE_DS/ISE/bin/lin/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/laloy/CCompilator/VHDL/RISC_processor/ALU_test_isim_beh.exe -prj /home/laloy/CCompilator/VHDL/RISC_processor/ALU_test_beh.prj work.ALU_test 
+ISim O.87xd (signature 0x8ddf5b5d)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "/home/laloy/CCompilator/VHDL/RISC_processor/EX_ALU.vhd" into library work
+Parsing VHDL file "/home/laloy/CCompilator/VHDL/RISC_processor/ALU_test.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 37036 KB
+Fuse CPU Usage: 940 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling architecture behavioral of entity EX_ALU [ex_alu_default]
+WARNING:Simulator:752 - Running 32 bit ISIM on 64 bit Linux
+Compiling architecture behavior of entity alu_test
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 7 VHDL Units
+Built simulation executable /home/laloy/CCompilator/VHDL/RISC_processor/ALU_test_isim_beh.exe
+Fuse Memory Usage: 90108 KB
+Fuse CPU Usage: 1020 ms
+GCC CPU Usage: 220 ms
