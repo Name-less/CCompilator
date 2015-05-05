@@ -94,7 +94,8 @@ void while_add_from_to(int arg){
         iterator->next_if = to_add;
 }
 
-void parse_and_modify_file(char * file_name,char * new_file){
+void parse_and_modify_file(char * file_name,char * new_file){ //après avoir fait printer les instructions asm via print_all_sembleur
+//on lance parse_and_modify_file pour rajouter les sauts au fichier file_name dans new_file
 	// ANTHO: commenté car genant pour la compile
 	/** int current_delta_line = 0;*/ 
 	int current_line = 0;
