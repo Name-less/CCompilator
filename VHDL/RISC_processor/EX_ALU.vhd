@@ -33,31 +33,43 @@ use IEEE.NUMERIC_STD.ALL;
 entity EX_ALU is
     Port ( A : in  STD_LOGIC_VECTOR (7 downto 0);
            B : in  STD_LOGIC_VECTOR (7 downto 0);
-           Ctrl_Alu : in  STD_LOGIC_VECTOR (2 downto 0);
-           S : out  STD_LOGIC_VECTOR (7 downto 0);
+           Ctrl_Alu : in  STD_LOGIC_VECTOR (2 downto 0); --operation
+           S : out  STD_LOGIC_VECTOR (7 downto 0); --result
            NOZC : out  STD_LOGIC_VECTOR (3 downto 0));
 end EX_ALU;
 
+	--http://en.wikibooks.org/wiki/Category:VHDL_for_FPGA_Design
+	
 architecture Behavioral of EX_ALU is
-   signal temp : unsigned(8 downto 0); 
+
+   signal temp : std_logic_vector (8 downto 0); --9 bits 
 	--MAKE THE OPERATION BETWEEN A AND B
 
 begin
-	--http://en.wikibooks.org/wiki/Category:VHDL_for_FPGA_Design
-	NOZC <= '0000';
-	if(Ctrl_Alu = '00'){--SUM
-		temp <= ("0" & A) + B; 
+
+	process (A,B, Ctrl_ALu, temp) is
+	begin
+	NOZC <= "0000";
+	if(Ctrl_Alu = "001") then -- 0x01 <=> SUM S=A+B, C carry/ O overflow si A+B>8bits
+		temp <= std_logic_vector((unsigned('0' & A) + unsigned(B))); 
 		S <= temp(7 downto 0); 
-		NOZC(0)<= temp(8);	
-	}elsif(Ctrl_Alu = '01'){--SUB
-		temp <= ("0" & A) - B; 
-		S <= temp(7 downto 0); 
-		NOZC(0)<= temp(8);
-	}elsif(Ctrl_Alu = '11'){--DIV
-	
-	}elsif(Ctrl_Alu = '10'){--MUL
-	
-	}
+		NOZC(0) <= temp(8); --attribution of the flag carry
+		NOZC(2) <= temp(8); --attribution of the flag overflow 
+	elsif(Ctrl_Alu = "010")then-- 0x02 <=> MUL
+		temp <= A and B;
+		S <= temp(7 downto 0);
+		NOZC(0) <= temp(8); --attribution of the flag carry
+		NOZC(2) <= temp(8); --attribution of the flag overflow
+	elsif(Ctrl_Alu = "011") then-- 0x03 <=> SUB S=|A-B|, N Negative si B>A
+		if (A>=B) then
+			S <= std_logic_vector(unsigned(A) - unsigned(B)); -- no flag
+		else
+			S <= std_logic_vector(unsigned(B) - unsigned(A));
+			NOZC(3) <= '1'; -- attribution of the flag negative
+		end if;
+	--elsif(Ctrl_Alu = "100") then -- 0x04 <=> DIV
+	end if;
+	end process;
 
 end Behavioral;
 
