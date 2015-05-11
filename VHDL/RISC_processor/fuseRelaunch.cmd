@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "/home/laloy/CCompilator/VHDL/RISC_processor/ALU_test_isim_beh.exe" -prj "/home/laloy/CCompilator/VHDL/RISC_processor/ALU_test_beh.prj" "work.ALU_test" 
+-intstyle "ise" -incremental -lib "secureip" -o "/home/laloy/CCompilator/VHDL/RISC_processor/Register_bench_test_isim_beh.exe" -prj "/home/laloy/CCompilator/VHDL/RISC_processor/Register_bench_test_beh.prj" "work.Register_bench_test" 

@@ -13,3 +13,8 @@ xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/EX_ALU.xst" 
 xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/EX_ALU.xst" -ofn "/home/laloy/CCompilator/VHDL/RISC_processor/EX_ALU.syr" 
 xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/EX_ALU.xst" -ofn "/home/laloy/CCompilator/VHDL/RISC_processor/EX_ALU.syr" 
 xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/EX_ALU.xst" -ofn "/home/laloy/CCompilator/VHDL/RISC_processor/EX_ALU.syr" 
+xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/EX_ALU.xst" -ofn "/home/laloy/CCompilator/VHDL/RISC_processor/EX_ALU.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 EX_ALU.ngc EX_ALU.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o EX_ALU_map.ncd EX_ALU.ngd EX_ALU.pcf 
+par -w -intstyle ise -ol high -mt off EX_ALU_map.ncd EX_ALU.ncd EX_ALU.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml EX_ALU.twx EX_ALU.ncd -o EX_ALU.twr EX_ALU.pcf 

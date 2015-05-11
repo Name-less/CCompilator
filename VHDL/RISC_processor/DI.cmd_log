@@ -1,0 +1,13 @@
+xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.xst" -ofn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.syr" 
+netgen -intstyle ise -ar Structure -tm DI -w -dir netgen/synthesis -ofmt vhdl -sim DI.ngc DI_synthesis.vhd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx16-csg324-3 DI.ngc DI.ngd  
+map -intstyle ise -p xc6slx16-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o DI_map.ncd DI.ngd DI.pcf 
+par -w -intstyle ise -ol high -mt off DI_map.ncd DI.ncd DI.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml DI.twx DI.ncd -o DI.twr DI.pcf 
+bitgen -intstyle ise -f DI.ut DI.ncd 
+xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.xst" -ofn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.syr" 
+xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.xst" -ofn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.syr" 
+xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.xst" -ofn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.syr" 
+xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.xst" -ofn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.syr" 
+xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.xst" -ofn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.syr" 
+xst -intstyle ise -ifn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.xst" -ofn "/home/laloy/CCompilator/VHDL/RISC_processor/DI.syr" 

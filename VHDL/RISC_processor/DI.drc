@@ -1,0 +1,8 @@
+Release 13.4 Drc O.87xd (lin)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+Mon May 11 11:29:12 2015
+
+drc -z DI.ncd DI.pcf
+
+DRC detected 0 errors and 0 warnings.

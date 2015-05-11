@@ -1,0 +1,2 @@
+vhdl work "DI.vhd"
+vhdl work "Register_bench_test.vhd"

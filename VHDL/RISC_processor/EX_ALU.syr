@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: EX_ALU.prj
@@ -465,13 +465,13 @@ Ctrl_Alu[2]_Ctrl_Alu[2]_OR_16_o|         |         |    1.357|         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.52 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 4.24 secs
  
 --> 
 
 
-Total memory usage is 127084 kilobytes
+Total memory usage is 127064 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   24 (   0 filtered)

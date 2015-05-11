@@ -44,8 +44,7 @@ end EX_ALU;
 	
 architecture Behavioral of EX_ALU is
 
-   --signal temp : std_logic_vector (8 downto 0); --9 bits 
-   signal temp : std_logic_vector (15 downto 0); --16 bits
+    signal temp : std_logic_vector (15 downto 0); --16 bits
 	--MAKE THE OPERATION BETWEEN A AND B
 
 begin

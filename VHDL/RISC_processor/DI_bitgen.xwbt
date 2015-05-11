@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/laloy/CCompilator/VHDL/RISC_processor/DI.ncd
+OUTFILE=/home/laloy/CCompilator/VHDL/RISC_processor/DI.bit
+FAMILY=Spartan6
+PART=xc6slx16-3csg324
+WORKINGDIR=/home/laloy/CCompilator/VHDL/RISC_processor
+LICENSE=ISE
+USER_INFO=202067218_1777487267_210567960_160

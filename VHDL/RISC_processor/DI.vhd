@@ -19,6 +19,9 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+--use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -30,10 +33,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity DI is
-    Port ( addrA : in  STD_LOGIC_VECTOR (3 downto 0);
-           addrB : in  STD_LOGIC_VECTOR (3 downto 0);
-           addrW : in  STD_LOGIC_VECTOR (3 downto 0);
-           W : in  STD_LOGIC;
+    Port ( addra : in  STD_LOGIC_VECTOR (3 downto 0);
+           addrb : in  STD_LOGIC_VECTOR (3 downto 0);
+           addrw : in  STD_LOGIC_VECTOR (3 downto 0);
+           W : in  STD_LOGIC; --read(0) or write(1)
            DATA : in  STD_LOGIC_VECTOR (7 downto 0);
            RST : in  STD_LOGIC;
            CLK : in  STD_LOGIC;
@@ -43,8 +46,45 @@ end DI;
 
 architecture Behavioral of DI is
 
+type memory is array ( 0 to 15 ) of std_logic_vector( 7 downto 0 ) ;
+signal bench : memory;
+--bench <= (others => "00000000");
+signal Sigouta: std_logic_vector ( 7 downto 0);
+signal Sigoutb: std_logic_vector ( 7 downto 0);
+--signal Sigoutw: std_logic_vector ( 7 downto 0);
+
 begin
 
+process
+	begin 
+	
+		bench <= (
+				--test
+				0 => "10000000" ,
+				1 => "11000000" ,
+				2 => "11100000" ,
+				--fin des valeurs de test
+				others => "00000000" );
+				
+		-- Reset and Writing synchron on clk
+		wait until clk'event and clk='1';
+			if (rst='0') then --reset inside memory <= 0x00
+				bench <= (others => "00000000" );				
+			elsif (w='1') then
+				bench(conv_integer(unsigned(addrw))) <= data;
+			end if;
+	
+end process;
+	
+	-- controle des aléas
+	Sigouta <= data when ((w ='1') and (addrw = addra))
+		else bench(conv_integer(unsigned(addra))) when (((addrw /= addra) or (addrw /= addrb)) and w='0');
+	Sigoutb <= data when ((w ='1') and (addrw = addrb))
+		else bench(conv_integer(unsigned(addrb))) when (((addrw /= addra) or (addrw /= addrb)) and w='0');
+		
+	
+	qa<=Sigouta;
+	qb<=Sigoutb;
 
 end Behavioral;
 
