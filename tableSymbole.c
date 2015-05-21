@@ -72,7 +72,7 @@ int ts_add_temp(){
                 symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
                 newSymbole->adress = last_adress+2;
                 char * buf_name = (char *)malloc(32);
-                sprintf(buf_name,"123%d",newSymbole->adress);
+                sprintf(buf_name,"0%d",newSymbole->adress);
                 newSymbole->name = (char *)buf_name;
                 newSymbole->type_symbole = (char *)"temp";
 
@@ -87,7 +87,7 @@ int ts_add_temp(){
         	symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
         	newSymbole->adress = get_next_addr();
 		char * buf_name = (char *)malloc(32);
-		sprintf(buf_name,"123%d",newSymbole->adress);
+		sprintf(buf_name,"0%d",newSymbole->adress);
 		newSymbole->name = (char *)buf_name;
         	newSymbole->type_symbole = (char *)"temp";
         	newSymbole->before = iterator;
@@ -291,30 +291,20 @@ void pop_symb_zone(){
 
 
 int main(){
-	//printf("%s %s %d et \n",firstOne->name,firstOne->type_symbole,firstOne->adress);
 	push_symb_zone();
-//	ts_push((char *)"a",(char *)"const1");
-//	ts_push((char *)"a",(char *)"const2");
-//	ts_push((char *)"a",(char *)"const2");
-//	ts_push((char *)"a",(char *)"const2");
-//	ts_push((char *)"b",(char *)"const3");
-	ts_add_temp();
-	ts_add_temp();
-	//ts_display();
-        ts_pop_addr(4);
-	//ts_display();
-	ts_push((char *)"u",(char *)"const5");
-	ts_push((char *)"y",(char *)"const1");
-	ts_push((char *)"t",(char *)"const3");
+	printf("ok \n");
+	ts_push((char *)"size",(char *)"int");
 	push_symb_zone();
-	ts_push((char *)"r",(char *)"const2");
-	ts_push((char *)"e",(char *)"const3");
-	ts_push((char *)"c",(char *)"const4");
-	printf("avant pop addr \n");
-	printf("avant pop \n");
-        ts_pop((char *)"e");
-	ts_display();
+	printf("ok \n");
 	ts_add_temp();
+	ts_add_temp();
+	ts_push((char *)"width",(char *)"int");
+	ts_push((char *)"height",(char *)"int");
+	push_symb_zone();
+	ts_push((char *)"price",(char *)"int");
+	ts_push((char *)"old",(char *)"int");
+	ts_add_temp();
+	ts_push((char *)"mark",(char *)"int");
 	ts_display();
 }
 
