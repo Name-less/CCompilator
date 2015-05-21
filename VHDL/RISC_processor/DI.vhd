@@ -77,10 +77,10 @@ process
 end process;
 	
 	-- controle des aléas
-	Sigouta <= data when ((w ='1') and (addrw = addra))
-		else bench(conv_integer(unsigned(addra))) when (((addrw /= addra) or (addrw /= addrb)) and w='0');
-	Sigoutb <= data when ((w ='1') and (addrw = addrb))
-		else bench(conv_integer(unsigned(addrb))) when (((addrw /= addra) or (addrw /= addrb)) and w='0');
+	Sigouta <= 	data 												when ((w ='1') and (addrw = addra) and rst = '1') else
+					bench(conv_integer(unsigned(addra)))	when (((addrw /= addra) or (addrw /= addrb)) and w='0' and rst='1');
+	Sigoutb <= 	data 												when ((w ='1') and (addrw = addrb) and rst = '1') else 		
+					bench(conv_integer(unsigned(addrb)))	when (((addrw /= addra) or (addrw /= addrb)) and w='0' and rst='1');
 		
 	
 	qa<=Sigouta;

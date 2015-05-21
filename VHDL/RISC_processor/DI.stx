@@ -1,21 +1,18 @@
-Release 13.4 - xst O.87xd (lin)
+Release 13.4 - xst O.87xd (nt64)
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
---> 
-Parameter TMPDIR set to /home/laloy/CCompilator/VHDL/RISC_processor/xst/projnav.tmp
+--> Parameter TMPDIR set to C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.81 secs
  
---> 
-Parameter xsthdpdir set to /home/laloy/CCompilator/VHDL/RISC_processor/xst
+--> Parameter xsthdpdir set to C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.82 secs
  
---> 
-Reading design: DI.prj
+--> Reading design: DI.prj
 
 TABLE OF CONTENTS
   1) Synthesis Options Summary
@@ -43,18 +40,17 @@ INFO:Xst - Part-select index evaluated to out of bound value may lead to incorre
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "/home/laloy/CCompilator/VHDL/RISC_processor/DI.vhd" into library work
+Parsing VHDL file "C:\Users\Anthony\Documents\GitHub\CCompilator\VHDL\RISC_processor\DI.vhd" into library work
 Parsing entity <DI>.
 Parsing architecture <Behavioral> of entity <di>.
 
 
-Total REAL time to Xst completion: 2.00 secs
-Total CPU time to Xst completion: 2.28 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 6.96 secs
  
 --> 
 
-
-Total memory usage is 98652 kilobytes
+Total memory usage is 182368 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)

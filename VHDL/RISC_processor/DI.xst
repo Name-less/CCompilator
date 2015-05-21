@@ -1,5 +1,5 @@
-set -tmpdir "/home/laloy/CCompilator/VHDL/RISC_processor/xst/projnav.tmp"
-set -xsthdpdir "/home/laloy/CCompilator/VHDL/RISC_processor/xst"
+set -tmpdir "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/xst"
 run -compileonly yes
 -p xc6slx16-3-csg324
 -top DI

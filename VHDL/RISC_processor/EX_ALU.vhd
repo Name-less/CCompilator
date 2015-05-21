@@ -45,41 +45,61 @@ end EX_ALU;
 architecture Behavioral of EX_ALU is
 
     signal temp : std_logic_vector (15 downto 0); --16 bits
-	--MAKE THE OPERATION BETWEEN A AND B
 
 begin
 
-	process (A,B, Ctrl_ALu, temp) is
-	begin
-	NOZC <= "0000";
-	if(Ctrl_Alu = "001") then -- 0x01 <=> SUM S=A+B, C carry/ O overflow si A+B>8bits
-		temp <= ("00000000" & A) + B; 
-		S <= temp(7 downto 0); 
-		NOZC(0) <= temp(8); --attribution of the flag carry
-		NOZC(2) <= temp(8); --attribution of the flag overflow 
-		NOZC(3) <= temp(7);
-	elsif(Ctrl_Alu = "010")then-- 0x02 <=> MUL
-		temp <= A * B;
-		S <= temp(7 downto 0);
-		if (temp(15 downto 9)="0000000") then
-		NOZC(0) <= '1'; --attribution of the flag carry
-		NOZC(2) <= '1'; --attribution of the flag overflow
-		else
-		NOZC(0) <= temp(8);
-		NOZC(2) <= '0';
-		NOZC(3) <= temp(7);
-		end if;
-	elsif(Ctrl_Alu = "011") then-- 0x03 <=> SUB S=|A-B|, N Negative si B>A
-		if (((A>=B) and (A>=0)) or ((A>=B) and (A<=0)) or ((B>=A) and (B<=0)) or ((A>=B) and (B>=0)) or ((A>=B) and (B<=0))) then
-			S <= A - B;
-			NOZC(0) <= '1';
-		elsif(((B>=A) and (B>=0)) or ((B>=A) and (A<=0)) or ((B>=A) and (A>=0))) then
-			S <= A - B ;
-			NOZC(3) <= '1'; -- attribution of the flag negative
-		end if;		
-	--elsif(Ctrl_Alu = "100") then -- 0x04 <=> DIV
-	end if;
-	end process;
+	-- pas de process car non-cyclique (pas d'horloge)
+	-- => pas de if or d'un process
+	
+	--NOZC <= "0000";
+	
+		-- 0x01 <=> SUM S=A+B
+		temp <= 	("00000000" & A) + B when Ctrl_Alu = "001" else
+		-- 0x02 <=> MUL S=A*B
+					A * B 					when Ctrl_Alu = "010" else
+		-- 0x03 <=> SUB S=A-B
+					("00000000" & A) - B when Ctrl_Alu = "011" else
+		-- 0x04 <=> DIV S=A/B non implemented
+		-- XxXX <=> none
+					"0000000000000000";
+					
+	-- Carry: attribution of the flag carry
+	NOZC(0) <= 	temp(8) when Ctrl_Alu = "001" or Ctrl_Alu = "011" else
+		-- à tester la mul
+					'1' 	  when Ctrl_Alu = "010" and temp(15 downto 8) /= "00000000" else
+					'0';
+	
+	-- Zero: attribution of the flag zero (trivial)
+	NOZC(1) <= 	'1' when temp(7 downto 0) = "00000000" else
+					'0';
+					
+	-- Overflow: attribution of the flag overflow
+					-- overflow for add
+	NOZC(2) <=	'1' when Ctrl_Alu = "001" and temp(7) = '0' and A(7) = '1' and B(7) = '1' else --unsigned
+					'1' when Ctrl_Alu = "001" and temp(7) = '1' and A(7) = '0' and B(7) = '0' else --signed
+					'0' when Ctrl_Alu = "001" else
+					-- overflow for mul
+					-- example multiplication  http://patentimages.storage.googleapis.com/EP0428942A2/imgb0001.png
+					--									http://www.google.com/patents/EP0428942A2?cl=en
+					'1' when Ctrl_Alu = "010" and temp(7) = '1' and A(7) = '1' and B(7) = '1' else
+					'1' when Ctrl_Alu = "010" and temp(7) = '1' and A(7) = '0' and B(7) = '0' else
+					'1' when Ctrl_Alu = "010" and temp(7) = '0' and A(7) = '0' and B(7) = '1' else
+					'1' when Ctrl_Alu = "010" and temp(7) = '1' and A(7) = '1' and B(7) = '0' else
+					'0' when Ctrl_Alu = "010" else
+					-- overflow for sub
+					'1' when Ctrl_Alu = "011" and temp(7) = '1' and A(7) = '0' and B(7) = '1' else
+					'1' when Ctrl_Alu = "011" and temp(7) = '0' and A(7) = '1' and B(7) = '0' else
+					'0' when Ctrl_Alu = "011";
+	
+	
+	-- Negative: attribution of the flag negative (trivial)
+	NOZC(3) <= temp(7);
+	
+	
+	-- Final
+	S <= temp(7 downto 0);
+	
+	
 
 end Behavioral;
 

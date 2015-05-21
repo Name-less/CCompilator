@@ -90,11 +90,11 @@ BEGIN
 
    -- Stimulus process
    	
-		rst <= '0', '1' after 200 ns , '0' after 750 ns;
-		w <= '0', '1' after 500 ns;
-		addra <= "0000"; 
-		addrb <= "0001"; 
-		addrw <= "0011", "0001" after 700 ns;
+		rst <= '0', '1' after 200 ns , '0' after 700 ns, '1' after 760 ns ;
+		w <= '0', '1' after 300 ns, '0' after 500 ns, '1' after 750 ns;
+		addra <= "0000";  --qa <= addra entre 200ns et 700ns		
+		addrb <= "0001"; 	--qb <= addrb 
+		addrw <= "0011", "0001" after 700 ns, "0000" after 800 ns;
 		data <= "11110111";
 		
       
