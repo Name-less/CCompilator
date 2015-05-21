@@ -150,6 +150,7 @@
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="ALU_test.vhd"/>
@@ -218,51 +219,11 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1432195377" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="6109658468300451214" xil_pn:start_ts="1432195377">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1432195377" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="3434030691752129117" xil_pn:start_ts="1432195377">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1432195377" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1432195377">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1432195377" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="5075928957051023760" xil_pn:start_ts="1432195377">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1432195377" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="1106364426758808884" xil_pn:start_ts="1432195377">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1432195377" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-5761911535293679257" xil_pn:start_ts="1432195377">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1432195387" xil_pn:in_ck="3287916208842285311" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="2793631466988122550" xil_pn:start_ts="1432195377">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="WarningsGenerated"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="DI.lso"/>
-      <outfile xil_pn:name="DI.ngc"/>
-      <outfile xil_pn:name="DI.ngr"/>
-      <outfile xil_pn:name="DI.prj"/>
-      <outfile xil_pn:name="DI.stx"/>
-      <outfile xil_pn:name="DI.syr"/>
-      <outfile xil_pn:name="DI.xst"/>
-      <outfile xil_pn:name="DI_stx_beh.prj"/>
-      <outfile xil_pn:name="DI_xst.xrpt"/>
-      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
-      <outfile xil_pn:name="webtalk_pn.xml"/>
-      <outfile xil_pn:name="xst"/>
-    </transform>
     <transform xil_pn:end_ts="1432192283" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="1908985619804803095" xil_pn:start_ts="1432192283">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
     </transform>
   </transforms>
 
