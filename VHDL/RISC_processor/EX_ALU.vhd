@@ -89,7 +89,8 @@ begin
 					-- overflow for sub
 					'1' when Ctrl_Alu = "011" and temp(7) = '1' and A(7) = '0' and B(7) = '1' else
 					'1' when Ctrl_Alu = "011" and temp(7) = '0' and A(7) = '1' and B(7) = '0' else
-					'0' when Ctrl_Alu = "011";
+					'0' when Ctrl_Alu = "011" else
+					'0'; -- this case to complete all cases
 	
 	
 	-- Negative: attribution of the flag negative (trivial)

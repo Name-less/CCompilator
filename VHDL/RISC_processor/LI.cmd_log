@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/LI.xst" -ofn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/LI.syr" 

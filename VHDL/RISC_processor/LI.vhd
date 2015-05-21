@@ -19,6 +19,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -37,25 +39,24 @@ end LI;
 
 architecture Behavioral of LI is
 
-type memory is array ( 0 to 15 ) of std_logic_vector( 31 downto 0 ) ;
-constant rom : memory := (
-2 => "11111111111111111111111111111111" ,
-3 => "11010101110101011101010111010101" , 
-4 => "01101000011010000110100001101000" , 
-6 => "10011011100110111001101110011011" , 
-8 => "01101101011011010110110101101101" , 
-9 => "00110111001101110011011100110111" , 
-others => "00000000000000000000000000000000" ) ;
+type memory is array ( 0 to 20 ) of std_logic_vector( 31 downto 0 ) ; 
+--256 instructions max because 8 bits addr						32bits for 4 registers
+--here we choose 20 for a test
+signal mem : memory ;
 
 begin
-process
-begin
 
-		wait until clk'event and clk='1';
+	rom : process
+	begin
+	
+		wait until clk'event and clk = '1';
+
+		outLI <= mem(conv_integer(unsigned(addr)));
+
+end process;
 			
 
 
-end process;
 
 end Behavioral;
 

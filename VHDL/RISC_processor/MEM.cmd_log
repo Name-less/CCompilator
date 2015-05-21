@@ -1,0 +1,8 @@
+xst -intstyle ise -ifn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.xst" -ofn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.syr" 
+xst -intstyle ise -ifn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.xst" -ofn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.syr" 
+xst -intstyle ise -ifn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.xst" -ofn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.syr" 
+xst -intstyle ise -ifn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.xst" -ofn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.syr" 
+xst -intstyle ise -ifn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.xst" -ofn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.syr" 
+netgen -intstyle ise -ar Structure -tm MEM -w -dir netgen/synthesis -ofmt vhdl -sim MEM.ngc MEM_synthesis.vhd 
+xst -intstyle ise -ifn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.xst" -ofn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.syr" 
+xst -intstyle ise -ifn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.xst" -ofn "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.syr" 

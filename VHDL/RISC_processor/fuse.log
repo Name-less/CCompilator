@@ -1,21 +1,21 @@
-Running: C:\Xilinx\13.4\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/Register_bench_test_isim_beh.exe -prj C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/Register_bench_test_beh.prj work.Register_bench_test 
+Running: C:\Xilinx\13.4\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/mem_test_isim_beh.exe -prj C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/mem_test_beh.prj work.mem_test 
 ISim O.87xd (signature 0xc3576ebc)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
-Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/DI.vhd" into library work
-Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/Register_bench_test.vhd" into library work
+Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.vhd" into library work
+Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/mem_test.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
 Compiling package std_logic_1164
 Compiling package std_logic_arith
 Compiling package std_logic_unsigned
-Compiling architecture behavioral of entity DI [di_default]
-Compiling architecture behavior of entity register_bench_test
+Compiling architecture behavioral of entity MEM [mem_default]
+Compiling architecture behavior of entity mem_test
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
 Compiled 7 VHDL Units
-Built simulation executable C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/Register_bench_test_isim_beh.exe
-Fuse Memory Usage: 33084 KB
-Fuse CPU Usage: 498 ms
+Built simulation executable C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/mem_test_isim_beh.exe
+Fuse Memory Usage: 33064 KB
+Fuse CPU Usage: 514 ms

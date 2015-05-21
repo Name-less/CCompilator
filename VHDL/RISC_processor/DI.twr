@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------
-Release 13.4 Trace  (lin)
+Release 13.4 Trace  (nt64)
 Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
-/usr/local/Xilinx134/13.4/ISE_DS/ISE/bin/lin/unwrapped/trce -intstyle ise -v 3
--s 3 -n 3 -fastpaths -xml DI.twx DI.ncd -o DI.twr DI.pcf
+C:\Xilinx\13.4\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 3
+-n 3 -fastpaths -xml DI.twx DI.ncd -o DI.twr DI.pcf
 
 Design file:              DI.ncd
 Physical constraint file: DI.pcf
@@ -31,75 +31,953 @@ Data Sheet report:
 -----------------
 All values displayed in nanoseconds (ns)
 
-Setup/Hold to clock CLK
+Setup/Hold to clock RST
 ------------+------------+------------+------------+------------+------------------+--------+
             |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
 Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------+------------+------------------+--------+
-DATA<0>     |    2.090(R)|      SLOW  |   -0.043(R)|      SLOW  |CLK_BUFGP         |   0.000|
-DATA<1>     |    2.272(R)|      SLOW  |   -0.180(R)|      SLOW  |CLK_BUFGP         |   0.000|
-DATA<2>     |    1.332(R)|      SLOW  |    0.100(R)|      SLOW  |CLK_BUFGP         |   0.000|
-DATA<3>     |    2.530(R)|      SLOW  |    0.064(R)|      SLOW  |CLK_BUFGP         |   0.000|
-DATA<4>     |    2.040(R)|      SLOW  |    0.265(R)|      SLOW  |CLK_BUFGP         |   0.000|
-DATA<5>     |    2.386(R)|      SLOW  |    0.169(R)|      SLOW  |CLK_BUFGP         |   0.000|
-DATA<6>     |    2.169(R)|      SLOW  |    0.341(R)|      SLOW  |CLK_BUFGP         |   0.000|
-DATA<7>     |    1.807(R)|      SLOW  |    0.380(R)|      SLOW  |CLK_BUFGP         |   0.000|
-RST         |    2.963(R)|      SLOW  |    0.134(R)|      SLOW  |CLK_BUFGP         |   0.000|
-W           |    3.551(R)|      SLOW  |   -0.258(R)|      SLOW  |CLK_BUFGP         |   0.000|
-addra<0>    |    4.939(R)|      SLOW  |   -0.850(R)|      FAST  |CLK_BUFGP         |   0.000|
-addra<1>    |    5.203(R)|      SLOW  |   -0.688(R)|      SLOW  |CLK_BUFGP         |   0.000|
-addra<2>    |    5.205(R)|      SLOW  |   -0.726(R)|      SLOW  |CLK_BUFGP         |   0.000|
-addra<3>    |    4.802(R)|      SLOW  |   -0.212(R)|      SLOW  |CLK_BUFGP         |   0.000|
-addrb<0>    |    5.411(R)|      SLOW  |   -0.526(R)|      SLOW  |CLK_BUFGP         |   0.000|
-addrb<1>    |    5.640(R)|      SLOW  |   -0.764(R)|      SLOW  |CLK_BUFGP         |   0.000|
-addrb<2>    |    5.453(R)|      SLOW  |   -0.807(R)|      FAST  |CLK_BUFGP         |   0.000|
-addrb<3>    |    5.223(R)|      SLOW  |   -0.291(R)|      SLOW  |CLK_BUFGP         |   0.000|
-addrw<0>    |    5.697(R)|      SLOW  |   -0.865(R)|      FAST  |CLK_BUFGP         |   0.000|
-addrw<1>    |    5.046(R)|      SLOW  |   -0.828(R)|      SLOW  |CLK_BUFGP         |   0.000|
-addrw<2>    |    4.904(R)|      SLOW  |   -0.738(R)|      SLOW  |CLK_BUFGP         |   0.000|
-addrw<3>    |    5.018(R)|      SLOW  |   -0.312(R)|      SLOW  |CLK_BUFGP         |   0.000|
+DATA<0>     |    0.942(F)|      SLOW  |   -0.017(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.442(F)|      SLOW  |    0.436(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |    0.498(F)|      SLOW  |    0.402(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.585(F)|      SLOW  |    0.301(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |    0.799(F)|      SLOW  |    0.139(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.372(F)|      FAST  |    0.539(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |    0.250(F)|      SLOW  |    0.658(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.474(F)|      SLOW  |    0.413(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |    0.586(F)|      SLOW  |    0.361(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.578(F)|      SLOW  |    0.332(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |    0.184(F)|      SLOW  |    0.738(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.780(F)|      SLOW  |    0.137(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.064(F)|      SLOW  |    0.994(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.447(F)|      SLOW  |    0.462(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.071(F)|      FAST  |    1.042(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.169(F)|      FAST  |    0.822(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
 ------------+------------+------------+------------+------------+------------------+--------+
 
-Clock CLK to Pad
+Setup/Hold to clock W
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |    1.010(F)|      SLOW  |   -0.090(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.510(F)|      SLOW  |    0.363(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |    0.566(F)|      SLOW  |    0.329(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.653(F)|      SLOW  |    0.228(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |    0.867(F)|      SLOW  |    0.066(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.407(F)|      SLOW  |    0.466(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |    0.318(F)|      SLOW  |    0.585(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.542(F)|      SLOW  |    0.340(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |    0.654(F)|      SLOW  |    0.288(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.646(F)|      SLOW  |    0.259(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |    0.252(F)|      SLOW  |    0.665(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.848(F)|      SLOW  |    0.064(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |    0.004(F)|      SLOW  |    0.921(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.515(F)|      SLOW  |    0.389(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.048(F)|      SLOW  |    0.969(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.153(F)|      FAST  |    0.749(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addra<0>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |    0.252(F)|      FAST  |    0.853(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.025(F)|      FAST  |    1.306(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |   -0.033(F)|      FAST  |    1.272(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.091(F)|      FAST  |    1.171(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |    0.130(F)|      FAST  |    1.009(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.079(F)|      FAST  |    1.409(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.260(F)|      FAST  |    1.528(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.006(F)|      FAST  |    1.283(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |    0.009(F)|      FAST  |    1.231(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.059(F)|      FAST  |    1.202(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.280(F)|      FAST  |    1.608(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.244(F)|      FAST  |    1.007(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.522(F)|      FAST  |    1.864(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.082(F)|      FAST  |    1.332(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.522(F)|      FAST  |    1.912(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.282(F)|      FAST  |    1.692(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addra<1>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |    0.369(F)|      FAST  |    0.656(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.092(F)|      FAST  |    1.109(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |    0.084(F)|      FAST  |    1.075(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.208(F)|      FAST  |    0.974(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |    0.247(F)|      FAST  |    0.812(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.038(F)|      FAST  |    1.212(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.143(F)|      FAST  |    1.331(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.123(F)|      FAST  |    1.086(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |    0.126(F)|      FAST  |    1.034(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.176(F)|      FAST  |    1.005(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.163(F)|      FAST  |    1.411(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.361(F)|      FAST  |    0.810(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.405(F)|      FAST  |    1.667(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.035(F)|      FAST  |    1.135(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.405(F)|      FAST  |    1.715(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.165(F)|      FAST  |    1.495(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addra<2>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |   -0.028(F)|      FAST  |    1.069(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.305(F)|      FAST  |    1.522(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |   -0.313(F)|      FAST  |    1.488(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.189(F)|      FAST  |    1.387(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |   -0.150(F)|      FAST  |    1.225(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.359(F)|      FAST  |    1.625(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.540(F)|      FAST  |    1.744(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.274(F)|      FAST  |    1.499(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |   -0.271(F)|      FAST  |    1.447(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.221(F)|      FAST  |    1.418(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.560(F)|      FAST  |    1.824(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.036(F)|      FAST  |    1.223(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.802(F)|      FAST  |    2.080(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.362(F)|      FAST  |    1.548(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.802(F)|      FAST  |    2.128(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.562(F)|      FAST  |    1.908(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addra<3>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |   -0.079(F)|      FAST  |    1.138(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.356(F)|      FAST  |    1.591(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |   -0.364(F)|      FAST  |    1.557(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.240(F)|      FAST  |    1.456(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |   -0.201(F)|      FAST  |    1.294(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.410(F)|      FAST  |    1.694(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.591(F)|      FAST  |    1.813(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.325(F)|      FAST  |    1.568(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |   -0.322(F)|      FAST  |    1.516(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.272(F)|      FAST  |    1.487(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.611(F)|      FAST  |    1.893(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.087(F)|      FAST  |    1.292(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.853(F)|      FAST  |    2.149(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.413(F)|      FAST  |    1.617(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.853(F)|      FAST  |    2.197(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.613(F)|      FAST  |    1.977(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addrb<0>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |    0.085(F)|      FAST  |    1.192(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.192(F)|      FAST  |    1.645(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |   -0.200(F)|      FAST  |    1.611(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.076(F)|      FAST  |    1.510(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |   -0.037(F)|      FAST  |    1.348(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.246(F)|      FAST  |    1.748(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.427(F)|      FAST  |    1.867(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.161(F)|      FAST  |    1.622(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |   -0.158(F)|      FAST  |    1.570(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.108(F)|      FAST  |    1.541(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.447(F)|      FAST  |    1.947(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.077(F)|      FAST  |    1.346(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.689(F)|      FAST  |    2.203(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.249(F)|      FAST  |    1.671(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.689(F)|      FAST  |    2.251(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.449(F)|      FAST  |    2.031(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addrb<1>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |    0.196(F)|      FAST  |    1.024(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.081(F)|      FAST  |    1.477(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |   -0.089(F)|      FAST  |    1.443(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.035(F)|      FAST  |    1.342(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |    0.074(F)|      FAST  |    1.180(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.135(F)|      FAST  |    1.580(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.316(F)|      FAST  |    1.699(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.050(F)|      FAST  |    1.454(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |   -0.047(F)|      FAST  |    1.402(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.003(F)|      FAST  |    1.373(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.336(F)|      FAST  |    1.779(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.188(F)|      FAST  |    1.178(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.578(F)|      FAST  |    2.035(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.138(F)|      FAST  |    1.503(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.578(F)|      FAST  |    2.083(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.338(F)|      FAST  |    1.863(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addrb<2>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |    0.283(F)|      FAST  |    0.715(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.006(F)|      FAST  |    1.168(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |   -0.002(F)|      FAST  |    1.134(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.122(F)|      FAST  |    1.033(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |    0.161(F)|      FAST  |    0.871(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.048(F)|      FAST  |    1.271(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.229(F)|      FAST  |    1.390(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.037(F)|      FAST  |    1.145(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |    0.040(F)|      FAST  |    1.093(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.090(F)|      FAST  |    1.064(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.249(F)|      FAST  |    1.470(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.275(F)|      FAST  |    0.869(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.491(F)|      FAST  |    1.726(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.051(F)|      FAST  |    1.194(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.491(F)|      FAST  |    1.774(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.251(F)|      FAST  |    1.554(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addrb<3>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |    0.171(F)|      FAST  |    0.857(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.106(F)|      FAST  |    1.310(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |   -0.114(F)|      FAST  |    1.276(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.010(F)|      FAST  |    1.175(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |    0.049(F)|      FAST  |    1.013(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.160(F)|      FAST  |    1.413(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.341(F)|      FAST  |    1.532(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.075(F)|      FAST  |    1.287(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |   -0.072(F)|      FAST  |    1.235(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.022(F)|      FAST  |    1.206(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.361(F)|      FAST  |    1.612(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.163(F)|      FAST  |    1.011(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.603(F)|      FAST  |    1.868(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.163(F)|      FAST  |    1.336(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.603(F)|      FAST  |    1.916(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.363(F)|      FAST  |    1.696(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addrw<0>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |    0.294(F)|      FAST  |    1.329(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.017(F)|      FAST  |    1.782(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |    0.009(F)|      FAST  |    1.748(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.133(F)|      FAST  |    1.647(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |    0.172(F)|      FAST  |    1.485(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.037(F)|      FAST  |    1.885(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.218(F)|      FAST  |    2.004(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.048(F)|      FAST  |    1.759(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |    0.051(F)|      FAST  |    1.707(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.101(F)|      FAST  |    1.678(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.238(F)|      FAST  |    2.084(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.286(F)|      FAST  |    1.483(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.480(F)|      FAST  |    2.340(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.040(F)|      FAST  |    1.808(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.480(F)|      FAST  |    2.388(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.240(F)|      FAST  |    2.168(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addrw<1>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |    0.184(F)|      FAST  |    1.336(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.093(F)|      FAST  |    1.789(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |   -0.101(F)|      FAST  |    1.755(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.023(F)|      FAST  |    1.654(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |    0.062(F)|      FAST  |    1.492(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.147(F)|      FAST  |    1.892(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.328(F)|      FAST  |    2.011(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.062(F)|      FAST  |    1.766(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |   -0.059(F)|      FAST  |    1.714(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.009(F)|      FAST  |    1.685(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.348(F)|      FAST  |    2.091(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.176(F)|      FAST  |    1.490(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.590(F)|      FAST  |    2.347(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.150(F)|      FAST  |    1.815(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.590(F)|      FAST  |    2.395(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.350(F)|      FAST  |    2.175(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addrw<2>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |    0.260(F)|      SLOW  |    0.747(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.026(F)|      FAST  |    1.200(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |   -0.034(F)|      FAST  |    1.166(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.090(F)|      FAST  |    1.065(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |    0.129(F)|      FAST  |    0.903(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.080(F)|      FAST  |    1.303(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.261(F)|      FAST  |    1.422(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.005(F)|      FAST  |    1.177(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |    0.008(F)|      FAST  |    1.125(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.058(F)|      FAST  |    1.096(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.281(F)|      FAST  |    1.502(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.243(F)|      FAST  |    0.901(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.523(F)|      FAST  |    1.758(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.083(F)|      FAST  |    1.226(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.523(F)|      FAST  |    1.806(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.283(F)|      FAST  |    1.586(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock addrw<3>
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+DATA<0>     |    0.480(F)|      SLOW  |    0.958(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.128(F)|      FAST  |    1.411(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<1>     |    0.120(F)|      FAST  |    1.377(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.244(F)|      FAST  |    1.276(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<2>     |    0.337(F)|      SLOW  |    1.114(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.074(F)|      FAST  |    1.514(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<3>     |   -0.107(F)|      FAST  |    1.633(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.159(F)|      FAST  |    1.388(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<4>     |    0.162(F)|      FAST  |    1.336(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.212(F)|      FAST  |    1.307(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<5>     |   -0.127(F)|      FAST  |    1.713(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.397(F)|      FAST  |    1.112(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<6>     |   -0.369(F)|      FAST  |    1.969(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |    0.071(F)|      FAST  |    1.437(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+DATA<7>     |   -0.369(F)|      FAST  |    2.017(F)|      SLOW  |W_addrw[3]_OR_17_o|   0.000|
+            |   -0.129(F)|      FAST  |    1.797(F)|      SLOW  |W_addrw[3]_OR_8_o |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Clock RST to Pad
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
             |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
 Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
-QA<0>       |         6.885(R)|      SLOW  |         3.520(R)|      FAST  |CLK_BUFGP         |   0.000|
-QA<1>       |         7.056(R)|      SLOW  |         3.609(R)|      FAST  |CLK_BUFGP         |   0.000|
-QA<2>       |         6.910(R)|      SLOW  |         3.557(R)|      FAST  |CLK_BUFGP         |   0.000|
-QA<3>       |         6.910(R)|      SLOW  |         3.557(R)|      FAST  |CLK_BUFGP         |   0.000|
-QA<4>       |         7.409(R)|      SLOW  |         3.860(R)|      FAST  |CLK_BUFGP         |   0.000|
-QA<5>       |         7.199(R)|      SLOW  |         3.735(R)|      FAST  |CLK_BUFGP         |   0.000|
-QA<6>       |         7.274(R)|      SLOW  |         3.778(R)|      FAST  |CLK_BUFGP         |   0.000|
-QA<7>       |         7.271(R)|      SLOW  |         3.786(R)|      FAST  |CLK_BUFGP         |   0.000|
-QB<0>       |         7.188(R)|      SLOW  |         3.712(R)|      FAST  |CLK_BUFGP         |   0.000|
-QB<1>       |         7.166(R)|      SLOW  |         3.698(R)|      FAST  |CLK_BUFGP         |   0.000|
-QB<2>       |         7.231(R)|      SLOW  |         3.712(R)|      FAST  |CLK_BUFGP         |   0.000|
-QB<3>       |         6.969(R)|      SLOW  |         3.583(R)|      FAST  |CLK_BUFGP         |   0.000|
-QB<4>       |         6.596(R)|      SLOW  |         3.330(R)|      FAST  |CLK_BUFGP         |   0.000|
-QB<5>       |         6.596(R)|      SLOW  |         3.330(R)|      FAST  |CLK_BUFGP         |   0.000|
-QB<6>       |         6.603(R)|      SLOW  |         3.363(R)|      FAST  |CLK_BUFGP         |   0.000|
-QB<7>       |         6.603(R)|      SLOW  |         3.363(R)|      FAST  |CLK_BUFGP         |   0.000|
+QA<0>       |         6.789(F)|      SLOW  |         3.772(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         6.789(F)|      SLOW  |         3.772(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         6.860(F)|      SLOW  |         3.843(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         6.860(F)|      SLOW  |         3.843(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         7.097(F)|      SLOW  |         3.993(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         7.097(F)|      SLOW  |         3.993(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         7.227(F)|      SLOW  |         4.125(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         7.227(F)|      SLOW  |         4.125(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         6.983(F)|      SLOW  |         3.969(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         6.983(F)|      SLOW  |         3.969(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         7.160(F)|      SLOW  |         4.082(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         7.160(F)|      SLOW  |         4.082(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         7.336(F)|      SLOW  |         4.194(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         7.336(F)|      SLOW  |         4.194(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         7.507(F)|      SLOW  |         4.301(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         7.507(F)|      SLOW  |         4.301(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
 ------------+-----------------+------------+-----------------+------------+------------------+--------+
 
-Clock to Setup on destination clock CLK
+Clock W to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         6.716(F)|      SLOW  |         3.788(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         6.716(F)|      SLOW  |         3.788(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         6.787(F)|      SLOW  |         3.859(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         6.787(F)|      SLOW  |         3.859(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         7.024(F)|      SLOW  |         4.009(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         7.024(F)|      SLOW  |         4.009(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         7.154(F)|      SLOW  |         4.141(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         7.154(F)|      SLOW  |         4.141(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         6.910(F)|      SLOW  |         3.985(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         6.910(F)|      SLOW  |         3.985(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         7.087(F)|      SLOW  |         4.098(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         7.087(F)|      SLOW  |         4.098(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         7.263(F)|      SLOW  |         4.210(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         7.263(F)|      SLOW  |         4.210(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         7.434(F)|      SLOW  |         4.317(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         7.434(F)|      SLOW  |         4.317(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addra<0> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         7.659(F)|      SLOW  |         4.223(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         7.659(F)|      SLOW  |         4.223(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         7.730(F)|      SLOW  |         4.294(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         7.730(F)|      SLOW  |         4.294(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         7.967(F)|      SLOW  |         4.444(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         7.967(F)|      SLOW  |         4.444(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         8.097(F)|      SLOW  |         4.576(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         8.097(F)|      SLOW  |         4.576(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         7.853(F)|      SLOW  |         4.420(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         7.853(F)|      SLOW  |         4.420(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         8.030(F)|      SLOW  |         4.533(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         8.030(F)|      SLOW  |         4.533(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.206(F)|      SLOW  |         4.645(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.206(F)|      SLOW  |         4.645(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.377(F)|      SLOW  |         4.752(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.377(F)|      SLOW  |         4.752(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addra<1> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         7.462(F)|      SLOW  |         4.106(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         7.462(F)|      SLOW  |         4.106(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         7.533(F)|      SLOW  |         4.177(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         7.533(F)|      SLOW  |         4.177(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         7.770(F)|      SLOW  |         4.327(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         7.770(F)|      SLOW  |         4.327(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         7.900(F)|      SLOW  |         4.459(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         7.900(F)|      SLOW  |         4.459(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         7.656(F)|      SLOW  |         4.303(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         7.656(F)|      SLOW  |         4.303(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         7.833(F)|      SLOW  |         4.416(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         7.833(F)|      SLOW  |         4.416(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.009(F)|      SLOW  |         4.528(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.009(F)|      SLOW  |         4.528(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.180(F)|      SLOW  |         4.635(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.180(F)|      SLOW  |         4.635(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addra<2> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         7.875(F)|      SLOW  |         4.503(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         7.875(F)|      SLOW  |         4.503(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         7.946(F)|      SLOW  |         4.574(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         7.946(F)|      SLOW  |         4.574(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         8.183(F)|      SLOW  |         4.724(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         8.183(F)|      SLOW  |         4.724(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         8.313(F)|      SLOW  |         4.856(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         8.313(F)|      SLOW  |         4.856(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         8.069(F)|      SLOW  |         4.700(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         8.069(F)|      SLOW  |         4.700(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         8.246(F)|      SLOW  |         4.813(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         8.246(F)|      SLOW  |         4.813(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.422(F)|      SLOW  |         4.925(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.422(F)|      SLOW  |         4.925(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.593(F)|      SLOW  |         5.032(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.593(F)|      SLOW  |         5.032(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addra<3> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         7.944(F)|      SLOW  |         4.554(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         7.944(F)|      SLOW  |         4.554(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         8.015(F)|      SLOW  |         4.625(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         8.015(F)|      SLOW  |         4.625(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         8.252(F)|      SLOW  |         4.775(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         8.252(F)|      SLOW  |         4.775(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         8.382(F)|      SLOW  |         4.907(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         8.382(F)|      SLOW  |         4.907(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         8.138(F)|      SLOW  |         4.751(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         8.138(F)|      SLOW  |         4.751(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         8.315(F)|      SLOW  |         4.864(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         8.315(F)|      SLOW  |         4.864(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.491(F)|      SLOW  |         4.976(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.491(F)|      SLOW  |         4.976(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.662(F)|      SLOW  |         5.083(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.662(F)|      SLOW  |         5.083(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addrb<0> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         7.998(F)|      SLOW  |         4.390(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         7.998(F)|      SLOW  |         4.390(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         8.069(F)|      SLOW  |         4.461(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         8.069(F)|      SLOW  |         4.461(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         8.306(F)|      SLOW  |         4.611(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         8.306(F)|      SLOW  |         4.611(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         8.436(F)|      SLOW  |         4.743(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         8.436(F)|      SLOW  |         4.743(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         8.192(F)|      SLOW  |         4.587(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         8.192(F)|      SLOW  |         4.587(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         8.369(F)|      SLOW  |         4.700(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         8.369(F)|      SLOW  |         4.700(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.545(F)|      SLOW  |         4.812(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.545(F)|      SLOW  |         4.812(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.716(F)|      SLOW  |         4.919(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.716(F)|      SLOW  |         4.919(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addrb<1> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         7.830(F)|      SLOW  |         4.279(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         7.830(F)|      SLOW  |         4.279(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         7.901(F)|      SLOW  |         4.350(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         7.901(F)|      SLOW  |         4.350(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         8.138(F)|      SLOW  |         4.500(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         8.138(F)|      SLOW  |         4.500(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         8.268(F)|      SLOW  |         4.632(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         8.268(F)|      SLOW  |         4.632(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         8.024(F)|      SLOW  |         4.476(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         8.024(F)|      SLOW  |         4.476(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         8.201(F)|      SLOW  |         4.589(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         8.201(F)|      SLOW  |         4.589(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.377(F)|      SLOW  |         4.701(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.377(F)|      SLOW  |         4.701(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.548(F)|      SLOW  |         4.808(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.548(F)|      SLOW  |         4.808(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addrb<2> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         7.521(F)|      SLOW  |         4.192(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         7.521(F)|      SLOW  |         4.192(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         7.592(F)|      SLOW  |         4.263(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         7.592(F)|      SLOW  |         4.263(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         7.829(F)|      SLOW  |         4.413(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         7.829(F)|      SLOW  |         4.413(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         7.959(F)|      SLOW  |         4.545(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         7.959(F)|      SLOW  |         4.545(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         7.715(F)|      SLOW  |         4.389(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         7.715(F)|      SLOW  |         4.389(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         7.892(F)|      SLOW  |         4.502(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         7.892(F)|      SLOW  |         4.502(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.068(F)|      SLOW  |         4.614(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.068(F)|      SLOW  |         4.614(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.239(F)|      SLOW  |         4.721(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.239(F)|      SLOW  |         4.721(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addrb<3> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         7.663(F)|      SLOW  |         4.304(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         7.663(F)|      SLOW  |         4.304(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         7.734(F)|      SLOW  |         4.375(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         7.734(F)|      SLOW  |         4.375(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         7.971(F)|      SLOW  |         4.525(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         7.971(F)|      SLOW  |         4.525(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         8.101(F)|      SLOW  |         4.657(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         8.101(F)|      SLOW  |         4.657(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         7.857(F)|      SLOW  |         4.501(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         7.857(F)|      SLOW  |         4.501(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         8.034(F)|      SLOW  |         4.614(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         8.034(F)|      SLOW  |         4.614(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.210(F)|      SLOW  |         4.726(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.210(F)|      SLOW  |         4.726(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.381(F)|      SLOW  |         4.833(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.381(F)|      SLOW  |         4.833(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addrw<0> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         8.135(F)|      SLOW  |         4.181(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         8.135(F)|      SLOW  |         4.181(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         8.206(F)|      SLOW  |         4.252(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         8.206(F)|      SLOW  |         4.252(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         8.443(F)|      SLOW  |         4.402(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         8.443(F)|      SLOW  |         4.402(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         8.573(F)|      SLOW  |         4.534(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         8.573(F)|      SLOW  |         4.534(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         8.329(F)|      SLOW  |         4.378(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         8.329(F)|      SLOW  |         4.378(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         8.506(F)|      SLOW  |         4.491(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         8.506(F)|      SLOW  |         4.491(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.682(F)|      SLOW  |         4.603(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.682(F)|      SLOW  |         4.603(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.853(F)|      SLOW  |         4.710(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.853(F)|      SLOW  |         4.710(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addrw<1> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         8.142(F)|      SLOW  |         4.291(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         8.142(F)|      SLOW  |         4.291(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         8.213(F)|      SLOW  |         4.362(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         8.213(F)|      SLOW  |         4.362(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         8.450(F)|      SLOW  |         4.512(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         8.450(F)|      SLOW  |         4.512(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         8.580(F)|      SLOW  |         4.644(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         8.580(F)|      SLOW  |         4.644(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         8.336(F)|      SLOW  |         4.488(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         8.336(F)|      SLOW  |         4.488(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         8.513(F)|      SLOW  |         4.601(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         8.513(F)|      SLOW  |         4.601(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.689(F)|      SLOW  |         4.713(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.689(F)|      SLOW  |         4.713(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.860(F)|      SLOW  |         4.820(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.860(F)|      SLOW  |         4.820(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addrw<2> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         7.553(F)|      SLOW  |         4.224(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         7.553(F)|      SLOW  |         4.224(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         7.624(F)|      SLOW  |         4.295(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         7.624(F)|      SLOW  |         4.295(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         7.861(F)|      SLOW  |         4.445(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         7.861(F)|      SLOW  |         4.445(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         7.991(F)|      SLOW  |         4.577(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         7.991(F)|      SLOW  |         4.577(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         7.747(F)|      SLOW  |         4.421(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         7.747(F)|      SLOW  |         4.421(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         7.924(F)|      SLOW  |         4.534(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         7.924(F)|      SLOW  |         4.534(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.100(F)|      SLOW  |         4.646(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.100(F)|      SLOW  |         4.646(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.271(F)|      SLOW  |         4.753(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.271(F)|      SLOW  |         4.753(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock addrw<3> to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+QA<0>       |         7.764(F)|      SLOW  |         4.070(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<1>       |         7.764(F)|      SLOW  |         4.070(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<2>       |         7.835(F)|      SLOW  |         4.141(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<3>       |         7.835(F)|      SLOW  |         4.141(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<4>       |         8.072(F)|      SLOW  |         4.291(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<5>       |         8.072(F)|      SLOW  |         4.291(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<6>       |         8.202(F)|      SLOW  |         4.423(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QA<7>       |         8.202(F)|      SLOW  |         4.423(F)|      FAST  |W_addrw[3]_OR_8_o |   0.000|
+QB<0>       |         7.958(F)|      SLOW  |         4.267(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<1>       |         7.958(F)|      SLOW  |         4.267(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<2>       |         8.135(F)|      SLOW  |         4.380(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<3>       |         8.135(F)|      SLOW  |         4.380(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<4>       |         8.311(F)|      SLOW  |         4.492(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<5>       |         8.311(F)|      SLOW  |         4.492(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<6>       |         8.482(F)|      SLOW  |         4.599(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+QB<7>       |         8.482(F)|      SLOW  |         4.599(F)|      FAST  |W_addrw[3]_OR_17_o|   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock RST
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-CLK            |    3.347|         |         |         |
+RST            |         |         |    0.878|    0.878|
+W              |         |         |    0.920|    0.920|
+addra<0>       |         |         |    1.684|    1.684|
+addra<1>       |         |         |    1.487|    1.487|
+addra<2>       |         |         |    1.900|    1.900|
+addra<3>       |         |         |    1.969|    1.969|
+addrb<0>       |         |         |    1.865|    1.865|
+addrb<1>       |         |         |    1.697|    1.697|
+addrb<2>       |         |         |    1.388|    1.388|
+addrb<3>       |         |         |    1.530|    1.530|
+addrw<0>       |         |         |    2.160|    2.160|
+addrw<1>       |         |         |    2.009|    2.009|
+addrw<2>       |         |         |    1.541|    1.541|
+addrw<3>       |         |         |    1.789|    1.789|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock W
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.946|    0.946|
+W              |         |         |    0.988|    0.988|
+addra<0>       |         |         |    1.752|    1.752|
+addra<1>       |         |         |    1.555|    1.555|
+addra<2>       |         |         |    1.968|    1.968|
+addra<3>       |         |         |    2.037|    2.037|
+addrb<0>       |         |         |    1.933|    1.933|
+addrb<1>       |         |         |    1.765|    1.765|
+addrb<2>       |         |         |    1.456|    1.456|
+addrb<3>       |         |         |    1.598|    1.598|
+addrw<0>       |         |         |    2.228|    2.228|
+addrw<1>       |         |         |    2.077|    2.077|
+addrw<2>       |         |         |    1.609|    1.609|
+addrw<3>       |         |         |    1.857|    1.857|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addra<0>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.300|    0.300|
+W              |         |         |    0.194|    0.194|
+addra<0>       |         |         |    0.871|    0.871|
+addra<1>       |         |         |    0.674|    0.674|
+addra<2>       |         |         |    1.087|    1.087|
+addra<3>       |         |         |    1.156|    1.156|
+addrb<0>       |         |         |    1.052|    1.052|
+addrb<1>       |         |         |    0.884|    0.884|
+addrb<2>       |         |         |    0.575|    0.575|
+addrb<3>       |         |         |    0.717|    0.717|
+addrw<0>       |         |         |    1.347|    1.347|
+addrw<1>       |         |         |    1.196|    1.196|
+addrw<2>       |         |         |    0.728|    0.728|
+addrw<3>       |         |         |    0.976|    0.976|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addra<1>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.417|    0.417|
+W              |         |         |    0.311|    0.311|
+addra<0>       |         |         |    1.056|    1.056|
+addra<1>       |         |         |    0.859|    0.859|
+addra<2>       |         |         |    1.272|    1.272|
+addra<3>       |         |         |    1.341|    1.341|
+addrb<0>       |         |         |    1.237|    1.237|
+addrb<1>       |         |         |    1.069|    1.069|
+addrb<2>       |         |         |    0.760|    0.760|
+addrb<3>       |         |         |    0.902|    0.902|
+addrw<0>       |         |         |    1.532|    1.532|
+addrw<1>       |         |         |    1.381|    1.381|
+addrw<2>       |         |         |    0.913|    0.913|
+addrw<3>       |         |         |    1.161|    1.161|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addra<2>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.020|    0.020|
+W              |         |         |   -0.086|   -0.086|
+addra<0>       |         |         |    0.656|    0.656|
+addra<1>       |         |         |    0.459|    0.459|
+addra<2>       |         |         |    0.872|    0.872|
+addra<3>       |         |         |    0.941|    0.941|
+addrb<0>       |         |         |    0.837|    0.837|
+addrb<1>       |         |         |    0.669|    0.669|
+addrb<2>       |         |         |    0.360|    0.360|
+addrb<3>       |         |         |    0.502|    0.502|
+addrw<0>       |         |         |    1.132|    1.132|
+addrw<1>       |         |         |    0.981|    0.981|
+addrw<2>       |         |         |    0.513|    0.513|
+addrw<3>       |         |         |    0.761|    0.761|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addra<3>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |   -0.031|   -0.031|
+W              |         |         |   -0.137|   -0.137|
+addra<0>       |         |         |    0.591|    0.591|
+addra<1>       |         |         |    0.394|    0.394|
+addra<2>       |         |         |    0.807|    0.807|
+addra<3>       |         |         |    0.876|    0.876|
+addrb<0>       |         |         |    0.772|    0.772|
+addrb<1>       |         |         |    0.604|    0.604|
+addrb<2>       |         |         |    0.295|    0.295|
+addrb<3>       |         |         |    0.437|    0.437|
+addrw<0>       |         |         |    1.067|    1.067|
+addrw<1>       |         |         |    0.916|    0.916|
+addrw<2>       |         |         |    0.448|    0.448|
+addrw<3>       |         |         |    0.696|    0.696|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addrb<0>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.133|    0.133|
+W              |         |         |    0.027|    0.027|
+addra<0>       |         |         |    0.550|    0.550|
+addra<1>       |         |         |    0.404|    0.404|
+addra<2>       |         |         |    0.812|    0.812|
+addra<3>       |         |         |    0.867|    0.867|
+addrb<0>       |         |         |    0.731|    0.731|
+addrb<1>       |         |         |    0.563|    0.563|
+addrb<2>       |         |         |    0.347|    0.347|
+addrb<3>       |         |         |    0.466|    0.466|
+addrw<0>       |         |         |    1.026|    1.026|
+addrw<1>       |         |         |    0.875|    0.875|
+addrw<2>       |         |         |    0.525|    0.525|
+addrw<3>       |         |         |    0.685|    0.685|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addrb<1>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.244|    0.244|
+W              |         |         |    0.138|    0.138|
+addra<0>       |         |         |    0.708|    0.708|
+addra<1>       |         |         |    0.515|    0.515|
+addra<2>       |         |         |    0.924|    0.924|
+addra<3>       |         |         |    0.993|    0.993|
+addrb<0>       |         |         |    0.889|    0.889|
+addrb<1>       |         |         |    0.721|    0.721|
+addrb<2>       |         |         |    0.458|    0.458|
+addrb<3>       |         |         |    0.577|    0.577|
+addrw<0>       |         |         |    1.184|    1.184|
+addrw<1>       |         |         |    1.033|    1.033|
+addrw<2>       |         |         |    0.636|    0.636|
+addrw<3>       |         |         |    0.813|    0.813|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addrb<2>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.331|    0.331|
+W              |         |         |    0.231|    0.231|
+addra<0>       |         |         |    0.995|    0.995|
+addra<1>       |         |         |    0.798|    0.798|
+addra<2>       |         |         |    1.211|    1.211|
+addra<3>       |         |         |    1.280|    1.280|
+addrb<0>       |         |         |    1.176|    1.176|
+addrb<1>       |         |         |    1.008|    1.008|
+addrb<2>       |         |         |    0.699|    0.699|
+addrb<3>       |         |         |    0.841|    0.841|
+addrw<0>       |         |         |    1.471|    1.471|
+addrw<1>       |         |         |    1.320|    1.320|
+addrw<2>       |         |         |    0.852|    0.852|
+addrw<3>       |         |         |    1.100|    1.100|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addrb<3>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.219|    0.219|
+W              |         |         |    0.113|    0.113|
+addra<0>       |         |         |    0.862|    0.862|
+addra<1>       |         |         |    0.665|    0.665|
+addra<2>       |         |         |    1.078|    1.078|
+addra<3>       |         |         |    1.147|    1.147|
+addrb<0>       |         |         |    1.043|    1.043|
+addrb<1>       |         |         |    0.875|    0.875|
+addrb<2>       |         |         |    0.566|    0.566|
+addrb<3>       |         |         |    0.708|    0.708|
+addrw<0>       |         |         |    1.338|    1.338|
+addrw<1>       |         |         |    1.187|    1.187|
+addrw<2>       |         |         |    0.719|    0.719|
+addrw<3>       |         |         |    0.967|    0.967|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addrw<0>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.342|    0.342|
+W              |         |         |    0.236|    0.236|
+addra<0>       |         |         |    0.833|    0.833|
+addra<1>       |         |         |    0.636|    0.636|
+addra<2>       |         |         |    1.049|    1.049|
+addra<3>       |         |         |    1.118|    1.118|
+addrb<0>       |         |         |    1.014|    1.014|
+addrb<1>       |         |         |    0.846|    0.846|
+addrb<2>       |         |         |    0.556|    0.556|
+addrb<3>       |         |         |    0.679|    0.679|
+addrw<0>       |         |         |    1.309|    1.309|
+addrw<1>       |         |         |    1.158|    1.158|
+addrw<2>       |         |         |    0.734|    0.734|
+addrw<3>       |         |         |    0.938|    0.938|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addrw<1>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.232|    0.232|
+W              |         |         |    0.126|    0.126|
+addra<0>       |         |         |    0.829|    0.829|
+addra<1>       |         |         |    0.632|    0.632|
+addra<2>       |         |         |    1.045|    1.045|
+addra<3>       |         |         |    1.114|    1.114|
+addrb<0>       |         |         |    1.010|    1.010|
+addrb<1>       |         |         |    0.842|    0.842|
+addrb<2>       |         |         |    0.533|    0.533|
+addrb<3>       |         |         |    0.675|    0.675|
+addrw<0>       |         |         |    1.305|    1.305|
+addrw<1>       |         |         |    1.154|    1.154|
+addrw<2>       |         |         |    0.686|    0.686|
+addrw<3>       |         |         |    0.934|    0.934|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addrw<2>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.299|    0.299|
+W              |         |         |    0.238|    0.238|
+addra<0>       |         |         |    1.002|    1.002|
+addra<1>       |         |         |    0.805|    0.805|
+addra<2>       |         |         |    1.218|    1.218|
+addra<3>       |         |         |    1.287|    1.287|
+addrb<0>       |         |         |    1.183|    1.183|
+addrb<1>       |         |         |    1.015|    1.015|
+addrb<2>       |         |         |    0.706|    0.706|
+addrb<3>       |         |         |    0.848|    0.848|
+addrw<0>       |         |         |    1.478|    1.478|
+addrw<1>       |         |         |    1.327|    1.327|
+addrw<2>       |         |         |    0.859|    0.859|
+addrw<3>       |         |         |    1.107|    1.107|
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock addrw<3>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+RST            |         |         |    0.453|    0.453|
+W              |         |         |    0.458|    0.458|
+addra<0>       |         |         |    1.222|    1.222|
+addra<1>       |         |         |    1.025|    1.025|
+addra<2>       |         |         |    1.438|    1.438|
+addra<3>       |         |         |    1.507|    1.507|
+addrb<0>       |         |         |    1.403|    1.403|
+addrb<1>       |         |         |    1.235|    1.235|
+addrb<2>       |         |         |    0.926|    0.926|
+addrb<3>       |         |         |    1.068|    1.068|
+addrw<0>       |         |         |    1.698|    1.698|
+addrw<1>       |         |         |    1.547|    1.547|
+addrw<2>       |         |         |    1.079|    1.079|
+addrw<3>       |         |         |    1.327|    1.327|
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Mon May 11 11:29:06 2015 
+Analysis completed Thu May 21 09:00:25 2015 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 141 MB
+Peak Memory Usage: 218 MB
 
 
 

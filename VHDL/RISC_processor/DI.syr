@@ -4,13 +4,13 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.47 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.47 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Reading design: DI.prj
 
@@ -122,7 +122,6 @@ Elaborating entity <DI> (architecture <Behavioral>) from library <work>.
 
 Synthesizing Unit <DI>.
     Related source file is "c:/users/anthony/documents/github/ccompilator/vhdl/risc_processor/di.vhd".
-WARNING:Xst:647 - Input <RST> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:737 - Found 1-bit latch for signal <Sigouta<7>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 1-bit latch for signal <Sigouta<6>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 1-bit latch for signal <Sigouta<5>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
@@ -140,7 +139,7 @@ WARNING:Xst:737 - Found 1-bit latch for signal <Sigoutb<2>>. Latches may be gene
 WARNING:Xst:737 - Found 1-bit latch for signal <Sigoutb<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 1-bit latch for signal <Sigoutb<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
     Found 4-bit comparator equal for signal <addrw[3]_addra[3]_equal_66_o> created at line 80
-    Found 4-bit comparator equal for signal <n0020> created at line 81
+    Found 4-bit comparator equal for signal <n0021> created at line 81
     WARNING:Xst:2404 -  FFs/Latches <bench<1><1:2>> (without init value) have a constant value of 1 in block <DI>.
     WARNING:Xst:2404 -  FFs/Latches <bench<1><2:7>> (without init value) have a constant value of 0 in block <DI>.
     WARNING:Xst:2404 -  FFs/Latches <bench<2><1:3>> (without init value) have a constant value of 1 in block <DI>.
@@ -233,15 +232,14 @@ Top Level Output File Name         : DI.ngc
 Primitive and Black Box Usage:
 ------------------------------
 # BELS                             : 24
-#      LUT2                        : 10
 #      LUT3                        : 2
-#      LUT4                        : 2
+#      LUT4                        : 14
 #      LUT5                        : 2
-#      LUT6                        : 8
+#      LUT6                        : 6
 # FlipFlops/Latches                : 16
 #      LD                          : 16
-# IO Buffers                       : 37
-#      IBUF                        : 21
+# IO Buffers                       : 38
+#      IBUF                        : 22
 #      OBUF                        : 16
 
 Device utilization summary:
@@ -263,7 +261,7 @@ Slice Logic Distribution:
 
 IO Utilization: 
  Number of IOs:                          39
- Number of bonded IOBs:                  37  out of    232    15%  
+ Number of bonded IOBs:                  38  out of    232    16%  
     IOB Flip Flops/Latches:              16
 
 Specific Feature Utilization:
@@ -306,7 +304,7 @@ Timing Summary:
 Speed Grade: -3
 
    Minimum period: No path found
-   Minimum input arrival time before clock: 4.926ns
+   Minimum input arrival time before clock: 5.847ns
    Maximum output required time after clock: 3.648ns
    Maximum combinational path delay: No path found
 
@@ -316,9 +314,9 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'W_addrw[3]_OR_17_o'
-  Total number of paths / destination ports: 92 / 8
+  Total number of paths / destination ports: 100 / 8
 -------------------------------------------------------------------------
-Offset:              4.926ns (Levels of Logic = 4)
+Offset:              5.847ns (Levels of Logic = 5)
   Source:            addrb<0> (PAD)
   Destination:       Sigoutb_7 (LATCH)
   Destination Clock: W_addrw[3]_OR_17_o falling
@@ -328,19 +326,20 @@ Offset:              4.926ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             4   1.222   0.931  addrb_0_IBUF (addrb_0_IBUF)
-     LUT4:I0->O            2   0.203   0.961  n00204_SW0 (N4)
-     LUT6:I1->O            8   0.203   1.167  W_addrw[3]_AND_33_o1 (W_addrw[3]_AND_33_o)
+     LUT4:I0->O            1   0.203   0.924  n00214_SW0 (N4)
+     LUT5:I0->O            8   0.203   0.907  n00214 (n0021)
+     LUT3:I1->O            3   0.203   1.015  Mmux_Sigoutb[7]_DATA[5]_MUX_45_o111 (Mmux_Sigoutb[7]_DATA[5]_MUX_45_o11)
      LUT6:I0->O            1   0.203   0.000  Mmux_Sigoutb[7]_DATA[5]_MUX_45_o11 (Sigoutb[7]_DATA[5]_MUX_45_o)
      LD:D                      0.037          Sigoutb_5
     ----------------------------------------
-    Total                      4.926ns (1.868ns logic, 3.058ns route)
-                                       (37.9% logic, 62.1% route)
+    Total                      5.847ns (2.071ns logic, 3.776ns route)
+                                       (35.4% logic, 64.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'W_addrw[3]_OR_8_o'
-  Total number of paths / destination ports: 92 / 8
+  Total number of paths / destination ports: 100 / 8
 -------------------------------------------------------------------------
-Offset:              4.926ns (Levels of Logic = 4)
+Offset:              5.847ns (Levels of Logic = 5)
   Source:            addra<0> (PAD)
   Destination:       Sigouta_7 (LATCH)
   Destination Clock: W_addrw[3]_OR_8_o falling
@@ -350,13 +349,14 @@ Offset:              4.926ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             4   1.222   0.931  addra_0_IBUF (addra_0_IBUF)
-     LUT4:I0->O            2   0.203   0.961  addrw[3]_addra[3]_equal_66_o4_SW0 (N2)
-     LUT6:I1->O            8   0.203   1.167  W_addrw[3]_AND_31_o1 (W_addrw[3]_AND_31_o)
+     LUT4:I0->O            1   0.203   0.924  addrw[3]_addra[3]_equal_66_o4_SW0 (N2)
+     LUT5:I0->O            8   0.203   0.907  addrw[3]_addra[3]_equal_66_o4 (addrw[3]_addra[3]_equal_66_o)
+     LUT3:I1->O            3   0.203   1.015  Mmux_Sigouta[7]_DATA[5]_MUX_29_o111 (Mmux_Sigouta[7]_DATA[5]_MUX_29_o11)
      LUT6:I0->O            1   0.203   0.000  Mmux_Sigouta[7]_DATA[5]_MUX_29_o11 (Sigouta[7]_DATA[5]_MUX_29_o)
      LD:D                      0.037          Sigouta_5
     ----------------------------------------
-    Total                      4.926ns (1.868ns logic, 3.058ns route)
-                                       (37.9% logic, 62.1% route)
+    Total                      5.847ns (2.071ns logic, 3.776ns route)
+                                       (35.4% logic, 64.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'W_addrw[3]_OR_8_o'
@@ -404,14 +404,14 @@ Cross Clock Domains Report:
 =========================================================================
 
 
-Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 11.61 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 6.23 secs
  
 --> 
 
-Total memory usage is 256588 kilobytes
+Total memory usage is 256524 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   36 (   0 filtered)
+Number of warnings :   35 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 
