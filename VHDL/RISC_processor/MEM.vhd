@@ -32,17 +32,21 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity MEM is
-    Port ( addr : in  STD_LOGIC_VECTOR (7 downto 0);
-           inMEM : in  STD_LOGIC_VECTOR (7 downto 0);
+
+	generic( WORD_SIZE : Integer := 8,
+		ARRAY_SIZE : Integer := 16);
+
+    Port ( addr : in  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0);
+           inMEM : in  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0);
            RW : in  STD_LOGIC;
            RST : in  STD_LOGIC;
            CLK : in  STD_LOGIC;
-           outMEM : out  STD_LOGIC_VECTOR (7 downto 0));
+           outMEM : out  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0));
 end MEM;
 
 architecture Behavioral of MEM is
 
-type memory is array (0 to 15) of std_logic_vector(7 downto 0);
+type memory is array (0 to ARRAY_SIZE-1) of std_logic_vector(WORD_SIZE-1 downto 0);
 signal bench : memory;
 
 begin

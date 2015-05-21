@@ -33,25 +33,30 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity DI is
-    Port ( addra : in  STD_LOGIC_VECTOR (3 downto 0);
-           addrb : in  STD_LOGIC_VECTOR (3 downto 0);
-           addrw : in  STD_LOGIC_VECTOR (3 downto 0);
+
+	generic(LITTLE_WORD_SIZE : Integer := 4,
+		WORD_SIZE : Integer := 8,
+		MEM_SIZE : Integer := 16);
+
+    Port ( addra : in  STD_LOGIC_VECTOR (LITTLE_WORD_SIZE-1 downto 0);
+           addrb : in  STD_LOGIC_VECTOR (LITTLE_WORD_SIZE-1 downto 0);
+           addrw : in  STD_LOGIC_VECTOR (LITTLE_WORD_SIZE-1 downto 0);
            W : in  STD_LOGIC; --read(0) or write(1)
-           DATA : in  STD_LOGIC_VECTOR (7 downto 0);
+           DATA : in  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0);
            RST : in  STD_LOGIC;
            CLK : in  STD_LOGIC;
-           QA : out  STD_LOGIC_VECTOR (7 downto 0);
-           QB : out  STD_LOGIC_VECTOR (7 downto 0));
+           QA : out  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0);
+           QB : out  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0));
 end DI;
 
 architecture Behavioral of DI is
 
-type memory is array ( 0 to 15 ) of std_logic_vector( 7 downto 0 ) ;
+type memory is array ( 0 to MEM_SIZE-1 ) of std_logic_vector( WORD_SIZE-1 downto 0 ) ;
 signal bench : memory;
 --bench <= (others => "00000000");
-signal Sigouta: std_logic_vector ( 7 downto 0);
-signal Sigoutb: std_logic_vector ( 7 downto 0);
---signal Sigoutw: std_logic_vector ( 7 downto 0);
+signal Sigouta: std_logic_vector ( WORD_SIZE-1 downto 0);
+signal Sigoutb: std_logic_vector ( WORD_SIZE-1 downto 0);
+--signal Sigoutw: std_logic_vector ( WORD_SIZE-1 downto 0);
 
 begin
 

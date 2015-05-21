@@ -32,14 +32,17 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity LI is
-    Port ( addr : in  STD_LOGIC_VECTOR (7 downto 0);
-           outLI : out  STD_LOGIC_VECTOR (31 downto 0);
+	generic(WORD_SIZE : Integer := 8,
+		OUT_SIZE : Integer := 32
+		ARRAY_SIZE : Integer := 21);
+    Port ( addr : in  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0);
+           outLI : out  STD_LOGIC_VECTOR (OUT_SIZE-1 downto 0);
            CLK : in  STD_LOGIC);
 end LI;
 
 architecture Behavioral of LI is
 
-type memory is array ( 0 to 20 ) of std_logic_vector( 31 downto 0 ) ; 
+type memory is array ( 0 to ARRAY_SIZE-1 ) of std_logic_vector( OUT_SIZE-1 downto 0 ) ; 
 --256 instructions max because 8 bits addr						32bits for 4 registers
 --here we choose 20 for a test
 signal mem : memory ;
