@@ -90,17 +90,46 @@ begin
 
 end LC;
 
+procedure MUX(B std_logic_vector(7 downto 0);QA std_logic_vector(7 downto 0))
+
 begin
 
-signal A <= li_di(23 downto 16);
-signal B <= li_di(15 downto 8);
-signal OP <= li_di(31 downto 24);
-signal C <= li_di(7 downto 0);
+-- Savoir quand retourner quoi
+return QA;
+
+end MUX;
+
+signal QA STD_LOGIC_VECTOR( 7 downto 0);
+signal QB STD_LOGIC_VECTOR( 7 downto 0);
+signal outALU STD_LOGIC_VECTOR( 7 downto 0);
+
+begin
+
+signal A_LI_DI <= li_di(23 downto 16);
+signal B_LI_DI <= li_di(15 downto 8);
+signal OP_LI_DI <= li_di(31 downto 24);
+signal C_LI_DI <= li_di(7 downto 0);
+
+signal A_DI_EX <= A_LI_DI;
+signal B_DI_EX <= MUX(B_LI_DI,QA);
+signal C_DI_EX <= QB;
+signal OP_DI_EX <= OP_LI_DI;
+
+signal A_EX_MEM <= A_DI_EX;
+signal B_EX_MEM <= MUX(B_DI_EX,outALU);
+signal C_EX_MEM <= C_DI_EX;
+signal OP_EX_MEM <= OP_DI_EX;
+
+signal A_MEM_RE <= A_EX_MEM;
+signal B_MEM_RE <= B_EX_MEM;
+signal C_MEM_RE <= C_EX_MEM;
+signal OP_MEM_RE <= OP_EX_MEM;
 
 LI : instructions_memory port map ( ,li_di,clk);
 -- OP a verifier quand on passe dans LC...
-DI : registers_bench port map (B,%,A,LC(OP),B,clk,%,%);
-
+-- Attention, il attend du 3 downto 0 et on lui file du 7 downto 0 en premiers arguments
+DI : registers_bench port map (B_LI_DI,C_LI_DI,A_MEM_RE,LC(OP_MEM_RE),B_MEM_RE,clk,QA,QB);
+ALU_INST : alu port map(B_DI_EX,C_DI_EX,LC(OP_DI_EX),outALU);
 
 
 end Behavioral;
