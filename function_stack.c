@@ -3,44 +3,48 @@
 #include "function_stack.h"
 #include <string.h>
 
-Function_struct * first_one;
+Function_struct * first_function;
+Stack_Pointer * stack_pointer;
 
-void function_init_stack(int addr,char * name){
-        first_one = malloc(sizeof(Function_struct));
-        if(first_one != NULL){
-                first_one->addr = addr;
-                first_one->name = name;
-                first_one->next_function = NULL;
-        }
+int get_stack_pointer(){
+	return stack_pointer->addr;
 }
 
-int function_add(int addr,char * name){
-        Function_struct * to_add = malloc(sizeof(Function_struct));
-	to_add->addr = addr;
-	to_add->name = name;
-	Function_struct * iterator = first_one;
-	if(iterator == NULL){
-		function_init_stack(addr,name);
-		return addr;
+int pop_stack_pointer(){
+	if(stack_pointer->before_addr != NULL){
+		int to_return = stack_pointer->addr;
+		stack_pointer = stack_pointer->before_addr;
+		return to_return;
 	}
-        while(iterator->next_function != NULL){
-		if(strcmp(iterator->name,name) == 0){
-			return -1;
-		}
-               iterator = iterator->next_function;
-        }
-	iterator->next_function = to_add;
-	return addr;
+	return stack_pointer->addr;
 }
 
-int function_get_addr(char * name){
-        Function_struct * iterator = first_one;
-        while(iterator != NULL){
-		if(strcmp(iterator->name,name) == 0){
-			return iterator->addr;
+void add_stack_value(int addr){
+	Stack_Pointer * new_value = (Stack_Pointer *)malloc(sizeof(Stack_Pointer));
+	stack_pointer->next_addr = new_value;
+	new_value->before_addr = stack_pointer;
+	stack_pointer = new_value;
+}
+
+int function_exist(char * name){
+	Function_struct * aux = first_function;
+	while(aux != NULL){
+		if(strcmp(name,aux->name) == 0){
+			return 1;
 		}
-		iterator = iterator->next_function;
-        }
+	aux = aux->next_function;
+	}
 	return -1;
 }
 
+void add_function(char * name,int addr_jump){
+	Function_struct * aux = first_function;
+	while(aux->next_function != NULL){
+		aux = aux->next_function;
+	}
+	Function_struct * new_element =  (Function_struct *)malloc(sizeof(Function_struct));
+	new_element->addr_jump = addr_jump;
+	new_element->next_function = NULL;
+	new_element->name = name;
+	aux->next_function = new_element;
+}
