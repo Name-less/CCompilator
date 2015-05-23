@@ -3,6 +3,7 @@
 #include <string.h>
 #include "tableSymbole.h"
 #include "instructions.h"
+#include "function_stack.h"
 
 /*
 
@@ -97,6 +98,8 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
                 fprintf(fp,"INF %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }else if(INST_SUP == inst->instruct_params[0]){
                 fprintf(fp,"SUP %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+        }else if(INST_JUMP_RETURN == inst->instruct_params[0]){
+                fprintf(fp,"JMP SP\n");
         }
    
    	fclose(fp);
@@ -215,6 +218,13 @@ void stack_push_jump(int arg1){
         new_inst->instruct_params[3]=-1;
         stack_push(new_inst);
 }
+
+void stack_push_jump_return(){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_JUMP_RETURN;
+        stack_push(new_inst);
+}
+
 
 void stack_push_jump_false(int arg1, int arg2){
         stack_inst * new_inst = malloc(sizeof(stack_inst));

@@ -6,6 +6,7 @@
 #include "jump_stack.h"
 #include "function_stack.h"
 
+int stack_pointer_adress = 1000;
 int yyerror(char *s);
 int yylex();
 int line_number;
@@ -190,19 +191,23 @@ tWHILE{
 
 Function :
 tINTEGER tWORD {
-				function_add(get_number_of_line(),$2);
-				} tPO Arguments_Declaration tPF tAO Input tAF |
-tCHAR tWORD {
-			 function_add(get_number_of_line(),$2);
-			} tPO Arguments_Declaration tPF tAO Input tAF |
-tVOID tWORD {
-			 function_add(get_number_of_line(),$2);
-			} tPO Arguments_Declaration tPF tAO Input tAF;
+	add_function($1,get_number_of_line());
+}
+ tPO Arguments_Declaration tPF tAO Input {
+	stack_push_jump_return();
+} tAF |
+tCHAR tWORD tPO Arguments_Declaration tPF tAO Input tAF |
+tVOID tWORD tPO Arguments_Declaration tPF tAO Input tAF;
 
 Appel_Function :
-tWORD {
-		 stack_push_jump(function_get_addr($1));
-		} tPO Arguments tPF;
+tWORD tPO Arguments tPF {
+	if(function_exist($1) == 1){
+		add_stack_value(get_number_of_line()+1);
+		stack_push_afc(stack_pointer_address,get_number_of_line()+1);
+		stack_push_jump(get_addr_function($1);
+		stack_push_afc(stack_pointer_address,pop_stack_pointer());
+	}
+};
 
 Arguments_Declaration :
 tINTEGER tWORD tVIRG Arguments_Declaration |

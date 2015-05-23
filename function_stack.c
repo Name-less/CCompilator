@@ -26,6 +26,18 @@ void add_stack_value(int addr){
 	stack_pointer = new_value;
 }
 
+int get_addr_function(char * name){
+	        Function_struct * aux = first_function;
+        while(aux != NULL){
+                if(strcmp(name,aux->name) == 0){
+                        return aux->addr_jump;
+                }
+        aux = aux->next_function;
+        }
+        return -1;
+
+}
+
 int function_exist(char * name){
 	Function_struct * aux = first_function;
 	while(aux != NULL){

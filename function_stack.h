@@ -16,3 +16,4 @@ int function_exist(char * name);
 void add_function(char * name, int addr_jump);
 void add_stack_value(int addr);
 int pop_stack_pointer();
+int get_addr_function(char * name);

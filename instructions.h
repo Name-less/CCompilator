@@ -11,6 +11,7 @@
 #define INST_SUP 10
 #define INST_EQU 11
 #define INST_PRI 12
+#define INST_JUMP_RETURN 13
 
 int nbre_line;
 
@@ -32,6 +33,7 @@ void stack_push_sub(int arg1,int arg2,int arg3);
 void stack_push_mul(int arg1,int arg2,int arg3);
 void stack_push_div(int arg1,int arg2,int arg3);
 void stack_push_jump(int arg1);
+void stack_push_jump_return();
 void stack_push_jump_false(int arg1,int arg2);
 void stack_push_afc(int arg1,int arg2);
 void stack_push_cop(int arg1,int arg2);
