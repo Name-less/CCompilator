@@ -3,12 +3,8 @@ int main(){
 	int d;
 	c = 50;
 	d = 40;
-	if(c == d || d == c){
+	if(c == d){
 		c = 12;
-	}
-
-	if(d == c && c == d){
-		c = 14;	
 	}
 	d = 10;
 }

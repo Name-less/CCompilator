@@ -1,19 +1,19 @@
-/* A Bison parser, made by GNU Bison 2.5.  */
+/* A Bison parser, made by GNU Bison 3.0.4.  */
 
 /* Bison interface for Yacc-like parsers in C
-   
-      Copyright (C) 1984, 1989-1990, 2000-2011 Free Software Foundation, Inc.
-   
+
+   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
+
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
@@ -26,62 +26,70 @@
    special exception, which will cause the skeleton and the resulting
    Bison output files to be licensed under the GNU General Public
    License without this special exception.
-   
+
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
+#ifndef YY_YY_Y_TAB_H_INCLUDED
+# define YY_YY_Y_TAB_H_INCLUDED
+/* Debug traces.  */
+#ifndef YYDEBUG
+# define YYDEBUG 0
+#endif
+#if YYDEBUG
+extern int yydebug;
+#endif
 
-/* Tokens.  */
+/* Token type.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
-   /* Put the tokens into the symbol table, so that GDB and other debuggers
-      know about them.  */
-   enum yytokentype {
-     tINTEGER = 258,
-     tCHAR = 259,
-     tVOID = 260,
-     tNULL = 261,
-     tCONST = 262,
-     tMAIN = 263,
-     tIF = 264,
-     tELSE = 265,
-     tWHILE = 266,
-     tFOR = 267,
-     tAO = 268,
-     tAF = 269,
-     tCO = 270,
-     tCF = 271,
-     tPO = 272,
-     tPF = 273,
-     tSQ = 274,
-     tDQ = 275,
-     tDIV = 276,
-     tPOINTVIRG = 277,
-     tARROW = 278,
-     tPOINT = 279,
-     tPLUS = 280,
-     tMINUS = 281,
-     tMOD = 282,
-     tEXP = 283,
-     tSUP = 284,
-     tINF = 285,
-     tVIRG = 286,
-     tEGALEGAL = 287,
-     tOR = 288,
-     tAND = 289,
-     tNOTEGAL = 290,
-     tEGAL = 291,
-     tADDR = 292,
-     tPOINTER = 293,
-     tSPACE = 294,
-     tNOMBRE = 295,
-     tWORD = 296,
-     tRETURN = 297,
-     tNEWLINE = 298,
-     tCOMMENT = 299,
-     tMOINS = 300,
-     NEG = 301
-   };
+  enum yytokentype
+  {
+    tINTEGER = 258,
+    tCHAR = 259,
+    tVOID = 260,
+    tNULL = 261,
+    tCONST = 262,
+    tMAIN = 263,
+    tIF = 264,
+    tELSE = 265,
+    tWHILE = 266,
+    tFOR = 267,
+    tAO = 268,
+    tAF = 269,
+    tCO = 270,
+    tCF = 271,
+    tPO = 272,
+    tPF = 273,
+    tSQ = 274,
+    tDQ = 275,
+    tDIV = 276,
+    tPOINTVIRG = 277,
+    tARROW = 278,
+    tPOINT = 279,
+    tPLUS = 280,
+    tMINUS = 281,
+    tMOD = 282,
+    tEXP = 283,
+    tSUP = 284,
+    tINF = 285,
+    tVIRG = 286,
+    tEGALEGAL = 287,
+    tOR = 288,
+    tAND = 289,
+    tNOTEGAL = 290,
+    tEGAL = 291,
+    tADDR = 292,
+    tPOINTER = 293,
+    tSPACE = 294,
+    tNOMBRE = 295,
+    tWORD = 296,
+    tRETURN = 297,
+    tNEWLINE = 298,
+    tCOMMENT = 299,
+    tMOINS = 300,
+    NEG = 301
+  };
 #endif
 /* Tokens.  */
 #define tINTEGER 258
@@ -129,29 +137,27 @@
 #define tMOINS 300
 #define NEG 301
 
-
-
-
+/* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE
-{
 
-/* Line 2068 of yacc.c  */
-#line 39 "analyser_gram.yacc"
+union YYSTYPE
+{
+#line 41 "analyser_gram.yacc" /* yacc.c:1915  */
 
 int number;
 char * texte;
 
+#line 151 "y.tab.h" /* yacc.c:1915  */
+};
 
-
-/* Line 2068 of yacc.c  */
-#line 149 "y.tab.h"
-} YYSTYPE;
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
-# define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 #endif
 
+
 extern YYSTYPE yylval;
 
+int yyparse (void);
 
+#endif /* !YY_YY_Y_TAB_H_INCLUDED  */

@@ -218,6 +218,7 @@ int get_addr_from(char * name){
 	symbole * iterator = firstOne;
 	while(iterator != NULL){
 		if(strcmp(iterator->name,name) == 0){
+			printf("******************** %s %d ********\n",name,iterator->adress);
 			return iterator->adress;
 		}
 		iterator = iterator->next;
@@ -290,7 +291,7 @@ void pop_symb_zone(){
 }
 
 
-int main(){
+/*int main(){
 	push_symb_zone();
 	printf("ok \n");
 	ts_push((char *)"size",(char *)"int");
@@ -306,7 +307,7 @@ int main(){
 	ts_add_temp();
 	ts_push((char *)"mark",(char *)"int");
 	ts_display();
-}
+}*/
 
 
 

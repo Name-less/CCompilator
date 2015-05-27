@@ -10,7 +10,13 @@ typedef struct function_stack_pointer_stack{
 	struct function_stack_pointer_stack * next_addr;
 }Stack_Pointer;
 
+int register_;
+int first_register;
+
 int get_stack_pointer();
+int get_empty_register();
+int get_first_register();
+void raz_empty_register();
 
 int function_exist(char * name);
 void add_function(char * name, int addr_jump);

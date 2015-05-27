@@ -1,0 +1,12 @@
+AFC 6 50 // on affecte 50 à une variable temporaire
+COP 2 6 // on met ce qu'il y a dans la temporaire dans C qui a pour adresse 2
+AFC 8 40 //pareil pour
+COP 4 8 // d = 40;
+COP 10 2 // on met c dans la variable temporaire à l'adresse 10
+COP 6 4 // on met d dans la variable temporaire à l'adresse 6
+EQU CR 10 6 // on compare les deux variables temporaires et on met le résultat dans CR
+JMF 10 CR // si le résultat est faux alors on saute à la ligne 10
+AFC 8 12 // sinon on va mettre 12 dans c
+COP 2 8
+AFC 8 10 // ligne 10 
+COP 4 8 // et on met 10 dans d

@@ -9,7 +9,7 @@
 int stack_pointer_adress = 1000;
 int yyerror(char *s);
 int yylex();
-int line_number;
+int line_number = 1;
 // int yywrap();
 
 %}
@@ -35,6 +35,7 @@ int line_number;
 %token <number> tNOMBRE
 %token <texte> tWORD
 %type <number> Exp
+%type <number> Condition
 %type <texte> LeftTerm
 
 %union{
@@ -66,13 +67,15 @@ Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
 Input Declaration |
 Input While |
 Input {/*push_symb_zone();*/} If {/*pop_symb_zone();*/} {printf("YACC:condition ok \n");}|
-Input {/*push_symb_zone();*/} Function {/*pop_symb_zone();*/} |
-Input Appel_Function|
+Input Function {printf("FIN FUNCTION \n");} |
+Input Appel_Function |
 Input Main;
 
 Main :
 tINTEGER tMAIN tPO Arg tPF tAO {push_symb_zone();} Input tAF {pop_symb_zone(); printf("YACC:mon main\n");
-				print_all_assembler_instructions();} ;
+				print_all_assembler_instructions();
+				parse_and_modify_file("toto","tata");
+} ;
 
 Arg :
 tINTEGER tWORD |
@@ -81,21 +84,41 @@ tINTEGER tPOINTER tWORD |
 ;
 
 If :
-tIF{if_add_from_where(get_number_of_line());} tPO Condition tPF tAO Input tAF{if_fill_from_to(get_number_of_line());} Else;
+tIF tPO Condition tPF {
+	if_add_from_where(get_number_of_line());
+} tAO Input tAF{
+	if_fill_from_to(get_number_of_line()+1);
+} Else;
 
 Else :
 tELSE {if_add_from_where(get_number_of_line());} tAO Input tAF | 
 tELSE If |;
 
 Condition :
-Exp tEGALEGAL Exp |
+Exp tEGALEGAL Exp {
+	int tmp = ts_add_temp();
+	$$ = tmp;
+	stack_push_equ_t(tmp,$1,$3);
+}|
 Exp tNOTEGAL Exp |
-Exp tSUP Exp |
-Exp tINF Exp |
+Exp tSUP Exp {
+	stack_push_sup($1,$3,1);
+} |
+Exp tINF Exp {
+	stack_push_inf($1,$3,1);
+}|
 Exp tSUP tEGAL Exp|
 Exp tINF tEGAL Exp |
-Condition tOR Condition |
-Condition tAND Condition;
+Condition tOR Condition {
+	int tmp = ts_add_temp();
+	stack_push_add(tmp,$1,$3);
+	stack_push_sup(tmp,1,1);
+}  |
+Condition tAND Condition {
+        int tmp = ts_add_temp();
+        stack_push_add(tmp,$1,$3);
+        stack_push_equ(2,tmp,1);
+};
 
 Exp :
 Exp tPLUS Exp { stack_push_add($1,$1,$3); ts_pop_addr($3);}|
@@ -129,10 +152,10 @@ tWORD {	printf("YACC: dans LeftTerm\n");};
 
 Egalite :
 LeftTerm tEGAL Exp {	stack_push_cop(get_addr_from($1),$3);
-			printf("YACC: ici dollar 1 vaut %d et son addresse %d et dollar 3 vaut %d\n\n", $1,get_addr_from($1),$3);
-			ts_display();
+			//printf("YACC: ici dollar 1 vaut %d et son addresse %d et dollar 3 vaut %d\n\n", $1,get_addr_from($1),$3);
+			//ts_display();
 			ts_pop_addr($3);
-			ts_display();};
+			};
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { 
@@ -191,40 +214,61 @@ tWHILE{
 
 Function :
 tINTEGER tWORD {
-	add_function($1,get_number_of_line());
+	printf("add_function %s \n",$2);
+	add_function($2,get_number_of_line());
+	printf("end add_function \n");
 }
  tPO Arguments_Declaration tPF tAO Input {
+	stack_push_pop_sp();
 	stack_push_jump_return();
-} tAF |
+} tAF {
+	raz_empty_register();
+} |
 tCHAR tWORD tPO Arguments_Declaration tPF tAO Input tAF |
 tVOID tWORD tPO Arguments_Declaration tPF tAO Input tAF;
 
 Appel_Function :
 tWORD tPO Arguments tPF {
+	printf("if try %d %s \n",function_exist($1),$1);
 	if(function_exist($1) == 1){
-		add_stack_value(get_number_of_line()+1);
-		stack_push_afc(stack_pointer_address,get_number_of_line()+1);
-		stack_push_jump(get_addr_function($1);
-		stack_push_afc(stack_pointer_address,pop_stack_pointer());
+		add_stack_value(get_number_of_line()+3);
+		stack_push_afc(stack_pointer_adress,get_number_of_line()+4);
+		stack_push_push_sp();
+		stack_push_jump(get_addr_function($1));
 	}
 };
 
 Arguments_Declaration :
-tINTEGER tWORD tVIRG Arguments_Declaration |
+tINTEGER tWORD {
+        ts_push($2,$1);
+        stack_push_afc_from_register(get_addr_from($2),get_first_register());
+}
+tVIRG Arguments_Declaration |
 tVOID tWORD tVIRG Arguments_Declaration |
-tCHAR tWORD tVIRG Arguments_Declaration |;
+tCHAR tWORD tVIRG Arguments_Declaration |
+tINTEGER tWORD{
+	ts_push($2,$1);
+	stack_push_afc_from_register(get_addr_from($2),get_first_register());
+} Arguments_Declaration|
+;
 
 Arguments :
-tWORD tVIRG |
-tINTEGER tVIRG |
+tWORD tVIRG Arguments |
+tNOMBRE tVIRG {
+	stack_push_afc_register(get_empty_register(),$1);
+}
+Arguments |
 tWORD |
-tINTEGER |;
+tINTEGER |
+tNOMBRE {
+	stack_push_afc_register(get_empty_register(),$1);
+}|;
 
 %%
 
 
 int yyerror(char *s){
-printf("%s\n",s);
+printf("%s %d\n",s,line_number);
 return 1;
 }
 
@@ -233,5 +277,6 @@ return 1;
 //}
 
 int main(void){
-return yyparse();
+yyparse();
+return 1;
 }

@@ -8,7 +8,7 @@ int line = 1;
 NOMBRE [0-9]+
 SPACE [ \t]
 NEWLINE [\n]
-WORD [a-zA-Z][a-zA-Z0-9]*
+WORD [a-zA-Z_][a-zA-Z0-9_]*
 
 %x COMMENT
 

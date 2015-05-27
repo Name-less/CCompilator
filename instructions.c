@@ -91,15 +91,29 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
         }else if(INST_JUMP_FALSE == inst->instruct_params[0]){
                 fprintf(fp,"JMF %d %d\n",inst->instruct_params[1],inst->instruct_params[2]);
         }else if(INST_EQU == inst->instruct_params[0]){
-                fprintf(fp,"EQU %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+                fprintf(fp,"EQU CR %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }else if(INST_PRI == inst->instruct_params[0]){
                 fprintf(fp,"PRI %d\n",inst->instruct_params[1]);
         }else if(INST_INF == inst->instruct_params[0]){
-                fprintf(fp,"INF %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+                fprintf(fp,"INF CR %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }else if(INST_SUP == inst->instruct_params[0]){
-                fprintf(fp,"SUP %d %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+                fprintf(fp,"SUP CR %d %d\n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }else if(INST_JUMP_RETURN == inst->instruct_params[0]){
                 fprintf(fp,"JMP SP\n");
+        }else if(INST_PUSH_SP == inst->instruct_params[0]){
+		fprintf(fp,"PUSH SP \n");
+	}else if(INST_POP_SP == inst->instruct_params[0]){
+                fprintf(fp,"POP SP \n");
+        }else if(INST_AFC_REGISTER == inst->instruct_params[0]){
+                fprintf(fp,"AFC R%d %d \n",inst->instruct_params[1],inst->instruct_params[2]);
+        }else if(INST_AFC_FROM_REG == inst->instruct_params[0]){
+                fprintf(fp,"AFC %d R%d \n",inst->instruct_params[1],inst->instruct_params[2]);
+        }else if(INST_POP == inst->instruct_params[0]){
+                fprintf(fp,"POP %d \n",inst->instruct_params[1]);
+        }else if(INST_PUSH == inst->instruct_params[0]){
+                fprintf(fp,"PUSH %d \n",inst->instruct_params[1]);
+        }else if(INST_EQU_T == inst->instruct_params[0]){
+                fprintf(fp,"EQU %d %d  %d \n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
         }
    
    	fclose(fp);
@@ -174,6 +188,15 @@ void stack_push_equ(int arg1, int arg2,int arg3){
         stack_push(new_inst);
 }
 
+void stack_push_equ_t(int arg1, int arg2,int arg3){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_EQU_T;
+        new_inst->instruct_params[1]=arg1;
+        new_inst->instruct_params[2]=arg2;
+        new_inst->instruct_params[3]=arg3;
+        stack_push(new_inst);
+}
+
 void stack_push_pri(int arg1){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
         new_inst->instruct_params[0]=INST_PRI;
@@ -225,6 +248,30 @@ void stack_push_jump_return(){
         stack_push(new_inst);
 }
 
+void stack_push_push_sp(){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_PUSH_SP;
+        stack_push(new_inst);
+}
+void stack_push_pop_sp(){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_POP_SP;
+        stack_push(new_inst);
+}
+
+void stack_push_pop(int arg){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_POP;
+        new_inst->instruct_params[1]=arg;
+	stack_push(new_inst);
+}
+
+void stack_push_push(int arg){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_PUSH;
+	new_inst->instruct_params[1]=arg;
+        stack_push(new_inst);
+}
 
 void stack_push_jump_false(int arg1, int arg2){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
@@ -233,6 +280,22 @@ void stack_push_jump_false(int arg1, int arg2){
         new_inst->instruct_params[2]=arg2;
         new_inst->instruct_params[3]=-1;
 	stack_push(new_inst);
+}
+
+void stack_push_afc_register(int arg1,int arg2){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_AFC_REGISTER;
+        new_inst->instruct_params[1]=arg1;
+        new_inst->instruct_params[2]=arg2;
+        stack_push(new_inst);
+}
+
+void stack_push_afc_from_register(int arg1,int arg2){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_AFC_FROM_REG;
+        new_inst->instruct_params[1]=arg1;
+        new_inst->instruct_params[2]=arg2;
+        stack_push(new_inst);
 }
 
 /*

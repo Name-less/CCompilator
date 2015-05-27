@@ -97,7 +97,7 @@ void while_add_from_to(int arg){
 void parse_and_modify_file(char * file_name,char * new_file){ //après avoir fait printer les instructions asm via print_all_sembleur
 //on lance parse_and_modify_file pour rajouter les sauts au fichier file_name dans new_file
 	// ANTHO: commenté car genant pour la compile
-	/** int current_delta_line = 0;*/ 
+	//int current_delta_line = 0; 
 	int current_line = 0;
 	char line[256];
 
@@ -121,7 +121,7 @@ void parse_and_modify_file(char * file_name,char * new_file){ //après avoir fai
 			//printf("while loop nbr line %d actual from where %d \n",current_line,iterator->from_where);
 			if(current_line+1 == iterator->from_where){
 				printf("PUT something \n");
-		 		fprintf(fp,"JMP %d\n",iterator->from_to);	
+		 		fprintf(fp,"JMF %d CR\n",iterator->from_to);	
 				aux->next_if = iterator->next_if;
 				next_line = 1;
 			}
@@ -129,10 +129,10 @@ void parse_and_modify_file(char * file_name,char * new_file){ //après avoir fai
 			iterator = iterator->next_if;
 		}
                 while(iterator_if != NULL && next_line_if == 0){
-                        //printf("while loop nbr line %d actual from where %d \n",current_line,iterator->from_where);
-                        if(current_line+1 == iterator_if->from_where){
+                        printf("while loop nbr line equal from where %d AND %d \n",current_line,iterator_if->from_where);
+                        if(current_line == iterator_if->from_where){
                                 printf("PUT something \n");
-                                fprintf(fp,"JMP %d\n",iterator_if->from_to);
+                                fprintf(fp,"JMF %d CR\n",iterator_if->from_to);
                                 aux_if->next_if = iterator_if->next_if;
                                 next_line_if = 1;
                         }
