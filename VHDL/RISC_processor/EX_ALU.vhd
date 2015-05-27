@@ -33,10 +33,11 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity EX_ALU is
-	generic( WORD_SIZE : Integer := 8,
-		CTRL_SIZE : Integer := 3,
-		LITTLE_WORD_SIZE : Integer := 4,
-		TEMP_SIZE : Integer := 16);
+	generic( WORD_SIZE : Integer := 8;
+				CTRL_SIZE : Integer := 3;
+				LITTLE_WORD_SIZE : Integer := 4;
+				TEMP_SIZE : Integer := 16
+	);
 
     Port ( A : in  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0);
            B : in  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0);
@@ -54,7 +55,7 @@ architecture Behavioral of EX_ALU is
 begin
 
 	-- pas de process car non-cyclique (pas d'horloge)
-	-- => pas de if or d'un process
+	-- => pas de if hors d'un process
 	
 	--NOZC <= "0000";
 	

@@ -1,0 +1,7 @@
+vhdl work "mux.vhd"
+vhdl work "MEM.vhd"
+vhdl work "LI.vhd"
+vhdl work "lc.vhd"
+vhdl work "EX_ALU.vhd"
+vhdl work "DI.vhd"
+vhdl work "processeur.vhd"

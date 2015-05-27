@@ -33,8 +33,10 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity MEM is
 
-	generic( WORD_SIZE : Integer := 8,
-		ARRAY_SIZE : Integer := 16);
+	generic( 
+				WORD_SIZE : Integer := 8;
+				ARRAY_SIZE : Integer := 16
+	);
 
     Port ( addr : in  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0);
            inMEM : in  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0);

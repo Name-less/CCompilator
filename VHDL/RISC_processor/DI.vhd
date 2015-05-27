@@ -34,9 +34,11 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity DI is
 
-	generic(LITTLE_WORD_SIZE : Integer := 4,
-		WORD_SIZE : Integer := 8,
-		MEM_SIZE : Integer := 16);
+	generic(
+			LITTLE_WORD_SIZE : Integer := 4;
+			WORD_SIZE : Integer := 8;
+			MEM_SIZE : Integer := 16
+	);
 
     Port ( addra : in  STD_LOGIC_VECTOR (LITTLE_WORD_SIZE-1 downto 0);
            addrb : in  STD_LOGIC_VECTOR (LITTLE_WORD_SIZE-1 downto 0);

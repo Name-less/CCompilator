@@ -32,9 +32,11 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity LI is
-	generic(WORD_SIZE : Integer := 8,
-		OUT_SIZE : Integer := 32
-		ARRAY_SIZE : Integer := 21);
+	generic(
+				WORD_SIZE : Integer := 8;
+				OUT_SIZE : Integer := 32;
+				ARRAY_SIZE : Integer := 21
+	);
     Port ( addr : in  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0);
            outLI : out  STD_LOGIC_VECTOR (OUT_SIZE-1 downto 0);
            CLK : in  STD_LOGIC);
