@@ -29,7 +29,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
--- ports externes pour le processeurs
+-- extern ports for the processor
 entity processeur is
 	Port ( 
 			clk_processor : in std_logic;
@@ -40,7 +40,7 @@ end processeur;
 
 architecture Behavioral of processeur is
 
--- chacun de nos components qui sont nos modules
+-- each module
 
 component ex_alu PORT(
 									  A : in  STD_LOGIC_VECTOR (7 downto 0);
@@ -77,15 +77,19 @@ component li Port(
 									  CLK : in  STD_LOGIC);
 end component;
 
-component mux Port (
-									  op_selection : in  STD_LOGIC_VECTOR (7 downto 0);
-									  entree : in  STD_LOGIC_VECTOR (15 downto 0);
-									  sortie_selectionnee : out  STD_LOGIC_VECTOR (7 downto 0));
-end component;
-
 component lc Port (
 						entree_lc : in std_logic_vector (7 downto 0);
-						sortie_lc : out  STD_LOGIC);
+						sortie_lc : out  STD_LOGIC_vector (2 downto 0);
+						clk : in std_logic
+						);
+end component;
+
+component ip port (
+						freeze : in std_logic;
+						rst : in std_logic;
+						clk : in std_logic;
+						pc : out std_logic_vector (7 downto 0)
+						);
 end component;
 
 ---------- Signaux pour les modules -------------
@@ -120,40 +124,22 @@ signal inst_addr : std_logic_vector ( 7 downto 0);
 signal li_di : std_logic_vector ( 31 downto 0);
 
 ------------ Multiplexers -------------
-signal in_mux_di : std_logic_vector (15 downto 0);
-signal out_mux_di : std_logic_vector (7 downto 0);
-signal in_mux_ex : std_logic_vector (15 downto 0);
-signal out_mux_ex : std_logic_vector (7 downto 0);
-signal in_mux_mem : std_logic_vector (15 downto 0);
-signal out_mux_mem : std_logic_vector (7 downto 0);
-signal in_mux_re : std_logic_vector (15 downto 0);
-signal out_mux_re : std_logic_vector (7 downto 0);
+signal mux_di : std_logic_vector (7 downto 0);
+signal mux_ex : std_logic_vector (7 downto 0);
+signal mux_mem : std_logic_vector (7 downto 0);
+signal mux_re : std_logic_vector (7 downto 0);
 
 ----------------- LC ----------------
-signal in_lc_di : std_logic_vector (7 downto 0);
-signal out_lc_di : std_logic;
 signal in_lc_ex : std_logic_vector (7 downto 0);
-signal out_lc_ex : std_logic;
+signal out_lc_ex : std_logic_vector (2 downto 0);
+signal in_lc_mem : std_logic_vector (7 downto 0);
+signal out_lc_mem : std_logic_vector (2 downto 0);
 signal in_lc_re : std_logic_vector (7 downto 0);
-signal out_lc_re : std_logic;
+signal out_lc_re : std_logic_vector (2 downto 0);
 
--------------- Unused ---------------
--------------------------------------
---signal C_MEM_RE : std_logic_vector ( 7 downto 0);
---signal C_EX_MEM : std_logic_vector ( 7 downto 0);
---signal clk : std_logic ;
---signal rst : std_logic ;
---signal rw : std_logic ;
---signal addr : std_logic_vector (7 downto 0);
---signal outmem : std_logic_vector (7 downto 0);
---signal nozc : std_logic_vector (3 downto 0);
---signal write_read : std_logic;
---signal ctrl_alu : std_logic_vector (2 downto 0);
---signal selec_mux_di : std_logic_vector (7 downto 0);
---signal inmem : std_logic_vector (7 downto 0);
---signal QA : STD_LOGIC_VECTOR( 7 downto 0);
---signal QB : STD_LOGIC_VECTOR( 7 downto 0);
---signal outALU : STD_LOGIC_VECTOR( 7 downto 0);
+----------------- IP ----------------
+signal freeze_processor : std_logic;
+
 
 ------------- Fin des signaux ---------------------
 ---------------------------------------------------
@@ -163,35 +149,26 @@ begin
 --												in/8   	out/32     clk
 instruction_memory : li port map (inst_addr, li_di, clk_processor);
 
---											     @A/4           		@B/4   						@W/4       		W/1	  DATA/8    RST/1 				CLK/1   		      QA/8            QB/8 always linked to C_DI_EX
-registers_bench : di port map (B_LI_DI(3 downto 0),C_LI_DI(3 downto 0),A_MEM_RE(3 downto 0), out_lc, 	B_MEM_RE, rst_processor, clk_processor, in_mux_di(7 downto 0),  C_DI_EX);
+--											     @A/4           		@B/4   						@W/4       		W/1	  DATA/8    RST/1 				CLK/1   	  QA/8    QB/8 always linked to C_DI_EX
+registers_bench : di port map (B_LI_DI(3 downto 0),C_LI_DI(3 downto 0),A_MEM_RE(3 downto 0), out_lc_re(0), 	B_MEM_RE, rst_processor, clk_processor, mux_di,  C_DI_EX);
 
---								A/8     B/8     Ctrl_alu/3           S/8   	       NOZC/4 never linked in graphics
-alu : ex_alu port map(B_DI_EX, C_DI_EX,  out_lc_ex , in_mux_ex(7 downto 0), open);
+--								A/8     B/8     Ctrl_alu/3     S/8   NOZC/4 never linked in graphics
+alu : ex_alu port map(B_DI_EX, C_DI_EX,  out_lc_ex , mux_ex, open);
 
---                          	addr/8  		 IN/8        RW/1       RST/1          CLK/1      	  OUT/8
-data_memory : mem port map (out_mux_mem, B_EX_MEM, out_lc_mem, rst_processor, clk_processor, in_mux_re(7 downto 0));
+--                           addr/8  	IN/8        RW/1       RST/1          CLK/1      	OUT/8
+data_memory : mem port map (mux_mem, B_EX_MEM, out_lc_mem(0), rst_processor, clk_processor, mux_re(7 downto 0));
 
---								  		selec/8		entree/16   sortie/8
-muliplexer_di : mux port map (op_li_di,  in_mux_di,   out_mux_di);
+--								in/8       out/3			clk/1
+lc_ex: lc port map ( in_lc_ex, out_lc_ex, clk_processor);
 
---								  		selec/8		entree/16   sortie/8
-muliplexer_ex : mux port map (op_di_ex,  in_mux_ex,  out_mux_ex);
+--									in/8     out/3			clk/1
+lc_mem : lc port map ( in_lc_mem, out_lc_mem, clk_processor);
 
---								  		selec/8		 entree/16   sortie/8
-muliplexer_mem : mux port map (op_ex_mem, in_mux_mem, out_mux_mem);
+--								in/8      out/3		clk/1
+lc_re : lc port map ( in_lc_re, out_lc_re, clk_processor);
 
---								  		selec/8		entree/16   sortie/8
-muliplexer_re : mux port map (op_ex_mem,  in_mux_re,  out_mux_re);
-
---								in/8    out/1
-lc_ex: lc port map ( in_lc_ex, out_lc_ex);
-
---									in/8     out/1
-lc_mem : lc port map ( in_lc_mem, out_lc_mem);
-
---								in/8      out/1
-lc_re : lc port map ( in_lc_re, out_lc_re);
+--										freeze/1				 rst/1			clk/1				pc/8
+inst_pointer : inst_pointer_ip port map (freeze_processor, rst_processor, clk_processor,  inst_addr);
 
 processor: process
 begin
@@ -199,7 +176,7 @@ begin
 	wait until clk_processor'event and clk_processor = '1';
 	if rst_processor = '0' then
 	
-		---- Interface LI/DI ----	
+		---- Interface LI/DI ----
 		A_LI_DI 	<= "00000000";
 		B_LI_DI 	<= "00000000";
 		OP_LI_DI <= "00000000";
@@ -220,8 +197,23 @@ begin
 		A_MEM_RE 	<= "00000000";
 		B_MEM_RE 	<= "00000000";
 		OP_MEM_RE 	<= "00000000";
+		
+		---- Replace mux ----
+		mux_di <= "00000000";
+		mux_ex <= "00000000";
+		mux_mem <= "00000000";
+		mux_re <= "00000000";
+		
+		---- IP ----
+		freeze_processor <= "00000000";
 	
 	else
+
+		---- Aleas tests ----
+		if (OP_LI_DI = X"05" and OP_DI_EX = X"06") then
+			
+		end if;
+		
 
 		---- Interface LI/DI ----
 		A_LI_DI <= li_di(23 downto 16);
@@ -230,29 +222,97 @@ begin
 		C_LI_DI <= li_di(7 downto 0);
 		
 		---- Interface DI/EX ----
+		-- direct link
 		A_DI_EX <= A_LI_DI;
 		OP_DI_EX <= OP_LI_DI;
+		---- Replace Mux module in DI ----
+		-- 				AFC						LOAD
+		if (OP_LI_DI = X"06" or OP_LI_DI = X"07") then 
+			B_DI_EX <= B_LI_DI;
+		else -- others operators
+			B_DI_EX <= mux_di;
+		end if;
 		
-
-		-- multiplexer
-		--op_li_di <= selec_mux_di;
-		--in_mux_di <= (B_LI_DI & QA); 
-		-----------------------------
-
 		
-
-		-- interface EX/MEM
-		--A_EX_MEM <= A_DI_EX;
-		--B_EX_MEM <= --MUX(B_DI_EX,outALU);
-		--OP_EX_MEM <= OP_DI_EX;
-
-		-- interface MEM/RE
-		--A_MEM_RE <= A_EX_MEM;
-		--B_MEM_RE <= B_EX_MEM;
-		--OP_MEM_RE <= OP_EX_MEM;
+		---- Interface EX/MEM ----		
+		-- direct link
+		A_EX_MEM <= A_DI_EX;
+		OP_EX_MEM <= OP_DI_EX;	
+		---- Replace Mux module in EX ----
+		--			 		AFC						COP					LOAD					STORE
+		if (OP_DI_EX = X"06" or OP_DI_EX = X"05" or OP_DI_EX = X"07" or OP_DI_EX = X"08") then 
+			B_EX_MEM <= B_DI_EX;
+		else
+			B_EX_MEM <= mux_ex;
+		end if; 
+		
+		
+		---- Interface MEM/RE ----
+		-- direct link
+		A_MEM_RE <= A_EX_MEM;
+		OP_MEM_RE <= OP_EX_MEM;
+		---- Replace Mux module in MEM and before RE ----
+		--					STORE
+		if (OP_EX_MEM = X"08") then
+			mux_mem <= A_EX_MEM;
+			B_MEM_RE <= B_EX_MEM;
+		--						 LOAD
+		elsif (OP_EX_MEM = X"07") then
+			mux_mem <= B_EX_MEM;
+			B_MEM_RE <= mux_re;
+		else -- others operators
+			B_MEM_RE <= B_EX_MEM;
+		end if;
+		
 		
 	end if;
 end process;
 
 end Behavioral;
 
+-------------- Unused ---------------
+-------------------------------------
+
+--signal in_mux_di : std_logic_vector (15 downto 0);
+--signal out_mux_di : std_logic_vector (7 downto 0);
+--signal in_mux_ex : std_logic_vector (15 downto 0);
+--signal out_mux_ex : std_logic_vector (7 downto 0);
+--signal in_mux_mem : std_logic_vector (15 downto 0);
+--signal out_mux_mem : std_logic_vector (7 downto 0);
+--signal in_mux_re : std_logic_vector (15 downto 0);
+--signal out_mux_re : std_logic_vector (7 downto 0);
+
+--component mux Port (
+--									  op_selection : in  STD_LOGIC_VECTOR (7 downto 0);
+--									  entree : in  STD_LOGIC_VECTOR (15 downto 0);
+--									  sortie_selectionnee : out  STD_LOGIC_VECTOR (7 downto 0));
+--end component;
+
+----								  		selec/8		entree/16   sortie/8
+--muliplexer_di : mux port map (op_li_di,  in_mux_di,   out_mux_di);
+--
+----								  		selec/8		entree/16   sortie/8
+--muliplexer_ex : mux port map (op_di_ex,  in_mux_ex,  out_mux_ex);
+--
+----								  		selec/8		 entree/16   sortie/8
+--muliplexer_mem : mux port map (op_ex_mem, in_mux_mem, out_mux_mem);
+--
+----								  		selec/8		entree/16   sortie/8
+--muliplexer_re : mux port map (op_ex_mem,  in_mux_re,  out_mux_re);
+
+
+--signal C_MEM_RE : std_logic_vector ( 7 downto 0);
+--signal C_EX_MEM : std_logic_vector ( 7 downto 0);
+--signal clk : std_logic ;
+--signal rst : std_logic ;
+--signal rw : std_logic ;
+--signal addr : std_logic_vector (7 downto 0);
+--signal outmem : std_logic_vector (7 downto 0);
+--signal nozc : std_logic_vector (3 downto 0);
+--signal write_read : std_logic;
+--signal ctrl_alu : std_logic_vector (2 downto 0);
+--signal selec_mux_di : std_logic_vector (7 downto 0);
+--signal inmem : std_logic_vector (7 downto 0);
+--signal QA : STD_LOGIC_VECTOR( 7 downto 0);
+--signal QB : STD_LOGIC_VECTOR( 7 downto 0);
+--signal outALU : STD_LOGIC_VECTOR( 7 downto 0);

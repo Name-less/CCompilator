@@ -40,9 +40,8 @@ architecture Behavioral of mux is
 begin
 
 					sortie_selectionnee 	<= entree(7 downto 0) when op_selection = X"05" else --COP 0x05
-													entree(15 downto 8) when op_selection = X"06" or op_selection = X"07" else --AFC 0x06
-													entree
-													"00000000";
+													entree(15 downto 8) when op_selection = X"06" or op_selection = X"07" --AFC 0x06
+													;
 
 end Behavioral;
 

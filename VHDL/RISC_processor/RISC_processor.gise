@@ -120,6 +120,9 @@
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/trce.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="inst_pointer_IP.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="inst_pointer_IP.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="inst_pointer_IP.xst"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
@@ -161,14 +164,9 @@
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="ALU_test.vhd"/>
-      <outfile xil_pn:name="DI.vhd"/>
-      <outfile xil_pn:name="EX_ALU.vhd"/>
-      <outfile xil_pn:name="LI.vhd"/>
-      <outfile xil_pn:name="MEM.vhd"/>
-      <outfile xil_pn:name="Register_bench_test.vhd"/>
-      <outfile xil_pn:name="mem_test.vhd"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1432193024" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-2827699561117802028" xil_pn:start_ts="1432193024">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -190,14 +188,9 @@
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="ALU_test.vhd"/>
-      <outfile xil_pn:name="DI.vhd"/>
-      <outfile xil_pn:name="EX_ALU.vhd"/>
-      <outfile xil_pn:name="LI.vhd"/>
-      <outfile xil_pn:name="MEM.vhd"/>
-      <outfile xil_pn:name="Register_bench_test.vhd"/>
-      <outfile xil_pn:name="mem_test.vhd"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1432193156" xil_pn:in_ck="1619706295883862897" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="7762781333036241672" xil_pn:start_ts="1432193152">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -206,23 +199,19 @@
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="fuse.log"/>
-      <outfile xil_pn:name="isim"/>
-      <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="mem_test_beh.prj"/>
-      <outfile xil_pn:name="mem_test_isim_beh.exe"/>
-      <outfile xil_pn:name="xilinxsim.ini"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1432193156" xil_pn:in_ck="3723498413232570973" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3051922922197152213" xil_pn:start_ts="1432193156">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="isim.cmd"/>
-      <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="mem_test_isim_beh.wdb"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1430816513" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1430816513">
       <status xil_pn:value="SuccessfullyRun"/>

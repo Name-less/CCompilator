@@ -58,7 +58,6 @@ signal bench : memory;
 --bench <= (others => "00000000");
 signal Sigouta: std_logic_vector ( WORD_SIZE-1 downto 0);
 signal Sigoutb: std_logic_vector ( WORD_SIZE-1 downto 0);
---signal Sigoutw: std_logic_vector ( WORD_SIZE-1 downto 0);
 
 begin
 
@@ -83,7 +82,7 @@ process
 	
 end process;
 	
-	-- controle des aléas
+	-- controle des aleas
 	Sigouta <= 	data 												when ((w ='1') and (addrw = addra) and rst = '1') else
 					bench(conv_integer(unsigned(addra)))	when (((addrw /= addra) or (addrw /= addrb)) and w='0' and rst='1');
 	Sigoutb <= 	data 												when ((w ='1') and (addrw = addrb) and rst = '1') else 		
