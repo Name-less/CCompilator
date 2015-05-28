@@ -113,8 +113,17 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
         }else if(INST_PUSH == inst->instruct_params[0]){
                 fprintf(fp,"PUSH %d \n",inst->instruct_params[1]);
         }else if(INST_EQU_T == inst->instruct_params[0]){
-                fprintf(fp,"EQU %d %d  %d \n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+                fprintf(fp,"EQU %d %d %d \n",inst->instruct_params[1],inst->instruct_params[2],inst->instruct_params[3]);
+        }else if(INST_JMF_CR == inst->instruct_params[0]){
+                fprintf(fp,"JMF %d CR \n",inst->instruct_params[1]);
+        }else if(INST_NOP == inst->instruct_params[0]){
+                fprintf(fp,"NOP\n");
+        }else if(INST_ADD_CR == inst->instruct_params[0]){
+                fprintf(fp,"ADD CR CR %d\n",inst->instruct_params[1]);
+        }else if(INST_INV_CR == inst->instruct_params[0]){
+                fprintf(fp,"MUL CR CR -1\n");
         }
+
    
    	fclose(fp);
 }
@@ -131,6 +140,20 @@ void print_all_assembler_instructions(){
 /*
 Our function to store instructions in the stack
 */
+
+void stack_push_inv_cr(int arg1){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_INV_CR;
+        stack_push(new_inst);
+}
+
+
+void stack_push_add_cr(int arg1){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_ADD_CR;
+        new_inst->instruct_params[1]=arg1;
+        stack_push(new_inst);
+}
 
 void stack_push_afc(int arg1,int arg2){
 	stack_inst * new_inst = malloc(sizeof(stack_inst));
@@ -158,6 +181,12 @@ void stack_push_inf(int arg1,int arg2,int arg3){
         new_inst->instruct_params[3]=arg3;
         stack_push(new_inst);
 
+}
+
+void stack_push_nop(){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_NOP;
+        stack_push(new_inst);
 }
 
 void stack_push_sup(int arg1,int arg2,int arg3){
@@ -280,6 +309,13 @@ void stack_push_jump_false(int arg1, int arg2){
         new_inst->instruct_params[2]=arg2;
         new_inst->instruct_params[3]=-1;
 	stack_push(new_inst);
+}
+
+void stack_push_jump_false_cr(int arg1){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_JMF_CR;
+        new_inst->instruct_params[1]=arg1;
+        stack_push(new_inst);
 }
 
 void stack_push_afc_register(int arg1,int arg2){

@@ -5,6 +5,13 @@
 Jump_struct * first_one;
 Jump_struct * first_one_while;
 
+int get_nested_condition(){
+	return nested_condition;
+}
+void set_nested_condition(int arg){
+	nested_condition = arg;
+}
+
 void if_init_stack(int arg){
 	first_one = malloc(sizeof(Jump_struct));
 	if(first_one != NULL){
@@ -129,7 +136,7 @@ void parse_and_modify_file(char * file_name,char * new_file){ //après avoir fai
 			iterator = iterator->next_if;
 		}
                 while(iterator_if != NULL && next_line_if == 0){
-                        printf("while loop nbr line equal from where %d AND %d \n",current_line,iterator_if->from_where);
+                        //printf("while loop nbr line equal from where %d AND %d \n",current_line,iterator_if->from_where);
                         if(current_line == iterator_if->from_where){
                                 printf("PUT something \n");
                                 fprintf(fp,"JMF %d CR\n",iterator_if->from_to);

@@ -57,7 +57,7 @@ Grammar
 
    19 $@5: %empty
 
-   20 If: tIF tPO Condition tPF $@4 tAO Input tAF $@5 Else
+   20 If: tIF tPO Condition $@4 tPF tAO Input tAF $@5 Else
 
    21 $@6: %empty
 
@@ -489,7 +489,7 @@ State 24
 
 State 25
 
-   20 If: tIF . tPO Condition tPF $@4 tAO Input tAF $@5 Else
+   20 If: tIF . tPO Condition $@4 tPF tAO Input tAF $@5 Else
 
     tPO  shift, and go to state 42
 
@@ -645,7 +645,7 @@ State 41
 
 State 42
 
-   20 If: tIF tPO . Condition tPF $@4 tAO Input tAF $@5 Else
+   20 If: tIF tPO . Condition $@4 tPF tAO Input tAF $@5 Else
 
     tMINUS   shift, and go to state 44
     tNOMBRE  shift, and go to state 45
@@ -879,13 +879,16 @@ State 64
 
 State 65
 
-   20 If: tIF tPO Condition . tPF $@4 tAO Input tAF $@5 Else
+   20 If: tIF tPO Condition . $@4 tPF tAO Input tAF $@5 Else
    31 Condition: Condition . tOR Condition
    32          | Condition . tAND Condition
 
-    tPF   shift, and go to state 94
     tOR   shift, and go to state 86
     tAND  shift, and go to state 87
+
+    $default  reduce using rule 18 ($@4)
+
+    $@4  go to state 94
 
 
 State 66
@@ -1154,11 +1157,9 @@ State 93
 
 State 94
 
-   20 If: tIF tPO Condition tPF . $@4 tAO Input tAF $@5 Else
+   20 If: tIF tPO Condition $@4 . tPF tAO Input tAF $@5 Else
 
-    $default  reduce using rule 18 ($@4)
-
-    $@4  go to state 123
+    tPF  shift, and go to state 123
 
 
 State 95
@@ -1479,7 +1480,7 @@ State 122
 
 State 123
 
-   20 If: tIF tPO Condition tPF $@4 . tAO Input tAF $@5 Else
+   20 If: tIF tPO Condition $@4 tPF . tAO Input tAF $@5 Else
 
     tAO  shift, and go to state 139
 
@@ -1701,7 +1702,7 @@ State 138
 
 State 139
 
-   20 If: tIF tPO Condition tPF $@4 tAO . Input tAF $@5 Else
+   20 If: tIF tPO Condition $@4 tPF tAO . Input tAF $@5 Else
 
     $default  reduce using rule 1 (Input)
 
@@ -1839,7 +1840,7 @@ State 148
     9      | Input . Function
    10      | Input . Appel_Function
    11      | Input . Main
-   20 If: tIF tPO Condition tPF $@4 tAO Input . tAF $@5 Else
+   20 If: tIF tPO Condition $@4 tPF tAO Input . tAF $@5 Else
 
     error     shift, and go to state 3
     tINTEGER  shift, and go to state 4
@@ -1892,7 +1893,7 @@ State 152
 
 State 153
 
-   20 If: tIF tPO Condition tPF $@4 tAO Input tAF . $@5 Else
+   20 If: tIF tPO Condition $@4 tPF tAO Input tAF . $@5 Else
 
     $default  reduce using rule 19 ($@5)
 
@@ -1919,7 +1920,7 @@ State 155
 
 State 156
 
-   20 If: tIF tPO Condition tPF $@4 tAO Input tAF $@5 . Else
+   20 If: tIF tPO Condition $@4 tPF tAO Input tAF $@5 . Else
 
     tELSE  shift, and go to state 158
 
@@ -1950,7 +1951,7 @@ State 158
 
 State 159
 
-   20 If: tIF tPO Condition tPF $@4 tAO Input tAF $@5 Else .
+   20 If: tIF tPO Condition $@4 tPF tAO Input tAF $@5 Else .
 
     $default  reduce using rule 20 (If)
 

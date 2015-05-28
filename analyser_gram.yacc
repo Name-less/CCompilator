@@ -84,21 +84,29 @@ tINTEGER tPOINTER tWORD |
 ;
 
 If :
-tIF tPO Condition tPF {
+tIF tPO Condition {
+	stack_push_nop();
+	stack_push_nop();
 	if_add_from_where(get_number_of_line());
-} tAO Input tAF{
+} tPF tAO Input tAF{
 	if_fill_from_to(get_number_of_line()+1);
 } Else;
 
 Else :
-tELSE {if_add_from_where(get_number_of_line());} tAO Input tAF | 
+tELSE {
+	stack_push_inv_cr();
+	stack_push_add_cr(1);
+	if_add_from_where(get_number_of_line());
+} tAO Input tAF {
+	if_fill_from_to(get_number_of_line()+2);
+} | 
 tELSE If |;
 
 Condition :
 Exp tEGALEGAL Exp {
 	int tmp = ts_add_temp();
 	$$ = tmp;
-	stack_push_equ_t(tmp,$1,$3);
+	stack_push_equ(tmp,$1,$3);
 }|
 Exp tNOTEGAL Exp |
 Exp tSUP Exp {
@@ -111,13 +119,18 @@ Exp tSUP tEGAL Exp|
 Exp tINF tEGAL Exp |
 Condition tOR Condition {
 	int tmp = ts_add_temp();
-	stack_push_add(tmp,$1,$3);
-	stack_push_sup(tmp,1,1);
+	//stack_push_add_cr($1);
+	//stack_push_add_cr($3);
+	stack_push_add_cr($3);
+	//stack_push_sup($3,1,1);
+	stack_push_nop();
+	//stack_push_jump_false_cr(get_number_of_line()+3);
 }  |
 Condition tAND Condition {
         int tmp = ts_add_temp();
         stack_push_add(tmp,$1,$3);
-        stack_push_equ(2,tmp,1);
+        stack_push_equ(tmp,2,1);
+        stack_push_jump_false_cr(get_number_of_line()+3);
 };
 
 Exp :

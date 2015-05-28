@@ -79,7 +79,7 @@ int function_exist(char * name){
 }
 
 void add_function(char * name,int addr_jump){
-	printf("%s %d \n",name,addr_jump);
+	//printf("%s %d \n",name,addr_jump);
 	Function_struct * aux = first_function;
 	if(first_function == NULL){
 		first_function = (Function_struct *)malloc(sizeof(Function_struct));

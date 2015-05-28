@@ -19,7 +19,10 @@
 #define INST_PUSH 18
 #define INST_POP 19
 #define INST_EQU_T 20
-
+#define INST_JMF_CR 21
+#define INST_NOP 22
+#define INST_ADD_CR 23
+#define INST_INV_CR 24
 int nbre_line;
 
 typedef struct Stack_Instruction{
@@ -35,6 +38,8 @@ stack_inst * stack_pop();
 
 int get_number_of_line();
 
+void stack_push_inv_cr();
+void stack_push_add_cr(int arg1);
 void stack_push_add(int arg1,int arg2,int arg3);
 void stack_push_sub(int arg1,int arg2,int arg3);
 void stack_push_mul(int arg1,int arg2,int arg3);
@@ -46,6 +51,7 @@ void stack_push_pop_sp();
 void stack_push_pop();
 void stack_push_push();
 void stack_push_jump_false(int arg1,int arg2);
+void stack_push_jump_false_cr(int arg1);
 void stack_push_afc(int arg1,int arg2);
 void stack_push_cop(int arg1,int arg2);
 void stack_push_inf(int arg1,int arg2,int arg3);

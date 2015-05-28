@@ -4,6 +4,11 @@ typedef struct jump_struct_stack{
 	struct jump_struct_stack * next_if;
 }Jump_struct;
 
+int nested_condition;
+
+int get_nested_condition();
+void set_nested_condition(int arg);
+
 void while_init_stack(int arg);
 void while_fill_from_where(int arg);
 void while_add_from_to(int arg);
