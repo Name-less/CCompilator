@@ -104,7 +104,14 @@ tELSE {
 	//printf("FILLLLLLLLLLLLLLL OJK %d \n",get_number_of_line()+2);
 	if_fill_from_to(get_number_of_line()+2);
 } | 
-tELSE If |;
+tELSE{
+  	stack_push_inv_cr();
+        stack_push_add_cr(1);
+        //printf("ADDDDDDDDDDDDDDDDD%d\n",get_number_of_line());
+        if_add_from_where(get_number_of_line());
+} If {
+	if_fill_from_to(get_number_of_line()+2);
+}|;
 
 Condition :
 Exp tEGALEGAL Exp {
