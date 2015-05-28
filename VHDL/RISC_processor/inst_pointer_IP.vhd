@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    10:07:25 05/26/2015 
+-- Create Date:    10:06:54 05/28/2015 
 -- Design Name: 
--- Module Name:    lc - Behavioral 
+-- Module Name:    inst_pointer_IP - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -19,6 +19,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -29,36 +31,37 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity lc is
+entity inst_pointer_IP is
+    Port ( freeze : in  STD_LOGIC;
+           rst : in  STD_LOGIC;
+           clk : in  STD_LOGIC;
+           pc : out  STD_LOGIC_VECTOR (7 downto 0));
+end inst_pointer_IP;
 
-	Generic (size_out : natural := 3);
+architecture Behavioral of inst_pointer_IP is
 
-    Port ( entree_lc : in std_logic_vector (7 downto 0);
-           sortie_lc : out  STD_LOGIC_VECTOR (size_out-1 downto 0);
-			  clk : in std_logic
-			  );
-end lc;
-
-architecture Behavioral of lc is
+signal counter : std_logic_vector (7 downto 0);
 
 begin
 
-	process
+ -- initialization of pc
+	pc <= counter;
+	
+	process 
+	
 		begin
-
-		wait until clk'event and clk='1';
-		
-		--					STORE 0x08 Write
-		if (entree_lc = "00001000") then
-			sortie_lc <= "000";
-		-- for ctrl_alu       SUM      +               MUL       +                 SUB
-		elsif (entree_lc = "00000001" or entree_lc = "00000010" or entree_lc = "00000011") then 
-			sortie_lc <= entree_lc(2 downto 0);
-		else -- Read
-			sortie_lc <= "001";				 
-		end if;
-		
-	end process;
-
+			
+			wait until clk'event and clk='1';
+			
+			-- reset the counter
+			if rst='0' then
+				counter <= "00000000";
+			-- increase the instruction pointer
+			elsif freeze = '0' then
+				counter <= counter +1;
+			end if;
+			
+		end process;	
+	
 end Behavioral;
 
