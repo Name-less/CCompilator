@@ -28,14 +28,19 @@ void if_fill_from_to(int arg){
 	while(iterator != NULL && find == 0){
 		if(iterator->next_if != NULL){
 			if((iterator->next_if)->from_to != 0){
-				iterator->from_to = arg;
-				find = 1;
+				printf("#################FROM TO FILL %d %d\n",iterator->from_where,iterator->from_to);
+				//(iterator->next_if)->from_to = arg;
+				//find = 1;
+				iterator = iterator->next_if;
+				printf("#################FROM TO FILL %d %d\n",iterator->from_where,iterator->from_to);
 			}else{
 				iterator = iterator->next_if;
 			}
 		}else{
+			printf("###################ELSE FROM TO FILL %d %d\n",iterator->from_where,iterator->from_to);
 			iterator->from_to = arg;
 			find = 1;
+			printf("###################ELSE FROM TO FILL %d %d\n",iterator->from_where,iterator->from_to);
 		}
 	}
 }

@@ -87,8 +87,10 @@ If :
 tIF tPO Condition {
 	stack_push_nop();
 	stack_push_nop();
+	//printf("ADDDDDDDDDDDDDDDDD%d\n",get_number_of_line());
 	if_add_from_where(get_number_of_line());
 } tPF tAO Input tAF{
+	//printf("FILLLLLLLLLLLLLLL %d\n",get_number_of_line()+1);
 	if_fill_from_to(get_number_of_line()+1);
 } Else;
 
@@ -96,8 +98,10 @@ Else :
 tELSE {
 	stack_push_inv_cr();
 	stack_push_add_cr(1);
+	//printf("ADDDDDDDDDDDDDDDDD%d\n",get_number_of_line());
 	if_add_from_where(get_number_of_line());
 } tAO Input tAF {
+	//printf("FILLLLLLLLLLLLLLL OJK %d \n",get_number_of_line()+2);
 	if_fill_from_to(get_number_of_line()+2);
 } | 
 tELSE If |;

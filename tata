@@ -4,22 +4,26 @@ AFC 10 40
 COP 4 10
 AFC 12 35 
 COP 6 12
-
 COP 14 2
 COP 8 4
-EQU CR 10 14 // on compare les deux variables et on met le résultat dans CR
-NOP // nop inutiles ici
+EQU CR 10 14
 NOP
-
-JMF 14 CR // on jump au else si jamais on a pas la condition
+NOP
+JMF 14 CR
 AFC 12 14 
 COP 4 12
-
-MUL CR CR -1 // else, on inverse le registre CR en le multipliant par -1
-ADD CR CR 1 // puis en lui ajoutant 1
-JMF 19 CR // et on jump à la fin en fonction du résultat
-AFC 12 10 
-COP 4 12
-
-AFC 12 30 //hors des blocks if et else
-COP 6 12
+COP 12 4
+COP 16 6
+EQU CR 18 12
+NOP
+NOP
+JMF 21 CR
+AFC 20 10 
+COP 4 20
+MUL CR CR -1
+ADD CR CR 1
+JMF 26 CR
+AFC 22 9 
+COP 4 22
+AFC 24 30 
+COP 6 24

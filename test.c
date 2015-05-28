@@ -7,8 +7,10 @@ int main(){
 	f = 35;
 	if(c == d){
 		d = 14;
-	}else{
+	}else if(d == f){
 		d = 10;
+	}else{
+		d = 9;
 	}
 	f = 30;
 }
