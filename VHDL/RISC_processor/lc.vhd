@@ -48,8 +48,8 @@ begin
 
 		wait until clk'event and clk='1';
 		
-		--					STORE 0x08 Write
-		if (entree_lc = "00001000") then
+		--			STORE 0x08 Write				ALEA 0x0A
+		if (entree_lc = "00001000" or entree_lc = "00001010") then
 			sortie_lc <= "000";
 		-- for ctrl_alu       SUM      +               MUL       +                 SUB
 		elsif (entree_lc = "00000001" or entree_lc = "00000010" or entree_lc = "00000011") then 

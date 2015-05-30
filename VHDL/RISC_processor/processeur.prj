@@ -1,6 +1,7 @@
 vhdl work "MEM.vhd"
 vhdl work "LI.vhd"
 vhdl work "lc.vhd"
+vhdl work "inst_pointer_IP.vhd"
 vhdl work "EX_ALU.vhd"
 vhdl work "DI.vhd"
 vhdl work "processeur.vhd"

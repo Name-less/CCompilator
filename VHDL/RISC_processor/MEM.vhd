@@ -60,9 +60,9 @@ begin
 		if( rst = '0') then
 			bench <= (others => "00000000");
 		elsif( rw = '1') then -- lecture
-			outMEM <= bench(conv_integer(unsigned(addr)));
+			outMEM <= bench(conv_integer(addr));
 		elsif( rw = '0') then -- ecriture
-			bench(conv_integer(unsigned(addr))) <= inMEM; 
+			bench(conv_integer(addr)) <= inMEM; 
 		end if;
 
 end process;

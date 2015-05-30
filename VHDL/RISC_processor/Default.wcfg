@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/test_processeur_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="test_processeur" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="30" />
+   <wvobject fp_name="/test_processeur/clk_processor" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_processor</obj_property>
+      <obj_property name="ObjectShortName">clk_processor</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/rst_processor" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst_processor</obj_property>
+      <obj_property name="ObjectShortName">rst_processor</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/out_processor" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">out_processor[7:0]</obj_property>
+      <obj_property name="ObjectShortName">out_processor[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/instruction_memory/addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/instruction_memory/alea" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">alea</obj_property>
+      <obj_property name="ObjectShortName">alea</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/instruction_memory/outli" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">outli[31:0]</obj_property>
+      <obj_property name="ObjectShortName">outli[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/instruction_memory/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/instruction_memory/mem" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">mem[0:18]</obj_property>
+      <obj_property name="ObjectShortName">mem[0:18]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/instruction_memory/word_size" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">word_size</obj_property>
+      <obj_property name="ObjectShortName">word_size</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/instruction_memory/out_size" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">out_size</obj_property>
+      <obj_property name="ObjectShortName">out_size</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/instruction_memory/array_size" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">array_size</obj_property>
+      <obj_property name="ObjectShortName">array_size</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/alu/a" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">a[7:0]</obj_property>
+      <obj_property name="ObjectShortName">a[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/alu/b" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b[7:0]</obj_property>
+      <obj_property name="ObjectShortName">b[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/alu/ctrl_alu" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ctrl_alu[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ctrl_alu[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/alu/s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">s[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/alu/nozc" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">nozc[3:0]</obj_property>
+      <obj_property name="ObjectShortName">nozc[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/alu/temp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">temp[15:0]</obj_property>
+      <obj_property name="ObjectShortName">temp[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/alu/word_size" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">word_size</obj_property>
+      <obj_property name="ObjectShortName">word_size</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/alu/ctrl_size" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">ctrl_size</obj_property>
+      <obj_property name="ObjectShortName">ctrl_size</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/alu/little_word_size" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">little_word_size</obj_property>
+      <obj_property name="ObjectShortName">little_word_size</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/alu/temp_size" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">temp_size</obj_property>
+      <obj_property name="ObjectShortName">temp_size</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/data_memory/addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/data_memory/inmem" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">inmem[7:0]</obj_property>
+      <obj_property name="ObjectShortName">inmem[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/data_memory/rw" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rw</obj_property>
+      <obj_property name="ObjectShortName">rw</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/data_memory/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/data_memory/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/data_memory/outmem" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">outmem[7:0]</obj_property>
+      <obj_property name="ObjectShortName">outmem[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/data_memory/bench" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bench[0:15]</obj_property>
+      <obj_property name="ObjectShortName">bench[0:15]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/data_memory/word_size" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">word_size</obj_property>
+      <obj_property name="ObjectShortName">word_size</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/data_memory/array_size" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">array_size</obj_property>
+      <obj_property name="ObjectShortName">array_size</obj_property>
+   </wvobject>
+</wave_config>

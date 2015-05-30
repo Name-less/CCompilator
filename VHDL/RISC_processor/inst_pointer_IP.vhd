@@ -32,7 +32,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity inst_pointer_IP is
-    Port ( freeze : in  STD_LOGIC;
+    Port ( alea : in  STD_LOGIC;
            rst : in  STD_LOGIC;
            clk : in  STD_LOGIC;
            pc : out  STD_LOGIC_VECTOR (7 downto 0));
@@ -44,7 +44,6 @@ signal counter : std_logic_vector (7 downto 0);
 
 begin
 
- -- initialization of pc
 	pc <= counter;
 	
 	process 
@@ -57,7 +56,7 @@ begin
 			if rst='0' then
 				counter <= "00000000";
 			-- increase the instruction pointer
-			elsif freeze = '0' then
+			elsif alea = '0' then
 				counter <= counter +1;
 			end if;
 			

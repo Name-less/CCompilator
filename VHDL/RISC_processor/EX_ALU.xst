@@ -1,9 +1,6 @@
-set -tmpdir "xst/projnav.tmp"
-set -xsthdpdir "xst"
-run
--ifn EX_ALU.prj
--ofn EX_ALU
--ofmt NGC
+set -tmpdir "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/xst"
+run -compileonly yes
 -p xc6slx16-3-csg324
 -top EX_ALU
 -opt_mode Speed
@@ -50,3 +47,4 @@ run
 -iob Auto
 -equivalent_register_removal YES
 -slice_utilization_ratio_maxmargin 5
+-ifn EX_ALU.prj

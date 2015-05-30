@@ -1,0 +1,79 @@
+--------------------------------------------------------------------------------
+Release 13.4 Trace  (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\13.4\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 3
+-n 3 -fastpaths -xml processeur.twx processeur.ncd -o processeur.twr
+processeur.pcf
+
+Design file:              processeur.ncd
+Physical constraint file: processeur.pcf
+Device,package,speed:     xc6slx16,csg324,C,-3 (PRODUCTION 1.21 2012-01-07)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock clk_processor to Pad
+----------------+-----------------+------------+-----------------+------------+-------------------+--------+
+                |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                   | Clock  |
+Destination     |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s)  | Phase  |
+----------------+-----------------+------------+-----------------+------------+-------------------+--------+
+out_processor<0>|         7.402(R)|      SLOW  |         3.833(R)|      FAST  |clk_processor_BUFGP|   0.000|
+out_processor<1>|         7.410(R)|      SLOW  |         3.900(R)|      FAST  |clk_processor_BUFGP|   0.000|
+out_processor<2>|         7.391(R)|      SLOW  |         3.845(R)|      FAST  |clk_processor_BUFGP|   0.000|
+out_processor<3>|         7.172(R)|      SLOW  |         3.700(R)|      FAST  |clk_processor_BUFGP|   0.000|
+out_processor<4>|         7.559(R)|      SLOW  |         3.932(R)|      FAST  |clk_processor_BUFGP|   0.000|
+out_processor<5>|         7.600(R)|      SLOW  |         3.978(R)|      FAST  |clk_processor_BUFGP|   0.000|
+out_processor<6>|         7.592(R)|      SLOW  |         3.970(R)|      FAST  |clk_processor_BUFGP|   0.000|
+out_processor<7>|         7.424(R)|      SLOW  |         3.873(R)|      FAST  |clk_processor_BUFGP|   0.000|
+----------------+-----------------+------------+-----------------+------------+-------------------+--------+
+
+Clock to Setup on destination clock clk_processor
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_processor  |    5.965|         |         |         |
+rst_processor  |    4.012|    5.856|         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock rst_processor
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_processor  |         |         |    2.101|         |
+rst_processor  |         |         |    1.012|    1.012|
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Sat May 30 19:42:11 2015 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 223 MB
+
+
+
