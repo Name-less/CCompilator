@@ -1,0 +1,2 @@
+vhdl isim_temp "inst_pointer_IP.vhd"
+vhdl isim_temp "test_IP.vhd"

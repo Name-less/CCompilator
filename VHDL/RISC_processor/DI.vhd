@@ -66,9 +66,9 @@ process
 	
 		bench <= (
 				--test
-				0 => "10000000" ,
-				1 => "11000000" ,
-				2 => "11100000" ,
+--				0 => "10000000" ,
+--				1 => "11000000" ,
+--				2 => "11100000" ,
 				--fin des valeurs de test
 				others => "00000000" );
 				
@@ -77,16 +77,16 @@ process
 			if (rst='0') then --reset inside memory <= 0x00
 				bench <= (others => "00000000" );				
 			elsif (w='1') then
-				bench(conv_integer(unsigned(addrw))) <= data;
+				bench(conv_integer(addrw)) <= data;
 			end if;
 	
 end process;
 	
 	-- controle des aleas
-	Sigouta <= 	data 												when ((w ='1') and (addrw = addra) and rst = '1') else
-					bench(conv_integer(unsigned(addra)))	when (((addrw /= addra) or (addrw /= addrb)) and w='0' and rst='1');
-	Sigoutb <= 	data 												when ((w ='1') and (addrw = addrb) and rst = '1') else 		
-					bench(conv_integer(unsigned(addrb)))	when (((addrw /= addra) or (addrw /= addrb)) and w='0' and rst='1');
+	Sigouta <= 	data 								when ((w ='1') and (addrw = addra) and rst = '1') else
+					bench(conv_integer(addra))	when (((addrw /= addra) or (addrw /= addrb)) and w='0' and rst='1');
+	Sigoutb <= 	data 								when ((w ='1') and (addrw = addrb) and rst = '1') else 		
+					bench(conv_integer(addrb))	when (((addrw /= addra) or (addrw /= addrb)) and w='0' and rst='1');
 		
 	
 	qa<=Sigouta;

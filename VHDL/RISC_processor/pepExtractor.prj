@@ -1,1 +1,7 @@
+work	"DI.vhd"
+work	"EX_ALU.vhd"
+work	"LI.vhd"
 work	"MEM.vhd"
+work	"inst_pointer_IP.vhd"
+work	"lc.vhd"
+work	"processeur.vhd"

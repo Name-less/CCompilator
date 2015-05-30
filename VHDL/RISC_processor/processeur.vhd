@@ -85,7 +85,7 @@ component lc Port (
 						);
 end component;
 
-component ip port (
+component inst_pointer_ip port (
 						alea : in std_logic;
 						rst : in std_logic;
 						clk : in std_logic;
@@ -211,14 +211,14 @@ begin
 		B_MEM_RE 	<= "00000000";
 		OP_MEM_RE 	<= "00000000";
 		
-		---- Replace mux ----
-		mux_di <= "00000000";
-		mux_ex <= "00000000";
-		mux_mem <= "00000000";
-		mux_re <= "00000000";
+--		---- Replace mux ----
+--		mux_di <= "00000000";
+--		mux_ex <= "00000000";
+--		mux_mem <= "00000000";
+--		mux_re <= "00000000";
 		
 		---- IP ----
-		alea_processor <= "00000000";
+		alea_processor <= '0';
 	
 	else
 

@@ -1,0 +1,7 @@
+vhdl isim_temp "MEM.vhd"
+vhdl isim_temp "LI.vhd"
+vhdl isim_temp "lc.vhd"
+vhdl isim_temp "inst_pointer_IP.vhd"
+vhdl isim_temp "EX_ALU.vhd"
+vhdl isim_temp "DI.vhd"
+vhdl isim_temp "processeur.vhd"

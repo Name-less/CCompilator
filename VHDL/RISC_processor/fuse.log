@@ -1,21 +1,33 @@
-Running: C:\Xilinx\13.4\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/mem_test_isim_beh.exe -prj C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/mem_test_beh.prj work.mem_test 
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/test_processeur_isim_beh.exe" -prj "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/test_processeur_beh.prj" "work.test_processeur" 
 ISim O.87xd (signature 0xc3576ebc)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
 Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/MEM.vhd" into library work
-Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/mem_test.vhd" into library work
+Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/LI.vhd" into library work
+Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/lc.vhd" into library work
+Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/inst_pointer_IP.vhd" into library work
+Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/EX_ALU.vhd" into library work
+Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/DI.vhd" into library work
+Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/processeur.vhd" into library work
+Parsing VHDL file "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/test_processeur.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
 Compiling package std_logic_1164
 Compiling package std_logic_arith
 Compiling package std_logic_unsigned
-Compiling architecture behavioral of entity MEM [mem_default]
-Compiling architecture behavior of entity mem_test
+Compiling architecture behavioral of entity LI [\LI(8,32,19)\]
+Compiling architecture behavioral of entity DI [\DI(4,8,16)\]
+Compiling architecture behavioral of entity EX_ALU [\EX_ALU(8,3,4,16)\]
+Compiling architecture behavioral of entity MEM [\MEM(8,16)\]
+Compiling architecture behavioral of entity lc [\lc(3)\]
+Compiling architecture behavioral of entity inst_pointer_IP [inst_pointer_ip_default]
+Compiling architecture behavioral of entity processeur [processeur_default]
+Compiling architecture behavior of entity test_processeur
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
-Compiled 7 VHDL Units
-Built simulation executable C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/mem_test_isim_beh.exe
-Fuse Memory Usage: 33064 KB
-Fuse CPU Usage: 514 ms
+Waiting for 3 sub-compilation(s) to finish...
+Compiled 19 VHDL Units
+Built simulation executable C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/test_processeur_isim_beh.exe
+Fuse Memory Usage: 33428 KB
+Fuse CPU Usage: 639 ms

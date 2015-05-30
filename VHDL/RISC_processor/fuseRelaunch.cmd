@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/mem_test_isim_beh.exe" -prj "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/mem_test_beh.prj" "work.mem_test" 
+-intstyle "ise" -incremental -lib "secureip" -o "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/test_processeur_isim_beh.exe" -prj "C:/Users/Anthony/Documents/GitHub/CCompilator/VHDL/RISC_processor/test_processeur_beh.prj" "work.test_processeur" 
