@@ -253,7 +253,15 @@ tWHILE{
 };
 
 For :
-fFOR tPO Input tPV Input tPV Input tPF tAO Input tAF;
+tFOR {
+        while_add_from_to(get_number_of_line());
+}tPO Input tPOINTVIRG Condition {
+        stack_push_push_cr();
+} tPOINTVIRG Input tPF tAO Input tAF{
+                stack_push_pop_cr();
+                stack_push_nop();
+        while_fill_from_where(get_number_of_line());
+};
 
 Function :
 tINTEGER tWORD {
