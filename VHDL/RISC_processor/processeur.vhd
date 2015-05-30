@@ -73,6 +73,7 @@ end component;
 									  
 component li Port(
 									  addr : in  STD_LOGIC_VECTOR (7 downto 0);
+									  alea : in std_logic;
 									  outLI : out  STD_LOGIC_VECTOR (31 downto 0);
 									  CLK : in  STD_LOGIC);
 end component;
@@ -85,7 +86,7 @@ component lc Port (
 end component;
 
 component ip port (
-						freeze : in std_logic;
+						alea : in std_logic;
 						rst : in std_logic;
 						clk : in std_logic;
 						pc : out std_logic_vector (7 downto 0)
@@ -130,15 +131,17 @@ signal mux_mem : std_logic_vector (7 downto 0);
 signal mux_re : std_logic_vector (7 downto 0);
 
 ----------------- LC ----------------
-signal in_lc_ex : std_logic_vector (7 downto 0);
 signal out_lc_ex : std_logic_vector (2 downto 0);
-signal in_lc_mem : std_logic_vector (7 downto 0);
 signal out_lc_mem : std_logic_vector (2 downto 0);
-signal in_lc_re : std_logic_vector (7 downto 0);
 signal out_lc_re : std_logic_vector (2 downto 0);
 
------------------ IP ----------------
-signal freeze_processor : std_logic;
+----------------- ALEA --------------
+signal A_BUFF : STD_LOGIC_VECTOR (7 downto 0);
+signal B_BUFF : STD_LOGIC_VECTOR (7 downto 0);
+signal C_BUFF : STD_LOGIC_VECTOR (7 downto 0);
+signal OP_BUFF : STD_LOGIC_VECTOR (7 downto 0);
+signal alea_processor : std_logic;
+signal cdiex_buff : STD_LOGIC_VECTOR (7 downto 0);
 
 
 ------------- Fin des signaux ---------------------
@@ -146,11 +149,11 @@ signal freeze_processor : std_logic;
 
 begin
 
---												in/8   	out/32     clk
-instruction_memory : li port map (inst_addr, li_di, clk_processor);
+--												in/8   		alea/1		 out/32     clk
+instruction_memory : li port map (inst_addr, alea_processor, li_di, clk_processor);
 
---											     @A/4           		@B/4   						@W/4       		W/1	  DATA/8    RST/1 				CLK/1   	  QA/8    QB/8 always linked to C_DI_EX
-registers_bench : di port map (B_LI_DI(3 downto 0),C_LI_DI(3 downto 0),A_MEM_RE(3 downto 0), out_lc_re(0), 	B_MEM_RE, rst_processor, clk_processor, mux_di,  C_DI_EX);
+--											     @A/4           		@B/4   						@W/4       		W/1	 		 DATA/8    	RST/1 				CLK/1   	  QA/8    	QB/8 always linked to C_DI_EX
+registers_bench : di port map (B_BUFF(3 downto 0),C_BUFF(3 downto 0),A_MEM_RE(3 downto 0), out_lc_re(0), 	B_MEM_RE, rst_processor, clk_processor, mux_di,  cdiex_buff );
 
 --								A/8     B/8     Ctrl_alu/3     S/8   NOZC/4 never linked in graphics
 alu : ex_alu port map(B_DI_EX, C_DI_EX,  out_lc_ex , mux_ex, open);
@@ -159,22 +162,32 @@ alu : ex_alu port map(B_DI_EX, C_DI_EX,  out_lc_ex , mux_ex, open);
 data_memory : mem port map (mux_mem, B_EX_MEM, out_lc_mem(0), rst_processor, clk_processor, mux_re(7 downto 0));
 
 --								in/8       out/3			clk/1
-lc_ex: lc port map ( in_lc_ex, out_lc_ex, clk_processor);
+lc_ex: lc port map ( OP_DI_EX, out_lc_ex, clk_processor);
 
 --									in/8     out/3			clk/1
-lc_mem : lc port map ( in_lc_mem, out_lc_mem, clk_processor);
+lc_mem : lc port map ( OP_EX_MEM, out_lc_mem, clk_processor);
 
 --								in/8      out/3		clk/1
-lc_re : lc port map ( in_lc_re, out_lc_re, clk_processor);
+lc_re : lc port map ( OP_MEM_RE, out_lc_re, clk_processor);
 
---										freeze/1				 rst/1			clk/1				pc/8
-inst_pointer : inst_pointer_ip port map (freeze_processor, rst_processor, clk_processor,  inst_addr);
+--														alea/1				 rst/1			clk/1				pc/8
+inst_pointer : inst_pointer_ip port map (alea_processor, rst_processor, clk_processor,  inst_addr);
+
+-- instanciation
+out_processor <= B_MEM_RE;
 
 processor: process
 begin
 
 	wait until clk_processor'event and clk_processor = '1';
 	if rst_processor = '0' then
+	
+		---- Alea ----
+		alea_processor <= '0';
+		A_BUFF	<= "00000000";
+		B_BUFF 	<= "00000000";
+		OP_BUFF	<= "00000000";
+		C_BUFF	<= "00000000";
 	
 		---- Interface LI/DI ----
 		A_LI_DI 	<= "00000000";
@@ -205,15 +218,9 @@ begin
 		mux_re <= "00000000";
 		
 		---- IP ----
-		freeze_processor <= "00000000";
+		alea_processor <= "00000000";
 	
 	else
-
-		---- Aleas tests ----
-		if (OP_LI_DI = X"05" and OP_DI_EX = X"06") then
-			
-		end if;
-		
 
 		---- Interface LI/DI ----
 		A_LI_DI <= li_di(23 downto 16);
@@ -221,17 +228,131 @@ begin
 		OP_LI_DI <= li_di(31 downto 24);
 		C_LI_DI <= li_di(7 downto 0);
 		
+		--***************************************************************************************--
+		-------------------------------- Positive Aleas Tests -------------------------------------
+		
+		--									DIV 0X04 not handled in our processor
+		if (li_di(31 downto 24) = X"01" or li_di(31 downto 24) = X"02" or li_di(31 downto 24) = X"03") then
+			if (OP_LI_DI = X"01" or OP_LI_DI = X"02" or OP_LI_DI = X"03") then
+				if ((A_LI_DI = li_di(15 downto 8)) or (A_LI_DI = li_di(7 downto 0))) then
+					alea_processor <= '1';
+				
+					A_BUFF <= A_LI_DI;
+					B_BUFF <= B_LI_DI;
+					C_BUFF <= C_LI_DI;
+					OP_BUFF <= OP_LI_DI;
+				end if;
+			end if;
+		end if;
+			
+			
+		-------------------------------------------------------------------------------------------
+		if (li_di(31 downto 24) = X"05" and OP_LI_DI = X"05" and A_LI_DI = li_di(15 downto 8)) then
+			alea_processor <= '1';
+			
+			A_BUFF <= A_LI_DI;
+			B_BUFF <= B_LI_DI;
+			C_BUFF <= C_LI_DI;
+			OP_BUFF <= OP_LI_DI;
+		end if;
+		-------------------------------------------------------------------------------------------
+		
+		--*****************************************************************************************
+		if (li_di(31 downto 24) = X"05" and OP_LI_DI = X"06" and A_LI_DI = li_di(15 downto 8)) then
+			alea_processor <= '1';
+			
+			A_BUFF <= A_LI_DI;
+			B_BUFF <= B_LI_DI;
+			C_BUFF <= C_LI_DI;
+			OP_BUFF <= OP_LI_DI;
+		end if;
+		--*****************************************************************************************
+		
+		-------------------------------------------------------------------------------------------
+		if (li_di(31 downto 24) = X"01" or  li_di(31 downto 24) = X"02" or li_di(31 downto 24) = X"03") then
+			if (OP_LI_DI = X"06" and (A_LI_DI = li_di(15 downto 8) or A_LI_DI = li_di(7 downto 0))) then -- Alea AFC -> ADD
+			
+			
+				alea_processor <= '1';
+				
+				A_BUFF <= A_LI_DI;
+				B_BUFF <= B_LI_DI;
+				C_BUFF <= C_LI_DI;
+				OP_BUFF <= OP_LI_DI;
+				
+			end if;
+		end if;
+		-------------------------------------------------------------------------------------------
+		
+		--*****************************************************************************************
+		if (li_di(31 downto 24) = X"01" or  li_di(31 downto 24) = X"02" or li_di(31 downto 24) = X"03") then
+			if (OP_LI_DI = X"05" and (A_LI_DI = li_di(15 downto 8) or A_LI_DI = li_di(7 downto 0))) then -- Alea AFC -> ADD
+			
+				alea_processor <= '1';
+				
+				A_BUFF <= A_LI_DI;
+				B_BUFF <= B_LI_DI;
+				C_BUFF <= C_LI_DI;
+				OP_BUFF <= OP_LI_DI;
+				
+			end if;
+		end if;
+		--*****************************************************************************************
+		
+		if (OP_LI_DI= X"01" or  OP_LI_DI = X"02" or OP_LI_DI = X"03") then
+			if (li_di(31 downto 24) = X"05" and (A_LI_DI = li_di(15 downto 8))) then -- Alea AFC -> ADD
+			
+				alea_processor <= '1';
+				
+				A_BUFF <= A_LI_DI;
+				B_BUFF <= B_LI_DI;
+				C_BUFF <= C_LI_DI;
+				OP_BUFF <= OP_LI_DI;
+				
+			end if;
+		end if;
+		-------------------------------- End Positive Aleas Tests -------------------------------------
+		--***************************************************************************************--		
+		
+		---------------- NO ALEA --------------
+		if (OP_LI_DI /= X"0A" and OP_DI_EX = X"0A" and OP_EX_MEM = X"0A" and OP_MEM_RE /= X"0A") then
+			alea_processor <= '0';
+		end if;
+		---------------------------------------
+		
+		
+		-------------- Test if Alea -----------
+		if alea_processor = '1' then
+			OP_BUFF <= "00001010"; -- inexistant OP meaning "there is alea", 1010 because it's xA(LEA)
+		else ---------- No alea ----------
+			A_BUFF <= A_LI_DI;
+			B_BUFF <= B_LI_DI;
+			C_BUFF <= C_LI_DI;
+			OP_BUFF <= OP_LI_DI;
+		end if;
+		
+		--------------- END ALEAS ---------------
+		-----------------------------------------
+	
+		
 		---- Interface DI/EX ----
 		-- direct link
-		A_DI_EX <= A_LI_DI;
-		OP_DI_EX <= OP_LI_DI;
+		A_DI_EX <= A_BUFF;
+		OP_DI_EX <= OP_BUFF;
+		C_DI_EX <= cdiex_buff ; -- cdiex_buff to be sur to not write into C_DI_EX
+										-- when an alea is present
 		---- Replace Mux module in DI ----
 		-- 				AFC						LOAD
-		if (OP_LI_DI = X"06" or OP_LI_DI = X"07") then 
-			B_DI_EX <= B_LI_DI;
-		else -- others operators
+		if (OP_LI_DI = X"06" or OP_LI_DI = X"07") then
+		--  B_BUFF to stream the good value depending on aleas
+			B_DI_EX <= B_BUFF;
+		else -- others operators, registers bench always write into QA thus into mux_di
 			B_DI_EX <= mux_di;
 		end if;
+		
+		-----------------------------------------
+		--    Here Aleas are already handled   --
+		-----------------------------------------
 		
 		
 		---- Interface EX/MEM ----		
@@ -273,6 +394,9 @@ end Behavioral;
 -------------- Unused ---------------
 -------------------------------------
 
+--signal in_lc_ex : std_logic_vector (7 downto 0);
+--signal in_lc_mem : std_logic_vector (7 downto 0);
+--signal in_lc_re : std_logic_vector (7 downto 0);
 --signal in_mux_di : std_logic_vector (15 downto 0);
 --signal out_mux_di : std_logic_vector (7 downto 0);
 --signal in_mux_ex : std_logic_vector (15 downto 0);
