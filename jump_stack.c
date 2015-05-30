@@ -23,24 +23,26 @@ void if_init_stack(int arg){
 
 void if_fill_from_to(int arg){
 	Jump_struct * iterator = first_one;
-
+	printf("CALL WITH %d\n",arg);
 	int find = 0;
 	while(iterator != NULL && find == 0){
-		if(iterator->next_if != NULL){
-			if((iterator->next_if)->from_to != 0){
-				//printf("#################FROM TO FILL %d %d\n",iterator->from_where,iterator->from_to);
-				//(iterator->next_if)->from_to = arg;
-				//find = 1;
-				iterator = iterator->next_if;
-				//printf("#################FROM TO FILL %d %d\n",iterator->from_where,iterator->from_to);
+		printf("FROM WHERE %d %d \n",iterator->from_where,iterator->from_to);
+		if(iterator->next_if != NULL && (iterator->next_if)->from_to == 0){
+			iterator = iterator->next_if;
+		}else{
+			//printf("################### 1 ELSE FROM TO FILL %d %d\n",iterator->from_where,iterator->from_to);
+			if(iterator->from_to == 0){
+			if(iterator->next_if!=NULL){
+			//printf("################### 1 WHEN FILLLLLL TO FILL %d %d\n",(iterator->next_if)->from_where,(iterator->next_if)->from_to);
+			}else{
+			//printf("################### 1 WHEN FILLLLLL TO FILL \n");
+			}
+				iterator->from_to = arg;
+				find = 1;
 			}else{
 				iterator = iterator->next_if;
 			}
-		}else{
-			printf("###################ELSE FROM TO FILL %d %d\n",iterator->from_where,iterator->from_to);
-			iterator->from_to = arg;
-			find = 1;
-			printf("###################ELSE FROM TO FILL %d %d\n",iterator->from_where,iterator->from_to);
+			//printf("################### 2 ELSE FROM TO FILL %d %d\n",iterator->from_where,iterator->from_to);
 		}
 	}
 }

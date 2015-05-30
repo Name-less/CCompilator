@@ -5,12 +5,7 @@ int main(){
 	c = 50;
 	d = 40;
 	f = 35;
-	if(c == d){
+	if(c == d || c == d && c == d){
 		d = 14;
-	}else if(d == f){
-		d = 10;
-	}else{
-		d = 9;
 	}
-	f = 30;
 }

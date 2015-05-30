@@ -10,6 +10,7 @@ int stack_pointer_adress = 1000;
 int yyerror(char *s);
 int yylex();
 int line_number = 1;
+int if_to_fill = 0;
 // int yywrap();
 
 %}
@@ -85,20 +86,27 @@ tINTEGER tPOINTER tWORD |
 
 If :
 tIF tPO Condition {
-	stack_push_nop();
-	stack_push_nop();
-	//printf("ADDDDDDDDDDDDDDDDD%d\n",get_number_of_line());
+	//stack_push_nop();
+	//stack_push_nop();
 	if_add_from_where(get_number_of_line());
+	stack_push_push_cr();
 } tPF tAO Input tAF{
 	//printf("FILLLLLLLLLLLLLLL %d\n",get_number_of_line()+1);
 	if_fill_from_to(get_number_of_line()+1);
+	if(if_to_fill != 0){
+                int i = 0;
+                for(i = 0;i<if_to_fill;i++){
+                         if_fill_from_to(get_number_of_line()+2);
+                }
+                if_to_fill = 0;
+        }
+	stack_push_pop_cr();
 } Else;
 
 Else :
 tELSE {
 	stack_push_inv_cr();
 	stack_push_add_cr(1);
-	//printf("ADDDDDDDDDDDDDDDDD%d\n",get_number_of_line());
 	if_add_from_where(get_number_of_line());
 } tAO Input tAF {
 	//printf("FILLLLLLLLLLLLLLL OJK %d \n",get_number_of_line()+2);
@@ -117,7 +125,9 @@ Condition :
 Exp tEGALEGAL Exp {
 	int tmp = ts_add_temp();
 	$$ = tmp;
-	stack_push_equ(tmp,$1,$3);
+	stack_push_equ_t(tmp,$1,$3);
+	stack_push_add_cr(tmp);
+
 }|
 Exp tNOTEGAL Exp |
 Exp tSUP Exp {
@@ -129,19 +139,21 @@ Exp tINF Exp {
 Exp tSUP tEGAL Exp|
 Exp tINF tEGAL Exp |
 Condition tOR Condition {
-	int tmp = ts_add_temp();
+	//int tmp = ts_add_temp();
 	//stack_push_add_cr($1);
 	//stack_push_add_cr($3);
-	stack_push_add_cr($3);
 	//stack_push_sup($3,1,1);
-	stack_push_nop();
+	//stack_push_nop();
 	//stack_push_jump_false_cr(get_number_of_line()+3);
 }  |
 Condition tAND Condition {
         int tmp = ts_add_temp();
         stack_push_add(tmp,$1,$3);
         stack_push_equ(tmp,2,1);
-        stack_push_jump_false_cr(get_number_of_line()+3);
+        if_add_from_where(get_number_of_line());
+	if_to_fill++;
+			printf("OOOOOOOOOOOOOKKKKKKKKK&&&&&&&&&&&&&&&&&&&&&&&&\n");
+	//stack_push_jump_false_cr(get_number_of_line()+3);
 };
 
 Exp :

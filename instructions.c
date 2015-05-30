@@ -122,7 +122,11 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
                 fprintf(fp,"ADD CR CR %d\n",inst->instruct_params[1]);
         }else if(INST_INV_CR == inst->instruct_params[0]){
                 fprintf(fp,"MUL CR CR -1\n");
-        }
+        }else if(INST_POP_CR == inst->instruct_params[0]){
+                fprintf(fp,"POP CR\n");
+        }else if(INST_PUSH_CR == inst->instruct_params[0]){
+                fprintf(fp,"PUSH CR\n");
+        } 
 
    
    	fclose(fp);
@@ -144,6 +148,21 @@ Our function to store instructions in the stack
 void stack_push_inv_cr(int arg1){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
         new_inst->instruct_params[0]=INST_INV_CR;
+        stack_push(new_inst);
+}
+
+
+void stack_push_push_cr(int arg1){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_PUSH_CR;
+        stack_push(new_inst);
+}
+
+
+
+void stack_push_pop_cr(){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_POP_CR;
         stack_push(new_inst);
 }
 

@@ -142,7 +142,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 41 "analyser_gram.yacc" /* yacc.c:1915  */
+#line 42 "analyser_gram.yacc" /* yacc.c:1915  */
 
 int number;
 char * texte;

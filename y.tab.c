@@ -75,10 +75,11 @@ int stack_pointer_adress = 1000;
 int yyerror(char *s);
 int yylex();
 int line_number = 1;
+int if_to_fill = 0;
 // int yywrap();
 
 
-#line 82 "y.tab.c" /* yacc.c:339  */
+#line 83 "y.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -210,12 +211,12 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 41 "analyser_gram.yacc" /* yacc.c:355  */
+#line 42 "analyser_gram.yacc" /* yacc.c:355  */
 
 int number;
 char * texte;
 
-#line 219 "y.tab.c" /* yacc.c:355  */
+#line 220 "y.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -232,7 +233,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 236 "y.tab.c" /* yacc.c:358  */
+#line 237 "y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -534,14 +535,14 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    63,    63,    65,    66,    67,    68,    69,    69,    69,
-      70,    71,    72,    75,    75,    81,    82,    83,    83,    87,
-      92,    87,    98,    98,   107,   107,   114,   117,   122,   123,
-     126,   129,   130,   131,   140,   148,   149,   150,   151,   152,
-     153,   159,   175,   178,   185,   191,   196,   201,   210,   215,
-     219,   224,   228,   228,   231,   231,   240,   245,   240,   251,
-     252,   255,   266,   266,   271,   272,   273,   273,   276,   280,
-     281,   281,   285,   286,   287,   289
+       0,    64,    64,    66,    67,    68,    69,    70,    70,    70,
+      71,    72,    73,    76,    76,    82,    83,    84,    84,    88,
+      93,    88,   107,   107,   115,   115,   122,   125,   132,   133,
+     136,   139,   140,   141,   149,   160,   161,   162,   163,   164,
+     165,   171,   187,   190,   197,   203,   208,   213,   222,   227,
+     231,   236,   240,   240,   243,   243,   252,   257,   252,   263,
+     264,   267,   278,   278,   283,   284,   285,   285,   288,   292,
+     293,   293,   297,   298,   299,   301
 };
 #endif
 
@@ -1431,209 +1432,220 @@ yyreduce:
   switch (yyn)
     {
         case 3:
-#line 65 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 66 "analyser_gram.yacc" /* yacc.c:1661  */
     {line_number++;}
-#line 1437 "y.tab.c" /* yacc.c:1661  */
+#line 1438 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 4:
-#line 66 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 67 "analyser_gram.yacc" /* yacc.c:1661  */
     {printf("YACC:egalite ok \n");}
-#line 1443 "y.tab.c" /* yacc.c:1661  */
+#line 1444 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 7:
-#line 69 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 70 "analyser_gram.yacc" /* yacc.c:1661  */
     {/*push_symb_zone();*/}
-#line 1449 "y.tab.c" /* yacc.c:1661  */
+#line 1450 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 8:
-#line 69 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 70 "analyser_gram.yacc" /* yacc.c:1661  */
     {/*pop_symb_zone();*/}
-#line 1455 "y.tab.c" /* yacc.c:1661  */
+#line 1456 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 9:
-#line 69 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 70 "analyser_gram.yacc" /* yacc.c:1661  */
     {printf("YACC:condition ok \n");}
-#line 1461 "y.tab.c" /* yacc.c:1661  */
+#line 1462 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 10:
-#line 70 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 71 "analyser_gram.yacc" /* yacc.c:1661  */
     {printf("FIN FUNCTION \n");}
-#line 1467 "y.tab.c" /* yacc.c:1661  */
+#line 1468 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 13:
-#line 75 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 76 "analyser_gram.yacc" /* yacc.c:1661  */
     {push_symb_zone();}
-#line 1473 "y.tab.c" /* yacc.c:1661  */
+#line 1474 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 14:
-#line 75 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 76 "analyser_gram.yacc" /* yacc.c:1661  */
     {pop_symb_zone(); printf("YACC:mon main\n");
 				print_all_assembler_instructions();
 				parse_and_modify_file("toto","tata");
 }
-#line 1482 "y.tab.c" /* yacc.c:1661  */
+#line 1483 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 19:
-#line 87 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 88 "analyser_gram.yacc" /* yacc.c:1661  */
     {
-	stack_push_nop();
-	stack_push_nop();
-	//printf("ADDDDDDDDDDDDDDDDD%d\n",get_number_of_line());
+	//stack_push_nop();
+	//stack_push_nop();
 	if_add_from_where(get_number_of_line());
+	stack_push_push_cr();
 }
-#line 1493 "y.tab.c" /* yacc.c:1661  */
+#line 1494 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 20:
-#line 92 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 93 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	//printf("FILLLLLLLLLLLLLLL %d\n",get_number_of_line()+1);
 	if_fill_from_to(get_number_of_line()+1);
+	if(if_to_fill != 0){
+                int i = 0;
+                for(i = 0;i<if_to_fill;i++){
+                         if_fill_from_to(get_number_of_line()+2);
+                }
+                if_to_fill = 0;
+        }
+	stack_push_pop_cr();
 }
-#line 1502 "y.tab.c" /* yacc.c:1661  */
+#line 1511 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 22:
-#line 98 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 107 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	stack_push_inv_cr();
 	stack_push_add_cr(1);
-	//printf("ADDDDDDDDDDDDDDDDD%d\n",get_number_of_line());
 	if_add_from_where(get_number_of_line());
 }
-#line 1513 "y.tab.c" /* yacc.c:1661  */
+#line 1521 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 23:
-#line 103 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 111 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	//printf("FILLLLLLLLLLLLLLL OJK %d \n",get_number_of_line()+2);
 	if_fill_from_to(get_number_of_line()+2);
 }
-#line 1522 "y.tab.c" /* yacc.c:1661  */
+#line 1530 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 24:
-#line 107 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 115 "analyser_gram.yacc" /* yacc.c:1661  */
     {
   	stack_push_inv_cr();
         stack_push_add_cr(1);
         //printf("ADDDDDDDDDDDDDDDDD%d\n",get_number_of_line());
         if_add_from_where(get_number_of_line());
 }
-#line 1533 "y.tab.c" /* yacc.c:1661  */
-    break;
-
-  case 25:
-#line 112 "analyser_gram.yacc" /* yacc.c:1661  */
-    {
-	if_fill_from_to(get_number_of_line()+2);
-}
 #line 1541 "y.tab.c" /* yacc.c:1661  */
     break;
 
+  case 25:
+#line 120 "analyser_gram.yacc" /* yacc.c:1661  */
+    {
+	if_fill_from_to(get_number_of_line()+2);
+}
+#line 1549 "y.tab.c" /* yacc.c:1661  */
+    break;
+
   case 27:
-#line 117 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 125 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	int tmp = ts_add_temp();
 	(yyval.number) = tmp;
-	stack_push_equ(tmp,(yyvsp[-2].number),(yyvsp[0].number));
+	stack_push_equ_t(tmp,(yyvsp[-2].number),(yyvsp[0].number));
+	stack_push_add_cr(tmp);
+
 }
-#line 1551 "y.tab.c" /* yacc.c:1661  */
+#line 1561 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 29:
-#line 123 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 133 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	stack_push_sup((yyvsp[-2].number),(yyvsp[0].number),1);
 }
-#line 1559 "y.tab.c" /* yacc.c:1661  */
+#line 1569 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 30:
-#line 126 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 136 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	stack_push_inf((yyvsp[-2].number),(yyvsp[0].number),1);
 }
-#line 1567 "y.tab.c" /* yacc.c:1661  */
+#line 1577 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 33:
-#line 131 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 141 "analyser_gram.yacc" /* yacc.c:1661  */
     {
-	int tmp = ts_add_temp();
+	//int tmp = ts_add_temp();
 	//stack_push_add_cr($1);
 	//stack_push_add_cr($3);
-	stack_push_add_cr((yyvsp[0].number));
 	//stack_push_sup($3,1,1);
-	stack_push_nop();
+	//stack_push_nop();
 	//stack_push_jump_false_cr(get_number_of_line()+3);
 }
-#line 1581 "y.tab.c" /* yacc.c:1661  */
+#line 1590 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 34:
-#line 140 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 149 "analyser_gram.yacc" /* yacc.c:1661  */
     {
         int tmp = ts_add_temp();
         stack_push_add(tmp,(yyvsp[-2].number),(yyvsp[0].number));
         stack_push_equ(tmp,2,1);
-        stack_push_jump_false_cr(get_number_of_line()+3);
+        if_add_from_where(get_number_of_line());
+	if_to_fill++;
+			printf("OOOOOOOOOOOOOKKKKKKKKK&&&&&&&&&&&&&&&&&&&&&&&&\n");
+	//stack_push_jump_false_cr(get_number_of_line()+3);
 }
-#line 1592 "y.tab.c" /* yacc.c:1661  */
-    break;
-
-  case 35:
-#line 148 "analyser_gram.yacc" /* yacc.c:1661  */
-    { stack_push_add((yyvsp[-2].number),(yyvsp[-2].number),(yyvsp[0].number)); ts_pop_addr((yyvsp[0].number));}
-#line 1598 "y.tab.c" /* yacc.c:1661  */
-    break;
-
-  case 36:
-#line 149 "analyser_gram.yacc" /* yacc.c:1661  */
-    {stack_push_div((yyvsp[-2].number),(yyvsp[-2].number),(yyvsp[0].number));ts_pop_addr((yyvsp[0].number));}
 #line 1604 "y.tab.c" /* yacc.c:1661  */
     break;
 
-  case 37:
-#line 150 "analyser_gram.yacc" /* yacc.c:1661  */
-    {stack_push_sub((yyvsp[-2].number),(yyvsp[-2].number),(yyvsp[0].number));ts_pop_addr((yyvsp[0].number));}
+  case 35:
+#line 160 "analyser_gram.yacc" /* yacc.c:1661  */
+    { stack_push_add((yyvsp[-2].number),(yyvsp[-2].number),(yyvsp[0].number)); ts_pop_addr((yyvsp[0].number));}
 #line 1610 "y.tab.c" /* yacc.c:1661  */
     break;
 
-  case 38:
-#line 151 "analyser_gram.yacc" /* yacc.c:1661  */
-    {stack_push_mul((yyvsp[-2].number),(yyvsp[-2].number),(yyvsp[0].number));ts_pop_addr((yyvsp[0].number));}
+  case 36:
+#line 161 "analyser_gram.yacc" /* yacc.c:1661  */
+    {stack_push_div((yyvsp[-2].number),(yyvsp[-2].number),(yyvsp[0].number));ts_pop_addr((yyvsp[0].number));}
 #line 1616 "y.tab.c" /* yacc.c:1661  */
     break;
 
-  case 39:
-#line 152 "analyser_gram.yacc" /* yacc.c:1661  */
-    {stack_push_mul((yyvsp[0].number),(yyvsp[0].number),-1);}
+  case 37:
+#line 162 "analyser_gram.yacc" /* yacc.c:1661  */
+    {stack_push_sub((yyvsp[-2].number),(yyvsp[-2].number),(yyvsp[0].number));ts_pop_addr((yyvsp[0].number));}
 #line 1622 "y.tab.c" /* yacc.c:1661  */
     break;
 
+  case 38:
+#line 163 "analyser_gram.yacc" /* yacc.c:1661  */
+    {stack_push_mul((yyvsp[-2].number),(yyvsp[-2].number),(yyvsp[0].number));ts_pop_addr((yyvsp[0].number));}
+#line 1628 "y.tab.c" /* yacc.c:1661  */
+    break;
+
+  case 39:
+#line 164 "analyser_gram.yacc" /* yacc.c:1661  */
+    {stack_push_mul((yyvsp[0].number),(yyvsp[0].number),-1);}
+#line 1634 "y.tab.c" /* yacc.c:1661  */
+    break;
+
   case 40:
-#line 153 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 165 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 				int tmp = ts_add_temp();
 				(yyval.number) = tmp;
 				stack_push_afc(tmp,(yyvsp[0].number));
 				printf("YACC: tNOMBRE saved %d\n\n", tmp);
 		}
-#line 1633 "y.tab.c" /* yacc.c:1661  */
+#line 1645 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 41:
-#line 159 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 171 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 				if (exist((yyvsp[0].texte)) == -1 ){
 					printf("YACC: tword ALREADY saved\n\n");
@@ -1647,58 +1659,58 @@ yyreduce:
 					printf("YACC: erreur debut else tWORD\n");
 				}
 	}
-#line 1651 "y.tab.c" /* yacc.c:1661  */
+#line 1663 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 42:
-#line 175 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 187 "analyser_gram.yacc" /* yacc.c:1661  */
     {	printf("YACC: dans LeftTerm\n");}
-#line 1657 "y.tab.c" /* yacc.c:1661  */
+#line 1669 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 43:
-#line 178 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 190 "analyser_gram.yacc" /* yacc.c:1661  */
     {	stack_push_cop(get_addr_from((yyvsp[-2].texte)),(yyvsp[0].number));
 			//printf("YACC: ici dollar 1 vaut %d et son addresse %d et dollar 3 vaut %d\n\n", $1,get_addr_from($1),$3);
 			//ts_display();
 			ts_pop_addr((yyvsp[0].number));
 			}
-#line 1667 "y.tab.c" /* yacc.c:1661  */
+#line 1679 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 44:
-#line 185 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 197 "analyser_gram.yacc" /* yacc.c:1661  */
     { 
 				if (ts_push((yyvsp[-2].texte),(yyvsp[-3].texte))!=-1)
 					printf("YACC:Declaration correcte\n"); 
 				else
 					printf("YACC: La variable existe déjà\n"); 
 				}
-#line 1678 "y.tab.c" /* yacc.c:1661  */
+#line 1690 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 45:
-#line 191 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 203 "analyser_gram.yacc" /* yacc.c:1661  */
     { 
 				if (ts_push((yyvsp[-4].texte),(yyvsp[-5].texte))!=-1)
 					printf("YACC: Declaration avant instanciation correcte\n");
 				else printf("YACC: La variable exite déjà\n");
 				}
-#line 1688 "y.tab.c" /* yacc.c:1661  */
+#line 1700 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 46:
-#line 196 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 208 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 				if (ts_push((yyvsp[-5].texte),(yyvsp[-6].texte))!=-1)
 					printf("YACC: Declaration de tableau avant instanciation correcte\n");
 				else printf("YACC: La variable exite déjà\n");
 				}
-#line 1698 "y.tab.c" /* yacc.c:1661  */
+#line 1710 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 47:
-#line 201 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 213 "analyser_gram.yacc" /* yacc.c:1661  */
     {yyerror;
 /* | tCHAR tWORD tCO tNOMBRE tCF tPOINTVIRG |
 tCHAR tPOINTER tWORD tPOINTVIRG |
@@ -1706,76 +1718,76 @@ tCHAR tWORD DeclarationCharMemeLigne tPOINTVIRG |
 tCHAR tWORD tEGAL tNOMBRE tPOINTVIRG |
 tCHAR tWORD tEGAL tSQ tWORD tSQ tPOINTVIRG |
 tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/}
-#line 1710 "y.tab.c" /* yacc.c:1661  */
+#line 1722 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 48:
-#line 210 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 222 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 				if (ts_push((yyvsp[-1].texte),"int")!=-1) 
 					printf("YACC: Declaration ligne correcte\n"); 
 				else
 					printf("YACC: La variable existe déjà\n"); 
 				}
-#line 1721 "y.tab.c" /* yacc.c:1661  */
+#line 1733 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 50:
-#line 219 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 231 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 				if (ts_push((yyvsp[-3].texte),"int")!=-1)
 					stack_push_cop(get_addr_from((yyvsp[-3].texte)),(yyvsp[-1].number)) ;
 				else
 					printf("YACC: La variable existe déjà\n");
 				}
-#line 1732 "y.tab.c" /* yacc.c:1661  */
+#line 1744 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 54:
-#line 231 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 243 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	while_add_from_to(get_number_of_line());
 	}
-#line 1740 "y.tab.c" /* yacc.c:1661  */
+#line 1752 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 55:
-#line 234 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 246 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	while_fill_from_where(get_number_of_line());
 	}
-#line 1748 "y.tab.c" /* yacc.c:1661  */
+#line 1760 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 56:
-#line 240 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 252 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	printf("add_function %s \n",(yyvsp[0].texte));
 	add_function((yyvsp[0].texte),get_number_of_line());
 	printf("end add_function \n");
 }
-#line 1758 "y.tab.c" /* yacc.c:1661  */
+#line 1770 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 57:
-#line 245 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 257 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	stack_push_pop_sp();
 	stack_push_jump_return();
 }
-#line 1767 "y.tab.c" /* yacc.c:1661  */
+#line 1779 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 58:
-#line 248 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 260 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	raz_empty_register();
 }
-#line 1775 "y.tab.c" /* yacc.c:1661  */
+#line 1787 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 61:
-#line 255 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 267 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	printf("if try %d %s \n",function_exist((yyvsp[-3].texte)),(yyvsp[-3].texte));
 	if(function_exist((yyvsp[-3].texte)) == 1){
@@ -1785,45 +1797,45 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/}
 		stack_push_jump(get_addr_function((yyvsp[-3].texte)));
 	}
 }
-#line 1789 "y.tab.c" /* yacc.c:1661  */
+#line 1801 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 62:
-#line 266 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 278 "analyser_gram.yacc" /* yacc.c:1661  */
     {
         ts_push((yyvsp[0].texte),(yyvsp[-1].texte));
         stack_push_afc_from_register(get_addr_from((yyvsp[0].texte)),get_first_register());
 }
-#line 1798 "y.tab.c" /* yacc.c:1661  */
+#line 1810 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 66:
-#line 273 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 285 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	ts_push((yyvsp[0].texte),(yyvsp[-1].texte));
 	stack_push_afc_from_register(get_addr_from((yyvsp[0].texte)),get_first_register());
 }
-#line 1807 "y.tab.c" /* yacc.c:1661  */
+#line 1819 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 70:
-#line 281 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 293 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	stack_push_afc_register(get_empty_register(),(yyvsp[-1].number));
 }
-#line 1815 "y.tab.c" /* yacc.c:1661  */
+#line 1827 "y.tab.c" /* yacc.c:1661  */
     break;
 
   case 74:
-#line 287 "analyser_gram.yacc" /* yacc.c:1661  */
+#line 299 "analyser_gram.yacc" /* yacc.c:1661  */
     {
 	stack_push_afc_register(get_empty_register(),(yyvsp[0].number));
 }
-#line 1823 "y.tab.c" /* yacc.c:1661  */
+#line 1835 "y.tab.c" /* yacc.c:1661  */
     break;
 
 
-#line 1827 "y.tab.c" /* yacc.c:1661  */
+#line 1839 "y.tab.c" /* yacc.c:1661  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2051,7 +2063,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 291 "analyser_gram.yacc" /* yacc.c:1906  */
+#line 303 "analyser_gram.yacc" /* yacc.c:1906  */
 
 
 
