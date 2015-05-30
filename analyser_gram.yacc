@@ -67,6 +67,7 @@ Input tNEWLINE {line_number++;} |
 Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
 Input Declaration |
 Input While |
+Input For |
 Input {/*push_symb_zone();*/} If {/*pop_symb_zone();*/} {printf("YACC:condition ok \n");}|
 Input Function {printf("FIN FUNCTION \n");} |
 Input Appel_Function |
@@ -249,8 +250,10 @@ tWHILE{
 		stack_push_pop_cr();
 		stack_push_nop();
 	while_fill_from_where(get_number_of_line());
-}
-	;
+};
+
+For :
+fFOR tPO Input tPV Input tPV Input tPF tAO Input tAF;
 
 Function :
 tINTEGER tWORD {
