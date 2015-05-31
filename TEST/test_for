@@ -1,21 +1,21 @@
-AFC 8 0 
-COP 4 8 //on met 0 dans d
+AFC 8 0 //d = 0 
+COP 4 8
 
-COP 10 4 //on met d dans une variable temporaire
-AFC 8 11 //et on met 10 dans une variable temporaire
-INF CR 10 8 //on compare la copie de d (à l'adresse 10) avec 11 stocké en 8
-JMF 15 CR //jump en fonction du résultat de la condition
-PUSH CR //on save le compare register
+COP 10 4 // d dans une variable temporaire
+AFC 8 11  // 11 dans une variable temporaire
+INF CR 10 8 // d<11 résultat mis dans CR
+JMF 15 CR //on passe dans le corps du IF en fonction du résultat dans CR
 
-COP 12 4
-AFC 14 1 //on incrémente d 
-ADD 12 12 14
-COP 4 12
+PUSH CR // on save CR en le metant dans la pile
+COP 12 4 // on prépare l'incrémentation de d
+AFC 14 1 
+ADD 12 12 14 // variable temporaire = d+1
 
-AFC 16 12 //corps du FOR 
+AFC 16 13 //corps du for 
 COP 2 16
 
-POP CR
+COP 4 12 // on met dans d la valuer de la variable temporaire qui vaut d+1
+POP CR // on récupére CR
+JMF 2 CR // et on remonte au début du for pour tester la condition
 
-JMF 2 CR //revient au début
 NOP

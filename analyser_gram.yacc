@@ -38,6 +38,7 @@ int if_to_fill = 0;
 %type <number> Exp
 %type <number> Condition
 %type <texte> LeftTerm
+%type <number> For
 
 %union{
 int number;
@@ -90,7 +91,7 @@ Input Appel_Function |
 Input Main;
 
 Main :
-tINTEGER tMAIN tPO Arg tPF tAO {push_symb_zone();} Input tAF {printf("seg fault\n");pop_symb_zone(); printf("YACC:mon main\n");
+tINTEGER tMAIN tPO Arg tPF tAO {push_symb_zone();} Input tAF {pop_symb_zone(); printf("YACC:mon main\n");
 				print_all_assembler_instructions();
 				parse_and_modify_file("toto","tata");
 } ;
@@ -284,14 +285,27 @@ tWHILE{
 
 For :
 tFOR tPO Egalite tPOINTVIRG {
-        while_add_from_to(get_number_of_line());
+	while_add_from_to(get_number_of_line());
 } Condition {
         if_add_from_where(get_number_of_line());
         stack_push_push_cr();
-} tPOINTVIRG Egalite tPF tAO Input tAF{
-                stack_push_pop_cr();
-                stack_push_nop();
-        while_fill_from_where(get_number_of_line());
+} tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF{
+        printf("hum1 %s\n",$9);
+        printf("hum2 %d\n",$11);
+
+         if(get_addr_from($9) != -1){
+                     stack_push_cop(get_addr_from($9),$11);
+                     ts_pop_addr($11);
+         }else{
+                     yyerror("Bad affectation at ligne ");
+                     return 1;
+                     printf("YACC: erreur affectation inconnue\n");
+         }
+
+	stack_push_pop_cr();
+        stack_push_nop();
+        
+	while_fill_from_where(get_number_of_line());
         if_fill_from_to(get_number_of_line()+1);
 };
 

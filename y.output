@@ -29,8 +29,8 @@ State 155 conflicts: 1 shift/reduce
 State 156 conflicts: 1 shift/reduce
 State 160 conflicts: 1 shift/reduce
 State 163 conflicts: 1 shift/reduce
-State 180 conflicts: 1 shift/reduce
 State 184 conflicts: 1 shift/reduce
+State 185 conflicts: 1 shift/reduce
 
 
 Grammar
@@ -129,7 +129,7 @@ Grammar
 
    60 $@13: %empty
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG Egalite tPF tAO Input tAF
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
    62 $@14: %empty
 
@@ -200,13 +200,13 @@ tEGALEGAL (287) 29
 tOR (288) 35
 tAND (289) 36
 tNOTEGAL (290) 30
-tEGAL (291) 33 34 45 47 52
+tEGAL (291) 33 34 45 47 52 61
 tADDR (292)
 tPOINTER (293) 19 40
 tSPACE (294)
 tNOMBRE (295) 42 48 54 77 80
-tWORD (296) 17 18 19 43 44 46 47 48 50 52 54 64 65 66 67 69 70 71 73
-    75 78
+tWORD (296) 17 18 19 43 44 46 47 48 50 52 54 61 64 65 66 67 69 70 71
+    73 75 78
 tRETURN (297)
 tNEWLINE (298) 2
 tCOMMENT (299)
@@ -251,7 +251,7 @@ Condition (62)
     on left: 29 30 31 32 33 34 35 36, on right: 23 35 36 58 61
 Exp (63)
     on left: 37 38 39 40 41 42 43, on right: 29 30 31 32 33 34 37 38
-    39 40 41 45 47 52
+    39 40 41 45 47 52 61
 LeftTerm (64)
     on left: 44, on right: 45
 Egalite (65)
@@ -517,7 +517,7 @@ State 21
 
 State 22
 
-   61 For: tFOR . tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG Egalite tPF tAO Input tAF
+   61 For: tFOR . tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
     tPO  shift, and go to state 42
 
@@ -675,7 +675,7 @@ State 41
 
 State 42
 
-   61 For: tFOR tPO . Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG Egalite tPF tAO Input tAF
+   61 For: tFOR tPO . Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
     tWORD  shift, and go to state 61
 
@@ -871,7 +871,7 @@ State 61
 
 State 62
 
-   61 For: tFOR tPO Egalite . tPOINTVIRG $@12 Condition $@13 tPOINTVIRG Egalite tPF tAO Input tAF
+   61 For: tFOR tPO Egalite . tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
     tPOINTVIRG  shift, and go to state 84
 
@@ -1100,7 +1100,7 @@ State 83
 
 State 84
 
-   61 For: tFOR tPO Egalite tPOINTVIRG . $@12 Condition $@13 tPOINTVIRG Egalite tPF tAO Input tAF
+   61 For: tFOR tPO Egalite tPOINTVIRG . $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
     $default  reduce using rule 59 ($@12)
 
@@ -1366,7 +1366,7 @@ State 110
 
 State 111
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 . Condition $@13 tPOINTVIRG Egalite tPF tAO Input tAF
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 . Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
     tMINUS   shift, and go to state 47
     tNOMBRE  shift, and go to state 48
@@ -1596,7 +1596,7 @@ State 133
 
    35 Condition: Condition . tOR Condition
    36          | Condition . tAND Condition
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition . $@13 tPOINTVIRG Egalite tPF tAO Input tAF
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition . $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
     tOR   shift, and go to state 85
     tAND  shift, and go to state 86
@@ -1792,7 +1792,7 @@ State 147
 
 State 148
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 . tPOINTVIRG Egalite tPF tAO Input tAF
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 . tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
     tPOINTVIRG  shift, and go to state 161
 
@@ -2011,12 +2011,9 @@ State 160
 
 State 161
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG . Egalite tPF tAO Input tAF
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG . tWORD tEGAL Exp tPF tAO Input tAF
 
-    tWORD  shift, and go to state 61
-
-    LeftTerm  go to state 12
-    Egalite   go to state 169
+    tWORD  shift, and go to state 169
 
 
 State 162
@@ -2107,9 +2104,9 @@ State 168
 
 State 169
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG Egalite . tPF tAO Input tAF
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD . tEGAL Exp tPF tAO Input tAF
 
-    tPF  shift, and go to state 173
+    tEGAL  shift, and go to state 173
 
 
 State 170
@@ -2139,9 +2136,13 @@ State 172
 
 State 173
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG Egalite tPF . tAO Input tAF
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL . Exp tPF tAO Input tAF
 
-    tAO  shift, and go to state 177
+    tMINUS   shift, and go to state 47
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
+
+    Exp  go to state 177
 
 
 State 174
@@ -2172,11 +2173,17 @@ State 176
 
 State 177
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG Egalite tPF tAO . Input tAF
+   37 Exp: Exp . tPLUS Exp
+   38    | Exp . tDIV Exp
+   39    | Exp . tMINUS Exp
+   40    | Exp . tPOINTER Exp
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp . tPF tAO Input tAF
 
-    $default  reduce using rule 1 (Input)
-
-    Input  go to state 180
+    tPF       shift, and go to state 180
+    tDIV      shift, and go to state 69
+    tPLUS     shift, and go to state 70
+    tMINUS    shift, and go to state 71
+    tPOINTER  shift, and go to state 72
 
 
 State 178
@@ -2197,39 +2204,9 @@ State 179
 
 State 180
 
-    2 Input: Input . tNEWLINE
-    3      | Input . Egalite tPOINTVIRG
-    4      | Input . Declaration
-    6      | Input . $@1 While
-    8      | Input . $@2 For
-   10      | Input . $@3 If
-   12      | Input . $@4 Function
-   13      | Input . Appel_Function
-   14      | Input . Main
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG Egalite tPF tAO Input . tAF
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF . tAO Input tAF
 
-    error     shift, and go to state 3
-    tINTEGER  shift, and go to state 4
-    tAF       shift, and go to state 183
-    tWORD     shift, and go to state 5
-    tNEWLINE  shift, and go to state 6
-
-    tINTEGER  [reduce using rule 11 ($@4)]
-    tCHAR     reduce using rule 11 ($@4)
-    tVOID     reduce using rule 11 ($@4)
-    tIF       reduce using rule 9 ($@3)
-    tWHILE    reduce using rule 5 ($@1)
-    tFOR      reduce using rule 7 ($@2)
-
-    $@1             go to state 7
-    $@2             go to state 8
-    $@3             go to state 9
-    $@4             go to state 10
-    Main            go to state 11
-    LeftTerm        go to state 12
-    Egalite         go to state 13
-    Declaration     go to state 14
-    Appel_Function  go to state 15
+    tAO  shift, and go to state 183
 
 
 State 181
@@ -2250,9 +2227,11 @@ State 182
 
 State 183
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG Egalite tPF tAO Input tAF .
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO . Input tAF
 
-    $default  reduce using rule 61 (For)
+    $default  reduce using rule 1 (Input)
+
+    Input  go to state 185
 
 
 State 184
@@ -2270,7 +2249,7 @@ State 184
 
     error     shift, and go to state 3
     tINTEGER  shift, and go to state 4
-    tAF       shift, and go to state 185
+    tAF       shift, and go to state 186
     tWORD     shift, and go to state 5
     tNEWLINE  shift, and go to state 6
 
@@ -2294,6 +2273,50 @@ State 184
 
 State 185
 
+    2 Input: Input . tNEWLINE
+    3      | Input . Egalite tPOINTVIRG
+    4      | Input . Declaration
+    6      | Input . $@1 While
+    8      | Input . $@2 For
+   10      | Input . $@3 If
+   12      | Input . $@4 Function
+   13      | Input . Appel_Function
+   14      | Input . Main
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input . tAF
+
+    error     shift, and go to state 3
+    tINTEGER  shift, and go to state 4
+    tAF       shift, and go to state 187
+    tWORD     shift, and go to state 5
+    tNEWLINE  shift, and go to state 6
+
+    tINTEGER  [reduce using rule 11 ($@4)]
+    tCHAR     reduce using rule 11 ($@4)
+    tVOID     reduce using rule 11 ($@4)
+    tIF       reduce using rule 9 ($@3)
+    tWHILE    reduce using rule 5 ($@1)
+    tFOR      reduce using rule 7 ($@2)
+
+    $@1             go to state 7
+    $@2             go to state 8
+    $@3             go to state 9
+    $@4             go to state 10
+    Main            go to state 11
+    LeftTerm        go to state 12
+    Egalite         go to state 13
+    Declaration     go to state 14
+    Appel_Function  go to state 15
+
+
+State 186
+
    25 Else: tELSE $@8 tAO Input tAF .
 
     $default  reduce using rule 25 (Else)
+
+
+State 187
+
+   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF .
+
+    $default  reduce using rule 61 (For)
