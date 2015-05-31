@@ -4,13 +4,13 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.11 secs
  
 --> Reading design: processeur.prj
 
@@ -152,7 +152,7 @@ Elaborating entity <inst_pointer_IP> (architecture <Behavioral>) from library <w
 
 Synthesizing Unit <processeur>.
     Related source file is "c:/users/anthony/documents/github/ccompilator/vhdl/risc_processor/processeur.vhd".
-INFO:Xst:3210 - "c:/users/anthony/documents/github/ccompilator/vhdl/risc_processor/processeur.vhd" line 159: Output port <NOZC> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "c:/users/anthony/documents/github/ccompilator/vhdl/risc_processor/processeur.vhd" line 160: Output port <NOZC> of the instance <alu> is unconnected or connected to loadless signal.
     Found 8-bit register for signal <A_BUFF>.
     Found 8-bit register for signal <B_BUFF>.
     Found 8-bit register for signal <OP_BUFF>.
@@ -173,8 +173,8 @@ INFO:Xst:3210 - "c:/users/anthony/documents/github/ccompilator/vhdl/risc_process
     Found 8-bit register for signal <OP_MEM_RE>.
     Found 8-bit register for signal <mux_mem>.
     Found 1-bit register for signal <alea_processor>.
-    Found 8-bit comparator equal for signal <li_di[15]_A_LI_DI[7]_equal_8_o> created at line 237
-    Found 8-bit comparator equal for signal <li_di[7]_A_LI_DI[7]_equal_9_o> created at line 237
+    Found 8-bit comparator equal for signal <li_di[15]_A_LI_DI[7]_equal_8_o> created at line 239
+    Found 8-bit comparator equal for signal <li_di[7]_A_LI_DI[7]_equal_9_o> created at line 239
     Summary:
 	inferred 149 D-type flip-flop(s).
 	inferred   2 Comparator(s).
@@ -185,9 +185,9 @@ Synthesizing Unit <LI>.
     Related source file is "c:/users/anthony/documents/github/ccompilator/vhdl/risc_processor/li.vhd".
         WORD_SIZE = 8
         OUT_SIZE = 32
-        ARRAY_SIZE = 19
+        ARRAY_SIZE = 20
     Found 32-bit register for signal <outLI>.
-    Found 5-bit subtractor for signal <GND_6_o_GND_6_o_sub_21_OUT<4:0>> created at line 82.
+    Found 5-bit subtractor for signal <GND_6_o_GND_6_o_sub_22_OUT<4:0>> created at line 82.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  32 D-type flip-flop(s).
@@ -215,8 +215,8 @@ WARNING:Xst:737 - Found 1-bit latch for signal <Sigoutb<3>>. Latches may be gene
 WARNING:Xst:737 - Found 1-bit latch for signal <Sigoutb<2>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 1-bit latch for signal <Sigoutb<1>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 1-bit latch for signal <Sigoutb<0>>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-    Found 4-bit comparator equal for signal <addrw[3]_addra[3]_equal_66_o> created at line 86
-    Found 4-bit comparator equal for signal <n0021> created at line 87
+    Found 4-bit comparator equal for signal <addrw[3]_addra[3]_equal_66_o> created at line 89
+    Found 4-bit comparator equal for signal <n0022> created at line 90
     WARNING:Xst:2404 -  FFs/Latches <bench<1><1:8>> (without init value) have a constant value of 0 in block <DI>.
     WARNING:Xst:2404 -  FFs/Latches <bench<2><7:0>> (without init value) have a constant value of 0 in block <DI>.
     WARNING:Xst:2404 -  FFs/Latches <bench<3><7:0>> (without init value) have a constant value of 0 in block <DI>.
@@ -232,7 +232,14 @@ WARNING:Xst:737 - Found 1-bit latch for signal <Sigoutb<0>>. Latches may be gene
     WARNING:Xst:2404 -  FFs/Latches <bench<13><7:0>> (without init value) have a constant value of 0 in block <DI>.
     WARNING:Xst:2404 -  FFs/Latches <bench<14><7:0>> (without init value) have a constant value of 0 in block <DI>.
     WARNING:Xst:2404 -  FFs/Latches <bench<15><7:0>> (without init value) have a constant value of 0 in block <DI>.
-    WARNING:Xst:2404 -  FFs/Latches <bench<0><7:0>> (without init value) have a constant value of 0 in block <DI>.
+    WARNING:Xst:2404 -  FFs/Latches <bench<0><1:1>> (without init value) have a constant value of 1 in block <DI>.
+    WARNING:Xst:2404 -  FFs/Latches <bench<0><1:1>> (without init value) have a constant value of 0 in block <DI>.
+    WARNING:Xst:2404 -  FFs/Latches <bench<0><1:1>> (without init value) have a constant value of 1 in block <DI>.
+    WARNING:Xst:2404 -  FFs/Latches <bench<0><1:1>> (without init value) have a constant value of 0 in block <DI>.
+    WARNING:Xst:2404 -  FFs/Latches <bench<0><1:1>> (without init value) have a constant value of 1 in block <DI>.
+    WARNING:Xst:2404 -  FFs/Latches <bench<0><1:1>> (without init value) have a constant value of 0 in block <DI>.
+    WARNING:Xst:2404 -  FFs/Latches <bench<0><1:1>> (without init value) have a constant value of 1 in block <DI>.
+    WARNING:Xst:2404 -  FFs/Latches <bench<0><1:1>> (without init value) have a constant value of 0 in block <DI>.
     Summary:
 	inferred  16 Latch(s).
 	inferred   2 Comparator(s).
@@ -277,7 +284,7 @@ WARNING:Xst:647 - Input <addr<7:4>> is never used. This port will be preserved a
     Found 8-bit register for signal <bench<15>>.
     Found 8-bit register for signal <outMEM>.
     Found 8-bit register for signal <bench<0>>.
-    Found 8-bit 16-to-1 multiplexer for signal <addr[3]_bench[15][7]_wide_mux_0_OUT> created at line 63.
+    Found 8-bit 16-to-1 multiplexer for signal <addr[3]_bench[15][7]_wide_mux_0_OUT> created at line 66.
     Summary:
 	inferred 136 D-type flip-flop(s).
 	inferred   1 Multiplexer(s).
@@ -295,7 +302,7 @@ Unit <lc> synthesized.
 Synthesizing Unit <inst_pointer_IP>.
     Related source file is "c:/users/anthony/documents/github/ccompilator/vhdl/risc_processor/inst_pointer_ip.vhd".
     Found 8-bit register for signal <counter>.
-    Found 8-bit adder for signal <counter[7]_GND_28_o_add_1_OUT> created at line 60.
+    Found 8-bit adder for signal <counter[7]_GND_28_o_add_2_OUT> created at line 60.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred   8 D-type flip-flop(s).
@@ -421,10 +428,10 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <outLI_0> (without i
 INFO:Xst:2261 - The FF/Latch <outLI_8> in Unit <LI> is equivalent to the following 3 FFs/Latches, which will be removed : <outLI_9> <outLI_25> <outLI_26> 
 INFO:Xst:2261 - The FF/Latch <B_LI_DI_0> in Unit <processeur> is equivalent to the following 3 FFs/Latches, which will be removed : <B_LI_DI_1> <OP_LI_DI_1> <OP_LI_DI_2> 
 INFO:Xst:2261 - The FF/Latch <A_LI_DI_0> in Unit <processeur> is equivalent to the following 23 FFs/Latches, which will be removed : <A_LI_DI_1> <A_LI_DI_2> <A_LI_DI_3> <A_LI_DI_4> <A_LI_DI_5> <A_LI_DI_6> <A_LI_DI_7> <B_LI_DI_2> <B_LI_DI_3> <B_LI_DI_4> <B_LI_DI_5> <B_LI_DI_6> <B_LI_DI_7> <OP_LI_DI_0> <OP_LI_DI_3> <OP_LI_DI_4> <OP_LI_DI_5> <OP_LI_DI_6> <OP_LI_DI_7> <C_LI_DI_0> <C_LI_DI_1> <C_LI_DI_2> <C_LI_DI_3> 
-INFO:Xst:2261 - The FF/Latch <A_BUFF_0> in Unit <processeur> is equivalent to the following 7 FFs/Latches, which will be removed : <A_BUFF_1> <A_BUFF_2> <A_BUFF_3> <A_BUFF_4> <A_BUFF_5> <A_BUFF_6> <A_BUFF_7> 
-INFO:Xst:2261 - The FF/Latch <OP_BUFF_0> in Unit <processeur> is equivalent to the following 4 FFs/Latches, which will be removed : <OP_BUFF_4> <OP_BUFF_5> <OP_BUFF_6> <OP_BUFF_7> 
-INFO:Xst:2261 - The FF/Latch <B_BUFF_0> in Unit <processeur> is equivalent to the following FF/Latch, which will be removed : <B_BUFF_1> 
 INFO:Xst:2261 - The FF/Latch <B_BUFF_2> in Unit <processeur> is equivalent to the following 9 FFs/Latches, which will be removed : <B_BUFF_3> <B_BUFF_4> <B_BUFF_5> <B_BUFF_6> <B_BUFF_7> <C_BUFF_0> <C_BUFF_1> <C_BUFF_2> <C_BUFF_3> 
+INFO:Xst:2261 - The FF/Latch <OP_BUFF_0> in Unit <processeur> is equivalent to the following 4 FFs/Latches, which will be removed : <OP_BUFF_4> <OP_BUFF_5> <OP_BUFF_6> <OP_BUFF_7> 
+INFO:Xst:2261 - The FF/Latch <A_BUFF_0> in Unit <processeur> is equivalent to the following 7 FFs/Latches, which will be removed : <A_BUFF_1> <A_BUFF_2> <A_BUFF_3> <A_BUFF_4> <A_BUFF_5> <A_BUFF_6> <A_BUFF_7> 
+INFO:Xst:2261 - The FF/Latch <B_BUFF_0> in Unit <processeur> is equivalent to the following FF/Latch, which will be removed : <B_BUFF_1> 
 WARNING:Xst:1710 - FF/Latch <A_LI_DI_0> (without init value) has a constant value of 0 in block <processeur>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <OP_BUFF_0> (without init value) has a constant value of 0 in block <processeur>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <A_BUFF_0> (without init value) has a constant value of 0 in block <processeur>. This FF/Latch will be trimmed during the optimization process.
@@ -474,9 +481,6 @@ WARNING:Xst:2677 - Node <mux_mem_4> of sequential type is unconnected in block <
 WARNING:Xst:2677 - Node <mux_mem_5> of sequential type is unconnected in block <processeur>.
 WARNING:Xst:2677 - Node <mux_mem_6> of sequential type is unconnected in block <processeur>.
 WARNING:Xst:2677 - Node <mux_mem_7> of sequential type is unconnected in block <processeur>.
-WARNING:Xst:2677 - Node <inst_pointer/counter_5> of sequential type is unconnected in block <processeur>.
-WARNING:Xst:2677 - Node <inst_pointer/counter_6> of sequential type is unconnected in block <processeur>.
-WARNING:Xst:2677 - Node <inst_pointer/counter_7> of sequential type is unconnected in block <processeur>.
 
 Optimizing unit <processeur> ...
 
@@ -492,6 +496,9 @@ Optimizing unit <EX_ALU> ...
 WARNING:Xst:2677 - Node <lc_re/sortie_lc_1> of sequential type is unconnected in block <processeur>.
 WARNING:Xst:1710 - FF/Latch <alea_processor> (without init value) has a constant value of 0 in block <processeur>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <OP_BUFF_3> (without init value) has a constant value of 0 in block <processeur>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <inst_pointer/counter_5> (without init value) has a constant value of 0 in block <processeur>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <inst_pointer/counter_6> (without init value) has a constant value of 0 in block <processeur>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <inst_pointer/counter_7> (without init value) has a constant value of 0 in block <processeur>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <lc_ex/sortie_lc_1> (without init value) has a constant value of 0 in block <processeur>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <OP_DI_EX_3> (without init value) has a constant value of 0 in block <processeur>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <OP_EX_MEM_3> (without init value) has a constant value of 0 in block <processeur>. This FF/Latch will be trimmed during the optimization process.
@@ -508,6 +515,7 @@ INFO:Xst:2261 - The FF/Latch <OP_MEM_RE_1> in Unit <processeur> is equivalent to
 Found area constraint ratio of 100 (+ 5) on block processeur, actual ratio is 1.
 WARNING:Xst:2677 - Node <OP_EX_MEM_1> of sequential type is unconnected in block <processeur>.
 WARNING:Xst:2677 - Node <OP_MEM_RE_1> of sequential type is unconnected in block <processeur>.
+FlipFlop lc_re/sortie_lc_0 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -515,8 +523,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 41
- Flip-Flops                                            : 41
+# Registers                                            : 43
+ Flip-Flops                                            : 43
 
 =========================================================================
 
@@ -539,23 +547,24 @@ Top Level Output File Name         : processeur.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 74
+# BELS                             : 83
 #      GND                         : 1
 #      INV                         : 2
 #      LUT1                        : 4
-#      LUT2                        : 7
-#      LUT3                        : 34
+#      LUT2                        : 15
+#      LUT3                        : 26
+#      LUT4                        : 8
 #      LUT5                        : 1
+#      LUT6                        : 1
 #      MUXCY                       : 11
 #      VCC                         : 1
 #      XORCY                       : 13
-# FlipFlops/Latches                : 57
+# FlipFlops/Latches                : 59
 #      FD                          : 1
-#      FDR                         : 35
+#      FDR                         : 37
 #      FDRE                        : 5
-#      LD                          : 16
-# Clock Buffers                    : 2
-#      BUFG                        : 1
+#      LDC                         : 16
+# Clock Buffers                    : 1
 #      BUFGP                       : 1
 # IO Buffers                       : 9
 #      IBUF                        : 1
@@ -568,15 +577,15 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              57  out of  18224     0%  
- Number of Slice LUTs:                   48  out of   9112     0%  
-    Number used as Logic:                48  out of   9112     0%  
+ Number of Slice Registers:              59  out of  18224     0%  
+ Number of Slice LUTs:                   57  out of   9112     0%  
+    Number used as Logic:                57  out of   9112     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:     66
-   Number with an unused Flip Flop:       9  out of     66    13%  
-   Number with an unused LUT:            18  out of     66    27%  
-   Number of fully used LUT-FF pairs:    39  out of     66    59%  
+ Number of LUT Flip Flop pairs used:     76
+   Number with an unused Flip Flop:      17  out of     76    22%  
+   Number with an unused LUT:            19  out of     76    25%  
+   Number of fully used LUT-FF pairs:    40  out of     76    52%  
    Number of unique control sets:         5
 
 IO Utilization: 
@@ -584,7 +593,7 @@ IO Utilization:
  Number of bonded IOBs:                  10  out of    232     4%  
 
 Specific Feature Utilization:
- Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
 
 ---------------------------
 Partition Resource Summary:
@@ -604,14 +613,14 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------------------------------------------+-----------------------------------+-------+
-Clock Signal                                                           | Clock buffer(FF name)             | Load  |
------------------------------------------------------------------------+-----------------------------------+-------+
-clk_processor                                                          | BUFGP                             | 41    |
-rst_processor                                                          | IBUF+BUFG                         | 8     |
-registers_bench/W_addrw[3]_OR_8_o(registers_bench/W_addrw[3]_OR_8_o1:O)| NONE(*)(registers_bench/Sigouta_0)| 8     |
------------------------------------------------------------------------+-----------------------------------+-------+
-(*) This 1 clock signal(s) are generated by combinatorial logic,
+-------------------------------------------------------------------------+-----------------------------------+-------+
+Clock Signal                                                             | Clock buffer(FF name)             | Load  |
+-------------------------------------------------------------------------+-----------------------------------+-------+
+clk_processor                                                            | BUFGP                             | 43    |
+registers_bench/W_addrw[3]_OR_17_o(registers_bench/W_addrw[3]_OR_17_o1:O)| NONE(*)(registers_bench/Sigoutb_0)| 8     |
+registers_bench/W_addrw[3]_OR_8_o(registers_bench/W_addrw[3]_OR_8_o1:O)  | NONE(*)(registers_bench/Sigouta_0)| 8     |
+-------------------------------------------------------------------------+-----------------------------------+-------+
+(*) These 2 clock signal(s) are generated by combinatorial logic,
 and XST is not able to identify which are the primary clock signals.
 Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -624,8 +633,8 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 2.687ns (Maximum Frequency: 372.204MHz)
-   Minimum input arrival time before clock: 4.312ns
+   Minimum period: 3.052ns (Maximum Frequency: 327.643MHz)
+   Minimum input arrival time before clock: 4.517ns
    Maximum output required time after clock: 3.668ns
    Maximum combinational path delay: No path found
 
@@ -635,23 +644,22 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_processor'
-  Clock period: 2.687ns (frequency: 372.204MHz)
-  Total number of paths / destination ports: 157 / 33
+  Clock period: 3.052ns (frequency: 327.643MHz)
+  Total number of paths / destination ports: 244 / 38
 -------------------------------------------------------------------------
-Delay:               2.687ns (Levels of Logic = 10)
-  Source:            C_DI_EX_0 (FF)
+Delay:               3.052ns (Levels of Logic = 9)
+  Source:            lc_re/sortie_lc_0 (FF)
   Destination:       B_EX_MEM_7 (FF)
   Source Clock:      clk_processor rising
   Destination Clock: clk_processor rising
 
-  Data Path: C_DI_EX_0 to B_EX_MEM_7
+  Data Path: lc_re/sortie_lc_0 to B_EX_MEM_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              1   0.447   0.684  C_DI_EX_0 (C_DI_EX_0)
-     LUT3:I1->O            1   0.203   0.000  alu/Mmux__n00863_rs_lut<0> (alu/Mmux__n00863_rs_lut<0>)
-     MUXCY:S->O            1   0.172   0.000  alu/Mmux__n00863_rs_cy<0> (alu/Mmux__n00863_rs_cy<0>)
-     MUXCY:CI->O           1   0.019   0.000  alu/Mmux__n00863_rs_cy<1> (alu/Mmux__n00863_rs_cy<1>)
+     FDR:C->Q             20   0.447   1.093  lc_re/sortie_lc_0 (lc_re/sortie_lc_0)
+     LUT2:I1->O            0   0.205   0.000  alu/Mmux__n00863_A61 (alu/Mmux__n00863_rs_A<15>)
+     MUXCY:DI->O           1   0.145   0.000  alu/Mmux__n00863_rs_cy<1> (alu/Mmux__n00863_rs_cy<1>)
      MUXCY:CI->O           1   0.019   0.000  alu/Mmux__n00863_rs_cy<2> (alu/Mmux__n00863_rs_cy<2>)
      MUXCY:CI->O           1   0.019   0.000  alu/Mmux__n00863_rs_cy<3> (alu/Mmux__n00863_rs_cy<3>)
      MUXCY:CI->O           1   0.019   0.000  alu/Mmux__n00863_rs_cy<4> (alu/Mmux__n00863_rs_cy<4>)
@@ -661,14 +669,14 @@ Delay:               2.687ns (Levels of Logic = 10)
      LUT3:I2->O            1   0.205   0.000  mux1511 (mux_ex[7]_B_DI_EX[7]_mux_91_OUT<7>)
      FDR:D                     0.102          B_EX_MEM_7
     ----------------------------------------
-    Total                      2.687ns (1.423ns logic, 1.264ns route)
-                                       (53.0% logic, 47.0% route)
+    Total                      3.052ns (1.379ns logic, 1.673ns route)
+                                       (45.2% logic, 54.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_processor'
-  Total number of paths / destination ports: 40 / 40
+  Total number of paths / destination ports: 42 / 42
 -------------------------------------------------------------------------
-Offset:              4.312ns (Levels of Logic = 2)
+Offset:              4.517ns (Levels of Logic = 2)
   Source:            rst_processor (PAD)
   Destination:       C_DI_EX_0 (FF)
   Destination Clock: clk_processor rising
@@ -677,38 +685,38 @@ Offset:              4.312ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            18   1.222   1.049  rst_processor_IBUF (rst_processor_IBUF)
-     INV:I->O             40   0.206   1.405  rst_processor_inv1_INV_0 (rst_processor_inv)
+     IBUF:I->O            20   1.222   1.092  rst_processor_IBUF (rst_processor_IBUF)
+     INV:I->O             53   0.206   1.567  rst_processor_inv1_INV_0 (registers_bench/RST_inv)
      FDR:R                     0.430          C_DI_EX_0
     ----------------------------------------
-    Total                      4.312ns (1.858ns logic, 2.454ns route)
-                                       (43.1% logic, 56.9% route)
+    Total                      4.517ns (1.858ns logic, 2.659ns route)
+                                       (41.1% logic, 58.9% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'rst_processor'
-  Total number of paths / destination ports: 8 / 8
+Timing constraint: Default OFFSET IN BEFORE for Clock 'registers_bench/W_addrw[3]_OR_17_o'
+  Total number of paths / destination ports: 16 / 16
 -------------------------------------------------------------------------
-Offset:              2.514ns (Levels of Logic = 2)
+Offset:              4.517ns (Levels of Logic = 2)
   Source:            rst_processor (PAD)
   Destination:       registers_bench/Sigoutb_0 (LATCH)
-  Destination Clock: rst_processor falling
+  Destination Clock: registers_bench/W_addrw[3]_OR_17_o falling
 
   Data Path: rst_processor to registers_bench/Sigoutb_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            18   1.222   1.050  rst_processor_IBUF (rst_processor_IBUF)
-     LUT3:I2->O            1   0.205   0.000  registers_bench/Mmux_Sigoutb[7]_DATA[7]_MUX_104_o11 (registers_bench/Sigoutb[7]_DATA[7]_MUX_104_o)
-     LD:D                      0.037          registers_bench/Sigoutb_7
+     IBUF:I->O            20   1.222   1.092  rst_processor_IBUF (rst_processor_IBUF)
+     INV:I->O             53   0.206   1.567  rst_processor_inv1_INV_0 (registers_bench/RST_inv)
+     LDC:CLR                   0.430          registers_bench/Sigoutb_6
     ----------------------------------------
-    Total                      2.514ns (1.464ns logic, 1.050ns route)
-                                       (58.2% logic, 41.8% route)
+    Total                      4.517ns (1.858ns logic, 2.659ns route)
+                                       (41.1% logic, 58.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'registers_bench/W_addrw[3]_OR_8_o'
-  Total number of paths / destination ports: 8 / 8
+  Total number of paths / destination ports: 16 / 16
 -------------------------------------------------------------------------
-Offset:              2.616ns (Levels of Logic = 2)
+Offset:              4.517ns (Levels of Logic = 2)
   Source:            rst_processor (PAD)
   Destination:       registers_bench/Sigouta_0 (LATCH)
   Destination Clock: registers_bench/W_addrw[3]_OR_8_o falling
@@ -717,12 +725,12 @@ Offset:              2.616ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            18   1.222   1.154  rst_processor_IBUF (rst_processor_IBUF)
-     LUT3:I1->O            1   0.203   0.000  registers_bench/Mmux_Sigouta[7]_DATA[7]_MUX_88_o11 (registers_bench/Sigouta[7]_DATA[7]_MUX_88_o)
-     LD:D                      0.037          registers_bench/Sigouta_7
+     IBUF:I->O            20   1.222   1.092  rst_processor_IBUF (rst_processor_IBUF)
+     INV:I->O             53   0.206   1.567  rst_processor_inv1_INV_0 (registers_bench/RST_inv)
+     LDC:CLR                   0.430          registers_bench/Sigouta_7
     ----------------------------------------
-    Total                      2.616ns (1.462ns logic, 1.154ns route)
-                                       (55.9% logic, 44.1% route)
+    Total                      4.517ns (1.858ns logic, 2.659ns route)
+                                       (41.1% logic, 58.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_processor'
@@ -749,42 +757,42 @@ Cross Clock Domains Report:
 --------------------------
 
 Clock to Setup on destination clock clk_processor
----------------------------------+---------+---------+---------+---------+
-                                 | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock                     |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
----------------------------------+---------+---------+---------+---------+
-clk_processor                    |    2.687|         |         |         |
-registers_bench/W_addrw[3]_OR_8_o|         |    1.487|         |         |
-rst_processor                    |         |    1.179|         |         |
----------------------------------+---------+---------+---------+---------+
+----------------------------------+---------+---------+---------+---------+
+                                  | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                      |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+----------------------------------+---------+---------+---------+---------+
+clk_processor                     |    3.052|         |         |         |
+registers_bench/W_addrw[3]_OR_17_o|         |    1.179|         |         |
+registers_bench/W_addrw[3]_OR_8_o |         |    1.487|         |         |
+----------------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock registers_bench/W_addrw[3]_OR_17_o
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_processor  |         |         |    1.884|         |
+---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock registers_bench/W_addrw[3]_OR_8_o
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_processor  |         |         |    1.598|         |
----------------+---------+---------+---------+---------+
-
-Clock to Setup on destination clock rst_processor
----------------+---------+---------+---------+---------+
-               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
----------------+---------+---------+---------+---------+
-clk_processor  |         |         |    1.568|         |
+clk_processor  |         |         |    2.006|         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.89 secs
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 9.02 secs
  
 --> 
 
 Total memory usage is 261964 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  145 (   0 filtered)
+Number of warnings :  152 (   0 filtered)
 Number of infos    :   16 (   0 filtered)
 

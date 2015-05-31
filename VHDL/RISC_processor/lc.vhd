@@ -35,6 +35,7 @@ entity lc is
 
     Port ( entree_lc : in std_logic_vector (7 downto 0);
            sortie_lc : out  STD_LOGIC_VECTOR (size_out-1 downto 0);
+			  rst : in std_logic;
 			  clk : in std_logic
 			  );
 end lc;
@@ -48,8 +49,8 @@ begin
 
 		wait until clk'event and clk='1';
 		
-		--			STORE 0x08 Write				ALEA 0x0A
-		if (entree_lc = "00001000" or entree_lc = "00001010") then
+		--							STORE 0x08 Write				ALEA 0x0A
+		if ( rst = '0' or entree_lc = "00001000" or entree_lc = "00001010") then
 			sortie_lc <= "000";
 		-- for ctrl_alu       SUM      +               MUL       +                 SUB
 		elsif (entree_lc = "00000001" or entree_lc = "00000010" or entree_lc = "00000011") then 

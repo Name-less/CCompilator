@@ -57,7 +57,7 @@ LAB0:    t1 = (t0 + 3392U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(58, ng0);
+LAB2:    xsi_set_current_line(60, ng0);
 
 LAB6:    t2 = (t0 + 3712);
     *((int *)t2) = 1;
@@ -66,7 +66,7 @@ LAB6:    t2 = (t0 + 3712);
 LAB1:    return;
 LAB4:    t6 = (t0 + 3712);
     *((int *)t6) = 0;
-    xsi_set_current_line(60, ng0);
+    xsi_set_current_line(62, ng0);
     t2 = (t0 + 1512U);
     t4 = *((char **)t2);
     t3 = *((unsigned char *)t4);
@@ -112,11 +112,11 @@ LAB8:    t6 = (t0 + 1672U);
     t3 = t9;
     goto LAB10;
 
-LAB11:    xsi_set_current_line(61, ng0);
+LAB11:    xsi_set_current_line(63, ng0);
     t2 = xsi_get_transient_memory(128U);
     memset(t2, 0, 128U);
     t6 = t2;
-    t7 = (t0 + 6711);
+    t7 = (t0 + 6715);
     t8 = (8U != 0);
     if (t8 == 1)
         goto LAB14;
@@ -128,18 +128,27 @@ LAB15:    t12 = (t0 + 3792);
     t16 = *((char **)t15);
     memcpy(t16, t2, 128U);
     xsi_driver_first_trans_fast(t12);
+    xsi_set_current_line(64, ng0);
+    t2 = (t0 + 6723);
+    t6 = (t0 + 3856);
+    t7 = (t6 + 56U);
+    t10 = *((char **)t7);
+    t12 = (t10 + 56U);
+    t13 = *((char **)t12);
+    memcpy(t13, t2, 8U);
+    xsi_driver_first_trans_fast_port(t6);
     goto LAB12;
 
 LAB14:    t11 = (128U / 8U);
     xsi_mem_set_data(t6, t7, 8U, t11);
     goto LAB15;
 
-LAB16:    xsi_set_current_line(63, ng0);
+LAB16:    xsi_set_current_line(66, ng0);
     t2 = (t0 + 1992U);
     t6 = *((char **)t2);
     t2 = (t0 + 1032U);
     t7 = *((char **)t2);
-    t2 = (t0 + 6468U);
+    t2 = (t0 + 6472U);
     t17 = ieee_p_3620187407_sub_514432868_3965413181(IEEE_P_3620187407, t7, t2);
     t18 = (t17 - 0);
     t11 = (t18 * 1);
@@ -156,12 +165,12 @@ LAB16:    xsi_set_current_line(63, ng0);
     xsi_driver_first_trans_fast_port(t12);
     goto LAB12;
 
-LAB18:    xsi_set_current_line(65, ng0);
+LAB18:    xsi_set_current_line(68, ng0);
     t2 = (t0 + 1192U);
     t6 = *((char **)t2);
     t2 = (t0 + 1032U);
     t7 = *((char **)t2);
-    t2 = (t0 + 6468U);
+    t2 = (t0 + 6472U);
     t17 = ieee_p_3620187407_sub_514432868_3965413181(IEEE_P_3620187407, t7, t2);
     t18 = (t17 - 0);
     t11 = (t18 * 1);

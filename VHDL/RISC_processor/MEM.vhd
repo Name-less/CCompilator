@@ -53,12 +53,15 @@ signal bench : memory;
 
 begin
 
+
+
 	mem : process
 	begin
 		wait until clk'event and clk = '1';
 
 		if( rst = '0') then
 			bench <= (others => "00000000");
+			outMEM <= "00000000";
 		elsif( rw = '1') then -- lecture
 			outMEM <= bench(conv_integer(addr));
 		elsif( rw = '0') then -- ecriture

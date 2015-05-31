@@ -66,7 +66,7 @@ process
 	
 		bench <= (
 				--test
---				0 => "10000000" ,
+				0 => "10101010" ,
 --				1 => "11000000" ,
 --				2 => "11100000" ,
 				--fin des valeurs de test
@@ -75,7 +75,9 @@ process
 		-- Reset and Writing synchron on clk
 		wait until clk'event and clk='1';
 			if (rst='0') then --reset inside memory <= 0x00
-				bench <= (others => "00000000" );				
+				bench <= (others => "00000000" );
+				--Sigouta <= "00000000";
+				--Sigoutb <= "00000000";
 			elsif (w='1') then
 				bench(conv_integer(addrw)) <= data;
 			end if;
@@ -83,9 +85,11 @@ process
 end process;
 	
 	-- controle des aleas
-	Sigouta <= 	data 								when ((w ='1') and (addrw = addra) and rst = '1') else
+	Sigouta <= 	"00000000"						when (rst='0') else
+					data 								when ((w ='1') and (addrw = addra) and rst = '1') else
 					bench(conv_integer(addra))	when (((addrw /= addra) or (addrw /= addrb)) and w='0' and rst='1');
-	Sigoutb <= 	data 								when ((w ='1') and (addrw = addrb) and rst = '1') else 		
+	Sigoutb <= 	"00000000"						when (rst='0') else
+					data 								when ((w ='1') and (addrw = addrb) and rst = '1') else 		
 					bench(conv_integer(addrb))	when (((addrw /= addra) or (addrw /= addrb)) and w='0' and rst='1');
 		
 	

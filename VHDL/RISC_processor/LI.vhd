@@ -35,7 +35,7 @@ entity LI is
 	generic(
 				WORD_SIZE : Integer := 8;
 				OUT_SIZE : Integer := 32;
-				ARRAY_SIZE : Integer := 19
+				ARRAY_SIZE : Integer := 20
 	);
     Port (  addr : in  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0);
 				alea : in std_logic;

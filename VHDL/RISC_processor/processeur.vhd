@@ -81,6 +81,7 @@ end component;
 component lc Port (
 						entree_lc : in std_logic_vector (7 downto 0);
 						sortie_lc : out  STD_LOGIC_vector (2 downto 0);
+						rst : in std_logic;
 						clk : in std_logic
 						);
 end component;
@@ -158,17 +159,18 @@ registers_bench : di port map (B_BUFF(3 downto 0),C_BUFF(3 downto 0),A_MEM_RE(3 
 --								A/8     B/8     Ctrl_alu/3     S/8   NOZC/4 never linked in graphics
 alu : ex_alu port map(B_DI_EX, C_DI_EX,  out_lc_ex , mux_ex, open);
 
---                           addr/8  	IN/8        RW/1       RST/1          CLK/1      	OUT/8
+--                           addr/8  	IN/8        RW/1       RST/1          CLK/1      	  OUT/8
 data_memory : mem port map (mux_mem, B_EX_MEM, out_lc_mem(0), rst_processor, clk_processor, mux_re(7 downto 0));
 
---								in/8       out/3			clk/1
-lc_ex: lc port map ( OP_DI_EX, out_lc_ex, clk_processor);
+--								in/8       out/3			rst/1			clk/1
+lc_ex: lc port map ( OP_DI_EX, out_lc_ex, rst_processor, clk_processor);
 
---									in/8     out/3			clk/1
-lc_mem : lc port map ( OP_EX_MEM, out_lc_mem, clk_processor);
+--									in/8     out/3			rst/1         clk/1
+lc_mem : lc port map ( OP_EX_MEM, out_lc_mem, rst_processor, clk_processor);
 
---								in/8      out/3		clk/1
-lc_re : lc port map ( OP_MEM_RE, out_lc_re, clk_processor);
+--								in/8      out/3		rst/1          clk/1
+lc_re : lc port map ( OP_MEM_RE, out_lc_re, rst_processor, clk_processor);
+--lc_re : lc port map ( "00000011", out_lc_re, rst_processor, clk_processor); -- test 
 
 --														alea/1				 rst/1			clk/1				pc/8
 inst_pointer : inst_pointer_ip port map (alea_processor, rst_processor, clk_processor,  inst_addr);
@@ -211,10 +213,10 @@ begin
 		B_MEM_RE 	<= "00000000";
 		OP_MEM_RE 	<= "00000000";
 		
---		---- Replace mux ----
+		---- Replace mux ----
 --		mux_di <= "00000000";
 --		mux_ex <= "00000000";
---		mux_mem <= "00000000";
+		mux_mem <= "00000000";
 --		mux_re <= "00000000";
 		
 		---- IP ----
@@ -343,7 +345,7 @@ begin
 										-- when an alea is present
 		---- Replace Mux module in DI ----
 		-- 				AFC						LOAD
-		if (OP_LI_DI = X"06" or OP_LI_DI = X"07") then
+		if (OP_BUFF = X"06" or OP_BUFF = X"07") then
 		--  B_BUFF to stream the good value depending on aleas
 			B_DI_EX <= B_BUFF;
 		else -- others operators, registers bench always write into QA thus into mux_di

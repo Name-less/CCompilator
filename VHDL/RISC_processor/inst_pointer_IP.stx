@@ -10,7 +10,7 @@ Total CPU time to Xst completion: 0.09 secs
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.10 secs
  
 --> Reading design: inst_pointer_IP.prj
 
@@ -46,11 +46,11 @@ Parsing architecture <Behavioral> of entity <inst_pointer_ip>.
 
 
 Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.89 secs
+Total CPU time to Xst completion: 4.36 secs
  
 --> 
 
-Total memory usage is 182176 kilobytes
+Total memory usage is 182368 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)

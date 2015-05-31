@@ -78,14 +78,14 @@ BEGIN
 
    -- Clock process
 
-		clk<= not clk after 5 ns;
+		clk<= not clk after 50 ns;
 		
 		
 	-- Stimulus process
 	
 			--ecriture			--lecture
 	rw <= '0' after 100 ns, '1' after 200 ns;
-	rst <= '1', '0' after 300 ns, '1' after 400 ns;
+	rst <= '0', '1' after 100 ns, '0' after 300 ns, '1' after 400 ns;
 	addr <= "00000001" after 20 ns;
 	inmem <= "11111110" after 20 ns;
 
