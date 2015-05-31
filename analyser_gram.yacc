@@ -87,8 +87,6 @@ tINTEGER tPOINTER tWORD |
 
 If :
 tIF tPO Condition {
-	//stack_push_nop();
-	//stack_push_nop();
 	if_add_from_where(get_number_of_line());
 	stack_push_push_cr();
 } tPF tAO Input tAF{
@@ -110,13 +108,11 @@ tELSE {
 	stack_push_add_cr(1);
 	if_add_from_where(get_number_of_line());
 } tAO Input tAF {
-	//printf("FILLLLLLLLLLLLLLL OJK %d \n",get_number_of_line()+2);
 	if_fill_from_to(get_number_of_line()+2);
 } | 
 tELSE{
   	stack_push_inv_cr();
         stack_push_add_cr(1);
-        //printf("ADDDDDDDDDDDDDDDDD%d\n",get_number_of_line());
         if_add_from_where(get_number_of_line());
 } If {
 	if_fill_from_to(get_number_of_line()+2);
@@ -171,15 +167,17 @@ tNOMBRE {
 		} |
 tWORD {
 				if (exist($1) == -1 ){
-					printf("YACC: tword ALREADY saved\n\n");
+					//printf("YACC: tword ALREADY saved\n\n");
 					int tmp = ts_add_temp();
                                         $$ = tmp;
                                         printf("YACC: avant push_cop\n");
                                         stack_push_cop(tmp,get_addr_from($1));
-					printf("ici YACC: %d\n",get_addr_from($1));
+					//printf("ici YACC: %d\n",get_addr_from($1));
 					}
 				else {
-					printf("YACC: erreur debut else tWORD\n");
+					yyerror("Bad affectation at ligne ");
+                                	return 1;
+					//printf("YACC: erreur debut else tWORD\n");
 				}
 	};
 
@@ -188,28 +186,39 @@ LeftTerm :
 tWORD {	printf("YACC: dans LeftTerm\n");};
 
 Egalite :
-LeftTerm tEGAL Exp {	stack_push_cop(get_addr_from($1),$3);
-			//printf("YACC: ici dollar 1 vaut %d et son addresse %d et dollar 3 vaut %d\n\n", $1,get_addr_from($1),$3);
-			//ts_display();
-			ts_pop_addr($3);
-			};
+LeftTerm tEGAL Exp {	
+			if(get_addr_from($1) != -1){
+				stack_push_cop(get_addr_from($1),$3);
+				ts_pop_addr($3);
+			}else{
+				yyerror("Bad affectation at ligne ");
+				return 1;
+				printf("YACC: erreur affectation inconnue\n");
+			}
+};
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { 
 				if (ts_push($2,$1)!=-1)
 					printf("YACC:Declaration correcte\n"); 
-				else
-					printf("YACC: La variable existe déjà\n"); 
-				} |
+				else{
+					 yyerror("Variable already exist at ligne ");
+                                        return 1;
+				}} |
 tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG { 
 				if (ts_push($2,$1)!=-1)
 					printf("YACC: Declaration avant instanciation correcte\n");
-				else printf("YACC: La variable exite déjà\n");
-				} |
+				else{
+					yyerror("Variable already exist at ligne ");
+                                        return 1;
+				}} |
 tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG {
 				if (ts_push($2,$1)!=-1)
 					printf("YACC: Declaration de tableau avant instanciation correcte\n");
-				else printf("YACC: La variable exite déjà\n");
+				else {
+                                        yyerror("Variable already exist at ligne ");
+                                        return 1;
+				}
 				} |
 error tPOINTVIRG {yyerror;
 /* | tCHAR tWORD tCO tNOMBRE tCF tPOINTVIRG |
@@ -223,18 +232,21 @@ DeclarationIntMemeLigne :
 tVIRG tWORD DeclarationIntMemeLigne {
 				if (ts_push($2,"int")!=-1) 
 					printf("YACC: Declaration ligne correcte\n"); 
-				else
-					printf("YACC: La variable existe déjà\n"); 
-				} |
+				else{
+					yyerror("Variable already exist at ligne ");
+					return 1;
+				}} |
 				;
 
 DeclarationIntEgalMemeLigne :
 tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne {
 				if (ts_push($2,"int")!=-1)
 					stack_push_cop(get_addr_from($2),$4) ;
-				else
-					printf("YACC: La variable existe déjà\n");
-				} |
+				else{
+					yyerror("Variable already exist at ligne ");
+					return 1;
+					//printf("YACC: La variable existe déjà\n");
+				}} |
 				;
 
 DeclarationIntTabMemeLigne :
