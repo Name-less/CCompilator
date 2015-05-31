@@ -253,14 +253,16 @@ tWHILE{
 };
 
 For :
-tFOR {
+tFOR tPO Egalite tPOINTVIRG {
         while_add_from_to(get_number_of_line());
-}tPO Input tPOINTVIRG Condition {
+} Condition {
+        if_add_from_where(get_number_of_line());
         stack_push_push_cr();
-} tPOINTVIRG Input tPF tAO Input tAF{
+} tPOINTVIRG Egalite tPF tAO Input tAF{
                 stack_push_pop_cr();
                 stack_push_nop();
         while_fill_from_where(get_number_of_line());
+        if_fill_from_to(get_number_of_line()+1);
 };
 
 Function :

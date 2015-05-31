@@ -1,0 +1,29 @@
+AFC 8 50 //affectation initiale
+COP 2 8
+AFC 10 40 
+COP 4 10
+AFC 8 0 
+COP 12 8
+
+AFC 8 0 //premiére clause du for, i = 0
+COP 12 8
+
+COP 8 12 //on compare i à 10
+AFC 10 10 
+INF CR 8 10
+JMF 21 CR // si jamais i n'est pas inférieur à 10 on jump aprés le FOR
+PUSH CR // on push CR au cas ou il y ai des IF qui modifieraient CR
+
+COP 14 12 // on ajoute 1 à i
+AFC 16 1 
+ADD 14 14 16
+COP 12 14
+
+AFC 18 29 //corps du FOR
+COP 4 18
+
+POP CR // on restitue CR
+JMF 8 CR // et on remonte tester la condition
+NOP
+AFC 20 10 //on associe i à 10 en dehors du FOR
+COP 12 20
