@@ -1,10 +1,8 @@
 int main(){
 	int c;
 	int d;
-	if(c == d){
-		int f;
-		c = 10;
+	for(d = 0;d<11;d=d+1){
+		c = 12;
 	}
-	int f;
-	f = 10;
 }
+

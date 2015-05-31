@@ -1,29 +1,21 @@
-AFC 8 50 //affectation initiale
-COP 2 8
-AFC 10 40 
-COP 4 10
 AFC 8 0 
-COP 12 8
+COP 4 8 //on met 0 dans d
 
-AFC 8 0 //premiére clause du for, i = 0
-COP 12 8
+COP 10 4 //on met d dans une variable temporaire
+AFC 8 11 //et on met 10 dans une variable temporaire
+INF CR 10 8 //on compare la copie de d (à l'adresse 10) avec 11 stocké en 8
+JMF 15 CR //jump en fonction du résultat de la condition
+PUSH CR //on save le compare register
 
-COP 8 12 //on compare i à 10
-AFC 10 10 
-INF CR 8 10
-JMF 21 CR // si jamais i n'est pas inférieur à 10 on jump aprés le FOR
-PUSH CR // on push CR au cas ou il y ai des IF qui modifieraient CR
+COP 12 4
+AFC 14 1 //on incrémente d 
+ADD 12 12 14
+COP 4 12
 
-COP 14 12 // on ajoute 1 à i
-AFC 16 1 
-ADD 14 14 16
-COP 12 14
+AFC 16 12 //corps du FOR 
+COP 2 16
 
-AFC 18 29 //corps du FOR
-COP 4 18
+POP CR
 
-POP CR // on restitue CR
-JMF 8 CR // et on remonte tester la condition
+JMF 2 CR //revient au début
 NOP
-AFC 20 10 //on associe i à 10 en dehors du FOR
-COP 12 20

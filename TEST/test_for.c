@@ -1,13 +1,8 @@
 int main(){
 	int c;
 	int d;
-	int f;
-	c = 50;
-	d = 40;
-	int i;
-	i = 0;
-	for(i = 0;i<10;i = i+1){
-		d = 29;
+	for(d = 0;d<11;d=d+1){
+		c = 12;
 	}
-	i = 10;
 }
+
