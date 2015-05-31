@@ -38,6 +38,7 @@ push any instructions to the stack
 */
 
 void stack_push(stack_inst * inst_to_add){
+	printf("ok\n");
 	stack_inst * iterator = first_stack;
 	if(first_stack == NULL){
 		stack_init(inst_to_add);

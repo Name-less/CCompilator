@@ -152,7 +152,7 @@ int ts_pop(char * name){
 			if(iterator->next != NULL){
 				(iterator->next)->before = iterator->before;
 			}
-			free(iterator);
+			//free(iterator);
 			iterator = NULL;
 			return 1;
                 }else{
@@ -218,7 +218,7 @@ int get_addr_from(char * name){
 	symbole * iterator = firstOne;
 	while(iterator != NULL){
 		if(strcmp(iterator->name,name) == 0){
-			printf("******************** %s %d ********\n",name,iterator->adress);
+			//printf("******************** %s %d ********\n",name,iterator->adress);
 			return iterator->adress;
 		}
 		iterator = iterator->next;
@@ -281,7 +281,6 @@ void pop_symb_zone(){
 	while(strcmp(lastIterator->name,(char *)"*") != 0){
 		symbole * aux = lastIterator;
 		lastIterator = lastIterator->before;
-//		printf("\n last %s \n",lastIterator->name);
 		ts_pop(aux->name);
 	}
 	if(lastIterator->before != NULL){

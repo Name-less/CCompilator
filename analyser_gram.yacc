@@ -68,13 +68,17 @@ Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
 Input Declaration |
 Input While |
 Input For |
-Input {/*push_symb_zone();*/} If {/*pop_symb_zone();*/} {printf("YACC:condition ok \n");}|
+Input {push_symb_zone();} If {
+ts_display();
+pop_symb_zone();
+ts_display();
+}|
 Input Function {printf("FIN FUNCTION \n");} |
 Input Appel_Function |
 Input Main;
 
 Main :
-tINTEGER tMAIN tPO Arg tPF tAO {push_symb_zone();} Input tAF {pop_symb_zone(); printf("YACC:mon main\n");
+tINTEGER tMAIN tPO Arg tPF tAO {push_symb_zone();} Input tAF {printf("seg fault\n");pop_symb_zone(); printf("YACC:mon main\n");
 				print_all_assembler_instructions();
 				parse_and_modify_file("toto","tata");
 } ;
@@ -149,8 +153,6 @@ Condition tAND Condition {
         stack_push_equ(tmp,2,1);
         if_add_from_where(get_number_of_line());
 	if_to_fill++;
-			printf("OOOOOOOOOOOOOKKKKKKKKK&&&&&&&&&&&&&&&&&&&&&&&&\n");
-	//stack_push_jump_false_cr(get_number_of_line()+3);
 };
 
 Exp :
@@ -164,6 +166,7 @@ tNOMBRE {
 				$$ = tmp;
 				stack_push_afc(tmp,$1);
 				printf("YACC: tNOMBRE saved %d\n\n", tmp);
+
 		} |
 tWORD {
 				if (exist($1) == -1 ){
@@ -190,6 +193,7 @@ LeftTerm tEGAL Exp {
 			if(get_addr_from($1) != -1){
 				stack_push_cop(get_addr_from($1),$3);
 				ts_pop_addr($3);
+
 			}else{
 				yyerror("Bad affectation at ligne ");
 				return 1;
@@ -199,9 +203,9 @@ LeftTerm tEGAL Exp {
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { 
-				if (ts_push($2,$1)!=-1)
+				if (ts_push($2,$1)!=-1){
 					printf("YACC:Declaration correcte\n"); 
-				else{
+				}else{
 					 yyerror("Variable already exist at ligne ");
                                         return 1;
 				}} |
