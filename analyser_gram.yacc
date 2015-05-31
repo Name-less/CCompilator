@@ -81,7 +81,11 @@ ts_display();
 pop_symb_zone();
 ts_display();
 }|
-Input Function {printf("FIN FUNCTION \n");} |
+Input {
+	push_symb_zone();
+}Function {
+	pop_symb_zone();
+} |
 Input Appel_Function |
 Input Main;
 
