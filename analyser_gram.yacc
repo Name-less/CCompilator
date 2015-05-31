@@ -66,8 +66,16 @@ Input:
 Input tNEWLINE {line_number++;} |
 Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
 Input Declaration |
-Input While |
-Input For |
+Input {
+	push_symb_zone();
+}While{
+	pop_symb_zone();
+} |
+Input{
+	push_symb_zone();
+} For{
+	pop_symb_zone();
+} |
 Input {push_symb_zone();} If {
 ts_display();
 pop_symb_zone();
