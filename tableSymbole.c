@@ -68,7 +68,6 @@ int ts_add_temp(){
 	}
 
 	if(insert_middle == 1){
-                printf("TS_ADD_TEMP: l'adresse d'insertion est \n\n");
                 symbole * newSymbole = (symbole *)malloc(sizeof(struct Symbole));
                 newSymbole->adress = last_adress+2;
                 char * buf_name = (char *)malloc(32);
