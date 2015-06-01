@@ -45,8 +45,6 @@ entity EX_ALU is
            S : out  STD_LOGIC_VECTOR (WORD_SIZE-1 downto 0); --result
            NOZC : out  STD_LOGIC_VECTOR (LITTLE_WORD_SIZE-1 downto 0));
 end EX_ALU;
-
-	--http://en.wikibooks.org/wiki/Category:VHDL_for_FPGA_Design
 	
 architecture Behavioral of EX_ALU is
 
@@ -71,7 +69,6 @@ begin
 					
 	-- Carry: attribution of the flag carry
 	NOZC(0) <= 	temp(WORD_SIZE) when Ctrl_Alu = "001" or Ctrl_Alu = "011" else
-		-- à tester la mul
 					'1' 	  when Ctrl_Alu = "010" and temp(TEMP_SIZE-1 downto WORD_SIZE) /= "00000000" else
 					'0';
 	

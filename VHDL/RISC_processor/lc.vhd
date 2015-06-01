@@ -35,31 +35,39 @@ entity lc is
 
     Port ( entree_lc : in std_logic_vector (7 downto 0);
            sortie_lc : out  STD_LOGIC_VECTOR (size_out-1 downto 0);
-			  rst : in std_logic;
-			  clk : in std_logic
+			  rst : in std_logic--;
+			  --clk : in std_logic -- à virer peut être
 			  );
 end lc;
 
 architecture Behavioral of lc is
 
 begin
-
-	process
-		begin
-
-		wait until clk'event and clk='1';
 		
-		--							STORE 0x08 Write				ALEA 0x0A
-		if ( rst = '0' or entree_lc = "00001000" or entree_lc = "00001010") then
-			sortie_lc <= "000";
-		-- for ctrl_alu       SUM      +               MUL       +                 SUB
-		elsif (entree_lc = "00000001" or entree_lc = "00000010" or entree_lc = "00000011") then 
-			sortie_lc <= entree_lc(2 downto 0);
-		else -- Read
-			sortie_lc <= "001";				 
-		end if;
 		
-	end process;
+--		process
+--		begin
+--
+--		wait until clk'event and clk='1';
+--		
+--		--							STORE 0x08 Write				ALEA 0x0A
+--		if ( rst = '0' or entree_lc = "00001000" or entree_lc = "00001010") then
+--			sortie_lc <= "000";
+--		-- for ctrl_alu       SUM      +               MUL       +                 SUB
+--		elsif (entree_lc = "00000001" or entree_lc = "00000010" or entree_lc = "00000011") then 
+--			sortie_lc <= entree_lc(2 downto 0);
+--		else -- sortie = Read
+--			sortie_lc <= "001";				 
+--		end if;
+--		
+--	end process;
+		
+		
+ 		--																STORE 0x08 Write				ALEA 0x0A
+			sortie_lc <= "000" 						when rst = '0' or entree_lc = "00001000" or entree_lc = "00001010" else
+		-- 													for ctrl_alu       SUM      +               MUL       +                 SUB
+						 	 entree_lc(2 downto 0) 	when entree_lc = "00000001" or entree_lc = "00000010" or entree_lc = "00000011" else
+						 	 "001"; -- read				 
 
 end Behavioral;
 

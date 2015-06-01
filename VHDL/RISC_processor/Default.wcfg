@@ -12,7 +12,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="99" />
+   <WVObjectSize size="78" />
    <wvobject fp_name="/test_processeur/uut/clk_processor" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk_processor</obj_property>
       <obj_property name="ObjectShortName">clk_processor</obj_property>
@@ -32,30 +32,16 @@
       <obj_property name="CustomSignalColor">#ffff00</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
+   <wvobject fp_name="/test_processeur/uut/a_buff" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">a_buff[7:0]</obj_property>
+      <obj_property name="ObjectShortName">a_buff[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
    <wvobject fp_name="/test_processeur/uut/a_li_di" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">a_li_di[7:0]</obj_property>
       <obj_property name="ObjectShortName">a_li_di[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/b_li_di" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">b_li_di[7:0]</obj_property>
-      <obj_property name="ObjectShortName">b_li_di[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/op_li_di" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">op_li_di[7:0]</obj_property>
-      <obj_property name="ObjectShortName">op_li_di[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/c_li_di" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">c_li_di[7:0]</obj_property>
-      <obj_property name="ObjectShortName">c_li_di[7:0]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#ffff00</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
@@ -67,44 +53,9 @@
       <obj_property name="CustomSignalColor">#ffff00</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/test_processeur/uut/b_di_ex" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">b_di_ex[7:0]</obj_property>
-      <obj_property name="ObjectShortName">b_di_ex[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/c_di_ex" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">c_di_ex[7:0]</obj_property>
-      <obj_property name="ObjectShortName">c_di_ex[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/op_di_ex" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">op_di_ex[7:0]</obj_property>
-      <obj_property name="ObjectShortName">op_di_ex[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
    <wvobject fp_name="/test_processeur/uut/a_ex_mem" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">a_ex_mem[7:0]</obj_property>
       <obj_property name="ObjectShortName">a_ex_mem[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/b_ex_mem" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">b_ex_mem[7:0]</obj_property>
-      <obj_property name="ObjectShortName">b_ex_mem[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/op_ex_mem" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">op_ex_mem[7:0]</obj_property>
-      <obj_property name="ObjectShortName">op_ex_mem[7:0]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#ffff00</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
@@ -116,9 +67,86 @@
       <obj_property name="CustomSignalColor">#ffff00</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
+   <wvobject fp_name="/test_processeur/uut/b_li_di" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b_li_di[7:0]</obj_property>
+      <obj_property name="ObjectShortName">b_li_di[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/b_buff" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b_buff[7:0]</obj_property>
+      <obj_property name="ObjectShortName">b_buff[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/b_di_ex" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b_di_ex[7:0]</obj_property>
+      <obj_property name="ObjectShortName">b_di_ex[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/b_ex_mem" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">b_ex_mem[7:0]</obj_property>
+      <obj_property name="ObjectShortName">b_ex_mem[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
    <wvobject fp_name="/test_processeur/uut/b_mem_re" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">b_mem_re[7:0]</obj_property>
       <obj_property name="ObjectShortName">b_mem_re[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/c_buff" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">c_buff[7:0]</obj_property>
+      <obj_property name="ObjectShortName">c_buff[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/c_li_di" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">c_li_di[7:0]</obj_property>
+      <obj_property name="ObjectShortName">c_li_di[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/c_di_ex" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">c_di_ex[7:0]</obj_property>
+      <obj_property name="ObjectShortName">c_di_ex[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/op_buff" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">op_buff[7:0]</obj_property>
+      <obj_property name="ObjectShortName">op_buff[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/op_li_di" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">op_li_di[7:0]</obj_property>
+      <obj_property name="ObjectShortName">op_li_di[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/op_di_ex" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">op_di_ex[7:0]</obj_property>
+      <obj_property name="ObjectShortName">op_di_ex[7:0]</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/op_ex_mem" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">op_ex_mem[7:0]</obj_property>
+      <obj_property name="ObjectShortName">op_ex_mem[7:0]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#ffff00</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
@@ -172,59 +200,33 @@
       <obj_property name="CustomSignalColor">#ffff00</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/test_processeur/uut/out_lc_ex" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">out_lc_ex[2:0]</obj_property>
-      <obj_property name="ObjectShortName">out_lc_ex[2:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/out_lc_mem" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">out_lc_mem[2:0]</obj_property>
-      <obj_property name="ObjectShortName">out_lc_mem[2:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/out_lc_re" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">out_lc_re[2:0]</obj_property>
-      <obj_property name="ObjectShortName">out_lc_re[2:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/a_buff" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">a_buff[7:0]</obj_property>
-      <obj_property name="ObjectShortName">a_buff[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/b_buff" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">b_buff[7:0]</obj_property>
-      <obj_property name="ObjectShortName">b_buff[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/c_buff" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">c_buff[7:0]</obj_property>
-      <obj_property name="ObjectShortName">c_buff[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/op_buff" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">op_buff[7:0]</obj_property>
-      <obj_property name="ObjectShortName">op_buff[7:0]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ffff00</obj_property>
-   </wvobject>
    <wvobject fp_name="/test_processeur/uut/alea_processor" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">alea_processor</obj_property>
       <obj_property name="ObjectShortName">alea_processor</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#ffff00</obj_property>
    </wvobject>
+   <wvobject fp_name="/test_processeur/uut/out_lc_ex" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">out_lc_ex[2:0]</obj_property>
+      <obj_property name="ObjectShortName">out_lc_ex[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/out_lc_mem" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">out_lc_mem[2:0]</obj_property>
+      <obj_property name="ObjectShortName">out_lc_mem[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_processeur/uut/out_lc_re" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">out_lc_re[2:0]</obj_property>
+      <obj_property name="ObjectShortName">out_lc_re[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
    <wvobject fp_name="/test_processeur/uut/cdiex_buff" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">cdiex_buff[7:0]</obj_property>
       <obj_property name="ObjectShortName">cdiex_buff[7:0]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/test_processeur/uut/inst_pointer/alea" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">alea</obj_property>
@@ -335,62 +337,6 @@
    <wvobject fp_name="/test_processeur/uut/instruction_memory/mem[11]" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">[11]</obj_property>
       <obj_property name="ObjectShortName">mem[11]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#0000ff</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/instruction_memory/mem[12]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[12]</obj_property>
-      <obj_property name="ObjectShortName">mem[12]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#0000ff</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/instruction_memory/mem[13]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[13]</obj_property>
-      <obj_property name="ObjectShortName">mem[13]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#0000ff</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/instruction_memory/mem[14]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[14]</obj_property>
-      <obj_property name="ObjectShortName">mem[14]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#0000ff</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/instruction_memory/mem[15]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[15]</obj_property>
-      <obj_property name="ObjectShortName">mem[15]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#0000ff</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/instruction_memory/mem[16]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[16]</obj_property>
-      <obj_property name="ObjectShortName">mem[16]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#0000ff</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/instruction_memory/mem[17]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[17]</obj_property>
-      <obj_property name="ObjectShortName">mem[17]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#0000ff</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/instruction_memory/mem[18]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[18]</obj_property>
-      <obj_property name="ObjectShortName">mem[18]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#0000ff</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/instruction_memory/mem[19]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[19]</obj_property>
-      <obj_property name="ObjectShortName">mem[19]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#0000ff</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
@@ -511,48 +457,6 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#ff00ff</obj_property>
    </wvobject>
-   <wvobject fp_name="/test_processeur/uut/registers_bench/bench[10]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[10]</obj_property>
-      <obj_property name="ObjectShortName">bench[10]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ff00ff</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/registers_bench/bench[11]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[11]</obj_property>
-      <obj_property name="ObjectShortName">bench[11]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ff00ff</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/registers_bench/bench[12]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[12]</obj_property>
-      <obj_property name="ObjectShortName">bench[12]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ff00ff</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/registers_bench/bench[13]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[13]</obj_property>
-      <obj_property name="ObjectShortName">bench[13]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ff00ff</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/registers_bench/bench[14]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[14]</obj_property>
-      <obj_property name="ObjectShortName">bench[14]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ff00ff</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/registers_bench/bench[15]" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">[15]</obj_property>
-      <obj_property name="ObjectShortName">bench[15]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#ff00ff</obj_property>
-   </wvobject>
    <wvobject fp_name="/test_processeur/uut/registers_bench/sigouta" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">sigouta[7:0]</obj_property>
       <obj_property name="ObjectShortName">sigouta[7:0]</obj_property>
@@ -565,26 +469,19 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#ff00ff</obj_property>
    </wvobject>
-   <wvobject fp_name="/test_processeur/uut/lc_ex/entree_lc" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">entree_lc[7:0]</obj_property>
-      <obj_property name="ObjectShortName">entree_lc[7:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/lc_ex/sortie_lc" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">sortie_lc[2:0]</obj_property>
-      <obj_property name="ObjectShortName">sortie_lc[2:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/test_processeur/uut/alu/a" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">a[7:0]</obj_property>
       <obj_property name="ObjectShortName">a[7:0]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/test_processeur/uut/alu/b" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">b[7:0]</obj_property>
       <obj_property name="ObjectShortName">b[7:0]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/test_processeur/uut/alu/ctrl_alu" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">ctrl_alu[2:0]</obj_property>
@@ -597,6 +494,7 @@
       <obj_property name="ObjectShortName">s[7:0]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/test_processeur/uut/alu/nozc" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">nozc[3:0]</obj_property>
@@ -610,15 +508,6 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#008080</obj_property>
    </wvobject>
-   <wvobject fp_name="/test_processeur/uut/lc_mem/entree_lc" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">entree_lc[7:0]</obj_property>
-      <obj_property name="ObjectShortName">entree_lc[7:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/lc_mem/sortie_lc" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">sortie_lc[2:0]</obj_property>
-      <obj_property name="ObjectShortName">sortie_lc[2:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/test_processeur/uut/data_memory/addr" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">addr[7:0]</obj_property>
       <obj_property name="ObjectShortName">addr[7:0]</obj_property>
@@ -630,6 +519,7 @@
       <obj_property name="ObjectShortName">inmem[7:0]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#00ffff</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/test_processeur/uut/data_memory/rw" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">rw</obj_property>
@@ -642,20 +532,5 @@
       <obj_property name="ObjectShortName">outmem[7:0]</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="CustomSignalColor">#00ffff</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/data_memory/bench" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">bench[0:15]</obj_property>
-      <obj_property name="ObjectShortName">bench[0:15]</obj_property>
-      <obj_property name="UseCustomSignalColor">true</obj_property>
-      <obj_property name="CustomSignalColor">#00ffff</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/lc_re/entree_lc" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">entree_lc[7:0]</obj_property>
-      <obj_property name="ObjectShortName">entree_lc[7:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/test_processeur/uut/lc_re/sortie_lc" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">sortie_lc[2:0]</obj_property>
-      <obj_property name="ObjectShortName">sortie_lc[2:0]</obj_property>
    </wvobject>
 </wave_config>

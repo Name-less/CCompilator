@@ -78,13 +78,13 @@ component li Port(
 									  CLK : in  STD_LOGIC);
 end component;
 
-component lc Port (
-						entree_lc : in std_logic_vector (7 downto 0);
-						sortie_lc : out  STD_LOGIC_vector (2 downto 0);
-						rst : in std_logic--;
-						--clk : in std_logic
-						);
-end component;
+-- component lc Port (
+						-- entree_lc : in std_logic_vector (7 downto 0);
+						-- sortie_lc : out  STD_LOGIC_vector (2 downto 0);
+						-- rst : in std_logic;
+						-- clk : in std_logic
+						-- );
+-- end component;
 
 component inst_pointer_ip port (
 						alea : in std_logic;
@@ -132,9 +132,11 @@ signal mux_mem : std_logic_vector (7 downto 0);
 signal mux_re : std_logic_vector (7 downto 0);
 
 ----------------- LC ----------------
-signal out_lc_ex : std_logic_vector (2 downto 0);
-signal out_lc_mem : std_logic_vector (2 downto 0);
-signal out_lc_re : std_logic_vector (2 downto 0);
+-- signal out_lc_ex : std_logic_vector (2 downto 0);
+-- signal out_lc_mem : std_logic_vector (2 downto 0);
+-- signal out_lc_re : std_logic_vector (2 downto 0);
+signal lc_mem : STD_LOGIC;
+signal lc_re : STD_LOGIC;
 
 ----------------- ALEA --------------
 signal A_BUFF : STD_LOGIC_VECTOR (7 downto 0);
@@ -153,34 +155,24 @@ begin
 --												in/8   		alea/1		 out/32     clk
 instruction_memory : li port map (inst_addr, alea_processor, li_di, clk_processor);
 
---											     @A/4           		@B/4   						@W/4       		W/1	 		 DATA/8    	RST/1 				CLK/1   	  QA/8    	QB/8 always linked to C_DI_EX
-registers_bench : di port map (B_BUFF(3 downto 0),C_BUFF(3 downto 0),A_MEM_RE(3 downto 0), out_lc_re(0), 	B_MEM_RE, rst_processor, clk_processor, mux_di,  cdiex_buff );
+--											     @A/4           		@B/4   			    @W/4   		     W/1	 	DATA/8    	RST/1 				CLK/1   	  QA/8    	QB/8 always linked to C_DI_EX
+registers_bench : di port map (B_BUFF(3 downto 0),C_BUFF(3 downto 0),A_MEM_RE(3 downto 0), lc_re, 	B_MEM_RE, rst_processor, clk_processor, mux_di,  cdiex_buff );
 
 --								A/8     B/8     Ctrl_alu/3     S/8   NOZC/4 never linked in graphics
-alu : ex_alu port map(B_DI_EX, C_DI_EX,  out_lc_ex , mux_ex, open);
+alu : ex_alu port map(B_DI_EX, C_DI_EX,  OP_DI_EX(2 downto 0) , mux_ex, open);
 
---                           addr/8  	IN/8        RW/1       RST/1          CLK/1      	  OUT/8
-data_memory : mem port map (mux_mem, B_EX_MEM, out_lc_mem(0), rst_processor, clk_processor, mux_re(7 downto 0));
+--                           addr/8  	IN/8     RW/1       RST/1          CLK/1      	  OUT/8
+data_memory : mem port map (mux_mem, B_EX_MEM, lc_mem, rst_processor, clk_processor, mux_re(7 downto 0));
 
 --								in/8       out/3			rst/1			clk/1
-lc_ex: lc port map ( OP_DI_EX, out_lc_ex, rst_processor);--, clk_processor);
+-- lc_ex: lc port map ( OP_DI_EX, out_lc_ex, rst_processor, clk_processor);
 
---									in/8     out/3			rst/1         clk/1
-lc_mem : lc port map ( OP_EX_MEM, out_lc_mem, rst_processor);--, clk_processor);
+-- --									in/8     out/3			rst/1         clk/1
+-- lc_mem : lc port map ( OP_EX_MEM, out_lc_mem, rst_processor, clk_processor);
 
---								in/8      out/3		rst/1          clk/1
-lc_re : lc port map ( OP_MEM_RE, out_lc_re, rst_processor);--, clk_processor);
-
-----								in/8       out/3			rst/1			clk/1
---lc_ex: lc port map ( OP_DI_EX, out_lc_ex, rst_processor, clk_processor);
---
-----									in/8     out/3			rst/1         clk/1
---lc_mem : lc port map ( OP_EX_MEM, out_lc_mem, rst_processor, clk_processor);
---
-----								in/8      out/3		rst/1          clk/1
---lc_re : lc port map ( OP_MEM_RE, out_lc_re, rst_processor, clk_processor);
-
-
+-- --								in/8      out/3		rst/1          clk/1
+-- lc_re : lc port map ( OP_MEM_RE, out_lc_re, rst_processor, clk_processor);
+--lc_re : lc port map ( "00000011", out_lc_re, rst_processor, clk_processor); -- test 
 
 --														alea/1				 rst/1			clk/1				pc/8
 inst_pointer : inst_pointer_ip port map (alea_processor, rst_processor, clk_processor,  inst_addr);
@@ -224,13 +216,16 @@ begin
 		OP_MEM_RE 	<= "00000000";
 		
 		---- Replace mux ----
---		mux_di <= "00000000"; multiple driver because it is out of a module
+--		mux_di <= "00000000";
 --		mux_ex <= "00000000";
 		mux_mem <= "00000000";
 --		mux_re <= "00000000";
 		
 		---- IP ----
 		alea_processor <= '0';
+		
+		---- LC ----
+		lc_re <= '0';
 	
 	else
 
@@ -285,6 +280,7 @@ begin
 				B_BUFF <= B_LI_DI;
 				C_BUFF <= C_LI_DI;
 				OP_BUFF <= OP_LI_DI;
+				
 			end if;
 		end if;
 		-------------------------------------------------------------------------------------------
@@ -297,13 +293,16 @@ begin
 				B_BUFF <= B_LI_DI;
 				C_BUFF <= C_LI_DI;
 				OP_BUFF <= OP_LI_DI;
+				
 			end if;
 		end if;
 		--*****************************************************************************************
 		
 		if (OP_LI_DI= X"01" or  OP_LI_DI = X"02" or OP_LI_DI = X"03") then
-			if (li_di(31 downto 24) = X"05" and (A_LI_DI = li_di(15 downto 8))) then -- Alea ADD -> AFC
+			if (li_di(31 downto 24) = X"05" and (A_LI_DI = li_di(15 downto 8))) then -- Alea AFC -> ADD
+			
 				alea_processor <= '1';
+				
 				A_BUFF <= A_LI_DI;
 				B_BUFF <= B_LI_DI;
 				C_BUFF <= C_LI_DI;
@@ -340,7 +339,7 @@ begin
 		A_DI_EX <= A_BUFF;
 		OP_DI_EX <= OP_BUFF;
 		C_DI_EX <= cdiex_buff ; -- cdiex_buff to be sur to not write into C_DI_EX
-										-- when an alea is present and if it is not a store
+										-- when an alea is present
 		---- Replace Mux module in DI ----
 		-- 				AFC						LOAD
 		if (OP_BUFF = X"06" or OP_BUFF = X"07") then
@@ -376,14 +375,23 @@ begin
 		--					STORE
 		if (OP_EX_MEM = X"08") then
 			mux_mem <= A_EX_MEM;
+			lc_mem <= '0';
 			B_MEM_RE <= B_EX_MEM;
 		--						 LOAD
 		elsif (OP_EX_MEM = X"07") then
 			mux_mem <= B_EX_MEM;
+			lc_mem <= '1';
 			B_MEM_RE <= mux_re;
 		else -- others operators
 			B_MEM_RE <= B_EX_MEM;
 		end if;
+		
+		---- Replace LC modules... ----
+			if OP_EX_MEM = X"08" or OP_EX_MEM = X"0A" then
+				lc_re <= '0';
+			else
+				lc_re <= '1';
+			end if;
 		
 		
 	end if;

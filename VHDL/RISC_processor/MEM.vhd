@@ -62,7 +62,7 @@ begin
 		if( rst = '0') then
 			bench <= (others => "00000000");
 			outMEM <= "00000000";
-		elsif( rw = '1') then -- lecture
+		elsif( rw = '1') then -- lecture  TODO
 			outMEM <= bench(conv_integer(addr));
 		elsif( rw = '0') then -- ecriture
 			bench(conv_integer(addr)) <= inMEM; 

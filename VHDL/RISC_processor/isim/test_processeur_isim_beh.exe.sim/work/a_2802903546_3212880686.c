@@ -41,10 +41,25 @@ static void work_a_2802903546_3212880686_p_0(char *t0)
     unsigned int t11;
     char *t12;
     char *t13;
-    char *t14;
-    char *t15;
-    char *t16;
-    char *t17;
+    int t15;
+    unsigned int t16;
+    unsigned int t17;
+    char *t18;
+    char *t19;
+    int t21;
+    unsigned int t22;
+    unsigned int t23;
+    char *t24;
+    char *t25;
+    int t27;
+    unsigned int t28;
+    unsigned int t29;
+    char *t30;
+    char *t31;
+    char *t32;
+    char *t33;
+    char *t34;
+    char *t35;
 
 LAB0:    xsi_set_current_line(55, ng0);
 
@@ -62,13 +77,31 @@ LAB6:    t7 = (t0 + 7270);
     t11 = (32U * t10);
     t12 = (t2 + t11);
     memcpy(t12, t7, 32U);
-    t13 = (t0 + 3840);
-    t14 = (t13 + 56U);
-    t15 = *((char **)t14);
-    t16 = (t15 + 56U);
-    t17 = *((char **)t16);
-    memcpy(t17, t1, 640U);
-    xsi_driver_first_trans_fast(t13);
+    t13 = (t0 + 7302);
+    t15 = (1 - 0);
+    t16 = (t15 * 1);
+    t17 = (32U * t16);
+    t18 = (t2 + t17);
+    memcpy(t18, t13, 32U);
+    t19 = (t0 + 7334);
+    t21 = (2 - 0);
+    t22 = (t21 * 1);
+    t23 = (32U * t22);
+    t24 = (t2 + t23);
+    memcpy(t24, t19, 32U);
+    t25 = (t0 + 7366);
+    t27 = (3 - 0);
+    t28 = (t27 * 1);
+    t29 = (32U * t28);
+    t30 = (t2 + t29);
+    memcpy(t30, t25, 32U);
+    t31 = (t0 + 3840);
+    t32 = (t31 + 56U);
+    t33 = *((char **)t32);
+    t34 = (t33 + 56U);
+    t35 = *((char **)t34);
+    memcpy(t35, t1, 640U);
+    xsi_driver_first_trans_fast(t31);
 
 LAB2:
 LAB1:    return;
@@ -111,7 +144,7 @@ LAB0:    t1 = (t0 + 3440U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(75, ng0);
+LAB2:    xsi_set_current_line(65, ng0);
 
 LAB6:    t2 = (t0 + 3760);
     *((int *)t2) = 1;
@@ -120,7 +153,7 @@ LAB6:    t2 = (t0 + 3760);
 LAB1:    return;
 LAB4:    t6 = (t0 + 3760);
     *((int *)t6) = 0;
-    xsi_set_current_line(78, ng0);
+    xsi_set_current_line(68, ng0);
     t2 = (t0 + 1192U);
     t4 = *((char **)t2);
     t3 = *((unsigned char *)t4);
@@ -128,7 +161,7 @@ LAB4:    t6 = (t0 + 3760);
     if (t5 != 0)
         goto LAB11;
 
-LAB13:    xsi_set_current_line(82, ng0);
+LAB13:    xsi_set_current_line(72, ng0);
     t2 = (t0 + 1672U);
     t4 = *((char **)t2);
     t2 = (t0 + 1032U);
@@ -173,7 +206,7 @@ LAB8:    t6 = (t0 + 1512U);
     t3 = t9;
     goto LAB10;
 
-LAB11:    xsi_set_current_line(79, ng0);
+LAB11:    xsi_set_current_line(69, ng0);
     t2 = (t0 + 1672U);
     t6 = *((char **)t2);
     t2 = (t0 + 1032U);

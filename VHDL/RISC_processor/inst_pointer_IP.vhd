@@ -53,7 +53,7 @@ begin
 			wait until clk'event and clk='1';
 			
 			-- reset the counter    x13 = 19 =  "00010011" if counter at the bottom of stack we loop
-			if rst='0' or counter = X"13" then
+			if rst='0' then --or counter = X"13" then
 				counter <= "00000000";
 			-- increase the instruction pointer
 			elsif alea = '0' then

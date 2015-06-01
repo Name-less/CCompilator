@@ -55,7 +55,6 @@ architecture Behavioral of DI is
 
 type memory is array ( 0 to MEM_SIZE-1 ) of std_logic_vector( WORD_SIZE-1 downto 0 ) ;
 signal bench : memory;
---bench <= (others => "00000000");
 signal Sigouta: std_logic_vector ( WORD_SIZE-1 downto 0);
 signal Sigoutb: std_logic_vector ( WORD_SIZE-1 downto 0);
 
@@ -66,9 +65,10 @@ process
 	
 		bench <= (
 				--test
-				0 => "10101010" ,
---				1 => "11000000" ,
---				2 => "11100000" ,
+				0 => X"01" ,
+				1 => X"DD" ,
+				5 => X"BB",
+				6 => X"EE",
 				--fin des valeurs de test
 				others => "00000000" );
 				
@@ -78,7 +78,7 @@ process
 				bench <= (others => "00000000" );
 				--Sigouta <= "00000000";
 				--Sigoutb <= "00000000";
-			elsif (w='1') then
+			elsif (w='0') then -- write!!!!! changed
 				bench(conv_integer(addrw)) <= data;
 			end if;
 	
@@ -86,11 +86,11 @@ end process;
 	
 	-- controle des aleas
 	Sigouta <= 	"00000000"						when (rst='0') else
-					data 								when ((w ='1') and (addrw = addra) and rst = '1') else
-					bench(conv_integer(addra))	when (((addrw /= addra) or (addrw /= addrb)) and w='0' and rst='1');
+					data 								when ((w ='0') and (addrw = addra) and rst = '1') else --alea
+					bench(conv_integer(addra))	when (((addrw /= addra) or (addrw /= addrb)) and w='1' and rst='1');
 	Sigoutb <= 	"00000000"						when (rst='0') else
-					data 								when ((w ='1') and (addrw = addrb) and rst = '1') else 		
-					bench(conv_integer(addrb))	when (((addrw /= addra) or (addrw /= addrb)) and w='0' and rst='1');
+					data 								when ((w ='0') and (addrw = addrb) and rst = '1') else --alea
+					bench(conv_integer(addrb))	when (((addrw /= addra) or (addrw /= addrb)) and w='1' and rst='1');
 		
 	
 	qa<=Sigouta;

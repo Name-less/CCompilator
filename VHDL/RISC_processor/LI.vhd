@@ -53,21 +53,11 @@ signal mem : memory ;
 begin
 
 	mem <= (
-		0 => X"06000300", -- AFC R0 03
+		0 => X"01020100",	-- ADD R2 R1 R0
+		1 => X"06000400", -- AFC R0 04
+		2 => X"0605CC00", -- AFC R5 CC
+		3 => X"05060500", -- COP R6 R5 ALEA
 		others => X"00000000" );
-
-	-- TODO insert test instructions different
--- mem(0) <= X"06000300"; -- AFC R0 03
---	mem(1) <= X"06010200"; -- AFC R1 02
---	mem(2) <= X"0606AA00"; -- AFC R6 aa
---	mem(3) <= X"05070600"; -- COP R7 R6
---	mem(4) <= X"01020100"; -- ADD R2 R1 R0
---	mem(5) <= X"01030201"; -- ADD R3 R2 R1
---	mem(6) <= X"02040100"; -- MUL R4 R1 R0
---	mem(7) <= X"05080400"; -- COP R8 R4
---	mem(8) <= X"03050001"; -- SOU R5 R0 R1
-	
-	
 
 	rom : process
 	begin
