@@ -213,12 +213,12 @@ tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG {
 					return 1;
 				}} |
 tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG { 
-				if (ts_push($2,$1)==-1)
+				if (ts_push($2,$1)==-1){
 					yyerror("Variable already exist at ligne ");
                                         return 1;
 				}} |
 tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG {
-				if (ts_push($2,$1)==-1)
+				if (ts_push($2,$1)==-1){
                                         yyerror("Variable already exist at ligne ");
                                         return 1;
 				}
@@ -233,7 +233,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/};
 
 DeclarationIntMemeLigne :
 tVIRG tWORD DeclarationIntMemeLigne {
-				if (ts_push($2,"int")==-1) 
+				if (ts_push($2,"int")==-1){ 
 					yyerror("Variable already exist at ligne ");
 					return 1;
 				}} |
