@@ -38,6 +38,7 @@ int if_to_fill = 0;
 %type <number> Exp
 %type <number> Condition
 %type <texte> LeftTerm
+%type <number> For
 
 %union{
 int number;
@@ -64,7 +65,7 @@ char * texte;
 Input: 
  |
 Input tNEWLINE {line_number++;} |
-Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
+Input Egalite tPOINTVIRG  |
 Input Declaration |
 Input {
 	push_symb_zone();
@@ -76,23 +77,19 @@ Input{
 } For{
 	pop_symb_zone();
 } |
-Input {push_symb_zone();} If {
-ts_display();
-pop_symb_zone();
-ts_display();
-}|
 Input {
-	push_symb_zone();
-}Function {
+push_symb_zone();
+} If {
 	pop_symb_zone();
-} |
+}|
+Input Function |
 Input Appel_Function |
 Input Main;
 
 Main :
-tINTEGER tMAIN tPO Arg tPF tAO {push_symb_zone();} Input tAF {printf("seg fault\n");pop_symb_zone(); printf("YACC:mon main\n");
+tINTEGER tMAIN tPO Arg tPF tAO {push_symb_zone();} Input tAF {pop_symb_zone();
 				print_all_assembler_instructions();
-				parse_and_modify_file("toto","tata");
+				parse_and_modify_file("toto","asm_with_jump");
 } ;
 
 Arg :
@@ -102,7 +99,9 @@ tINTEGER tPOINTER tWORD |
 ;
 
 If :
-tIF tPO Condition {
+tIF tPO {
+	stack_push_afc_cr(0);
+} Condition {
 	if_add_from_where(get_number_of_line());
 	stack_push_push_cr();
 } tPF tAO Input tAF{
@@ -177,28 +176,23 @@ tNOMBRE {
 				int tmp = ts_add_temp();
 				$$ = tmp;
 				stack_push_afc(tmp,$1);
-				printf("YACC: tNOMBRE saved %d\n\n", tmp);
 
 		} |
 tWORD {
 				if (exist($1) == -1 ){
-					//printf("YACC: tword ALREADY saved\n\n");
 					int tmp = ts_add_temp();
                                         $$ = tmp;
-                                        printf("YACC: avant push_cop\n");
                                         stack_push_cop(tmp,get_addr_from($1));
-					//printf("ici YACC: %d\n",get_addr_from($1));
 					}
 				else {
 					yyerror("Bad affectation at ligne ");
                                 	return 1;
-					//printf("YACC: erreur debut else tWORD\n");
 				}
 	};
 
 
 LeftTerm :
-tWORD {	printf("YACC: dans LeftTerm\n");};
+tWORD;
 
 Egalite :
 LeftTerm tEGAL Exp {	
@@ -209,29 +203,22 @@ LeftTerm tEGAL Exp {
 			}else{
 				yyerror("Bad affectation at ligne ");
 				return 1;
-				printf("YACC: erreur affectation inconnue\n");
 			}
 };
 
 Declaration :
 tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG { 
-				if (ts_push($2,$1)!=-1){
-					printf("YACC:Declaration correcte\n"); 
-				}else{
-					 yyerror("Variable already exist at ligne ");
-                                        return 1;
+				if (ts_push($2,$1)==-1){
+					yyerror("Variable already exist at ligne ");
+					return 1;
 				}} |
 tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG { 
-				if (ts_push($2,$1)!=-1)
-					printf("YACC: Declaration avant instanciation correcte\n");
-				else{
+				if (ts_push($2,$1)==-1){
 					yyerror("Variable already exist at ligne ");
                                         return 1;
 				}} |
 tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG {
-				if (ts_push($2,$1)!=-1)
-					printf("YACC: Declaration de tableau avant instanciation correcte\n");
-				else {
+				if (ts_push($2,$1)==-1){
                                         yyerror("Variable already exist at ligne ");
                                         return 1;
 				}
@@ -246,9 +233,7 @@ tCHAR tWORD tEGAL tCO tNOMBRE tCF tPOINTVIRG*/};
 
 DeclarationIntMemeLigne :
 tVIRG tWORD DeclarationIntMemeLigne {
-				if (ts_push($2,"int")!=-1) 
-					printf("YACC: Declaration ligne correcte\n"); 
-				else{
+				if (ts_push($2,"int")==-1){ 
 					yyerror("Variable already exist at ligne ");
 					return 1;
 				}} |
@@ -261,7 +246,6 @@ tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne {
 				else{
 					yyerror("Variable already exist at ligne ");
 					return 1;
-					//printf("YACC: La variable existe déjà\n");
 				}} |
 				;
 
@@ -272,7 +256,9 @@ While :
 tWHILE{
 	while_add_from_to(get_number_of_line());
 	}
-	tPO Condition {
+	tPO {
+	stack_push_afc_cr(0);
+} Condition {
 	if_add_from_where(get_number_of_line());
 	stack_push_push_cr();
 } tPF tAO Input tAF {
@@ -284,19 +270,30 @@ tWHILE{
 
 For :
 tFOR tPO Egalite tPOINTVIRG {
-        while_add_from_to(get_number_of_line());
+	stack_push_afc_cr(0);
+	while_add_from_to(get_number_of_line());
 } Condition {
         if_add_from_where(get_number_of_line());
         stack_push_push_cr();
-} tPOINTVIRG Egalite tPF tAO Input tAF{
-                stack_push_pop_cr();
-                stack_push_nop();
-        while_fill_from_where(get_number_of_line());
+} tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF{
+         if(get_addr_from($9) != -1){
+                     stack_push_cop(get_addr_from($9),$11);
+                     ts_pop_addr($11);
+         }else{
+                     yyerror("Bad affectation at ligne ");
+                     return 1;
+         }
+
+	stack_push_pop_cr();
+        stack_push_nop();
+        
+	while_fill_from_where(get_number_of_line());
         if_fill_from_to(get_number_of_line()+1);
 };
 
 Function :
 tINTEGER tWORD {
+	push_symb_zone();
 	printf("add_function %s \n",$2);
 	add_function($2,get_number_of_line());
 	printf("end add_function \n");
@@ -306,6 +303,7 @@ tINTEGER tWORD {
 	stack_push_jump_return();
 } tAF {
 	raz_empty_register();
+	pop_symb_zone();
 } |
 tCHAR tWORD tPO Arguments_Declaration tPF tAO Input tAF |
 tVOID tWORD tPO Arguments_Declaration tPF tAO Input tAF;
@@ -315,7 +313,7 @@ tWORD tPO Arguments tPF {
 	printf("if try %d %s \n",function_exist($1),$1);
 	if(function_exist($1) == 1){
 		add_stack_value(get_number_of_line()+3);
-		stack_push_afc(stack_pointer_adress,get_number_of_line()+4);
+		stack_push_afc_sp(get_number_of_line()+4);
 		stack_push_push_sp();
 		stack_push_jump(get_addr_function($1));
 	}
@@ -341,7 +339,7 @@ tNOMBRE tVIRG {
 	stack_push_afc_register(get_empty_register(),$1);
 }
 Arguments |
-tWORD |
+tWORD  |
 tINTEGER |
 tNOMBRE {
 	stack_push_afc_register(get_empty_register(),$1);

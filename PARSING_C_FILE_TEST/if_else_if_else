@@ -1,0 +1,45 @@
+AFC 6 4 //on met 4 dans d 
+COP 4 6
+
+AFC CR 0 //on a une condition, on réinitialise CR
+
+COP 6 4 // on met d dans une variable temporaire
+AFC 10 5  // on met 5 dans une variable temporaire
+EQU 12 6 10  // on met le résultat associé à d == 5 dans une variable temporaire
+ADD CR CR 12 // on ajoute à CR (dans à 0) le résultat de la comparaison
+JMF 11 CR // ne fonction de se résultat on saute ou non à la ligne 11
+PUSH CR // on met CR dans la pile
+
+AFC 14 13 //on met 13 dans une variable temporaire
+COP 2 14 // puis 13 dans c
+
+POP CR // on récupére la valeur de CR correspondant à la condition d == 5
+
+MUL CR CR -1 // ligne 11
+ADD CR CR 1 // on met dans CR 0 si CR valait 1, et 1 si CR vallait 0
+JMF 28 CR // on est au ELSE IF, on JUMP directement si on est passé dans le corps du IF
+AFC CR 0 // Sinon on met 0 dans CR et on teste la condition du ELSE IF
+
+COP 16 4 // condition similaire à la précédente
+AFC 14 6 
+EQU 18 16 14 
+ADD CR CR 18
+JMF 22 CR
+
+PUSH CR
+
+AFC 20 15 // corps du ELSE IF 
+COP 2 20
+
+POP CR
+
+MUL CR CR -1
+ADD CR CR 1
+JMF 28 CR // pareil pour le ELSE, on vérifie si on est passé dans le corps du ELSE IF ou pas
+AFC 22 17 //corps du ELSE
+COP 2 22
+
+AFC 24 4 //hors du bloc IF ELSE IF ELSE
+COP 4 24
+
+

@@ -1,7 +1,0 @@
-AFC 4 50 // met 50 dans une variable temporaire
-COP 2 4 // met 50 dans C (adresse de C : 2)
-AFC 6 40 // met 40 dans une variable temporaire
-AFC 4 60 // met 60 dans une variable temporaire
-COP 12 4 // met 60 dans d (adresse de D : 12)
-COP 4 12 // met ce qu'il y a dans D dans la variable temporaire à l'adresse 4
-COP 10 4 // met ce qu'il y a à l'adresse 4, donc 60, dans la variable à l'adresse 10, soit E (adresse de E = 10)

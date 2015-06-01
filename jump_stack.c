@@ -108,10 +108,9 @@ void while_add_from_to(int arg){
         iterator->next_if = to_add;
 }
 
-void parse_and_modify_file(char * file_name,char * new_file){ //après avoir fait printer les instructions asm via print_all_sembleur
+void parse_and_modify_file(char * file_name,char * new_file){ 
+//après avoir fait printer les instructions asm via print_all_sembleur
 //on lance parse_and_modify_file pour rajouter les sauts au fichier file_name dans new_file
-	// ANTHO: commenté car genant pour la compile
-	//int current_delta_line = 0; 
 	int current_line = 0;
 	char line[256];
 
@@ -135,7 +134,7 @@ void parse_and_modify_file(char * file_name,char * new_file){ //après avoir fai
 			//printf("while loop nbr line %d actual from where %d \n",current_line,iterator->from_where);
 			if(current_line+1 == iterator->from_where){
 				printf("PUT something \n");
-		 		fprintf(fp,"JMF %d CR\n",iterator->from_to);	
+		 		fprintf(fp,"JMP %d\n",iterator->from_to);	
 				aux->next_if = iterator->next_if;
 				next_line = 1;
 			}

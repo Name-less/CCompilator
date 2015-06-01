@@ -1,0 +1,18 @@
+AFC 2 R0 // premiére fonction atteinte, elle prend un argument
+COP 6 2 // on récupére l'argument qui est dans R0 et on le met dans a
+COP 4 6 // on copie la valeur de a dans d
+POP SP // on récupére la tête de pile pour la mettre dans SP
+JMP SP // et on saute à la nouvelle valeur de SP qui est censé être le retour de la fonction
+
+AFC R0 11 //seconde fonction qui appelle une autre fonction
+AFC SP 10 // donc on met dans R0 l'argument (ici 11)
+PUSH SP //et juste avant de push SP on lui donne la valeur de l'adresse de retour
+JMP 0 // puis on saute à la fonction appelée
+POP SP // lorsque l'on revient on dépile SP pour revenir à la fonction
+JMP SP // appelante à laquelle on jump ensuite
+
+AFC SP 15 //appel de la fonction function_2 donc on met dans SP l'adresse de retour
+PUSH SP // avant de la mettre dans la pile
+JMP 5 // et de sauter à la fonction appelée
+
+

@@ -1,0 +1,30 @@
+AFC 6 4 
+COP 2 6 // correspond à d = 4
+
+AFC 6 0 //initialise c à 0
+COP 4 6
+
+AFC CR 0 // met 0 dans le CR
+
+COP 6 4 // teste de la condition
+AFC 10 11 
+INF CR 6 10
+JMF 18 CR // si la condition est fausse on passe directement aprés le corps du for
+
+PUSH CR // on garde CR dans la pile
+
+COP 12 4 // on prépare la condtion, en mettant dans une variable
+AFC 14 1 // temporaire c+1
+ADD 12 12 14
+
+AFC 16 13 //corps de la boucle for
+COP 2 16
+
+COP 4 12 // fin du corps, met dans c la valeur de la variable temporaire possédant c+1
+
+POP CR // on restaure CR
+
+JMP 5 // on boucle en haut de la boucle pour tester à nouveau la condition
+NOP // instruction inutile
+
+

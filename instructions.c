@@ -38,7 +38,6 @@ push any instructions to the stack
 */
 
 void stack_push(stack_inst * inst_to_add){
-	printf("ok\n");
 	stack_inst * iterator = first_stack;
 	if(first_stack == NULL){
 		stack_init(inst_to_add);
@@ -127,8 +126,11 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
                 fprintf(fp,"POP CR\n");
         }else if(INST_PUSH_CR == inst->instruct_params[0]){
                 fprintf(fp,"PUSH CR\n");
-        } 
-
+        }else if(INST_AFC_CR == inst->instruct_params[0]){
+                fprintf(fp,"AFC CR %d \n",inst->instruct_params[1]);
+        }else if(INST_AFC_SP == inst->instruct_params[0]){
+                fprintf(fp,"AFC SP %d \n",inst->instruct_params[1]);
+        }
    
    	fclose(fp);
 }
@@ -156,6 +158,20 @@ void stack_push_inv_cr(int arg1){
 void stack_push_push_cr(int arg1){
         stack_inst * new_inst = malloc(sizeof(stack_inst));
         new_inst->instruct_params[0]=INST_PUSH_CR;
+        stack_push(new_inst);
+}
+
+void stack_push_afc_cr(int arg){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_AFC_CR;
+	new_inst->instruct_params[1]=arg;
+        stack_push(new_inst);
+}
+
+void stack_push_afc_sp(int arg){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_AFC_SP;
+        new_inst->instruct_params[1]=arg;
         stack_push(new_inst);
 }
 
