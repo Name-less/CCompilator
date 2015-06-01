@@ -26,6 +26,7 @@
 #define INST_PUSH_CR 25
 #define INST_POP_CR 26
 #define INST_AFC_CR 27
+#define INST_AFC_SP 28
 
 int nbre_line;
 
@@ -52,6 +53,7 @@ void stack_push_jump_return();
 void stack_push_push_sp();
 void stack_push_pop_sp();
 void stack_push_pop();
+void stack_push_afc_sp(int arg);
 void stack_push_afc_cr(int arg);
 void stack_push_pop_cr();
 void stack_push_push_cr();

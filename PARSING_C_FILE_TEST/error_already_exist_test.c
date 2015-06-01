@@ -1,5 +1,6 @@
 int main(){
-	a = 1;
+	int a;
+	int a;
 }
 
 

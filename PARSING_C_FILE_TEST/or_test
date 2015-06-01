@@ -1,0 +1,25 @@
+AFC 6 4 
+COP 2 6
+
+AFC CR 0 
+
+COP 6 2
+AFC 10 5 
+EQU 12 6 10 
+ADD CR CR 12
+
+COP 14 2
+AFC 16 6 
+EQU 18 14 16 
+ADD CR CR 18
+// Le début est identique à l'exemple précédent avec le OR
+
+ADD 20 12 18 // ici on somme le résultat associé aux deux conditions dans une variable
+
+EQU CR 20 2 // et on compare le résultat à 2, que l'on met dans CR, pour savoir si l'on saute ou pas
+JMF 18 CR // on ne sautera que si les deux consitions sont identiques
+
+PUSH CR
+AFC 22 13 // corps du IF
+COP 4 22
+POP CR

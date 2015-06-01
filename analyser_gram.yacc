@@ -65,7 +65,7 @@ char * texte;
 Input: 
  |
 Input tNEWLINE {line_number++;} |
-Input Egalite tPOINTVIRG {printf("YACC:egalite ok \n");} |
+Input Egalite tPOINTVIRG  |
 Input Declaration |
 Input {
 	push_symb_zone();
@@ -77,16 +77,12 @@ Input{
 } For{
 	pop_symb_zone();
 } |
-Input {push_symb_zone();} If {
-ts_display();
-pop_symb_zone();
-ts_display();
-}|
 Input {
-	push_symb_zone();
-}Function {
+push_symb_zone();
+} If {
 	pop_symb_zone();
-} |
+}|
+Input Function |
 Input Appel_Function |
 Input Main;
 
@@ -313,6 +309,7 @@ tFOR tPO Egalite tPOINTVIRG {
 
 Function :
 tINTEGER tWORD {
+	push_symb_zone();
 	printf("add_function %s \n",$2);
 	add_function($2,get_number_of_line());
 	printf("end add_function \n");
@@ -322,6 +319,7 @@ tINTEGER tWORD {
 	stack_push_jump_return();
 } tAF {
 	raz_empty_register();
+	pop_symb_zone();
 } |
 tCHAR tWORD tPO Arguments_Declaration tPF tAO Input tAF |
 tVOID tWORD tPO Arguments_Declaration tPF tAO Input tAF;
@@ -331,7 +329,7 @@ tWORD tPO Arguments tPF {
 	printf("if try %d %s \n",function_exist($1),$1);
 	if(function_exist($1) == 1){
 		add_stack_value(get_number_of_line()+3);
-		stack_push_afc(stack_pointer_adress,get_number_of_line()+4);
+		stack_push_afc_sp(get_number_of_line()+4);
 		stack_push_push_sp();
 		stack_push_jump(get_addr_function($1));
 	}
@@ -357,7 +355,7 @@ tNOMBRE tVIRG {
 	stack_push_afc_register(get_empty_register(),$1);
 }
 Arguments |
-tWORD |
+tWORD  |
 tINTEGER |
 tNOMBRE {
 	stack_push_afc_register(get_empty_register(),$1);
