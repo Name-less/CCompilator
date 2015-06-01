@@ -1,7 +1,7 @@
 int main(){
 	int c;
 	int d;
-	for(d = 0;d<11;d=d+1){
+	if(d == 5 || c == 7 && c == d){
 		c = 13;
 	}
 }

@@ -93,7 +93,7 @@ Input Main;
 Main :
 tINTEGER tMAIN tPO Arg tPF tAO {push_symb_zone();} Input tAF {pop_symb_zone(); printf("YACC:mon main\n");
 				print_all_assembler_instructions();
-				parse_and_modify_file("toto","tata");
+				parse_and_modify_file("toto","asm_with_jump");
 } ;
 
 Arg :
@@ -103,7 +103,9 @@ tINTEGER tPOINTER tWORD |
 ;
 
 If :
-tIF tPO Condition {
+tIF tPO {
+	stack_push_afc_cr(0);
+} Condition {
 	if_add_from_where(get_number_of_line());
 	stack_push_push_cr();
 } tPF tAO Input tAF{
@@ -273,7 +275,9 @@ While :
 tWHILE{
 	while_add_from_to(get_number_of_line());
 	}
-	tPO Condition {
+	tPO {
+	stack_push_afc_cr(0);
+} Condition {
 	if_add_from_where(get_number_of_line());
 	stack_push_push_cr();
 } tPF tAO Input tAF {
@@ -285,14 +289,12 @@ tWHILE{
 
 For :
 tFOR tPO Egalite tPOINTVIRG {
+	stack_push_afc_cr(0);
 	while_add_from_to(get_number_of_line());
 } Condition {
         if_add_from_where(get_number_of_line());
         stack_push_push_cr();
 } tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF{
-        printf("hum1 %s\n",$9);
-        printf("hum2 %d\n",$11);
-
          if(get_addr_from($9) != -1){
                      stack_push_cop(get_addr_from($9),$11);
                      ts_pop_addr($11);

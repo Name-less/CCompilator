@@ -33,7 +33,7 @@ lex.yy.c: analyser_lexical.lex
 	flex $^
 
 clean:
-	rm -f $(OBJECTS) $(TARGETS) lex.yy.c y.tab.c toto tata
+	rm -f $(OBJECTS) $(TARGETS) lex.yy.c y.tab.c toto asm_with_jump
 
 run:
 	./analyser

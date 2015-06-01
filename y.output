@@ -16,21 +16,21 @@ Terminals unused in grammar
 
 
 State 1 conflicts: 1 shift/reduce
-State 68 conflicts: 1 shift/reduce
-State 98 conflicts: 1 shift/reduce
-State 99 conflicts: 1 shift/reduce
-State 100 conflicts: 4 shift/reduce
-State 101 conflicts: 1 shift/reduce
-State 112 conflicts: 2 shift/reduce
-State 113 conflicts: 2 shift/reduce
-State 144 conflicts: 1 shift/reduce
-State 149 conflicts: 1 shift/reduce
+State 67 conflicts: 1 shift/reduce
+State 92 conflicts: 1 shift/reduce
+State 93 conflicts: 1 shift/reduce
+State 94 conflicts: 4 shift/reduce
+State 95 conflicts: 1 shift/reduce
+State 126 conflicts: 2 shift/reduce
+State 127 conflicts: 2 shift/reduce
+State 142 conflicts: 1 shift/reduce
 State 155 conflicts: 1 shift/reduce
 State 156 conflicts: 1 shift/reduce
-State 160 conflicts: 1 shift/reduce
+State 162 conflicts: 1 shift/reduce
 State 163 conflicts: 1 shift/reduce
-State 184 conflicts: 1 shift/reduce
-State 185 conflicts: 1 shift/reduce
+State 168 conflicts: 1 shift/reduce
+State 186 conflicts: 1 shift/reduce
+State 187 conflicts: 1 shift/reduce
 
 
 Grammar
@@ -73,140 +73,144 @@ Grammar
 
    22 $@7: %empty
 
-   23 If: tIF tPO Condition $@6 tPF tAO Input tAF $@7 Else
+   23 $@8: %empty
 
-   24 $@8: %empty
+   24 If: tIF tPO $@6 Condition $@7 tPF tAO Input tAF $@8 Else
 
-   25 Else: tELSE $@8 tAO Input tAF
+   25 $@9: %empty
 
-   26 $@9: %empty
+   26 Else: tELSE $@9 tAO Input tAF
 
-   27 Else: tELSE $@9 If
-   28     | %empty
+   27 $@10: %empty
 
-   29 Condition: Exp tEGALEGAL Exp
-   30          | Exp tNOTEGAL Exp
-   31          | Exp tSUP Exp
-   32          | Exp tINF Exp
-   33          | Exp tSUP tEGAL Exp
-   34          | Exp tINF tEGAL Exp
-   35          | Condition tOR Condition
-   36          | Condition tAND Condition
+   28 Else: tELSE $@10 If
+   29     | %empty
 
-   37 Exp: Exp tPLUS Exp
-   38    | Exp tDIV Exp
-   39    | Exp tMINUS Exp
-   40    | Exp tPOINTER Exp
-   41    | tMINUS Exp
-   42    | tNOMBRE
-   43    | tWORD
+   30 Condition: Exp tEGALEGAL Exp
+   31          | Exp tNOTEGAL Exp
+   32          | Exp tSUP Exp
+   33          | Exp tINF Exp
+   34          | Exp tSUP tEGAL Exp
+   35          | Exp tINF tEGAL Exp
+   36          | Condition tOR Condition
+   37          | Condition tAND Condition
 
-   44 LeftTerm: tWORD
+   38 Exp: Exp tPLUS Exp
+   39    | Exp tDIV Exp
+   40    | Exp tMINUS Exp
+   41    | Exp tPOINTER Exp
+   42    | tMINUS Exp
+   43    | tNOMBRE
+   44    | tWORD
 
-   45 Egalite: LeftTerm tEGAL Exp
+   45 LeftTerm: tWORD
 
-   46 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG
-   47            | tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
-   48            | tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
-   49            | error tPOINTVIRG
+   46 Egalite: LeftTerm tEGAL Exp
 
-   50 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne
-   51                        | %empty
+   47 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG
+   48            | tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   49            | tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
+   50            | error tPOINTVIRG
 
-   52 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne
-   53                            | %empty
+   51 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne
+   52                        | %empty
 
-   54 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
-   55                           | %empty
+   53 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne
+   54                            | %empty
 
-   56 $@10: %empty
+   55 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
+   56                           | %empty
 
    57 $@11: %empty
 
-   58 While: tWHILE $@10 tPO Condition $@11 tPF tAO Input tAF
+   58 $@12: %empty
 
-   59 $@12: %empty
+   59 $@13: %empty
 
-   60 $@13: %empty
+   60 While: tWHILE $@11 tPO $@12 Condition $@13 tPF tAO Input tAF
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
+   61 $@14: %empty
 
-   62 $@14: %empty
+   62 $@15: %empty
 
-   63 $@15: %empty
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 Condition $@15 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
-   64 Function: tINTEGER tWORD $@14 tPO Arguments_Declaration tPF tAO Input $@15 tAF
-   65         | tCHAR tWORD tPO Arguments_Declaration tPF tAO Input tAF
-   66         | tVOID tWORD tPO Arguments_Declaration tPF tAO Input tAF
+   64 $@16: %empty
 
-   67 Appel_Function: tWORD tPO Arguments tPF
+   65 $@17: %empty
 
-   68 $@16: %empty
+   66 Function: tINTEGER tWORD $@16 tPO Arguments_Declaration tPF tAO Input $@17 tAF
+   67         | tCHAR tWORD tPO Arguments_Declaration tPF tAO Input tAF
+   68         | tVOID tWORD tPO Arguments_Declaration tPF tAO Input tAF
 
-   69 Arguments_Declaration: tINTEGER tWORD $@16 tVIRG Arguments_Declaration
-   70                      | tVOID tWORD tVIRG Arguments_Declaration
-   71                      | tCHAR tWORD tVIRG Arguments_Declaration
+   69 Appel_Function: tWORD tPO Arguments tPF
 
-   72 $@17: %empty
+   70 $@18: %empty
 
-   73 Arguments_Declaration: tINTEGER tWORD $@17 Arguments_Declaration
-   74                      | %empty
+   71 Arguments_Declaration: tINTEGER tWORD $@18 tVIRG Arguments_Declaration
+   72                      | tVOID tWORD tVIRG Arguments_Declaration
+   73                      | tCHAR tWORD tVIRG Arguments_Declaration
 
-   75 Arguments: tWORD tVIRG Arguments
+   74 $@19: %empty
 
-   76 $@18: %empty
+   75 Arguments_Declaration: tINTEGER tWORD $@19 Arguments_Declaration
+   76                      | %empty
 
-   77 Arguments: tNOMBRE tVIRG $@18 Arguments
-   78          | tWORD
-   79          | tINTEGER
-   80          | tNOMBRE
-   81          | %empty
+   77 Arguments: tWORD tVIRG Arguments
+
+   78 $@20: %empty
+
+   79 Arguments: tNOMBRE tVIRG $@20 Arguments
+   80          | tWORD
+   81          | tINTEGER
+   82          | tNOMBRE
+   83          | %empty
 
 
 Terminals, with rules where they appear
 
 $end (0) 0
-error (256) 49
-tINTEGER (258) 16 17 18 19 46 47 48 64 69 73 79
-tCHAR (259) 65 71
-tVOID (260) 66 70
+error (256) 50
+tINTEGER (258) 16 17 18 19 47 48 49 66 71 75 81
+tCHAR (259) 67 73
+tVOID (260) 68 72
 tNULL (261)
 tCONST (262)
 tMAIN (263) 16
-tIF (264) 23
-tELSE (265) 25 27
-tWHILE (266) 58
-tFOR (267) 61
-tAO (268) 16 23 25 58 61 64 65 66
-tAF (269) 16 23 25 58 61 64 65 66
-tCO (270) 18 48 54
-tCF (271) 18 48 54
-tPO (272) 16 23 58 61 64 65 66 67
-tPF (273) 16 23 58 61 64 65 66 67
+tIF (264) 24
+tELSE (265) 26 28
+tWHILE (266) 60
+tFOR (267) 63
+tAO (268) 16 24 26 60 63 66 67 68
+tAF (269) 16 24 26 60 63 66 67 68
+tCO (270) 18 49 55
+tCF (271) 18 49 55
+tPO (272) 16 24 60 63 66 67 68 69
+tPF (273) 16 24 60 63 66 67 68 69
 tSQ (274)
 tDQ (275)
-tDIV (276) 38
-tPOINTVIRG (277) 3 46 47 48 49 61
+tDIV (276) 39
+tPOINTVIRG (277) 3 47 48 49 50 63
 tARROW (278)
 tPOINT (279)
-tPLUS (280) 37
-tMINUS (281) 39 41
+tPLUS (280) 38
+tMINUS (281) 40 42
 tMOD (282)
 tEXP (283)
-tSUP (284) 31 33
-tINF (285) 32 34
-tVIRG (286) 50 52 54 69 70 71 75 77
-tEGALEGAL (287) 29
-tOR (288) 35
-tAND (289) 36
-tNOTEGAL (290) 30
-tEGAL (291) 33 34 45 47 52 61
+tSUP (284) 32 34
+tINF (285) 33 35
+tVIRG (286) 51 53 55 71 72 73 77 79
+tEGALEGAL (287) 30
+tOR (288) 36
+tAND (289) 37
+tNOTEGAL (290) 31
+tEGAL (291) 34 35 46 48 53 63
 tADDR (292)
-tPOINTER (293) 19 40
+tPOINTER (293) 19 41
 tSPACE (294)
-tNOMBRE (295) 42 48 54 77 80
-tWORD (296) 17 18 19 43 44 46 47 48 50 52 54 61 64 65 66 67 69 70 71
-    73 75 78
+tNOMBRE (295) 43 49 55 79 82
+tWORD (296) 17 18 19 44 45 47 48 49 51 53 55 63 66 67 68 69 71 72 73
+    75 77 80
 tRETURN (297)
 tNEWLINE (298) 2
 tCOMMENT (299)
@@ -220,7 +224,7 @@ $accept (47)
     on left: 0
 Input (48)
     on left: 1 2 3 4 6 8 10 12 13 14, on right: 0 2 3 4 6 8 10 12 13
-    14 16 23 25 58 61 64 65 66
+    14 16 24 26 60 63 66 67 68
 $@1 (49)
     on left: 5, on right: 6
 $@2 (50)
@@ -236,64 +240,68 @@ $@5 (54)
 Arg (55)
     on left: 17 18 19 20, on right: 16
 If (56)
-    on left: 23, on right: 10 27
+    on left: 24, on right: 10 28
 $@6 (57)
-    on left: 21, on right: 23
+    on left: 21, on right: 24
 $@7 (58)
-    on left: 22, on right: 23
-Else (59)
-    on left: 25 27 28, on right: 23
-$@8 (60)
-    on left: 24, on right: 25
+    on left: 22, on right: 24
+$@8 (59)
+    on left: 23, on right: 24
+Else (60)
+    on left: 26 28 29, on right: 24
 $@9 (61)
-    on left: 26, on right: 27
-Condition (62)
-    on left: 29 30 31 32 33 34 35 36, on right: 23 35 36 58 61
-Exp (63)
-    on left: 37 38 39 40 41 42 43, on right: 29 30 31 32 33 34 37 38
-    39 40 41 45 47 52 61
-LeftTerm (64)
-    on left: 44, on right: 45
-Egalite (65)
-    on left: 45, on right: 3 61
-Declaration (66)
-    on left: 46 47 48 49, on right: 4
-DeclarationIntMemeLigne (67)
-    on left: 50 51, on right: 46 50
-DeclarationIntEgalMemeLigne (68)
-    on left: 52 53, on right: 47 52
-DeclarationIntTabMemeLigne (69)
-    on left: 54 55, on right: 48 54
-While (70)
-    on left: 58, on right: 6
-$@10 (71)
-    on left: 56, on right: 58
+    on left: 25, on right: 26
+$@10 (62)
+    on left: 27, on right: 28
+Condition (63)
+    on left: 30 31 32 33 34 35 36 37, on right: 24 36 37 60 63
+Exp (64)
+    on left: 38 39 40 41 42 43 44, on right: 30 31 32 33 34 35 38 39
+    40 41 42 46 48 53 63
+LeftTerm (65)
+    on left: 45, on right: 46
+Egalite (66)
+    on left: 46, on right: 3 63
+Declaration (67)
+    on left: 47 48 49 50, on right: 4
+DeclarationIntMemeLigne (68)
+    on left: 51 52, on right: 47 51
+DeclarationIntEgalMemeLigne (69)
+    on left: 53 54, on right: 48 53
+DeclarationIntTabMemeLigne (70)
+    on left: 55 56, on right: 49 55
+While (71)
+    on left: 60, on right: 6
 $@11 (72)
-    on left: 57, on right: 58
-For (73)
-    on left: 61, on right: 8
-$@12 (74)
-    on left: 59, on right: 61
-$@13 (75)
-    on left: 60, on right: 61
-Function (76)
-    on left: 64 65 66, on right: 12
-$@14 (77)
-    on left: 62, on right: 64
-$@15 (78)
-    on left: 63, on right: 64
-Appel_Function (79)
-    on left: 67, on right: 13
-Arguments_Declaration (80)
-    on left: 69 70 71 73 74, on right: 64 65 66 69 70 71 73
-$@16 (81)
-    on left: 68, on right: 69
-$@17 (82)
-    on left: 72, on right: 73
-Arguments (83)
-    on left: 75 77 78 79 80 81, on right: 67 75 77
-$@18 (84)
-    on left: 76, on right: 77
+    on left: 57, on right: 60
+$@12 (73)
+    on left: 58, on right: 60
+$@13 (74)
+    on left: 59, on right: 60
+For (75)
+    on left: 63, on right: 8
+$@14 (76)
+    on left: 61, on right: 63
+$@15 (77)
+    on left: 62, on right: 63
+Function (78)
+    on left: 66 67 68, on right: 12
+$@16 (79)
+    on left: 64, on right: 66
+$@17 (80)
+    on left: 65, on right: 66
+Appel_Function (81)
+    on left: 69, on right: 13
+Arguments_Declaration (82)
+    on left: 71 72 73 75 76, on right: 66 67 68 71 72 73 75
+$@18 (83)
+    on left: 70, on right: 71
+$@19 (84)
+    on left: 74, on right: 75
+Arguments (85)
+    on left: 77 79 80 81 82 83, on right: 69 77 79
+$@20 (86)
+    on left: 78, on right: 79
 
 
 State 0
@@ -351,7 +359,7 @@ State 2
 
 State 3
 
-   49 Declaration: error . tPOINTVIRG
+   50 Declaration: error . tPOINTVIRG
 
     tPOINTVIRG  shift, and go to state 16
 
@@ -359,9 +367,9 @@ State 3
 State 4
 
    16 Main: tINTEGER . tMAIN tPO Arg tPF tAO $@5 Input tAF
-   46 Declaration: tINTEGER . tWORD DeclarationIntMemeLigne tPOINTVIRG
-   47            | tINTEGER . tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
-   48            | tINTEGER . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
+   47 Declaration: tINTEGER . tWORD DeclarationIntMemeLigne tPOINTVIRG
+   48            | tINTEGER . tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   49            | tINTEGER . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
 
     tMAIN  shift, and go to state 17
     tWORD  shift, and go to state 18
@@ -369,12 +377,12 @@ State 4
 
 State 5
 
-   44 LeftTerm: tWORD .
-   67 Appel_Function: tWORD . tPO Arguments tPF
+   45 LeftTerm: tWORD .
+   69 Appel_Function: tWORD . tPO Arguments tPF
 
     tPO  shift, and go to state 19
 
-    $default  reduce using rule 44 (LeftTerm)
+    $default  reduce using rule 45 (LeftTerm)
 
 
 State 6
@@ -431,7 +439,7 @@ State 11
 
 State 12
 
-   45 Egalite: LeftTerm . tEGAL Exp
+   46 Egalite: LeftTerm . tEGAL Exp
 
     tEGAL  shift, and go to state 30
 
@@ -459,9 +467,9 @@ State 15
 
 State 16
 
-   49 Declaration: error tPOINTVIRG .
+   50 Declaration: error tPOINTVIRG .
 
-    $default  reduce using rule 49 (Declaration)
+    $default  reduce using rule 50 (Declaration)
 
 
 State 17
@@ -473,39 +481,39 @@ State 17
 
 State 18
 
-   46 Declaration: tINTEGER tWORD . DeclarationIntMemeLigne tPOINTVIRG
-   47            | tINTEGER tWORD . tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
-   48            | tINTEGER tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
+   47 Declaration: tINTEGER tWORD . DeclarationIntMemeLigne tPOINTVIRG
+   48            | tINTEGER tWORD . tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   49            | tINTEGER tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
 
     tCO    shift, and go to state 33
     tVIRG  shift, and go to state 34
     tEGAL  shift, and go to state 35
 
-    $default  reduce using rule 51 (DeclarationIntMemeLigne)
+    $default  reduce using rule 52 (DeclarationIntMemeLigne)
 
     DeclarationIntMemeLigne  go to state 36
 
 
 State 19
 
-   67 Appel_Function: tWORD tPO . Arguments tPF
+   69 Appel_Function: tWORD tPO . Arguments tPF
 
     tINTEGER  shift, and go to state 37
     tNOMBRE   shift, and go to state 38
     tWORD     shift, and go to state 39
 
-    $default  reduce using rule 81 (Arguments)
+    $default  reduce using rule 83 (Arguments)
 
     Arguments  go to state 40
 
 
 State 20
 
-   58 While: tWHILE . $@10 tPO Condition $@11 tPF tAO Input tAF
+   60 While: tWHILE . $@11 tPO $@12 Condition $@13 tPF tAO Input tAF
 
-    $default  reduce using rule 56 ($@10)
+    $default  reduce using rule 57 ($@11)
 
-    $@10  go to state 41
+    $@11  go to state 41
 
 
 State 21
@@ -517,7 +525,7 @@ State 21
 
 State 22
 
-   61 For: tFOR . tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
+   63 For: tFOR . tPO Egalite tPOINTVIRG $@14 Condition $@15 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
     tPO  shift, and go to state 42
 
@@ -531,7 +539,7 @@ State 23
 
 State 24
 
-   23 If: tIF . tPO Condition $@6 tPF tAO Input tAF $@7 Else
+   24 If: tIF . tPO $@6 Condition $@7 tPF tAO Input tAF $@8 Else
 
     tPO  shift, and go to state 43
 
@@ -545,21 +553,21 @@ State 25
 
 State 26
 
-   64 Function: tINTEGER . tWORD $@14 tPO Arguments_Declaration tPF tAO Input $@15 tAF
+   66 Function: tINTEGER . tWORD $@16 tPO Arguments_Declaration tPF tAO Input $@17 tAF
 
     tWORD  shift, and go to state 44
 
 
 State 27
 
-   65 Function: tCHAR . tWORD tPO Arguments_Declaration tPF tAO Input tAF
+   67 Function: tCHAR . tWORD tPO Arguments_Declaration tPF tAO Input tAF
 
     tWORD  shift, and go to state 45
 
 
 State 28
 
-   66 Function: tVOID . tWORD tPO Arguments_Declaration tPF tAO Input tAF
+   68 Function: tVOID . tWORD tPO Arguments_Declaration tPF tAO Input tAF
 
     tWORD  shift, and go to state 46
 
@@ -573,7 +581,7 @@ State 29
 
 State 30
 
-   45 Egalite: LeftTerm tEGAL . Exp
+   46 Egalite: LeftTerm tEGAL . Exp
 
     tMINUS   shift, and go to state 47
     tNOMBRE  shift, and go to state 48
@@ -602,21 +610,21 @@ State 32
 
 State 33
 
-   48 Declaration: tINTEGER tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
+   49 Declaration: tINTEGER tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG
 
     tNOMBRE  shift, and go to state 53
 
 
 State 34
 
-   50 DeclarationIntMemeLigne: tVIRG . tWORD DeclarationIntMemeLigne
+   51 DeclarationIntMemeLigne: tVIRG . tWORD DeclarationIntMemeLigne
 
     tWORD  shift, and go to state 54
 
 
 State 35
 
-   47 Declaration: tINTEGER tWORD tEGAL . Exp DeclarationIntEgalMemeLigne tPOINTVIRG
+   48 Declaration: tINTEGER tWORD tEGAL . Exp DeclarationIntEgalMemeLigne tPOINTVIRG
 
     tMINUS   shift, and go to state 47
     tNOMBRE  shift, and go to state 48
@@ -627,55 +635,55 @@ State 35
 
 State 36
 
-   46 Declaration: tINTEGER tWORD DeclarationIntMemeLigne . tPOINTVIRG
+   47 Declaration: tINTEGER tWORD DeclarationIntMemeLigne . tPOINTVIRG
 
     tPOINTVIRG  shift, and go to state 56
 
 
 State 37
 
-   79 Arguments: tINTEGER .
+   81 Arguments: tINTEGER .
 
-    $default  reduce using rule 79 (Arguments)
+    $default  reduce using rule 81 (Arguments)
 
 
 State 38
 
-   77 Arguments: tNOMBRE . tVIRG $@18 Arguments
-   80          | tNOMBRE .
+   79 Arguments: tNOMBRE . tVIRG $@20 Arguments
+   82          | tNOMBRE .
 
     tVIRG  shift, and go to state 57
 
-    $default  reduce using rule 80 (Arguments)
+    $default  reduce using rule 82 (Arguments)
 
 
 State 39
 
-   75 Arguments: tWORD . tVIRG Arguments
-   78          | tWORD .
+   77 Arguments: tWORD . tVIRG Arguments
+   80          | tWORD .
 
     tVIRG  shift, and go to state 58
 
-    $default  reduce using rule 78 (Arguments)
+    $default  reduce using rule 80 (Arguments)
 
 
 State 40
 
-   67 Appel_Function: tWORD tPO Arguments . tPF
+   69 Appel_Function: tWORD tPO Arguments . tPF
 
     tPF  shift, and go to state 59
 
 
 State 41
 
-   58 While: tWHILE $@10 . tPO Condition $@11 tPF tAO Input tAF
+   60 While: tWHILE $@11 . tPO $@12 Condition $@13 tPF tAO Input tAF
 
     tPO  shift, and go to state 60
 
 
 State 42
 
-   61 For: tFOR tPO . Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
+   63 For: tFOR tPO . Egalite tPOINTVIRG $@14 Condition $@15 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
     tWORD  shift, and go to state 61
 
@@ -685,78 +693,75 @@ State 42
 
 State 43
 
-   23 If: tIF tPO . Condition $@6 tPF tAO Input tAF $@7 Else
+   24 If: tIF tPO . $@6 Condition $@7 tPF tAO Input tAF $@8 Else
 
-    tMINUS   shift, and go to state 47
-    tNOMBRE  shift, and go to state 48
-    tWORD    shift, and go to state 49
+    $default  reduce using rule 21 ($@6)
 
-    Condition  go to state 63
-    Exp        go to state 64
+    $@6  go to state 63
 
 
 State 44
 
-   64 Function: tINTEGER tWORD . $@14 tPO Arguments_Declaration tPF tAO Input $@15 tAF
+   66 Function: tINTEGER tWORD . $@16 tPO Arguments_Declaration tPF tAO Input $@17 tAF
 
-    $default  reduce using rule 62 ($@14)
+    $default  reduce using rule 64 ($@16)
 
-    $@14  go to state 65
+    $@16  go to state 64
 
 
 State 45
 
-   65 Function: tCHAR tWORD . tPO Arguments_Declaration tPF tAO Input tAF
+   67 Function: tCHAR tWORD . tPO Arguments_Declaration tPF tAO Input tAF
 
-    tPO  shift, and go to state 66
+    tPO  shift, and go to state 65
 
 
 State 46
 
-   66 Function: tVOID tWORD . tPO Arguments_Declaration tPF tAO Input tAF
+   68 Function: tVOID tWORD . tPO Arguments_Declaration tPF tAO Input tAF
 
-    tPO  shift, and go to state 67
+    tPO  shift, and go to state 66
 
 
 State 47
 
-   41 Exp: tMINUS . Exp
+   42 Exp: tMINUS . Exp
 
     tMINUS   shift, and go to state 47
     tNOMBRE  shift, and go to state 48
     tWORD    shift, and go to state 49
 
-    Exp  go to state 68
+    Exp  go to state 67
 
 
 State 48
 
-   42 Exp: tNOMBRE .
-
-    $default  reduce using rule 42 (Exp)
-
-
-State 49
-
-   43 Exp: tWORD .
+   43 Exp: tNOMBRE .
 
     $default  reduce using rule 43 (Exp)
 
 
+State 49
+
+   44 Exp: tWORD .
+
+    $default  reduce using rule 44 (Exp)
+
+
 State 50
 
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
-   45 Egalite: LeftTerm tEGAL Exp .
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
+   46 Egalite: LeftTerm tEGAL Exp .
 
-    tDIV      shift, and go to state 69
-    tPLUS     shift, and go to state 70
-    tMINUS    shift, and go to state 71
-    tPOINTER  shift, and go to state 72
+    tDIV      shift, and go to state 68
+    tPLUS     shift, and go to state 69
+    tMINUS    shift, and go to state 70
+    tPOINTER  shift, and go to state 71
 
-    $default  reduce using rule 45 (Egalite)
+    $default  reduce using rule 46 (Egalite)
 
 
 State 51
@@ -765,960 +770,933 @@ State 51
    18    | tINTEGER . tCO tCF tWORD
    19    | tINTEGER . tPOINTER tWORD
 
-    tCO       shift, and go to state 73
-    tPOINTER  shift, and go to state 74
-    tWORD     shift, and go to state 75
+    tCO       shift, and go to state 72
+    tPOINTER  shift, and go to state 73
+    tWORD     shift, and go to state 74
 
 
 State 52
 
    16 Main: tINTEGER tMAIN tPO Arg . tPF tAO $@5 Input tAF
 
-    tPF  shift, and go to state 76
+    tPF  shift, and go to state 75
 
 
 State 53
 
-   48 Declaration: tINTEGER tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne tPOINTVIRG
+   49 Declaration: tINTEGER tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne tPOINTVIRG
 
-    tCF  shift, and go to state 77
+    tCF  shift, and go to state 76
 
 
 State 54
 
-   50 DeclarationIntMemeLigne: tVIRG tWORD . DeclarationIntMemeLigne
+   51 DeclarationIntMemeLigne: tVIRG tWORD . DeclarationIntMemeLigne
 
     tVIRG  shift, and go to state 34
 
-    $default  reduce using rule 51 (DeclarationIntMemeLigne)
+    $default  reduce using rule 52 (DeclarationIntMemeLigne)
 
-    DeclarationIntMemeLigne  go to state 78
+    DeclarationIntMemeLigne  go to state 77
 
 
 State 55
 
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
-   47 Declaration: tINTEGER tWORD tEGAL Exp . DeclarationIntEgalMemeLigne tPOINTVIRG
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
+   48 Declaration: tINTEGER tWORD tEGAL Exp . DeclarationIntEgalMemeLigne tPOINTVIRG
 
-    tDIV      shift, and go to state 69
-    tPLUS     shift, and go to state 70
-    tMINUS    shift, and go to state 71
-    tVIRG     shift, and go to state 79
-    tPOINTER  shift, and go to state 72
+    tDIV      shift, and go to state 68
+    tPLUS     shift, and go to state 69
+    tMINUS    shift, and go to state 70
+    tVIRG     shift, and go to state 78
+    tPOINTER  shift, and go to state 71
 
-    $default  reduce using rule 53 (DeclarationIntEgalMemeLigne)
+    $default  reduce using rule 54 (DeclarationIntEgalMemeLigne)
 
-    DeclarationIntEgalMemeLigne  go to state 80
+    DeclarationIntEgalMemeLigne  go to state 79
 
 
 State 56
 
-   46 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG .
+   47 Declaration: tINTEGER tWORD DeclarationIntMemeLigne tPOINTVIRG .
 
-    $default  reduce using rule 46 (Declaration)
+    $default  reduce using rule 47 (Declaration)
 
 
 State 57
 
-   77 Arguments: tNOMBRE tVIRG . $@18 Arguments
+   79 Arguments: tNOMBRE tVIRG . $@20 Arguments
 
-    $default  reduce using rule 76 ($@18)
+    $default  reduce using rule 78 ($@20)
 
-    $@18  go to state 81
+    $@20  go to state 80
 
 
 State 58
 
-   75 Arguments: tWORD tVIRG . Arguments
+   77 Arguments: tWORD tVIRG . Arguments
 
     tINTEGER  shift, and go to state 37
     tNOMBRE   shift, and go to state 38
     tWORD     shift, and go to state 39
 
-    $default  reduce using rule 81 (Arguments)
+    $default  reduce using rule 83 (Arguments)
 
-    Arguments  go to state 82
+    Arguments  go to state 81
 
 
 State 59
 
-   67 Appel_Function: tWORD tPO Arguments tPF .
+   69 Appel_Function: tWORD tPO Arguments tPF .
 
-    $default  reduce using rule 67 (Appel_Function)
+    $default  reduce using rule 69 (Appel_Function)
 
 
 State 60
 
-   58 While: tWHILE $@10 tPO . Condition $@11 tPF tAO Input tAF
+   60 While: tWHILE $@11 tPO . $@12 Condition $@13 tPF tAO Input tAF
 
-    tMINUS   shift, and go to state 47
-    tNOMBRE  shift, and go to state 48
-    tWORD    shift, and go to state 49
+    $default  reduce using rule 58 ($@12)
 
-    Condition  go to state 83
-    Exp        go to state 64
+    $@12  go to state 82
 
 
 State 61
 
-   44 LeftTerm: tWORD .
+   45 LeftTerm: tWORD .
 
-    $default  reduce using rule 44 (LeftTerm)
+    $default  reduce using rule 45 (LeftTerm)
 
 
 State 62
 
-   61 For: tFOR tPO Egalite . tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
+   63 For: tFOR tPO Egalite . tPOINTVIRG $@14 Condition $@15 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
-    tPOINTVIRG  shift, and go to state 84
+    tPOINTVIRG  shift, and go to state 83
 
 
 State 63
 
-   23 If: tIF tPO Condition . $@6 tPF tAO Input tAF $@7 Else
-   35 Condition: Condition . tOR Condition
-   36          | Condition . tAND Condition
+   24 If: tIF tPO $@6 . Condition $@7 tPF tAO Input tAF $@8 Else
 
-    tOR   shift, and go to state 85
-    tAND  shift, and go to state 86
+    tMINUS   shift, and go to state 47
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
 
-    $default  reduce using rule 21 ($@6)
-
-    $@6  go to state 87
+    Condition  go to state 84
+    Exp        go to state 85
 
 
 State 64
 
-   29 Condition: Exp . tEGALEGAL Exp
-   30          | Exp . tNOTEGAL Exp
-   31          | Exp . tSUP Exp
-   32          | Exp . tINF Exp
-   33          | Exp . tSUP tEGAL Exp
-   34          | Exp . tINF tEGAL Exp
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
+   66 Function: tINTEGER tWORD $@16 . tPO Arguments_Declaration tPF tAO Input $@17 tAF
 
-    tDIV       shift, and go to state 69
-    tPLUS      shift, and go to state 70
-    tMINUS     shift, and go to state 71
-    tSUP       shift, and go to state 88
-    tINF       shift, and go to state 89
-    tEGALEGAL  shift, and go to state 90
-    tNOTEGAL   shift, and go to state 91
-    tPOINTER   shift, and go to state 72
+    tPO  shift, and go to state 86
 
 
 State 65
 
-   64 Function: tINTEGER tWORD $@14 . tPO Arguments_Declaration tPF tAO Input $@15 tAF
+   67 Function: tCHAR tWORD tPO . Arguments_Declaration tPF tAO Input tAF
 
-    tPO  shift, and go to state 92
+    tINTEGER  shift, and go to state 87
+    tCHAR     shift, and go to state 88
+    tVOID     shift, and go to state 89
+
+    $default  reduce using rule 76 (Arguments_Declaration)
+
+    Arguments_Declaration  go to state 90
 
 
 State 66
 
-   65 Function: tCHAR tWORD tPO . Arguments_Declaration tPF tAO Input tAF
+   68 Function: tVOID tWORD tPO . Arguments_Declaration tPF tAO Input tAF
 
-    tINTEGER  shift, and go to state 93
-    tCHAR     shift, and go to state 94
-    tVOID     shift, and go to state 95
+    tINTEGER  shift, and go to state 87
+    tCHAR     shift, and go to state 88
+    tVOID     shift, and go to state 89
 
-    $default  reduce using rule 74 (Arguments_Declaration)
+    $default  reduce using rule 76 (Arguments_Declaration)
 
-    Arguments_Declaration  go to state 96
+    Arguments_Declaration  go to state 91
 
 
 State 67
 
-   66 Function: tVOID tWORD tPO . Arguments_Declaration tPF tAO Input tAF
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
+   42    | tMINUS Exp .
 
-    tINTEGER  shift, and go to state 93
-    tCHAR     shift, and go to state 94
-    tVOID     shift, and go to state 95
+    tMINUS  shift, and go to state 70
 
-    $default  reduce using rule 74 (Arguments_Declaration)
-
-    Arguments_Declaration  go to state 97
+    tMINUS    [reduce using rule 42 (Exp)]
+    $default  reduce using rule 42 (Exp)
 
 
 State 68
 
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
-   41    | tMINUS Exp .
+   39 Exp: Exp tDIV . Exp
 
-    tMINUS  shift, and go to state 71
+    tMINUS   shift, and go to state 47
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
 
-    tMINUS    [reduce using rule 41 (Exp)]
-    $default  reduce using rule 41 (Exp)
+    Exp  go to state 92
 
 
 State 69
 
-   38 Exp: Exp tDIV . Exp
+   38 Exp: Exp tPLUS . Exp
 
     tMINUS   shift, and go to state 47
     tNOMBRE  shift, and go to state 48
     tWORD    shift, and go to state 49
 
-    Exp  go to state 98
+    Exp  go to state 93
 
 
 State 70
 
-   37 Exp: Exp tPLUS . Exp
+   40 Exp: Exp tMINUS . Exp
 
     tMINUS   shift, and go to state 47
     tNOMBRE  shift, and go to state 48
     tWORD    shift, and go to state 49
 
-    Exp  go to state 99
+    Exp  go to state 94
 
 
 State 71
 
-   39 Exp: Exp tMINUS . Exp
+   41 Exp: Exp tPOINTER . Exp
 
     tMINUS   shift, and go to state 47
     tNOMBRE  shift, and go to state 48
     tWORD    shift, and go to state 49
 
-    Exp  go to state 100
+    Exp  go to state 95
 
 
 State 72
 
-   40 Exp: Exp tPOINTER . Exp
+   18 Arg: tINTEGER tCO . tCF tWORD
 
-    tMINUS   shift, and go to state 47
-    tNOMBRE  shift, and go to state 48
-    tWORD    shift, and go to state 49
-
-    Exp  go to state 101
+    tCF  shift, and go to state 96
 
 
 State 73
 
-   18 Arg: tINTEGER tCO . tCF tWORD
+   19 Arg: tINTEGER tPOINTER . tWORD
 
-    tCF  shift, and go to state 102
+    tWORD  shift, and go to state 97
 
 
 State 74
-
-   19 Arg: tINTEGER tPOINTER . tWORD
-
-    tWORD  shift, and go to state 103
-
-
-State 75
 
    17 Arg: tINTEGER tWORD .
 
     $default  reduce using rule 17 (Arg)
 
 
-State 76
+State 75
 
    16 Main: tINTEGER tMAIN tPO Arg tPF . tAO $@5 Input tAF
 
-    tAO  shift, and go to state 104
+    tAO  shift, and go to state 98
+
+
+State 76
+
+   49 Declaration: tINTEGER tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne tPOINTVIRG
+
+    tVIRG  shift, and go to state 99
+
+    $default  reduce using rule 56 (DeclarationIntTabMemeLigne)
+
+    DeclarationIntTabMemeLigne  go to state 100
 
 
 State 77
 
-   48 Declaration: tINTEGER tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne tPOINTVIRG
+   51 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne .
 
-    tVIRG  shift, and go to state 105
-
-    $default  reduce using rule 55 (DeclarationIntTabMemeLigne)
-
-    DeclarationIntTabMemeLigne  go to state 106
+    $default  reduce using rule 51 (DeclarationIntMemeLigne)
 
 
 State 78
 
-   50 DeclarationIntMemeLigne: tVIRG tWORD DeclarationIntMemeLigne .
+   53 DeclarationIntEgalMemeLigne: tVIRG . tWORD tEGAL Exp DeclarationIntEgalMemeLigne
 
-    $default  reduce using rule 50 (DeclarationIntMemeLigne)
+    tWORD  shift, and go to state 101
 
 
 State 79
 
-   52 DeclarationIntEgalMemeLigne: tVIRG . tWORD tEGAL Exp DeclarationIntEgalMemeLigne
+   48 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne . tPOINTVIRG
 
-    tWORD  shift, and go to state 107
+    tPOINTVIRG  shift, and go to state 102
 
 
 State 80
 
-   47 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne . tPOINTVIRG
-
-    tPOINTVIRG  shift, and go to state 108
-
-
-State 81
-
-   77 Arguments: tNOMBRE tVIRG $@18 . Arguments
+   79 Arguments: tNOMBRE tVIRG $@20 . Arguments
 
     tINTEGER  shift, and go to state 37
     tNOMBRE   shift, and go to state 38
     tWORD     shift, and go to state 39
 
-    $default  reduce using rule 81 (Arguments)
+    $default  reduce using rule 83 (Arguments)
 
-    Arguments  go to state 109
+    Arguments  go to state 103
+
+
+State 81
+
+   77 Arguments: tWORD tVIRG Arguments .
+
+    $default  reduce using rule 77 (Arguments)
 
 
 State 82
 
-   75 Arguments: tWORD tVIRG Arguments .
+   60 While: tWHILE $@11 tPO $@12 . Condition $@13 tPF tAO Input tAF
 
-    $default  reduce using rule 75 (Arguments)
+    tMINUS   shift, and go to state 47
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
+
+    Condition  go to state 104
+    Exp        go to state 85
 
 
 State 83
 
-   35 Condition: Condition . tOR Condition
-   36          | Condition . tAND Condition
-   58 While: tWHILE $@10 tPO Condition . $@11 tPF tAO Input tAF
+   63 For: tFOR tPO Egalite tPOINTVIRG . $@14 Condition $@15 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
-    tOR   shift, and go to state 85
-    tAND  shift, and go to state 86
+    $default  reduce using rule 61 ($@14)
 
-    $default  reduce using rule 57 ($@11)
-
-    $@11  go to state 110
+    $@14  go to state 105
 
 
 State 84
 
-   61 For: tFOR tPO Egalite tPOINTVIRG . $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
+   24 If: tIF tPO $@6 Condition . $@7 tPF tAO Input tAF $@8 Else
+   36 Condition: Condition . tOR Condition
+   37          | Condition . tAND Condition
 
-    $default  reduce using rule 59 ($@12)
+    tOR   shift, and go to state 106
+    tAND  shift, and go to state 107
 
-    $@12  go to state 111
+    $default  reduce using rule 22 ($@7)
+
+    $@7  go to state 108
 
 
 State 85
 
-   35 Condition: Condition tOR . Condition
+   30 Condition: Exp . tEGALEGAL Exp
+   31          | Exp . tNOTEGAL Exp
+   32          | Exp . tSUP Exp
+   33          | Exp . tINF Exp
+   34          | Exp . tSUP tEGAL Exp
+   35          | Exp . tINF tEGAL Exp
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
 
-    tMINUS   shift, and go to state 47
-    tNOMBRE  shift, and go to state 48
-    tWORD    shift, and go to state 49
-
-    Condition  go to state 112
-    Exp        go to state 64
+    tDIV       shift, and go to state 68
+    tPLUS      shift, and go to state 69
+    tMINUS     shift, and go to state 70
+    tSUP       shift, and go to state 109
+    tINF       shift, and go to state 110
+    tEGALEGAL  shift, and go to state 111
+    tNOTEGAL   shift, and go to state 112
+    tPOINTER   shift, and go to state 71
 
 
 State 86
 
-   36 Condition: Condition tAND . Condition
+   66 Function: tINTEGER tWORD $@16 tPO . Arguments_Declaration tPF tAO Input $@17 tAF
 
-    tMINUS   shift, and go to state 47
-    tNOMBRE  shift, and go to state 48
-    tWORD    shift, and go to state 49
+    tINTEGER  shift, and go to state 87
+    tCHAR     shift, and go to state 88
+    tVOID     shift, and go to state 89
 
-    Condition  go to state 113
-    Exp        go to state 64
+    $default  reduce using rule 76 (Arguments_Declaration)
+
+    Arguments_Declaration  go to state 113
 
 
 State 87
 
-   23 If: tIF tPO Condition $@6 . tPF tAO Input tAF $@7 Else
+   71 Arguments_Declaration: tINTEGER . tWORD $@18 tVIRG Arguments_Declaration
+   75                      | tINTEGER . tWORD $@19 Arguments_Declaration
 
-    tPF  shift, and go to state 114
+    tWORD  shift, and go to state 114
 
 
 State 88
 
-   31 Condition: Exp tSUP . Exp
-   33          | Exp tSUP . tEGAL Exp
+   73 Arguments_Declaration: tCHAR . tWORD tVIRG Arguments_Declaration
 
-    tMINUS   shift, and go to state 47
-    tEGAL    shift, and go to state 115
-    tNOMBRE  shift, and go to state 48
-    tWORD    shift, and go to state 49
-
-    Exp  go to state 116
+    tWORD  shift, and go to state 115
 
 
 State 89
 
-   32 Condition: Exp tINF . Exp
-   34          | Exp tINF . tEGAL Exp
+   72 Arguments_Declaration: tVOID . tWORD tVIRG Arguments_Declaration
 
-    tMINUS   shift, and go to state 47
-    tEGAL    shift, and go to state 117
-    tNOMBRE  shift, and go to state 48
-    tWORD    shift, and go to state 49
-
-    Exp  go to state 118
+    tWORD  shift, and go to state 116
 
 
 State 90
 
-   29 Condition: Exp tEGALEGAL . Exp
+   67 Function: tCHAR tWORD tPO Arguments_Declaration . tPF tAO Input tAF
 
-    tMINUS   shift, and go to state 47
-    tNOMBRE  shift, and go to state 48
-    tWORD    shift, and go to state 49
-
-    Exp  go to state 119
+    tPF  shift, and go to state 117
 
 
 State 91
 
-   30 Condition: Exp tNOTEGAL . Exp
+   68 Function: tVOID tWORD tPO Arguments_Declaration . tPF tAO Input tAF
 
-    tMINUS   shift, and go to state 47
-    tNOMBRE  shift, and go to state 48
-    tWORD    shift, and go to state 49
-
-    Exp  go to state 120
+    tPF  shift, and go to state 118
 
 
 State 92
 
-   64 Function: tINTEGER tWORD $@14 tPO . Arguments_Declaration tPF tAO Input $@15 tAF
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   39    | Exp tDIV Exp .
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
 
-    tINTEGER  shift, and go to state 93
-    tCHAR     shift, and go to state 94
-    tVOID     shift, and go to state 95
+    tMINUS  shift, and go to state 70
 
-    $default  reduce using rule 74 (Arguments_Declaration)
-
-    Arguments_Declaration  go to state 121
+    tMINUS    [reduce using rule 39 (Exp)]
+    $default  reduce using rule 39 (Exp)
 
 
 State 93
 
-   69 Arguments_Declaration: tINTEGER . tWORD $@16 tVIRG Arguments_Declaration
-   73                      | tINTEGER . tWORD $@17 Arguments_Declaration
+   38 Exp: Exp . tPLUS Exp
+   38    | Exp tPLUS Exp .
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
 
-    tWORD  shift, and go to state 122
-
-
-State 94
-
-   71 Arguments_Declaration: tCHAR . tWORD tVIRG Arguments_Declaration
-
-    tWORD  shift, and go to state 123
-
-
-State 95
-
-   70 Arguments_Declaration: tVOID . tWORD tVIRG Arguments_Declaration
-
-    tWORD  shift, and go to state 124
-
-
-State 96
-
-   65 Function: tCHAR tWORD tPO Arguments_Declaration . tPF tAO Input tAF
-
-    tPF  shift, and go to state 125
-
-
-State 97
-
-   66 Function: tVOID tWORD tPO Arguments_Declaration . tPF tAO Input tAF
-
-    tPF  shift, and go to state 126
-
-
-State 98
-
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   38    | Exp tDIV Exp .
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
-
-    tMINUS  shift, and go to state 71
+    tDIV      shift, and go to state 68
+    tMINUS    shift, and go to state 70
+    tPOINTER  shift, and go to state 71
 
     tMINUS    [reduce using rule 38 (Exp)]
     $default  reduce using rule 38 (Exp)
 
 
-State 99
+State 94
 
-   37 Exp: Exp . tPLUS Exp
-   37    | Exp tPLUS Exp .
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   40    | Exp tMINUS Exp .
+   41    | Exp . tPOINTER Exp
 
-    tDIV      shift, and go to state 69
-    tMINUS    shift, and go to state 71
-    tPOINTER  shift, and go to state 72
+    tDIV      shift, and go to state 68
+    tPLUS     shift, and go to state 69
+    tMINUS    shift, and go to state 70
+    tPOINTER  shift, and go to state 71
 
-    tMINUS    [reduce using rule 37 (Exp)]
-    $default  reduce using rule 37 (Exp)
-
-
-State 100
-
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   39    | Exp tMINUS Exp .
-   40    | Exp . tPOINTER Exp
-
-    tDIV      shift, and go to state 69
-    tPLUS     shift, and go to state 70
-    tMINUS    shift, and go to state 71
-    tPOINTER  shift, and go to state 72
-
-    tDIV      [reduce using rule 39 (Exp)]
-    tPLUS     [reduce using rule 39 (Exp)]
-    tMINUS    [reduce using rule 39 (Exp)]
-    tPOINTER  [reduce using rule 39 (Exp)]
-    $default  reduce using rule 39 (Exp)
-
-
-State 101
-
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
-   40    | Exp tPOINTER Exp .
-
-    tMINUS  shift, and go to state 71
-
+    tDIV      [reduce using rule 40 (Exp)]
+    tPLUS     [reduce using rule 40 (Exp)]
     tMINUS    [reduce using rule 40 (Exp)]
+    tPOINTER  [reduce using rule 40 (Exp)]
     $default  reduce using rule 40 (Exp)
 
 
-State 102
+State 95
+
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
+   41    | Exp tPOINTER Exp .
+
+    tMINUS  shift, and go to state 70
+
+    tMINUS    [reduce using rule 41 (Exp)]
+    $default  reduce using rule 41 (Exp)
+
+
+State 96
 
    18 Arg: tINTEGER tCO tCF . tWORD
 
-    tWORD  shift, and go to state 127
+    tWORD  shift, and go to state 119
 
 
-State 103
+State 97
 
    19 Arg: tINTEGER tPOINTER tWORD .
 
     $default  reduce using rule 19 (Arg)
 
 
-State 104
+State 98
 
    16 Main: tINTEGER tMAIN tPO Arg tPF tAO . $@5 Input tAF
 
     $default  reduce using rule 15 ($@5)
 
-    $@5  go to state 128
+    $@5  go to state 120
+
+
+State 99
+
+   55 DeclarationIntTabMemeLigne: tVIRG . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
+
+    tWORD  shift, and go to state 121
+
+
+State 100
+
+   49 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne . tPOINTVIRG
+
+    tPOINTVIRG  shift, and go to state 122
+
+
+State 101
+
+   53 DeclarationIntEgalMemeLigne: tVIRG tWORD . tEGAL Exp DeclarationIntEgalMemeLigne
+
+    tEGAL  shift, and go to state 123
+
+
+State 102
+
+   48 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG .
+
+    $default  reduce using rule 48 (Declaration)
+
+
+State 103
+
+   79 Arguments: tNOMBRE tVIRG $@20 Arguments .
+
+    $default  reduce using rule 79 (Arguments)
+
+
+State 104
+
+   36 Condition: Condition . tOR Condition
+   37          | Condition . tAND Condition
+   60 While: tWHILE $@11 tPO $@12 Condition . $@13 tPF tAO Input tAF
+
+    tOR   shift, and go to state 106
+    tAND  shift, and go to state 107
+
+    $default  reduce using rule 59 ($@13)
+
+    $@13  go to state 124
 
 
 State 105
 
-   54 DeclarationIntTabMemeLigne: tVIRG . tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 . Condition $@15 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
-    tWORD  shift, and go to state 129
+    tMINUS   shift, and go to state 47
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
+
+    Condition  go to state 125
+    Exp        go to state 85
 
 
 State 106
 
-   48 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne . tPOINTVIRG
+   36 Condition: Condition tOR . Condition
 
-    tPOINTVIRG  shift, and go to state 130
+    tMINUS   shift, and go to state 47
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
+
+    Condition  go to state 126
+    Exp        go to state 85
 
 
 State 107
 
-   52 DeclarationIntEgalMemeLigne: tVIRG tWORD . tEGAL Exp DeclarationIntEgalMemeLigne
+   37 Condition: Condition tAND . Condition
 
-    tEGAL  shift, and go to state 131
+    tMINUS   shift, and go to state 47
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
+
+    Condition  go to state 127
+    Exp        go to state 85
 
 
 State 108
 
-   47 Declaration: tINTEGER tWORD tEGAL Exp DeclarationIntEgalMemeLigne tPOINTVIRG .
+   24 If: tIF tPO $@6 Condition $@7 . tPF tAO Input tAF $@8 Else
 
-    $default  reduce using rule 47 (Declaration)
+    tPF  shift, and go to state 128
 
 
 State 109
 
-   77 Arguments: tNOMBRE tVIRG $@18 Arguments .
+   32 Condition: Exp tSUP . Exp
+   34          | Exp tSUP . tEGAL Exp
 
-    $default  reduce using rule 77 (Arguments)
+    tMINUS   shift, and go to state 47
+    tEGAL    shift, and go to state 129
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
+
+    Exp  go to state 130
 
 
 State 110
 
-   58 While: tWHILE $@10 tPO Condition $@11 . tPF tAO Input tAF
+   33 Condition: Exp tINF . Exp
+   35          | Exp tINF . tEGAL Exp
 
-    tPF  shift, and go to state 132
+    tMINUS   shift, and go to state 47
+    tEGAL    shift, and go to state 131
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
+
+    Exp  go to state 132
 
 
 State 111
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 . Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
+   30 Condition: Exp tEGALEGAL . Exp
 
     tMINUS   shift, and go to state 47
     tNOMBRE  shift, and go to state 48
     tWORD    shift, and go to state 49
 
-    Condition  go to state 133
-    Exp        go to state 64
+    Exp  go to state 133
 
 
 State 112
 
-   35 Condition: Condition . tOR Condition
-   35          | Condition tOR Condition .
-   36          | Condition . tAND Condition
+   31 Condition: Exp tNOTEGAL . Exp
 
-    tOR   shift, and go to state 85
-    tAND  shift, and go to state 86
+    tMINUS   shift, and go to state 47
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
 
-    tOR       [reduce using rule 35 (Condition)]
-    tAND      [reduce using rule 35 (Condition)]
-    $default  reduce using rule 35 (Condition)
+    Exp  go to state 134
 
 
 State 113
 
-   35 Condition: Condition . tOR Condition
-   36          | Condition . tAND Condition
-   36          | Condition tAND Condition .
+   66 Function: tINTEGER tWORD $@16 tPO Arguments_Declaration . tPF tAO Input $@17 tAF
 
-    tOR   shift, and go to state 85
-    tAND  shift, and go to state 86
-
-    tOR       [reduce using rule 36 (Condition)]
-    tAND      [reduce using rule 36 (Condition)]
-    $default  reduce using rule 36 (Condition)
+    tPF  shift, and go to state 135
 
 
 State 114
 
-   23 If: tIF tPO Condition $@6 tPF . tAO Input tAF $@7 Else
+   71 Arguments_Declaration: tINTEGER tWORD . $@18 tVIRG Arguments_Declaration
+   75                      | tINTEGER tWORD . $@19 Arguments_Declaration
 
-    tAO  shift, and go to state 134
+    tVIRG     reduce using rule 70 ($@18)
+    $default  reduce using rule 74 ($@19)
+
+    $@18  go to state 136
+    $@19  go to state 137
 
 
 State 115
 
-   33 Condition: Exp tSUP tEGAL . Exp
+   73 Arguments_Declaration: tCHAR tWORD . tVIRG Arguments_Declaration
 
-    tMINUS   shift, and go to state 47
-    tNOMBRE  shift, and go to state 48
-    tWORD    shift, and go to state 49
-
-    Exp  go to state 135
+    tVIRG  shift, and go to state 138
 
 
 State 116
 
-   31 Condition: Exp tSUP Exp .
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
+   72 Arguments_Declaration: tVOID tWORD . tVIRG Arguments_Declaration
 
-    tDIV      shift, and go to state 69
-    tPLUS     shift, and go to state 70
-    tMINUS    shift, and go to state 71
-    tPOINTER  shift, and go to state 72
-
-    $default  reduce using rule 31 (Condition)
+    tVIRG  shift, and go to state 139
 
 
 State 117
 
-   34 Condition: Exp tINF tEGAL . Exp
+   67 Function: tCHAR tWORD tPO Arguments_Declaration tPF . tAO Input tAF
 
-    tMINUS   shift, and go to state 47
-    tNOMBRE  shift, and go to state 48
-    tWORD    shift, and go to state 49
-
-    Exp  go to state 136
+    tAO  shift, and go to state 140
 
 
 State 118
 
-   32 Condition: Exp tINF Exp .
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
+   68 Function: tVOID tWORD tPO Arguments_Declaration tPF . tAO Input tAF
 
-    tDIV      shift, and go to state 69
-    tPLUS     shift, and go to state 70
-    tMINUS    shift, and go to state 71
-    tPOINTER  shift, and go to state 72
-
-    $default  reduce using rule 32 (Condition)
+    tAO  shift, and go to state 141
 
 
 State 119
-
-   29 Condition: Exp tEGALEGAL Exp .
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
-
-    tDIV      shift, and go to state 69
-    tPLUS     shift, and go to state 70
-    tMINUS    shift, and go to state 71
-    tPOINTER  shift, and go to state 72
-
-    $default  reduce using rule 29 (Condition)
-
-
-State 120
-
-   30 Condition: Exp tNOTEGAL Exp .
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
-
-    tDIV      shift, and go to state 69
-    tPLUS     shift, and go to state 70
-    tMINUS    shift, and go to state 71
-    tPOINTER  shift, and go to state 72
-
-    $default  reduce using rule 30 (Condition)
-
-
-State 121
-
-   64 Function: tINTEGER tWORD $@14 tPO Arguments_Declaration . tPF tAO Input $@15 tAF
-
-    tPF  shift, and go to state 137
-
-
-State 122
-
-   69 Arguments_Declaration: tINTEGER tWORD . $@16 tVIRG Arguments_Declaration
-   73                      | tINTEGER tWORD . $@17 Arguments_Declaration
-
-    tVIRG     reduce using rule 68 ($@16)
-    $default  reduce using rule 72 ($@17)
-
-    $@16  go to state 138
-    $@17  go to state 139
-
-
-State 123
-
-   71 Arguments_Declaration: tCHAR tWORD . tVIRG Arguments_Declaration
-
-    tVIRG  shift, and go to state 140
-
-
-State 124
-
-   70 Arguments_Declaration: tVOID tWORD . tVIRG Arguments_Declaration
-
-    tVIRG  shift, and go to state 141
-
-
-State 125
-
-   65 Function: tCHAR tWORD tPO Arguments_Declaration tPF . tAO Input tAF
-
-    tAO  shift, and go to state 142
-
-
-State 126
-
-   66 Function: tVOID tWORD tPO Arguments_Declaration tPF . tAO Input tAF
-
-    tAO  shift, and go to state 143
-
-
-State 127
 
    18 Arg: tINTEGER tCO tCF tWORD .
 
     $default  reduce using rule 18 (Arg)
 
 
-State 128
+State 120
 
    16 Main: tINTEGER tMAIN tPO Arg tPF tAO $@5 . Input tAF
 
     $default  reduce using rule 1 (Input)
 
-    Input  go to state 144
+    Input  go to state 142
 
 
-State 129
+State 121
 
-   54 DeclarationIntTabMemeLigne: tVIRG tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne
+   55 DeclarationIntTabMemeLigne: tVIRG tWORD . tCO tNOMBRE tCF DeclarationIntTabMemeLigne
 
-    tCO  shift, and go to state 145
-
-
-State 130
-
-   48 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG .
-
-    $default  reduce using rule 48 (Declaration)
+    tCO  shift, and go to state 143
 
 
-State 131
+State 122
 
-   52 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL . Exp DeclarationIntEgalMemeLigne
+   49 Declaration: tINTEGER tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne tPOINTVIRG .
+
+    $default  reduce using rule 49 (Declaration)
+
+
+State 123
+
+   53 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL . Exp DeclarationIntEgalMemeLigne
 
     tMINUS   shift, and go to state 47
     tNOMBRE  shift, and go to state 48
     tWORD    shift, and go to state 49
 
-    Exp  go to state 146
+    Exp  go to state 144
 
 
-State 132
+State 124
 
-   58 While: tWHILE $@10 tPO Condition $@11 tPF . tAO Input tAF
+   60 While: tWHILE $@11 tPO $@12 Condition $@13 . tPF tAO Input tAF
+
+    tPF  shift, and go to state 145
+
+
+State 125
+
+   36 Condition: Condition . tOR Condition
+   37          | Condition . tAND Condition
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 Condition . $@15 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
+
+    tOR   shift, and go to state 106
+    tAND  shift, and go to state 107
+
+    $default  reduce using rule 62 ($@15)
+
+    $@15  go to state 146
+
+
+State 126
+
+   36 Condition: Condition . tOR Condition
+   36          | Condition tOR Condition .
+   37          | Condition . tAND Condition
+
+    tOR   shift, and go to state 106
+    tAND  shift, and go to state 107
+
+    tOR       [reduce using rule 36 (Condition)]
+    tAND      [reduce using rule 36 (Condition)]
+    $default  reduce using rule 36 (Condition)
+
+
+State 127
+
+   36 Condition: Condition . tOR Condition
+   37          | Condition . tAND Condition
+   37          | Condition tAND Condition .
+
+    tOR   shift, and go to state 106
+    tAND  shift, and go to state 107
+
+    tOR       [reduce using rule 37 (Condition)]
+    tAND      [reduce using rule 37 (Condition)]
+    $default  reduce using rule 37 (Condition)
+
+
+State 128
+
+   24 If: tIF tPO $@6 Condition $@7 tPF . tAO Input tAF $@8 Else
 
     tAO  shift, and go to state 147
 
 
-State 133
+State 129
 
-   35 Condition: Condition . tOR Condition
-   36          | Condition . tAND Condition
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition . $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
+   34 Condition: Exp tSUP tEGAL . Exp
 
-    tOR   shift, and go to state 85
-    tAND  shift, and go to state 86
+    tMINUS   shift, and go to state 47
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
 
-    $default  reduce using rule 60 ($@13)
-
-    $@13  go to state 148
+    Exp  go to state 148
 
 
-State 134
+State 130
 
-   23 If: tIF tPO Condition $@6 tPF tAO . Input tAF $@7 Else
+   32 Condition: Exp tSUP Exp .
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
 
-    $default  reduce using rule 1 (Input)
+    tDIV      shift, and go to state 68
+    tPLUS     shift, and go to state 69
+    tMINUS    shift, and go to state 70
+    tPOINTER  shift, and go to state 71
 
-    Input  go to state 149
+    $default  reduce using rule 32 (Condition)
 
 
-State 135
+State 131
 
-   33 Condition: Exp tSUP tEGAL Exp .
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
+   35 Condition: Exp tINF tEGAL . Exp
 
-    tDIV      shift, and go to state 69
-    tPLUS     shift, and go to state 70
-    tMINUS    shift, and go to state 71
-    tPOINTER  shift, and go to state 72
+    tMINUS   shift, and go to state 47
+    tNOMBRE  shift, and go to state 48
+    tWORD    shift, and go to state 49
+
+    Exp  go to state 149
+
+
+State 132
+
+   33 Condition: Exp tINF Exp .
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
+
+    tDIV      shift, and go to state 68
+    tPLUS     shift, and go to state 69
+    tMINUS    shift, and go to state 70
+    tPOINTER  shift, and go to state 71
 
     $default  reduce using rule 33 (Condition)
 
 
-State 136
+State 133
 
-   34 Condition: Exp tINF tEGAL Exp .
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
+   30 Condition: Exp tEGALEGAL Exp .
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
 
-    tDIV      shift, and go to state 69
-    tPLUS     shift, and go to state 70
-    tMINUS    shift, and go to state 71
-    tPOINTER  shift, and go to state 72
+    tDIV      shift, and go to state 68
+    tPLUS     shift, and go to state 69
+    tMINUS    shift, and go to state 70
+    tPOINTER  shift, and go to state 71
 
-    $default  reduce using rule 34 (Condition)
+    $default  reduce using rule 30 (Condition)
 
 
-State 137
+State 134
 
-   64 Function: tINTEGER tWORD $@14 tPO Arguments_Declaration tPF . tAO Input $@15 tAF
+   31 Condition: Exp tNOTEGAL Exp .
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
+
+    tDIV      shift, and go to state 68
+    tPLUS     shift, and go to state 69
+    tMINUS    shift, and go to state 70
+    tPOINTER  shift, and go to state 71
+
+    $default  reduce using rule 31 (Condition)
+
+
+State 135
+
+   66 Function: tINTEGER tWORD $@16 tPO Arguments_Declaration tPF . tAO Input $@17 tAF
 
     tAO  shift, and go to state 150
 
 
-State 138
+State 136
 
-   69 Arguments_Declaration: tINTEGER tWORD $@16 . tVIRG Arguments_Declaration
+   71 Arguments_Declaration: tINTEGER tWORD $@18 . tVIRG Arguments_Declaration
 
     tVIRG  shift, and go to state 151
 
 
-State 139
+State 137
 
-   73 Arguments_Declaration: tINTEGER tWORD $@17 . Arguments_Declaration
+   75 Arguments_Declaration: tINTEGER tWORD $@19 . Arguments_Declaration
 
-    tINTEGER  shift, and go to state 93
-    tCHAR     shift, and go to state 94
-    tVOID     shift, and go to state 95
+    tINTEGER  shift, and go to state 87
+    tCHAR     shift, and go to state 88
+    tVOID     shift, and go to state 89
 
-    $default  reduce using rule 74 (Arguments_Declaration)
+    $default  reduce using rule 76 (Arguments_Declaration)
 
     Arguments_Declaration  go to state 152
 
 
-State 140
+State 138
 
-   71 Arguments_Declaration: tCHAR tWORD tVIRG . Arguments_Declaration
+   73 Arguments_Declaration: tCHAR tWORD tVIRG . Arguments_Declaration
 
-    tINTEGER  shift, and go to state 93
-    tCHAR     shift, and go to state 94
-    tVOID     shift, and go to state 95
+    tINTEGER  shift, and go to state 87
+    tCHAR     shift, and go to state 88
+    tVOID     shift, and go to state 89
 
-    $default  reduce using rule 74 (Arguments_Declaration)
+    $default  reduce using rule 76 (Arguments_Declaration)
 
     Arguments_Declaration  go to state 153
 
 
-State 141
+State 139
 
-   70 Arguments_Declaration: tVOID tWORD tVIRG . Arguments_Declaration
+   72 Arguments_Declaration: tVOID tWORD tVIRG . Arguments_Declaration
 
-    tINTEGER  shift, and go to state 93
-    tCHAR     shift, and go to state 94
-    tVOID     shift, and go to state 95
+    tINTEGER  shift, and go to state 87
+    tCHAR     shift, and go to state 88
+    tVOID     shift, and go to state 89
 
-    $default  reduce using rule 74 (Arguments_Declaration)
+    $default  reduce using rule 76 (Arguments_Declaration)
 
     Arguments_Declaration  go to state 154
 
 
-State 142
+State 140
 
-   65 Function: tCHAR tWORD tPO Arguments_Declaration tPF tAO . Input tAF
+   67 Function: tCHAR tWORD tPO Arguments_Declaration tPF tAO . Input tAF
 
     $default  reduce using rule 1 (Input)
 
     Input  go to state 155
 
 
-State 143
+State 141
 
-   66 Function: tVOID tWORD tPO Arguments_Declaration tPF tAO . Input tAF
+   68 Function: tVOID tWORD tPO Arguments_Declaration tPF tAO . Input tAF
 
     $default  reduce using rule 1 (Input)
 
     Input  go to state 156
 
 
-State 144
+State 142
 
     2 Input: Input . tNEWLINE
     3      | Input . Egalite tPOINTVIRG
@@ -1755,88 +1733,90 @@ State 144
     Appel_Function  go to state 15
 
 
-State 145
+State 143
 
-   54 DeclarationIntTabMemeLigne: tVIRG tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne
+   55 DeclarationIntTabMemeLigne: tVIRG tWORD tCO . tNOMBRE tCF DeclarationIntTabMemeLigne
 
     tNOMBRE  shift, and go to state 158
 
 
-State 146
+State 144
 
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
-   52 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp . DeclarationIntEgalMemeLigne
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
+   53 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp . DeclarationIntEgalMemeLigne
 
-    tDIV      shift, and go to state 69
-    tPLUS     shift, and go to state 70
-    tMINUS    shift, and go to state 71
-    tVIRG     shift, and go to state 79
-    tPOINTER  shift, and go to state 72
+    tDIV      shift, and go to state 68
+    tPLUS     shift, and go to state 69
+    tMINUS    shift, and go to state 70
+    tVIRG     shift, and go to state 78
+    tPOINTER  shift, and go to state 71
 
-    $default  reduce using rule 53 (DeclarationIntEgalMemeLigne)
+    $default  reduce using rule 54 (DeclarationIntEgalMemeLigne)
 
     DeclarationIntEgalMemeLigne  go to state 159
 
 
-State 147
+State 145
 
-   58 While: tWHILE $@10 tPO Condition $@11 tPF tAO . Input tAF
+   60 While: tWHILE $@11 tPO $@12 Condition $@13 tPF . tAO Input tAF
 
-    $default  reduce using rule 1 (Input)
-
-    Input  go to state 160
+    tAO  shift, and go to state 160
 
 
-State 148
+State 146
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 . tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 Condition $@15 . tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF
 
     tPOINTVIRG  shift, and go to state 161
 
 
+State 147
+
+   24 If: tIF tPO $@6 Condition $@7 tPF tAO . Input tAF $@8 Else
+
+    $default  reduce using rule 1 (Input)
+
+    Input  go to state 162
+
+
+State 148
+
+   34 Condition: Exp tSUP tEGAL Exp .
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
+
+    tDIV      shift, and go to state 68
+    tPLUS     shift, and go to state 69
+    tMINUS    shift, and go to state 70
+    tPOINTER  shift, and go to state 71
+
+    $default  reduce using rule 34 (Condition)
+
+
 State 149
 
-    2 Input: Input . tNEWLINE
-    3      | Input . Egalite tPOINTVIRG
-    4      | Input . Declaration
-    6      | Input . $@1 While
-    8      | Input . $@2 For
-   10      | Input . $@3 If
-   12      | Input . $@4 Function
-   13      | Input . Appel_Function
-   14      | Input . Main
-   23 If: tIF tPO Condition $@6 tPF tAO Input . tAF $@7 Else
+   35 Condition: Exp tINF tEGAL Exp .
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
 
-    error     shift, and go to state 3
-    tINTEGER  shift, and go to state 4
-    tAF       shift, and go to state 162
-    tWORD     shift, and go to state 5
-    tNEWLINE  shift, and go to state 6
+    tDIV      shift, and go to state 68
+    tPLUS     shift, and go to state 69
+    tMINUS    shift, and go to state 70
+    tPOINTER  shift, and go to state 71
 
-    tINTEGER  [reduce using rule 11 ($@4)]
-    tCHAR     reduce using rule 11 ($@4)
-    tVOID     reduce using rule 11 ($@4)
-    tIF       reduce using rule 9 ($@3)
-    tWHILE    reduce using rule 5 ($@1)
-    tFOR      reduce using rule 7 ($@2)
-
-    $@1             go to state 7
-    $@2             go to state 8
-    $@3             go to state 9
-    $@4             go to state 10
-    Main            go to state 11
-    LeftTerm        go to state 12
-    Egalite         go to state 13
-    Declaration     go to state 14
-    Appel_Function  go to state 15
+    $default  reduce using rule 35 (Condition)
 
 
 State 150
 
-   64 Function: tINTEGER tWORD $@14 tPO Arguments_Declaration tPF tAO . Input $@15 tAF
+   66 Function: tINTEGER tWORD $@16 tPO Arguments_Declaration tPF tAO . Input $@17 tAF
 
     $default  reduce using rule 1 (Input)
 
@@ -1845,36 +1825,36 @@ State 150
 
 State 151
 
-   69 Arguments_Declaration: tINTEGER tWORD $@16 tVIRG . Arguments_Declaration
+   71 Arguments_Declaration: tINTEGER tWORD $@18 tVIRG . Arguments_Declaration
 
-    tINTEGER  shift, and go to state 93
-    tCHAR     shift, and go to state 94
-    tVOID     shift, and go to state 95
+    tINTEGER  shift, and go to state 87
+    tCHAR     shift, and go to state 88
+    tVOID     shift, and go to state 89
 
-    $default  reduce using rule 74 (Arguments_Declaration)
+    $default  reduce using rule 76 (Arguments_Declaration)
 
     Arguments_Declaration  go to state 164
 
 
 State 152
 
-   73 Arguments_Declaration: tINTEGER tWORD $@17 Arguments_Declaration .
+   75 Arguments_Declaration: tINTEGER tWORD $@19 Arguments_Declaration .
 
-    $default  reduce using rule 73 (Arguments_Declaration)
+    $default  reduce using rule 75 (Arguments_Declaration)
 
 
 State 153
 
-   71 Arguments_Declaration: tCHAR tWORD tVIRG Arguments_Declaration .
+   73 Arguments_Declaration: tCHAR tWORD tVIRG Arguments_Declaration .
 
-    $default  reduce using rule 71 (Arguments_Declaration)
+    $default  reduce using rule 73 (Arguments_Declaration)
 
 
 State 154
 
-   70 Arguments_Declaration: tVOID tWORD tVIRG Arguments_Declaration .
+   72 Arguments_Declaration: tVOID tWORD tVIRG Arguments_Declaration .
 
-    $default  reduce using rule 70 (Arguments_Declaration)
+    $default  reduce using rule 72 (Arguments_Declaration)
 
 
 State 155
@@ -1888,7 +1868,7 @@ State 155
    12      | Input . $@4 Function
    13      | Input . Appel_Function
    14      | Input . Main
-   65 Function: tCHAR tWORD tPO Arguments_Declaration tPF tAO Input . tAF
+   67 Function: tCHAR tWORD tPO Arguments_Declaration tPF tAO Input . tAF
 
     error     shift, and go to state 3
     tINTEGER  shift, and go to state 4
@@ -1925,7 +1905,7 @@ State 156
    12      | Input . $@4 Function
    13      | Input . Appel_Function
    14      | Input . Main
-   66 Function: tVOID tWORD tPO Arguments_Declaration tPF tAO Input . tAF
+   68 Function: tVOID tWORD tPO Arguments_Declaration tPF tAO Input . tAF
 
     error     shift, and go to state 3
     tINTEGER  shift, and go to state 4
@@ -1960,19 +1940,35 @@ State 157
 
 State 158
 
-   54 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne
+   55 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE . tCF DeclarationIntTabMemeLigne
 
     tCF  shift, and go to state 167
 
 
 State 159
 
-   52 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne .
+   53 DeclarationIntEgalMemeLigne: tVIRG tWORD tEGAL Exp DeclarationIntEgalMemeLigne .
 
-    $default  reduce using rule 52 (DeclarationIntEgalMemeLigne)
+    $default  reduce using rule 53 (DeclarationIntEgalMemeLigne)
 
 
 State 160
+
+   60 While: tWHILE $@11 tPO $@12 Condition $@13 tPF tAO . Input tAF
+
+    $default  reduce using rule 1 (Input)
+
+    Input  go to state 168
+
+
+State 161
+
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 Condition $@15 tPOINTVIRG . tWORD tEGAL Exp tPF tAO Input tAF
+
+    tWORD  shift, and go to state 169
+
+
+State 162
 
     2 Input: Input . tNEWLINE
     3      | Input . Egalite tPOINTVIRG
@@ -1983,11 +1979,11 @@ State 160
    12      | Input . $@4 Function
    13      | Input . Appel_Function
    14      | Input . Main
-   58 While: tWHILE $@10 tPO Condition $@11 tPF tAO Input . tAF
+   24 If: tIF tPO $@6 Condition $@7 tPF tAO Input . tAF $@8 Else
 
     error     shift, and go to state 3
     tINTEGER  shift, and go to state 4
-    tAF       shift, and go to state 168
+    tAF       shift, and go to state 170
     tWORD     shift, and go to state 5
     tNEWLINE  shift, and go to state 6
 
@@ -2007,22 +2003,6 @@ State 160
     Egalite         go to state 13
     Declaration     go to state 14
     Appel_Function  go to state 15
-
-
-State 161
-
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG . tWORD tEGAL Exp tPF tAO Input tAF
-
-    tWORD  shift, and go to state 169
-
-
-State 162
-
-   23 If: tIF tPO Condition $@6 tPF tAO Input tAF . $@7 Else
-
-    $default  reduce using rule 22 ($@7)
-
-    $@7  go to state 170
 
 
 State 163
@@ -2036,7 +2016,7 @@ State 163
    12      | Input . $@4 Function
    13      | Input . Appel_Function
    14      | Input . Main
-   64 Function: tINTEGER tWORD $@14 tPO Arguments_Declaration tPF tAO Input . $@15 tAF
+   66 Function: tINTEGER tWORD $@16 tPO Arguments_Declaration tPF tAO Input . $@17 tAF
 
     error     shift, and go to state 3
     tINTEGER  shift, and go to state 4
@@ -2049,7 +2029,7 @@ State 163
     tIF       reduce using rule 9 ($@3)
     tWHILE    reduce using rule 5 ($@1)
     tFOR      reduce using rule 7 ($@2)
-    tAF       reduce using rule 63 ($@15)
+    tAF       reduce using rule 65 ($@17)
 
     $@1             go to state 7
     $@2             go to state 8
@@ -2059,84 +2039,119 @@ State 163
     LeftTerm        go to state 12
     Egalite         go to state 13
     Declaration     go to state 14
-    $@15            go to state 171
+    $@17            go to state 171
     Appel_Function  go to state 15
 
 
 State 164
 
-   69 Arguments_Declaration: tINTEGER tWORD $@16 tVIRG Arguments_Declaration .
+   71 Arguments_Declaration: tINTEGER tWORD $@18 tVIRG Arguments_Declaration .
 
-    $default  reduce using rule 69 (Arguments_Declaration)
+    $default  reduce using rule 71 (Arguments_Declaration)
 
 
 State 165
 
-   65 Function: tCHAR tWORD tPO Arguments_Declaration tPF tAO Input tAF .
+   67 Function: tCHAR tWORD tPO Arguments_Declaration tPF tAO Input tAF .
 
-    $default  reduce using rule 65 (Function)
+    $default  reduce using rule 67 (Function)
 
 
 State 166
 
-   66 Function: tVOID tWORD tPO Arguments_Declaration tPF tAO Input tAF .
+   68 Function: tVOID tWORD tPO Arguments_Declaration tPF tAO Input tAF .
 
-    $default  reduce using rule 66 (Function)
+    $default  reduce using rule 68 (Function)
 
 
 State 167
 
-   54 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne
+   55 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF . DeclarationIntTabMemeLigne
 
-    tVIRG  shift, and go to state 105
+    tVIRG  shift, and go to state 99
 
-    $default  reduce using rule 55 (DeclarationIntTabMemeLigne)
+    $default  reduce using rule 56 (DeclarationIntTabMemeLigne)
 
     DeclarationIntTabMemeLigne  go to state 172
 
 
 State 168
 
-   58 While: tWHILE $@10 tPO Condition $@11 tPF tAO Input tAF .
+    2 Input: Input . tNEWLINE
+    3      | Input . Egalite tPOINTVIRG
+    4      | Input . Declaration
+    6      | Input . $@1 While
+    8      | Input . $@2 For
+   10      | Input . $@3 If
+   12      | Input . $@4 Function
+   13      | Input . Appel_Function
+   14      | Input . Main
+   60 While: tWHILE $@11 tPO $@12 Condition $@13 tPF tAO Input . tAF
 
-    $default  reduce using rule 58 (While)
+    error     shift, and go to state 3
+    tINTEGER  shift, and go to state 4
+    tAF       shift, and go to state 173
+    tWORD     shift, and go to state 5
+    tNEWLINE  shift, and go to state 6
+
+    tINTEGER  [reduce using rule 11 ($@4)]
+    tCHAR     reduce using rule 11 ($@4)
+    tVOID     reduce using rule 11 ($@4)
+    tIF       reduce using rule 9 ($@3)
+    tWHILE    reduce using rule 5 ($@1)
+    tFOR      reduce using rule 7 ($@2)
+
+    $@1             go to state 7
+    $@2             go to state 8
+    $@3             go to state 9
+    $@4             go to state 10
+    Main            go to state 11
+    LeftTerm        go to state 12
+    Egalite         go to state 13
+    Declaration     go to state 14
+    Appel_Function  go to state 15
 
 
 State 169
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD . tEGAL Exp tPF tAO Input tAF
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 Condition $@15 tPOINTVIRG tWORD . tEGAL Exp tPF tAO Input tAF
 
-    tEGAL  shift, and go to state 173
+    tEGAL  shift, and go to state 174
 
 
 State 170
 
-   23 If: tIF tPO Condition $@6 tPF tAO Input tAF $@7 . Else
+   24 If: tIF tPO $@6 Condition $@7 tPF tAO Input tAF . $@8 Else
 
-    tELSE  shift, and go to state 174
+    $default  reduce using rule 23 ($@8)
 
-    $default  reduce using rule 28 (Else)
-
-    Else  go to state 175
+    $@8  go to state 175
 
 
 State 171
 
-   64 Function: tINTEGER tWORD $@14 tPO Arguments_Declaration tPF tAO Input $@15 . tAF
+   66 Function: tINTEGER tWORD $@16 tPO Arguments_Declaration tPF tAO Input $@17 . tAF
 
     tAF  shift, and go to state 176
 
 
 State 172
 
-   54 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne .
+   55 DeclarationIntTabMemeLigne: tVIRG tWORD tCO tNOMBRE tCF DeclarationIntTabMemeLigne .
 
-    $default  reduce using rule 54 (DeclarationIntTabMemeLigne)
+    $default  reduce using rule 55 (DeclarationIntTabMemeLigne)
 
 
 State 173
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL . Exp tPF tAO Input tAF
+   60 While: tWHILE $@11 tPO $@12 Condition $@13 tPF tAO Input tAF .
+
+    $default  reduce using rule 60 (While)
+
+
+State 174
+
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 Condition $@15 tPOINTVIRG tWORD tEGAL . Exp tPF tAO Input tAF
 
     tMINUS   shift, and go to state 47
     tNOMBRE  shift, and go to state 48
@@ -2145,134 +2160,108 @@ State 173
     Exp  go to state 177
 
 
-State 174
-
-   25 Else: tELSE . $@8 tAO Input tAF
-   27     | tELSE . $@9 If
-
-    tIF       reduce using rule 26 ($@9)
-    $default  reduce using rule 24 ($@8)
-
-    $@8  go to state 178
-    $@9  go to state 179
-
-
 State 175
 
-   23 If: tIF tPO Condition $@6 tPF tAO Input tAF $@7 Else .
+   24 If: tIF tPO $@6 Condition $@7 tPF tAO Input tAF $@8 . Else
 
-    $default  reduce using rule 23 (If)
+    tELSE  shift, and go to state 178
+
+    $default  reduce using rule 29 (Else)
+
+    Else  go to state 179
 
 
 State 176
 
-   64 Function: tINTEGER tWORD $@14 tPO Arguments_Declaration tPF tAO Input $@15 tAF .
+   66 Function: tINTEGER tWORD $@16 tPO Arguments_Declaration tPF tAO Input $@17 tAF .
 
-    $default  reduce using rule 64 (Function)
+    $default  reduce using rule 66 (Function)
 
 
 State 177
 
-   37 Exp: Exp . tPLUS Exp
-   38    | Exp . tDIV Exp
-   39    | Exp . tMINUS Exp
-   40    | Exp . tPOINTER Exp
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp . tPF tAO Input tAF
+   38 Exp: Exp . tPLUS Exp
+   39    | Exp . tDIV Exp
+   40    | Exp . tMINUS Exp
+   41    | Exp . tPOINTER Exp
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 Condition $@15 tPOINTVIRG tWORD tEGAL Exp . tPF tAO Input tAF
 
     tPF       shift, and go to state 180
-    tDIV      shift, and go to state 69
-    tPLUS     shift, and go to state 70
-    tMINUS    shift, and go to state 71
-    tPOINTER  shift, and go to state 72
+    tDIV      shift, and go to state 68
+    tPLUS     shift, and go to state 69
+    tMINUS    shift, and go to state 70
+    tPOINTER  shift, and go to state 71
 
 
 State 178
 
-   25 Else: tELSE $@8 . tAO Input tAF
+   26 Else: tELSE . $@9 tAO Input tAF
+   28     | tELSE . $@10 If
 
-    tAO  shift, and go to state 181
+    tIF       reduce using rule 27 ($@10)
+    $default  reduce using rule 25 ($@9)
+
+    $@9   go to state 181
+    $@10  go to state 182
 
 
 State 179
 
-   27 Else: tELSE $@9 . If
+   24 If: tIF tPO $@6 Condition $@7 tPF tAO Input tAF $@8 Else .
 
-    tIF  shift, and go to state 24
-
-    If  go to state 182
+    $default  reduce using rule 24 (If)
 
 
 State 180
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF . tAO Input tAF
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 Condition $@15 tPOINTVIRG tWORD tEGAL Exp tPF . tAO Input tAF
 
     tAO  shift, and go to state 183
 
 
 State 181
 
-   25 Else: tELSE $@8 tAO . Input tAF
+   26 Else: tELSE $@9 . tAO Input tAF
 
-    $default  reduce using rule 1 (Input)
-
-    Input  go to state 184
+    tAO  shift, and go to state 184
 
 
 State 182
 
-   27 Else: tELSE $@9 If .
+   28 Else: tELSE $@10 . If
 
-    $default  reduce using rule 27 (Else)
+    tIF  shift, and go to state 24
+
+    If  go to state 185
 
 
 State 183
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO . Input tAF
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 Condition $@15 tPOINTVIRG tWORD tEGAL Exp tPF tAO . Input tAF
 
     $default  reduce using rule 1 (Input)
 
-    Input  go to state 185
+    Input  go to state 186
 
 
 State 184
 
-    2 Input: Input . tNEWLINE
-    3      | Input . Egalite tPOINTVIRG
-    4      | Input . Declaration
-    6      | Input . $@1 While
-    8      | Input . $@2 For
-   10      | Input . $@3 If
-   12      | Input . $@4 Function
-   13      | Input . Appel_Function
-   14      | Input . Main
-   25 Else: tELSE $@8 tAO Input . tAF
+   26 Else: tELSE $@9 tAO . Input tAF
 
-    error     shift, and go to state 3
-    tINTEGER  shift, and go to state 4
-    tAF       shift, and go to state 186
-    tWORD     shift, and go to state 5
-    tNEWLINE  shift, and go to state 6
+    $default  reduce using rule 1 (Input)
 
-    tINTEGER  [reduce using rule 11 ($@4)]
-    tCHAR     reduce using rule 11 ($@4)
-    tVOID     reduce using rule 11 ($@4)
-    tIF       reduce using rule 9 ($@3)
-    tWHILE    reduce using rule 5 ($@1)
-    tFOR      reduce using rule 7 ($@2)
-
-    $@1             go to state 7
-    $@2             go to state 8
-    $@3             go to state 9
-    $@4             go to state 10
-    Main            go to state 11
-    LeftTerm        go to state 12
-    Egalite         go to state 13
-    Declaration     go to state 14
-    Appel_Function  go to state 15
+    Input  go to state 187
 
 
 State 185
 
+   28 Else: tELSE $@10 If .
+
+    $default  reduce using rule 28 (Else)
+
+
+State 186
+
     2 Input: Input . tNEWLINE
     3      | Input . Egalite tPOINTVIRG
     4      | Input . Declaration
@@ -2282,11 +2271,11 @@ State 185
    12      | Input . $@4 Function
    13      | Input . Appel_Function
    14      | Input . Main
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input . tAF
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 Condition $@15 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input . tAF
 
     error     shift, and go to state 3
     tINTEGER  shift, and go to state 4
-    tAF       shift, and go to state 187
+    tAF       shift, and go to state 188
     tWORD     shift, and go to state 5
     tNEWLINE  shift, and go to state 6
 
@@ -2308,15 +2297,52 @@ State 185
     Appel_Function  go to state 15
 
 
-State 186
-
-   25 Else: tELSE $@8 tAO Input tAF .
-
-    $default  reduce using rule 25 (Else)
-
-
 State 187
 
-   61 For: tFOR tPO Egalite tPOINTVIRG $@12 Condition $@13 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF .
+    2 Input: Input . tNEWLINE
+    3      | Input . Egalite tPOINTVIRG
+    4      | Input . Declaration
+    6      | Input . $@1 While
+    8      | Input . $@2 For
+   10      | Input . $@3 If
+   12      | Input . $@4 Function
+   13      | Input . Appel_Function
+   14      | Input . Main
+   26 Else: tELSE $@9 tAO Input . tAF
 
-    $default  reduce using rule 61 (For)
+    error     shift, and go to state 3
+    tINTEGER  shift, and go to state 4
+    tAF       shift, and go to state 189
+    tWORD     shift, and go to state 5
+    tNEWLINE  shift, and go to state 6
+
+    tINTEGER  [reduce using rule 11 ($@4)]
+    tCHAR     reduce using rule 11 ($@4)
+    tVOID     reduce using rule 11 ($@4)
+    tIF       reduce using rule 9 ($@3)
+    tWHILE    reduce using rule 5 ($@1)
+    tFOR      reduce using rule 7 ($@2)
+
+    $@1             go to state 7
+    $@2             go to state 8
+    $@3             go to state 9
+    $@4             go to state 10
+    Main            go to state 11
+    LeftTerm        go to state 12
+    Egalite         go to state 13
+    Declaration     go to state 14
+    Appel_Function  go to state 15
+
+
+State 188
+
+   63 For: tFOR tPO Egalite tPOINTVIRG $@14 Condition $@15 tPOINTVIRG tWORD tEGAL Exp tPF tAO Input tAF .
+
+    $default  reduce using rule 63 (For)
+
+
+State 189
+
+   26 Else: tELSE $@9 tAO Input tAF .
+
+    $default  reduce using rule 26 (Else)

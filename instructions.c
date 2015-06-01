@@ -126,8 +126,9 @@ void print_assembler_instructions(stack_inst * inst,char * to_print){
                 fprintf(fp,"POP CR\n");
         }else if(INST_PUSH_CR == inst->instruct_params[0]){
                 fprintf(fp,"PUSH CR\n");
-        } 
-
+        }else if(INST_AFC_CR == inst->instruct_params[0]){
+                fprintf(fp,"AFC CR %d \n",inst->instruct_params[1]);
+        }
    
    	fclose(fp);
 }
@@ -158,6 +159,12 @@ void stack_push_push_cr(int arg1){
         stack_push(new_inst);
 }
 
+void stack_push_afc_cr(int arg){
+        stack_inst * new_inst = malloc(sizeof(stack_inst));
+        new_inst->instruct_params[0]=INST_AFC_CR;
+	new_inst->instruct_params[1]=arg;
+        stack_push(new_inst);
+}
 
 
 void stack_push_pop_cr(){
