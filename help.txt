@@ -1,2 +1,0 @@
-AFC : Adresse <- Valeur
-COP : Adresse <- Adresse
